@@ -70,6 +70,23 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .price-tag{text-align:center;margin-top:14px;font-size:11px;color:var(--dim);}
 .price-tag b{color:var(--gold);font-size:15px;}
 
+/* Tela de confirmação de pagamento */
+.pending-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px 32px;max-width:380px;width:100%;text-align:center;animation:fadeUp .5s ease both;}
+.pending-spinner{width:52px;height:52px;border-radius:50%;border:3px solid rgba(212,160,23,0.15);border-top-color:var(--gold);margin:0 auto 22px;animation:spin 0.9s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.pending-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.pending-sub{font-size:12px;color:var(--muted);line-height:1.6;}
+.pending-success-icon{width:52px;height:52px;border-radius:50%;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.4);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px;}
+.pending-warn-icon{width:52px;height:52px;border-radius:50%;background:rgba(212,160,23,0.1);border:1px solid rgba(212,160,23,0.35);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px;}
+.credential-box{background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.25);border-radius:12px;padding:18px 20px;margin-top:18px;text-align:left;}
+.credential-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:13px;}
+.credential-row + .credential-row{border-top:1px solid rgba(255,255,255,0.06);}
+.credential-label{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em;}
+.credential-value{color:var(--gold-bright);font-weight:700;font-family:monospace;font-size:14px;}
+.credential-note{margin-top:14px;font-size:11px;color:var(--dim);line-height:1.6;}
+.pending-login-btn{margin-top:20px;width:100%;background:linear-gradient(135deg,var(--gold-dark),var(--gold-bright));color:#000;font-weight:700;font-size:14px;font-family:'Outfit',sans-serif;border:none;border-radius:10px;padding:12px;cursor:pointer;transition:opacity .2s;}
+.pending-login-btn:hover{opacity:.88;}
+
 .price-promo{display:flex;flex-direction:column;align-items:center;margin-top:14px;gap:6px;}
 .price-old-wrap{position:relative;display:inline-block;}
 .price-old{font-size:14px;color:var(--dim);}
@@ -148,6 +165,23 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .footer{text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.05);}
 .ft-brand{font-size:13px;font-weight:700;background:linear-gradient(90deg,var(--gold-dark),var(--gold-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .footer p{font-size:11px;color:var(--dim);margin-top:4px;}
+.footer-info{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.04);}
+.footer-info-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);}
+.footer-info-item a{color:var(--muted);text-decoration:none;transition:color .2s;}
+.footer-info-item a:hover{color:var(--gold);}
+.footer-info-icon{font-size:13px;opacity:0.8;}
+.footer-cnpj{font-size:10px;color:var(--dim);margin-top:14px;letter-spacing:.02em;}
+
+/* Botão flutuante de WhatsApp */
+.whatsapp-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#22c55e;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(34,197,94,0.45);cursor:pointer;z-index:999;transition:transform .2s, box-shadow .2s;text-decoration:none;}
+.whatsapp-float:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(34,197,94,0.6);}
+.whatsapp-float svg{width:28px;height:28px;}
+.whatsapp-pulse{position:absolute;width:56px;height:56px;border-radius:50%;background:#22c55e;opacity:0.5;animation:whatsapp-ping 2s ease-out infinite;}
+@keyframes whatsapp-ping{0%{transform:scale(1);opacity:0.5;}70%{transform:scale(1.6);opacity:0;}100%{transform:scale(1.6);opacity:0;}}
+@media (max-width:480px){
+  .whatsapp-float{bottom:18px;right:18px;width:50px;height:50px;}
+  .whatsapp-float svg{width:25px;height:25px;}
+}
 
 ::-webkit-scrollbar{width:6px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
@@ -194,6 +228,9 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
       </div>
       <button class="login-btn" onclick="tryLogin()">Entrar</button>
       <div class="login-err" id="login-err">E-mail ou senha incorretos.</div>
+      <div style="text-align:center;margin-top:12px;">
+        <a href="#" onclick="forgotPassword();return false;" style="font-size:12px;color:var(--muted);text-decoration:underline;">Esqueci minha senha</a>
+      </div>
 
       <div class="login-divider"><span>ou</span></div>
 
@@ -217,7 +254,10 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 
     <div class="app-topbar">
       <div class="user-pill"><div class="dot"></div><span id="user-email-display">colaborador</span></div>
-      <button class="logout-btn" onclick="logout()">Sair</button>
+      <div style="display:flex;gap:8px;">
+        <button class="logout-btn" id="change-pwd-btn" onclick="openChangePassword()" style="display:none;">Trocar senha</button>
+        <button class="logout-btn" onclick="logout()">Sair</button>
+      </div>
     </div>
 
     <div class="platform-tabs" id="platform-tabs"></div>
@@ -229,9 +269,25 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
   <div class="footer">
     <div class="ft-brand">LB Marketplace</div>
     <p>LB PRECIFICA — uso interno e licenciado</p>
+    <div class="footer-info">
+      <div class="footer-info-item">
+        <span class="footer-info-icon">📞</span>
+        <a href="https://wa.me/5511965772586" target="_blank">Suporte via WhatsApp</a>
+      </div>
+      <div class="footer-info-item">
+        <span class="footer-info-icon">✉️</span>
+        <a href="mailto:suporte@lbmarketplace.com.br">suporte@lbmarketplace.com.br</a>
+      </div>
+    </div>
+    <p class="footer-cnpj">LB Marketplace — CNPJ 58.943.847/0001-90</p>
   </div>
 
 </div>
+
+<a href="https://wa.me/5511965772586?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20com%20a%20LB%20PRECIFICA." target="_blank" class="whatsapp-float" aria-label="Suporte via WhatsApp">
+  <div class="whatsapp-pulse"></div>
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-1.788-.795-2.961-2.063-3.834-3.575-.18-.31-.018-.477.13-.674.155-.205.21-.245.31-.41.1-.165.05-.395-.05-.555-.1-.16-.43-1.04-.59-1.435-.157-.39-.32-.34-.44-.345-.11-.005-.24-.005-.36-.005-.13 0-.34.05-.52.245-.18.195-.689.674-.689 1.645s.71 1.91.81 2.04c.1.13 1.387 2.116 3.39 2.876 1.68.63 2.02.51 2.39.48.37-.03 1.166-.477 1.336-.937.17-.46.17-.85.12-.937-.05-.085-.18-.13-.38-.227z"/><path d="M12.05 2C6.5 2 2 6.5 2 12.05c0 1.86.51 3.6 1.39 5.09L2 22l5-1.35c1.42.76 3.04 1.2 4.77 1.2 5.55 0 10.05-4.5 10.05-10.05S17.6 2 12.05 2zm5.59 14.41c-.24.66-1.4 1.27-1.93 1.36-.5.08-1.08.12-1.74-.11-.4-.14-.92-.3-1.58-.59-2.78-1.2-4.59-4.03-4.73-4.21-.14-.18-1.13-1.5-1.13-2.86 0-1.36.71-2.03.97-2.31.25-.27.55-.34.74-.34h.53c.17 0 .4-.07.62.47.24.58.81 2.01.88 2.16.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.45.51-.15.14-.3.3-.13.6.17.3.78 1.29 1.68 2.09 1.16 1.04 2.14 1.36 2.45 1.51.3.15.49.13.67-.05.18-.18.78-.91.99-1.22.2-.31.41-.26.69-.16.28.1 1.79.85 2.1 1 .3.15.5.22.58.34.07.13.07.71-.17 1.37z"/></svg>
+</a>
 
 <script>
 /* ===================== CONFIG ===================== */
@@ -254,6 +310,7 @@ async function tryLogin() {
   const err = document.getElementById('login-err');
 
   let success = false;
+  let userType = 'free';
 
   if (API_BASE_URL) {
     try {
@@ -264,17 +321,21 @@ async function tryLogin() {
       });
       const data = await res.json();
       success = !!data.success;
+      userType = data.type || 'free';
     } catch (e) {
       console.error('Erro ao conectar no backend, usando fallback local', e);
       success = FREE_USERS_FALLBACK[email] === pass;
+      userType = 'free';
     }
   } else {
     success = FREE_USERS_FALLBACK[email] === pass;
+    userType = 'free';
   }
 
   if (success) {
     sessionStorage.setItem('lb_precifica_session', email);
-    showApp(email);
+    sessionStorage.setItem('lb_precifica_session_type', userType);
+    showApp(email, userType);
     err.classList.remove('show');
   } else {
     err.classList.add('show');
@@ -285,16 +346,124 @@ async function tryLogin() {
 
 function logout() {
   sessionStorage.removeItem('lb_precifica_session');
+  sessionStorage.removeItem('lb_precifica_session_type');
   document.getElementById('login-screen').style.display = 'flex';
   document.getElementById('app-screen').style.display = 'none';
   document.getElementById('login-email').value = '';
   document.getElementById('login-password').value = '';
 }
 
-function showApp(email) {
+function showApp(email, userType) {
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('app-screen').style.display = 'block';
   document.getElementById('user-email-display').textContent = email;
+  const changePwdBtn = document.getElementById('change-pwd-btn');
+  if (changePwdBtn) {
+    changePwdBtn.style.display = userType === 'paid' ? 'inline-block' : 'none';
+  }
+}
+
+async function forgotPassword() {
+  if (!API_BASE_URL) {
+    alert('O backend ainda não foi conectado.');
+    return;
+  }
+  const email = prompt('Informe o e-mail da sua conta para receber o link de redefinição:');
+  if (!email) return;
+
+  try {
+    await fetch(`${API_BASE_URL}/api/forgot-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    alert('Se esse e-mail estiver cadastrado como cliente pagante, você vai receber um link de redefinição em poucos minutos. Confira também a caixa de spam.');
+  } catch (e) {
+    console.error(e);
+    alert('Erro ao conectar com o sistema. Tente novamente em alguns minutos.');
+  }
+}
+
+async function openChangePassword() {
+  const email = sessionStorage.getItem('lb_precifica_session');
+  const currentPassword = prompt('Digite sua senha atual:');
+  if (!currentPassword) return;
+  const newPassword = prompt('Digite a nova senha (mínimo 6 caracteres):');
+  if (!newPassword) return;
+  if (newPassword.length < 6) {
+    alert('A nova senha precisa ter pelo menos 6 caracteres.');
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/change-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, currentPassword, newPassword })
+    });
+    const data = await res.json();
+    if (data.success) {
+      alert('Senha alterada com sucesso!');
+    } else {
+      alert('Não foi possível trocar a senha: ' + (data.error || 'erro desconhecido'));
+    }
+  } catch (e) {
+    console.error(e);
+    alert('Erro ao conectar com o sistema.');
+  }
+}
+
+async function checkResetPasswordFlow() {
+  const params = new URLSearchParams(window.location.search);
+  const resetToken = params.get('reset');
+  if (!resetToken || !API_BASE_URL) return false;
+
+  document.getElementById('login-screen').innerHTML = `
+    <div class="pending-card">
+      <div class="pending-title">Defina sua nova senha</div>
+      <div class="pending-sub" style="margin-bottom:20px;">Escolha uma senha com pelo menos 6 caracteres.</div>
+      <div class="login-field" style="text-align:left;">
+        <label class="login-label">Nova senha</label>
+        <input type="password" class="login-input" id="new-password-input" placeholder="••••••••">
+      </div>
+      <button class="pending-login-btn" onclick="submitNewPassword('${resetToken}')">Salvar nova senha</button>
+      <div id="reset-result" style="margin-top:14px;font-size:12px;"></div>
+    </div>
+  `;
+  return true;
+}
+
+async function submitNewPassword(token) {
+  const newPassword = document.getElementById('new-password-input').value;
+  const resultEl = document.getElementById('reset-result');
+  if (!newPassword || newPassword.length < 6) {
+    resultEl.style.color = '#ef4444';
+    resultEl.textContent = 'A senha precisa ter pelo menos 6 caracteres.';
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/reset-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token, newPassword })
+    });
+    const data = await res.json();
+    if (data.success) {
+      resultEl.style.color = '#22c55e';
+      resultEl.textContent = 'Senha redefinida! Redirecionando para o login...';
+      setTimeout(() => {
+        window.location.href = window.location.origin + window.location.pathname;
+      }, 2000);
+    } else {
+      resultEl.style.color = '#ef4444';
+      resultEl.textContent = data.error || 'Erro ao redefinir senha.';
+    }
+  } catch (e) {
+    console.error(e);
+    resultEl.style.color = '#ef4444';
+    resultEl.textContent = 'Erro ao conectar com o sistema.';
+  }
 }
 
 async function buyAccess() {
@@ -334,14 +503,14 @@ async function checkPendingPayment() {
   const requestId = params.get('paid');
   if (!requestId || !API_BASE_URL) return;
 
-  const card = document.querySelector('.login-card');
-  const waitBox = document.createElement('div');
-  waitBox.style.textAlign = 'center';
-  waitBox.style.marginTop = '16px';
-  waitBox.style.fontSize = '13px';
-  waitBox.style.color = '#D4A017';
-  waitBox.textContent = '⏳ Confirmando seu pagamento, aguarde...';
-  card.appendChild(waitBox);
+  // Esconde a tela de login normal e mostra a tela de espera dedicada
+  document.getElementById('login-screen').innerHTML = `
+    <div class="pending-card" id="pending-card">
+      <div class="pending-spinner"></div>
+      <div class="pending-title">Confirmando seu pagamento</div>
+      <div class="pending-sub">Isso pode levar alguns segundos. Se você pagou via Pix, a confirmação costuma ser quase instantânea.</div>
+    </div>
+  `;
 
   let attempts = 0;
   const poll = setInterval(async () => {
@@ -349,17 +518,35 @@ async function checkPendingPayment() {
     try {
       const res = await fetch(`${API_BASE_URL}/api/check-payment?requestId=${requestId}`);
       const data = await res.json();
+      const pendingCard = document.getElementById('pending-card');
+
       if (data.ready) {
         clearInterval(poll);
-        waitBox.innerHTML = `
-          ✅ Pagamento confirmado!<br><br>
-          <b>E-mail:</b> ${data.email}<br>
-          <b>Senha:</b> ${data.password}<br><br>
-          <span style="color:#888;font-size:11px;">Anote essa senha — ela só aparece uma vez. Use-a para fazer login abaixo.</span>
+        pendingCard.innerHTML = `
+          <div class="pending-success-icon">✓</div>
+          <div class="pending-title">Pagamento confirmado!</div>
+          <div class="pending-sub">Seu acesso vitalício à LB PRECIFICA está liberado.</div>
+          <div class="credential-box">
+            <div class="credential-row">
+              <span class="credential-label">E-mail</span>
+              <span class="credential-value" style="font-size:12px;">${data.email}</span>
+            </div>
+            <div class="credential-row">
+              <span class="credential-label">Senha</span>
+              <span class="credential-value">${data.password}</span>
+            </div>
+          </div>
+          <div class="credential-note">⚠ Anote essa senha agora — ela aparece só esta vez. Guarde em um lugar seguro.</div>
+          <button class="pending-login-btn" onclick="window.location.href = window.location.origin + window.location.pathname">Ir para o login</button>
         `;
       } else if (attempts > 40) { // ~2 minutos
         clearInterval(poll);
-        waitBox.textContent = '⚠ Pagamento ainda não confirmado. Se você já pagou via Pix/boleto, isso pode levar alguns minutos — recarregue a página depois.';
+        pendingCard.innerHTML = `
+          <div class="pending-warn-icon">⏱</div>
+          <div class="pending-title">Ainda aguardando confirmação</div>
+          <div class="pending-sub">Se você pagou via Pix ou boleto, a confirmação pode levar alguns minutos. Recarregue esta página depois para verificar de novo.</div>
+          <button class="pending-login-btn" onclick="location.reload()">Verificar novamente</button>
+        `;
       }
     } catch (e) {
       console.error(e);
@@ -367,12 +554,16 @@ async function checkPendingPayment() {
   }, 3000);
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
   const session = sessionStorage.getItem('lb_precifica_session');
+  const sessionType = sessionStorage.getItem('lb_precifica_session_type');
   if (session) {
-    showApp(session);
+    showApp(session, sessionType);
   } else {
-    checkPendingPayment();
+    const isResetFlow = await checkResetPasswordFlow();
+    if (!isResetFlow) {
+      checkPendingPayment();
+    }
   }
 });
 
