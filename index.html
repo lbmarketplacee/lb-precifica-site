@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LB PRECIFICA — Calculadora de Marketplaces</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080808'/%3E%3Crect x='1' y='1' width='62' height='62' rx='13' fill='none' stroke='%23D4A017' stroke-width='2'/%3E%3Ctext x='32' y='44' font-family='Arial Black,Arial' font-weight='900' font-size='26' fill='%23D4A017' text-anchor='middle' letter-spacing='-1'%3ELB%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:#D4A017;--gold-bright:#FFD045;--gold-dark:#9A7210;
+  --gold-soft:rgba(212,160,23,0.10);
+  --bg:#080808;--card:#111111;--card2:#161616;
+  --border:rgba(212,160,23,0.18);--border-h:rgba(212,160,23,0.45);
+  --text:#f0f0f0;--muted:#888;--dim:#444;
+  --green:#22c55e;--green-s:rgba(34,197,94,0.12);
+  --red:#ef4444;--red-s:rgba(239,68,68,0.1);
+  --blue:#3b82f6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+.bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,160,23,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(212,160,23,0.04) 1px,transparent 1px);background-size:48px 48px;}
+.bg-g1{position:absolute;top:-200px;left:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(212,160,23,0.07) 0%,transparent 70%);border-radius:50%;animation:drift1 14s ease-in-out infinite;}
+.bg-g2{position:absolute;bottom:-300px;right:-200px;width:900px;height:900px;background:radial-gradient(circle,rgba(212,160,23,0.04) 0%,transparent 70%);border-radius:50%;animation:drift2 18s ease-in-out infinite;}
+.bg-scan{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(212,160,23,0.15) 30%,rgba(212,160,23,0.4) 50%,rgba(212,160,23,0.15) 70%,transparent 100%);opacity:0.35;}
+.corner{position:absolute;width:70px;height:70px;border-color:rgba(212,160,23,0.2);border-style:solid;}
+.corner.tl{top:20px;left:20px;border-width:2px 0 0 2px;}
+.corner.tr{top:20px;right:20px;border-width:2px 2px 0 0;}
+.corner.bl{bottom:20px;left:20px;border-width:0 0 2px 2px;}
+.corner.br{bottom:20px;right:20px;border-width:0 2px 2px 0;}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,40px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-50px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+
+.page{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 24px 80px;}
+
+/* HEADER */
+.header{text-align:center;padding:50px 0 36px;animation:fadeUp .6s ease both;}
+.hbadge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,160,23,0.08);border:1px solid rgba(212,160,23,0.28);border-radius:99px;padding:5px 16px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+.hbadge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:pulse 2s infinite;}
+.logo{font-size:clamp(28px,6vw,46px);font-weight:900;letter-spacing:-.02em;background:linear-gradient(135deg,#FFD045 0%,#D4A017 40%,#FFD045 70%,#9A7210 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 26px rgba(212,160,23,0.45));line-height:1;}
+.logo-sub{font-size:12px;font-weight:400;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+.header-desc{font-size:13px;color:var(--muted);margin-top:14px;line-height:1.6;}
+
+/* LOGIN SCREEN */
+.login-screen{display:flex;align-items:center;justify-content:center;min-height:70vh;}
+.login-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px 32px;max-width:380px;width:100%;animation:fadeUp .5s ease both;}
+.login-title{font-size:17px;font-weight:700;text-align:center;margin-bottom:6px;}
+.login-sub{font-size:12px;color:var(--muted);text-align:center;margin-bottom:24px;}
+.login-field{margin-bottom:14px;}
+.login-label{font-size:11px;color:var(--muted);margin-bottom:6px;display:block;text-transform:uppercase;letter-spacing:.06em;}
+.login-input{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:11px 14px;font-size:14px;font-family:'Outfit',sans-serif;color:var(--text);outline:none;transition:border-color .2s;}
+.login-input:focus{border-color:rgba(212,160,23,0.4);}
+.login-input.error{border-color:var(--red);animation:shake .4s ease;}
+.login-btn{width:100%;background:linear-gradient(135deg,var(--gold-dark),var(--gold-bright));color:#000;font-weight:700;font-size:14px;font-family:'Outfit',sans-serif;border:none;border-radius:10px;padding:12px;cursor:pointer;margin-top:6px;transition:opacity .2s;}
+.login-btn:hover{opacity:.88;}
+.login-err{font-size:12px;color:var(--red);margin-top:10px;text-align:center;display:none;}
+.login-err.show{display:block;}
+.login-divider{display:flex;align-items:center;gap:10px;margin:22px 0;}
+.login-divider::before,.login-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.08);}
+.login-divider span{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;}
+.buy-btn{width:100%;background:transparent;border:1px solid rgba(212,160,23,0.35);color:var(--gold);font-weight:600;font-size:13px;font-family:'Outfit',sans-serif;border-radius:10px;padding:11px;cursor:pointer;transition:all .2s;}
+.buy-btn:hover{background:rgba(212,160,23,0.08);}
+.price-tag{text-align:center;margin-top:14px;font-size:11px;color:var(--dim);}
+.price-tag b{color:var(--gold);font-size:15px;}
+
+.price-promo{display:flex;flex-direction:column;align-items:center;margin-top:14px;gap:6px;}
+.price-old-wrap{position:relative;display:inline-block;}
+.price-old{font-size:14px;color:var(--dim);}
+.price-old-strike{position:absolute;left:-6%;top:48%;width:112%;height:2px;background:var(--red);transform:rotate(-8deg);box-shadow:0 0 6px rgba(239,68,68,0.7);}
+.price-new-row{display:flex;align-items:baseline;gap:8px;}
+.price-new{font-size:26px;font-weight:900;color:var(--gold-bright);}
+.price-discount-badge{background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;letter-spacing:.03em;}
+.price-access-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px;}
+
+/* APP HEADER (logged in) */
+.app-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;animation:fadeUp .5s ease both;}
+.user-pill{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);background:var(--card);border:1px solid var(--border);border-radius:99px;padding:6px 14px;}
+.user-pill .dot{width:6px;height:6px;border-radius:50%;background:var(--green);}
+.logout-btn{font-size:12px;color:var(--dim);background:transparent;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:6px 14px;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;}
+.logout-btn:hover{border-color:rgba(212,160,23,0.3);color:var(--gold);}
+
+/* PLATFORM TABS */
+.platform-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px;animation:fadeUp .5s .05s ease both;}
+.plat-tab{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 8px;text-align:center;cursor:pointer;transition:all .2s;}
+.plat-tab:hover{border-color:var(--border-h);}
+.plat-tab.active{background:rgba(212,160,23,0.1);border-color:var(--gold);box-shadow:0 0 16px var(--gold-soft);}
+.plat-icon{font-size:22px;margin-bottom:4px;}
+.plat-name{font-size:11px;font-weight:600;color:var(--muted);}
+.plat-tab.active .plat-name{color:var(--gold);}
+
+/* CALC CARD */
+.calc-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px;animation:fadeUp .5s .1s ease both;}
+.calc-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.calc-icon{width:42px;height:42px;border-radius:10px;background:rgba(212,160,23,0.1);border:1px solid rgba(212,160,23,0.3);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.calc-title{font-size:16px;font-weight:700;}
+.calc-fees{font-size:11px;color:var(--muted);margin-top:2px;}
+
+/* mode toggle */
+.mode-toggle{display:flex;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:4px;margin-bottom:18px;}
+.mode-btn{flex:1;text-align:center;padding:9px;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;border-radius:8px;transition:all .2s;}
+.mode-btn.active{background:linear-gradient(135deg,var(--gold-dark),var(--gold-bright));color:#000;}
+
+/* sub-option (ML classico/premium) */
+.sub-options{display:flex;gap:8px;margin-bottom:18px;}
+.sub-opt{flex:1;text-align:center;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;}
+.sub-opt.active{border-color:var(--gold);background:rgba(212,160,23,0.08);color:var(--gold);}
+
+.field{margin-bottom:16px;}
+.field-label{font-size:12px;color:var(--muted);margin-bottom:7px;display:block;}
+.input-wrap{position:relative;}
+.input-prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:14px;}
+.calc-input{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 14px 13px 36px;font-size:18px;font-weight:600;font-family:'Outfit',sans-serif;color:var(--text);outline:none;transition:border-color .2s;}
+.calc-input:focus{border-color:rgba(212,160,23,0.4);}
+.calc-input-pct{padding-left:14px;padding-right:36px;}
+.input-suffix{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:14px;}
+
+.toggles{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;padding:14px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid rgba(255,255,255,0.05);}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;}
+.toggle-label{font-size:12px;color:var(--muted);}
+.switch{width:38px;height:22px;border-radius:99px;background:rgba(255,255,255,0.1);position:relative;cursor:pointer;transition:background .2s;flex-shrink:0;}
+.switch.on{background:var(--gold);}
+.switch::after{content:'';position:absolute;width:16px;height:16px;border-radius:50%;background:#fff;top:3px;left:3px;transition:left .2s;}
+.switch.on::after{left:19px;}
+
+.result-box{background:linear-gradient(135deg,rgba(212,160,23,0.08),rgba(212,160,23,0.02));border:1px solid rgba(212,160,23,0.25);border-radius:14px;padding:20px;margin-top:18px;}
+.result-main{text-align:center;margin-bottom:14px;}
+.result-main-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+.result-main-value{font-size:32px;font-weight:900;color:var(--gold-bright);margin-top:4px;}
+.result-breakdown{border-top:1px solid rgba(212,160,23,0.15);padding-top:14px;display:flex;flex-direction:column;gap:8px;}
+.bd-row{display:flex;justify-content:space-between;font-size:12px;}
+.bd-label{color:var(--muted);}
+.bd-value{color:var(--text);font-weight:600;}
+.bd-value.neg{color:#ff9580;}
+.bd-value.pos{color:var(--green);}
+.bd-row.total{border-top:1px solid rgba(255,255,255,0.08);padding-top:8px;margin-top:2px;}
+.bd-row.total .bd-label{color:var(--text);font-weight:600;}
+.bd-row.total .bd-value{font-size:14px;}
+
+.warn-box{display:flex;gap:8px;align-items:flex-start;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-left:3px solid var(--red);border-radius:8px;padding:10px 12px;margin-top:14px;font-size:12px;color:#fca5a5;line-height:1.5;}
+
+.footer{text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.05);}
+.ft-brand{font-size:13px;font-weight:700;background:linear-gradient(90deg,var(--gold-dark),var(--gold-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.footer p{font-size:11px;color:var(--dim);margin-top:4px;}
+
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:rgba(212,160,23,0.3);border-radius:99px;}
+
+@media (max-width:480px){
+  .platform-tabs{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-canvas">
+  <div class="bg-grid"></div>
+  <div class="bg-g1"></div>
+  <div class="bg-g2"></div>
+  <div class="bg-scan" id="scan"></div>
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+</div>
+
+<div class="page">
+
+  <div class="header">
+    <div class="hbadge"><div class="dot"></div>Ferramenta Oficial LB</div>
+    <div class="logo">LB PRECIFICA</div>
+    <div class="logo-sub">Calculadora de Marketplaces</div>
+    <div class="header-desc">Calcule taxas e precifique corretamente em<br>Shopee, Mercado Livre, TikTok Shop e Shein.</div>
+  </div>
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <div class="login-title">Acesso à calculadora</div>
+      <div class="login-sub">Entre com seu e-mail e senha de colaborador</div>
+
+      <div class="login-field">
+        <label class="login-label">E-mail</label>
+        <input type="email" class="login-input" id="login-email" placeholder="seuemail@lbmarketplace.com">
+      </div>
+      <div class="login-field">
+        <label class="login-label">Senha</label>
+        <input type="password" class="login-input" id="login-password" placeholder="••••••••" onkeydown="if(event.key==='Enter')tryLogin()">
+      </div>
+      <button class="login-btn" onclick="tryLogin()">Entrar</button>
+      <div class="login-err" id="login-err">E-mail ou senha incorretos.</div>
+
+      <div class="login-divider"><span>ou</span></div>
+
+      <button class="buy-btn" onclick="buyAccess()">🔓 Comprar acesso vitalício</button>
+      <div class="price-promo">
+        <div class="price-old-wrap">
+          <span class="price-old">R$ 199,99</span>
+          <span class="price-old-strike"></span>
+        </div>
+        <div class="price-new-row">
+          <span class="price-new">R$ 19,99</span>
+          <span class="price-discount-badge">90% OFF</span>
+        </div>
+        <div class="price-access-label">Acesso vitalício — pagamento único</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APP (after login) -->
+  <div id="app-screen" style="display:none;">
+
+    <div class="app-topbar">
+      <div class="user-pill"><div class="dot"></div><span id="user-email-display">colaborador</span></div>
+      <button class="logout-btn" onclick="logout()">Sair</button>
+    </div>
+
+    <div class="platform-tabs" id="platform-tabs"></div>
+
+    <div class="calc-card" id="calc-card"></div>
+
+  </div>
+
+  <div class="footer">
+    <div class="ft-brand">LB Marketplace</div>
+    <p>LB PRECIFICA — uso interno e licenciado</p>
+  </div>
+
+</div>
+
+<script>
+/* ===================== CONFIG ===================== */
+// Cole aqui o link do backend depois de publicar na Vercel (ex: https://lb-precifica-backend.vercel.app)
+const API_BASE_URL = "";
+
+// Fallback local (só usado se o backend ainda não estiver conectado).
+// Depois que o API_BASE_URL estiver preenchido, esses logins passam a vir do servidor (mais seguro).
+const FREE_USERS_FALLBACK = {
+  "lincoln@lbmarketplace.com.br": "lb2025",
+  "paloma@lbmarketplace.com.br": "paloma2025",
+  "caroline@lbmarketplace.com.br": "caroline2025",
+  "admin@lbmarketplace.com": "lbprecifica"
+};
+
+/* ===================== AUTH ===================== */
+async function tryLogin() {
+  const email = document.getElementById('login-email').value.trim().toLowerCase();
+  const pass = document.getElementById('login-password').value;
+  const err = document.getElementById('login-err');
+
+  let success = false;
+
+  if (API_BASE_URL) {
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password: pass })
+      });
+      const data = await res.json();
+      success = !!data.success;
+    } catch (e) {
+      console.error('Erro ao conectar no backend, usando fallback local', e);
+      success = FREE_USERS_FALLBACK[email] === pass;
+    }
+  } else {
+    success = FREE_USERS_FALLBACK[email] === pass;
+  }
+
+  if (success) {
+    sessionStorage.setItem('lb_precifica_session', email);
+    showApp(email);
+    err.classList.remove('show');
+  } else {
+    err.classList.add('show');
+    document.getElementById('login-password').classList.add('error');
+    setTimeout(() => document.getElementById('login-password').classList.remove('error'), 500);
+  }
+}
+
+function logout() {
+  sessionStorage.removeItem('lb_precifica_session');
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('app-screen').style.display = 'none';
+  document.getElementById('login-email').value = '';
+  document.getElementById('login-password').value = '';
+}
+
+function showApp(email) {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app-screen').style.display = 'block';
+  document.getElementById('user-email-display').textContent = email;
+}
+
+async function buyAccess() {
+  if (!API_BASE_URL) {
+    alert('O backend de pagamento ainda não foi conectado.\n\nPreencha a variável API_BASE_URL no topo do código depois de publicar o backend na Vercel.');
+    return;
+  }
+
+  const name = prompt('Seu nome completo:');
+  if (!name) return;
+  const email = prompt('Seu e-mail (vai ser seu login depois do pagamento):');
+  if (!email) return;
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/create-payment`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email })
+    });
+    const data = await res.json();
+    if (data.checkoutUrl) {
+      window.location.href = data.checkoutUrl;
+    } else {
+      alert('Não foi possível gerar o pagamento. Tente novamente em alguns minutos.');
+    }
+  } catch (e) {
+    console.error(e);
+    alert('Erro ao conectar com o sistema de pagamento.');
+  }
+}
+
+async function checkPendingPayment() {
+  const params = new URLSearchParams(window.location.search);
+  const requestId = params.get('paid');
+  if (!requestId || !API_BASE_URL) return;
+
+  const card = document.querySelector('.login-card');
+  const waitBox = document.createElement('div');
+  waitBox.style.textAlign = 'center';
+  waitBox.style.marginTop = '16px';
+  waitBox.style.fontSize = '13px';
+  waitBox.style.color = '#D4A017';
+  waitBox.textContent = '⏳ Confirmando seu pagamento, aguarde...';
+  card.appendChild(waitBox);
+
+  let attempts = 0;
+  const poll = setInterval(async () => {
+    attempts++;
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/check-payment?requestId=${requestId}`);
+      const data = await res.json();
+      if (data.ready) {
+        clearInterval(poll);
+        waitBox.innerHTML = `
+          ✅ Pagamento confirmado!<br><br>
+          <b>E-mail:</b> ${data.email}<br>
+          <b>Senha:</b> ${data.password}<br><br>
+          <span style="color:#888;font-size:11px;">Anote essa senha — ela só aparece uma vez. Use-a para fazer login abaixo.</span>
+        `;
+      } else if (attempts > 40) { // ~2 minutos
+        clearInterval(poll);
+        waitBox.textContent = '⚠ Pagamento ainda não confirmado. Se você já pagou via Pix/boleto, isso pode levar alguns minutos — recarregue a página depois.';
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, 3000);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const session = sessionStorage.getItem('lb_precifica_session');
+  if (session) {
+    showApp(session);
+  } else {
+    checkPendingPayment();
+  }
+});
+
+/* ===================== PLATFORMS / FEE LOGIC ===================== */
+const PLATFORMS = [
+  { id: 'shopee', name: 'Shopee', icon: '🛒' },
+  { id: 'ml', name: 'Mercado Livre', icon: '🟡' },
+  { id: 'tiktok', name: 'TikTok Shop', icon: '🎵' },
+  { id: 'shein', name: 'Shein', icon: '🛍' }
+];
+
+let currentPlatform = 'shopee';
+let currentMode = 'sale'; // 'sale' = tenho o valor de venda | 'net' = quero saber quanto recebo... actually toggled below
+let mlType = 'classico';
+
+// Shopee tier table: [minPrice, maxPrice(or Infinity), pct, fixed]
+const SHOPEE_TIERS = [
+  { min: 0,    max: 8,        pct: 0.50, fixed: 0 },
+  { min: 8,    max: 80,       pct: 0.20, fixed: 4 },
+  { min: 80,   max: 100,      pct: 0.14, fixed: 16 },
+  { min: 100,  max: 200,      pct: 0.14, fixed: 20 },
+  { min: 200,  max: Infinity, pct: 0.14, fixed: 26 }
+];
+
+function shopeeTierForPrice(price) {
+  return SHOPEE_TIERS.find(t => price >= t.min && price < t.max) || SHOPEE_TIERS[SHOPEE_TIERS.length - 1];
+}
+
+function renderTabs() {
+  const container = document.getElementById('platform-tabs');
+  container.innerHTML = '';
+  PLATFORMS.forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'plat-tab' + (p.id === currentPlatform ? ' active' : '');
+    div.onclick = () => { currentPlatform = p.id; renderTabs(); renderCalc(); };
+    div.innerHTML = `<div class="plat-icon">${p.icon}</div><div class="plat-name">${p.name}</div>`;
+    container.appendChild(div);
+  });
+}
+
+function fmtBRL(v) {
+  if (isNaN(v) || v === null) return '—';
+  return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function getCalcState() {
+  return {
+    mode: document.querySelector('.mode-btn.active') ? document.querySelector('.mode-btn.active').dataset.mode : 'sale',
+    value: parseFloat((document.getElementById('calc-value') || {}).value) || 0,
+    adsOn: document.getElementById('toggle-ads') ? document.getElementById('toggle-ads').classList.contains('on') : false,
+    flashOn: document.getElementById('toggle-flash') ? document.getElementById('toggle-flash').classList.contains('on') : false,
+    couponOn: document.getElementById('toggle-coupon') ? document.getElementById('toggle-coupon').classList.contains('on') : false,
+    mlPct: 16
+  };
+}
+
+function renderCalc() {
+  const card = document.getElementById('calc-card');
+  let html = '';
+
+  if (currentPlatform === 'shopee') {
+    html = `
+      <div class="calc-header">
+        <div class="calc-icon">🛒</div>
+        <div>
+          <div class="calc-title">Shopee</div>
+          <div class="calc-fees">Comissão escalonada por faixa de preço + taxa fixa</div>
+        </div>
+      </div>
+      <div class="mode-toggle">
+        <div class="mode-btn active" data-mode="sale" onclick="setMode(this)">Tenho o valor de venda</div>
+        <div class="mode-btn" data-mode="net" onclick="setMode(this)">Quero saber quanto vender</div>
+      </div>
+      <div class="field">
+        <label class="field-label" id="value-label">Valor de venda do produto</label>
+        <div class="input-wrap">
+          <span class="input-prefix">R$</span>
+          <input type="number" class="calc-input" id="calc-value" placeholder="0,00" oninput="renderResult()">
+        </div>
+      </div>
+      <div class="toggles">
+        <div class="toggle-row">
+          <span class="toggle-label">⚡ Ads ativo (10%)</span>
+          <div class="switch" id="toggle-ads" onclick="this.classList.toggle('on'); renderResult();"></div>
+        </div>
+        <div class="toggle-row">
+          <span class="toggle-label">🔥 Oferta relâmpago (5%)</span>
+          <div class="switch" id="toggle-flash" onclick="this.classList.toggle('on'); renderResult();"></div>
+        </div>
+        <div class="toggle-row">
+          <span class="toggle-label">🎟 Cupom de loja (3%)</span>
+          <div class="switch" id="toggle-coupon" onclick="this.classList.toggle('on'); renderResult();"></div>
+        </div>
+      </div>
+      <div id="result-area"></div>
+    `;
+  } else if (currentPlatform === 'ml') {
+    html = `
+      <div class="calc-header">
+        <div class="calc-icon">🟡</div>
+        <div>
+          <div class="calc-title">Mercado Livre</div>
+          <div class="calc-fees">Comissão padrão de 16% + taxa fixa (R$6,50 até R$79 / R$20 acima de R$79)</div>
+        </div>
+      </div>
+      <div class="sub-options">
+        <div class="sub-opt ${mlType === 'classico' ? 'active' : ''}" onclick="setMlType('classico')">Clássico</div>
+        <div class="sub-opt ${mlType === 'premium' ? 'active' : ''}" onclick="setMlType('premium')">Premium</div>
+      </div>
+      <div class="mode-toggle">
+        <div class="mode-btn active" data-mode="sale" onclick="setMode(this)">Tenho o valor de venda</div>
+        <div class="mode-btn" data-mode="net" onclick="setMode(this)">Quero saber quanto vender</div>
+      </div>
+      <div class="field">
+        <label class="field-label" id="value-label">Valor de venda do produto</label>
+        <div class="input-wrap">
+          <span class="input-prefix">R$</span>
+          <input type="number" class="calc-input" id="calc-value" placeholder="0,00" oninput="renderResult()">
+        </div>
+      </div>
+      <div id="result-area"></div>
+    `;
+  } else if (currentPlatform === 'tiktok') {
+    html = `
+      <div class="calc-header">
+        <div class="calc-icon">🎵</div>
+        <div>
+          <div class="calc-title">TikTok Shop</div>
+          <div class="calc-fees">16% de comissão (arredondado)</div>
+        </div>
+      </div>
+      <div class="mode-toggle">
+        <div class="mode-btn active" data-mode="sale" onclick="setMode(this)">Tenho o valor de venda</div>
+        <div class="mode-btn" data-mode="net" onclick="setMode(this)">Quero saber quanto vender</div>
+      </div>
+      <div class="field">
+        <label class="field-label" id="value-label">Valor de venda do produto</label>
+        <div class="input-wrap">
+          <span class="input-prefix">R$</span>
+          <input type="number" class="calc-input" id="calc-value" placeholder="0,00" oninput="renderResult()">
+        </div>
+      </div>
+      <div id="result-area"></div>
+    `;
+  } else if (currentPlatform === 'shein') {
+    html = `
+      <div class="calc-header">
+        <div class="calc-icon">🛍</div>
+        <div>
+          <div class="calc-title">Shein</div>
+          <div class="calc-fees">20% de comissão fixa</div>
+        </div>
+      </div>
+      <div class="mode-toggle">
+        <div class="mode-btn active" data-mode="sale" onclick="setMode(this)">Tenho o valor de venda</div>
+        <div class="mode-btn" data-mode="net" onclick="setMode(this)">Quero saber quanto vender</div>
+      </div>
+      <div class="field">
+        <label class="field-label" id="value-label">Valor de venda do produto</label>
+        <div class="input-wrap">
+          <span class="input-prefix">R$</span>
+          <input type="number" class="calc-input" id="calc-value" placeholder="0,00" oninput="renderResult()">
+        </div>
+      </div>
+      <div id="result-area"></div>
+    `;
+  }
+
+  card.innerHTML = html;
+  renderResult();
+}
+
+function setMode(el) {
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  const label = document.getElementById('value-label');
+  if (el.dataset.mode === 'sale') {
+    label.textContent = 'Valor de venda do produto';
+  } else {
+    label.textContent = 'Quanto eu quero receber líquido';
+  }
+  renderResult();
+}
+
+function setMlType(type) {
+  mlType = type;
+  renderCalc();
+}
+
+function renderResult() {
+  const area = document.getElementById('result-area');
+  if (!area) return;
+  const state = getCalcState();
+  if (!state.value || state.value <= 0) {
+    area.innerHTML = '';
+    return;
+  }
+
+  let result;
+  if (currentPlatform === 'shopee') result = calcShopee(state);
+  else if (currentPlatform === 'ml') result = calcML(state);
+  else if (currentPlatform === 'tiktok') result = calcTikTok(state);
+  else if (currentPlatform === 'shein') result = calcShein(state);
+
+  area.innerHTML = renderResultHtml(result, state.mode);
+}
+
+function renderResultHtml(r, mode) {
+  const mainLabel = mode === 'sale' ? 'Você recebe líquido' : 'Preço de venda necessário';
+  const mainValue = mode === 'sale' ? r.net : r.price;
+
+  let rows = '';
+  rows += `<div class="bd-row"><span class="bd-label">Preço de venda</span><span class="bd-value">${fmtBRL(r.price)}</span></div>`;
+  r.deductions.forEach(d => {
+    rows += `<div class="bd-row"><span class="bd-label">${d.label}</span><span class="bd-value neg">− ${fmtBRL(d.value)}</span></div>`;
+  });
+  rows += `<div class="bd-row total"><span class="bd-label">Você recebe líquido</span><span class="bd-value pos">${fmtBRL(r.net)}</span></div>`;
+
+  let warn = '';
+  if (r.warning) {
+    warn = `<div class="warn-box">⚠ ${r.warning}</div>`;
+  }
+
+  return `
+    <div class="result-box">
+      <div class="result-main">
+        <div class="result-main-label">${mainLabel}</div>
+        <div class="result-main-value">${fmtBRL(mainValue)}</div>
+      </div>
+      <div class="result-breakdown">${rows}</div>
+    </div>
+    ${warn}
+  `;
+}
+
+/* ---------- SHOPEE ---------- */
+function calcShopee(state) {
+  const extraPct = (state.adsOn ? 0.10 : 0) + (state.flashOn ? 0.05 : 0) + (state.couponOn ? 0.03 : 0);
+  const extraLabels = [];
+  if (state.adsOn) extraLabels.push({ label: 'Ads (10%)', pct: 0.10 });
+  if (state.flashOn) extraLabels.push({ label: 'Oferta relâmpago (5%)', pct: 0.05 });
+  if (state.couponOn) extraLabels.push({ label: 'Cupom de loja (3%)', pct: 0.03 });
+
+  if (state.mode === 'sale') {
+    const price = state.value;
+    const tier = shopeeTierForPrice(price);
+    const comm = price * tier.pct;
+    const deductions = [{ label: `Comissão Shopee (${(tier.pct*100).toFixed(0)}%)`, value: comm }];
+    if (tier.fixed > 0) deductions.push({ label: 'Taxa fixa', value: tier.fixed });
+    extraLabels.forEach(e => deductions.push({ label: e.label, value: price * e.pct }));
+    const totalDeduct = comm + tier.fixed + (price * extraPct);
+    const net = price - totalDeduct;
+    return { price, net, deductions };
+  } else {
+    // reverse: try each tier, solve price, check if falls within tier range
+    for (const tier of SHOPEE_TIERS) {
+      const totalPct = tier.pct + extraPct;
+      let price;
+      if (totalPct >= 1) continue;
+      price = (state.value + tier.fixed) / (1 - totalPct);
+      if (price >= tier.min && price < tier.max) {
+        const comm = price * tier.pct;
+        const deductions = [{ label: `Comissão Shopee (${(tier.pct*100).toFixed(0)}%)`, value: comm }];
+        if (tier.fixed > 0) deductions.push({ label: 'Taxa fixa', value: tier.fixed });
+        extraLabels.forEach(e => deductions.push({ label: e.label, value: price * e.pct }));
+        return { price, net: state.value, deductions };
+      }
+    }
+    // fallback to last tier
+    const tier = SHOPEE_TIERS[SHOPEE_TIERS.length - 1];
+    const totalPct = tier.pct + extraPct;
+    const price = (state.value + tier.fixed) / (1 - totalPct);
+    const comm = price * tier.pct;
+    const deductions = [{ label: `Comissão Shopee (${(tier.pct*100).toFixed(0)}%)`, value: comm }];
+    if (tier.fixed > 0) deductions.push({ label: 'Taxa fixa', value: tier.fixed });
+    extraLabels.forEach(e => deductions.push({ label: e.label, value: price * e.pct }));
+    return { price, net: state.value, deductions, warning: 'Verifique a faixa de preço resultante — pode estar no limite entre faixas.' };
+  }
+}
+
+/* ---------- MERCADO LIVRE ---------- */
+function calcML(state) {
+  const pct = 0.16; // comissão padrão tabelada
+
+  function fixedFor(price) {
+    return price > 79 ? 20 : 6.50;
+  }
+  function fixedLabel(price) {
+    return price > 79 ? 'Taxa fixa (produto > R$79)' : 'Taxa fixa (produto até R$79)';
+  }
+
+  if (state.mode === 'sale') {
+    const price = state.value;
+    const fixed = fixedFor(price);
+    const comm = price * pct;
+    const net = price - comm - fixed;
+    const deductions = [
+      { label: 'Comissão (16%)', value: comm },
+      { label: fixedLabel(price), value: fixed }
+    ];
+    return { price, net, deductions };
+  } else {
+    // try assuming price > 79 (fixed = 20) first
+    let price = (state.value + 20) / (1 - pct);
+    let fixed = 20;
+    if (price <= 79) {
+      // recompute assuming fixed = 6.50
+      price = (state.value + 6.50) / (1 - pct);
+      fixed = 6.50;
+    }
+    const comm = price * pct;
+    const deductions = [
+      { label: 'Comissão (16%)', value: comm },
+      { label: fixedLabel(price), value: fixed }
+    ];
+    return { price, net: state.value, deductions };
+  }
+}
+
+/* ---------- TIKTOK SHOP ---------- */
+function calcTikTok(state) {
+  const pct = 0.16;
+  if (state.mode === 'sale') {
+    const price = state.value;
+    const comm = price * pct;
+    const net = price - comm;
+    return { price, net, deductions: [{ label: 'Comissão TikTok Shop (16%)', value: comm }] };
+  } else {
+    const price = state.value / (1 - pct);
+    const comm = price * pct;
+    return { price, net: state.value, deductions: [{ label: 'Comissão TikTok Shop (16%)', value: comm }] };
+  }
+}
+
+/* ---------- SHEIN ---------- */
+function calcShein(state) {
+  const pct = 0.20;
+  if (state.mode === 'sale') {
+    const price = state.value;
+    const comm = price * pct;
+    const net = price - comm;
+    return { price, net, deductions: [{ label: 'Comissão Shein (20%)', value: comm }] };
+  } else {
+    const price = state.value / (1 - pct);
+    const comm = price * pct;
+    return { price, net: state.value, deductions: [{ label: 'Comissão Shein (20%)', value: comm }] };
+  }
+}
+
+/* ===================== SCAN ANIM ===================== */
+let scanY = -2;
+function animateScan() {
+  scanY = (scanY + 0.3) % 102;
+  const el = document.getElementById('scan');
+  if (el) el.style.top = scanY + '%';
+  requestAnimationFrame(animateScan);
+}
+
+renderTabs();
+renderCalc();
+animateScan();
+</script>
+</body>
+</html>
