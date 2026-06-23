@@ -307,22 +307,25 @@ async function buyAccess() {
   if (!name) return;
   const email = prompt('Seu e-mail (vai ser seu login depois do pagamento):');
   if (!email) return;
+  const cpfCnpj = prompt('Seu CPF ou CNPJ (necessário para gerar o pagamento):');
+  if (!cpfCnpj) return;
 
   try {
     const res = await fetch(`${API_BASE_URL}/api/create-payment`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email })
+      body: JSON.stringify({ name, email, cpfCnpj })
     });
     const data = await res.json();
     if (data.checkoutUrl) {
       window.location.href = data.checkoutUrl;
     } else {
-      alert('Não foi possível gerar o pagamento. Tente novamente em alguns minutos.');
+      console.error('Erro do backend:', data);
+      alert('Não foi possível gerar o pagamento:\n\n' + (data.details || data.error || 'Erro desconhecido') + '\n\nTente novamente em alguns minutos.');
     }
   } catch (e) {
     console.error(e);
-    alert('Erro ao conectar com o sistema de pagamento.');
+    alert('Erro ao conectar com o sistema de pagamento: ' + e.message);
   }
 }
 
