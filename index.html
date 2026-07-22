@@ -338,7 +338,8 @@ const FREE_USERS_FALLBACK = {
   "lincoln@lbmarketplace.com.br": "lb2025",
   "paloma@lbmarketplace.com.br": "paloma2025",
   "caroline@lbmarketplace.com.br": "caroline2025",
-  "admin@lbmarketplace.com": "lbprecifica"
+  "admin@lbmarketplace.com": "lbprecifica",
+  "emporiobaby2005@outlook.com.br": "1010Emporio"
 };
 
 /* ===================== AUTH ===================== */
@@ -860,7 +861,7 @@ function renderResult() {
       const pct=mlType==='premium'?0.17:0.14;
       be=calcMLGrossUp(totalCost,pct,weight,extraPct,taxPct);
     }
-    if (be) beStr=`<div class="bd-row be-row"><span class="bd-label">🎯 Ponto de equilíbrio (anunciar)</span><span class="bd-value gold">${fmtBRL(be.price)}</span></div>`;
+    if (be) beStr=`<div class="bd-row be-row"><span class="bd-label">🎯 Preço mínimo pra anunciar (lucro zero)</span><span class="bd-value gold">${fmtBRL(be.price)}</span></div>`;
   }
 
   const mainLabel = mode==='sale'?'Você recebe líquido':'Preço de venda necessário';
@@ -892,7 +893,9 @@ function renderResult() {
         <div class="bd-row"><span class="bd-label">Margem sobre o anunciado</span><span class="bd-value ${pc}">${marginPct.toFixed(1)}%</span></div>
         ${beStr}
       </div>`:''}
-    </div>`;
+    </div>
+  `;
+
 }
 
 let scanY=-2;
