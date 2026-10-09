@@ -332,17 +332,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 <script>
 const API_BASE_URL = "https://lbprecifica.vercel.app";
 
-// Fallback local (só usado se o backend ainda não estiver conectado).
-// Depois que o API_BASE_URL estiver preenchido, esses logins passam a vir do servidor (mais seguro).
-const FREE_USERS_FALLBACK = {
-  "lincoln@lbmarketplace.com.br": "lb2025",
-  "paloma@lbmarketplace.com.br": "paloma2025",
-  "caroline@lbmarketplace.com.br": "caroline2025",
-  "admin@lbmarketplace.com": "lbprecifica",
-  "emporiobaby2005@outlook.com.br": "1010Emporio",
-  "korvixstore@gmail.com": "94341660Ana#",
-  "rodrigo.oliveiracred02@gmail.com": "1010Jacque."
-};
+// Login só pelo servidor (as senhas não ficam mais no código da página — 08/10/2026).
 
 /* ===================== AUTH ===================== */
 async function tryLogin() {
@@ -364,13 +354,9 @@ async function tryLogin() {
       success = !!data.success;
       userType = data.type || 'free';
     } catch (e) {
-      console.error('Erro ao conectar no backend, usando fallback local', e);
-      success = FREE_USERS_FALLBACK[email] === pass;
-      userType = 'free';
+      console.error('Erro ao conectar no servidor', e);
+      success = false;
     }
-  } else {
-    success = FREE_USERS_FALLBACK[email] === pass;
-    userType = 'free';
   }
 
   if (success) {
