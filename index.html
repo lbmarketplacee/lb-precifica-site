@@ -3,272 +3,559 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>LB Precifica — Calculadora e anúncios para marketplaces</title>
-<meta name="description" content="Calcule o preço certo na Shopee, Mercado Livre, TikTok Shop e Shein com as taxas de 2026 e crie título, descrição e fotos com IA.">
+<title>LB Precifica — Preço certo e anúncio pronto para marketplaces</title>
+<meta name="description" content="Calcule o preço de venda na Shopee, Mercado Livre, TikTok Shop e Shein com as taxas oficiais de 2026 e crie título, descrição e fotos do anúncio com IA.">
+<meta name="theme-color" content="#0e0d0b">
+<link rel="icon" href="data:image/jpeg;base64,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">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b0b0c;--card:#141416;--card2:#1b1b1e;--line:#2a2a2e;--text:#f4f1ea;--dim:#a19c90;--gold:#d4a94a;--gold2:#f0cf7a;--ok:#4cc38a;--bad:#ff6b5b;
-  --shopee:#ee4d2d;--ml:#ffe600;--tiktok:#25f4ee;--shein:#ff4d8d;--r:14px}
+:root{
+  --bg:#f6f5f1;--surface:#fff;--surface2:#faf9f6;--ink:#16140f;--ink2:#3a372f;--muted:#6f6a5f;--line:#e8e4da;--line2:#d9d4c7;
+  --gold:#b8892b;--gold2:#d9ae52;--goldbg:#f7efdc;--dark:#0e0d0b;--dark2:#1a1814;
+  --ok:#14804a;--okbg:#e5f4ea;--bad:#c2341d;--badbg:#fbe9e5;
+  --shopee:#ee4d2d;--ml:#2d3277;--mly:#ffe600;--tiktok:#010101;--shein:#111;
+  --r:16px;--r2:12px;--sh:0 1px 2px rgba(22,20,15,.05),0 4px 16px rgba(22,20,15,.06);--sh2:0 12px 40px rgba(22,20,15,.12)}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.5}
-h1,h2,h3{font-family:Oswald,sans-serif;font-weight:600;margin:0;letter-spacing:.2px}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,system-ui,-apple-system,Segoe UI,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{margin:0;line-height:1.15;letter-spacing:-.02em}
 button,input,select,textarea{font:inherit;color:inherit}
-.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
 .hidden{display:none!important}
-.btn{border:0;border-radius:10px;padding:12px 18px;font-weight:600;cursor:pointer;background:var(--card2);color:var(--text);border:1px solid var(--line)}
-.btn.gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1b1404;border:0}
-.btn.sm{padding:8px 12px;font-size:13px}
-.btn:disabled{opacity:.55;cursor:default}
-.marca{font-family:Oswald,sans-serif;font-size:26px;color:var(--gold);letter-spacing:1px}
-.marca small{display:block;font-family:Inter;font-size:10px;letter-spacing:3px;color:var(--dim)}
-/* Entrar */
-.hero{min-height:100vh;display:grid;place-items:center;padding:32px 16px;background:radial-gradient(1200px 600px at 80% -10%,rgba(212,169,74,.18),transparent),var(--bg)}
-.hero-box{max-width:980px;width:100%;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
-.hero h1{font-size:clamp(34px,5vw,54px);line-height:1.05}
-.hero h1 b{color:var(--gold)}
-.hero p{color:var(--dim);font-size:17px;max-width:52ch}
-.mps{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
-.mp{font-size:12px;font-weight:700;padding:5px 10px;border-radius:20px;border:1px solid var(--line)}
-.mp.shopee{color:var(--shopee)}.mp.ml{color:var(--ml)}.mp.tiktok{color:var(--tiktok)}.mp.shein{color:var(--shein)}
-.entrar{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px}
-.entrar ul{padding-left:18px;color:var(--dim);margin:14px 0 22px}
-.btn-google{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#1f1f1f;border:0;border-radius:10px;padding:13px;font-weight:600;cursor:pointer}
-.aviso{font-size:13px;color:var(--bad);margin-top:12px;min-height:18px}
-@media(max-width:820px){.hero-box{grid-template-columns:1fr}}
-/* Topo do app */
-.topo{position:sticky;top:0;z-index:5;background:rgba(11,11,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.topo .wrap{display:flex;align-items:center;gap:16px;min-height:64px;flex-wrap:wrap}
-.abas{display:flex;gap:4px;margin-left:12px;flex-wrap:wrap}
-.aba{background:none;border:0;padding:10px 14px;border-radius:10px;color:var(--dim);cursor:pointer;font-weight:600}
-.aba.on{background:var(--card2);color:var(--gold)}
-.usuario{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:13px}
-.saldo{background:var(--card2);border:1px solid var(--line);border-radius:20px;padding:6px 12px;font-weight:700;color:var(--gold2);cursor:pointer}
-.avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:var(--card2)}
-main{padding:24px 0 60px}
-.painel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px}
-.titulo-sec{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
-.titulo-sec p{margin:0;color:var(--dim);font-size:14px}
-/* Formulários */
-.grid{display:grid;gap:14px}
-.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
-@media(max-width:820px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:520px){.g2,.g3,.g4{grid-template-columns:1fr}}
-label.campo{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--dim);font-weight:500}
-label.campo span.dica{font-size:11.5px;color:#777}
-input[type=text],input[type=number],input[type=tel],select,textarea{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:11px 12px;color:var(--text);width:100%}
-input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);border-color:transparent}
-textarea{min-height:110px;resize:vertical}
+.num{font-variant-numeric:tabular-nums}
+/* Botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;padding:11px 18px;font-weight:600;font-size:14.5px;cursor:pointer;border:1px solid var(--line2);background:var(--surface);color:var(--ink);transition:.15s;text-decoration:none;white-space:nowrap}
+.btn:hover{border-color:var(--ink2)}
+.btn.prim{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn.prim:hover{background:#2c2920}
+.btn.gold{background:linear-gradient(180deg,#d9ae52,#b8892b);color:#1d1606;border:0;box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 6px 18px rgba(184,137,43,.28)}
+.btn.gold:hover{filter:brightness(1.05)}
+.btn.lg{padding:14px 22px;font-size:15.5px;border-radius:12px}
+.btn.sm{padding:7px 12px;font-size:13px;border-radius:8px}
+.btn.ghost{background:transparent;border-color:transparent}
+.btn:disabled{opacity:.5;cursor:default}
+.g-btn{display:flex;width:100%;align-items:center;justify-content:center;gap:12px;background:#fff;color:#1f1f1f;border:1px solid #dadce0;border-radius:12px;padding:13px 18px;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.g-btn:hover{background:#f8f9fa}
+/* Marca */
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none}
+.marca img{width:36px;height:36px;border-radius:9px;display:block}
+.marca b{font-family:Oswald,sans-serif;font-weight:600;font-size:19px;letter-spacing:.04em}
+.marca b span{color:var(--gold)}
+/* Logos de marketplace */
+.mp-logo{display:inline-grid;place-items:center;flex:none;border-radius:10px;overflow:hidden}
+.mp-logo svg{display:block}
+.mp-logo.shopee{background:var(--shopee)}
+.mp-logo.tiktok{background:#000}
+.mp-logo.ml{background:var(--mly)}
+.mp-logo.shein{background:#000;color:#fff;font:800 9px/1 Inter,sans-serif;letter-spacing:.02em}
+/* ======== LANDING ======== */
+.lp-top{position:absolute;inset:0 0 auto 0;z-index:3}
+.lp-top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.lp-top .marca b{color:#fff}
+.hero{background:radial-gradient(900px 500px at 85% 0%,rgba(217,174,82,.22),transparent 60%),radial-gradient(700px 400px at 0% 100%,rgba(217,174,82,.08),transparent 60%),var(--dark);color:#f3efe6;padding:128px 0 88px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(217,174,82,.35);background:rgba(217,174,82,.08);color:#ecd49a;border-radius:99px;padding:6px 12px;font-size:12.5px;font-weight:600}
+.hero h1{font-size:clamp(36px,5.2vw,60px);font-weight:800;margin:20px 0 18px;color:#fff}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#f0cf7a,#d9ae52);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:18px;color:#bdb6a6;max-width:540px;margin:0 0 28px}
+.hero-cta{display:flex;flex-direction:column;gap:12px;max-width:380px}
+.hero-cta small{color:#8e877a;font-size:12.5px}
+.hero-mps{display:flex;align-items:center;gap:14px;margin-top:30px;color:#8e877a;font-size:13px;flex-wrap:wrap}
+.preview{position:relative;background:#fff;color:var(--ink);border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,.45);padding:18px;transform:perspective(1400px) rotateY(-6deg) rotateX(2deg)}
+.preview-head{display:flex;align-items:center;justify-content:space-between;padding:4px 4px 14px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.preview-head b{font-size:13px}.preview-head span{font-size:12px;color:var(--muted)}
+.pv-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pv{border:1px solid var(--line);border-radius:12px;padding:12px}
+.pv-top{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600}
+.pv-price{font:600 26px/1 Oswald,sans-serif;margin:10px 0 8px;letter-spacing:.01em}
+.pv-bar{height:7px;border-radius:9px;display:flex;overflow:hidden;background:#eee}
+.pv-l{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:8px}
+.pv-l b{color:var(--ok)}
+.pv.pvb{border-color:var(--gold);box-shadow:0 0 0 3px var(--goldbg)}
+section.lp{padding:88px 0}
+.sec-h{text-align:center;max-width:640px;margin:0 auto 44px}
+.sec-h .kick{color:var(--gold);font-weight:700;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase}
+.sec-h h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;margin:10px 0 12px}
+.sec-h p{color:var(--muted);font-size:16.5px;margin:0}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:var(--sh)}
+.feat .ico{width:44px;height:44px;border-radius:12px;background:var(--goldbg);color:var(--gold);display:grid;place-items:center;margin-bottom:16px}
+.feat h3{font-size:18px;margin-bottom:8px}
+.feat p{color:var(--muted);margin:0;font-size:14.5px}
+.mp-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.mp-card{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:16px}
+.mp-card b{display:block;font-size:15px}.mp-card span{font-size:12.5px;color:var(--muted)}
+.price-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:stretch}
+.plan{background:var(--dark);color:#f3efe6;border-radius:20px;padding:34px;position:relative;overflow:hidden}
+.plan:after{content:"";position:absolute;inset:auto -80px -120px auto;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(217,174,82,.28),transparent 70%)}
+.plan .tag{display:inline-block;background:var(--gold2);color:#1d1606;font-weight:700;font-size:12px;border-radius:99px;padding:4px 10px}
+.plan h3{font-size:22px;margin:16px 0 4px;color:#fff}
+.plan .valor{font:600 58px/1 Oswald,sans-serif;color:#fff;margin:14px 0 2px}
+.plan .valor small{font:500 15px Inter;color:#a9a294;margin-left:6px}
+.plan ul{list-style:none;padding:0;margin:22px 0 26px;display:grid;gap:10px;color:#d9d3c5}
+.plan li{display:flex;gap:10px;align-items:flex-start}
+.plan li svg{flex:none;margin-top:3px;color:var(--gold2)}
+.packs-lp{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px;box-shadow:var(--sh)}
+.packs-lp h3{font-size:19px;margin-bottom:6px}
+.packs-lp p{color:var(--muted);margin:0 0 18px;font-size:14px}
+.pk-line{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.pk-line b{font-size:16px}.pk-line span{color:var(--muted);font-size:13px;display:block}
+.pk-line .v{font:600 20px Oswald,sans-serif}
+.custos{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.custos div{flex:1;min-width:140px;background:var(--surface2);border:1px dashed var(--line2);border-radius:10px;padding:10px 12px;font-size:13px;color:var(--muted)}
+.custos b{display:block;color:var(--ink);font-size:15px}
+.faq{max-width:760px;margin:0 auto;display:grid;gap:10px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.faq summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";color:var(--gold);font-size:20px;line-height:1}
+.faq details[open] summary:after{content:"–"}
+.faq p{color:var(--muted);margin:10px 0 0}
+.cta-band{background:var(--dark);color:#fff;border-radius:24px;padding:48px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.cta-band h2{font-size:30px}
+.cta-band p{color:#a9a294;margin:8px 0 0}
+footer.site{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}
+footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+@media(max-width:960px){.hero-grid,.price-wrap{grid-template-columns:1fr}.preview{transform:none}.feats{grid-template-columns:1fr}.mp-row{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.hero{padding:104px 0 64px}.pv-grid{grid-template-columns:1fr 1fr}.mp-row{grid-template-columns:1fr}.cta-band{padding:30px}section.lp{padding:64px 0}}
+/* ======== CADASTRO ======== */
+.center-page{min-height:100vh;display:grid;place-items:center;padding:40px 16px;background:radial-gradient(800px 400px at 50% -10%,rgba(217,174,82,.16),transparent),var(--bg)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh2)}
+.cad{width:100%;max-width:620px;padding:34px}
+.cad h2{font-size:26px;margin:18px 0 6px}
+.cad .sub{color:var(--muted);margin:0 0 24px}
+/* Form */
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.f>span{font-size:13px;font-weight:600;color:var(--ink2)}
+.f>span i{font-style:normal;font-weight:400;color:var(--muted)}
+.f .hint{font-size:12px;color:var(--muted)}
+.inp{display:flex;align-items:center;background:var(--surface);border:1px solid var(--line2);border-radius:10px;transition:.15s;min-width:0}
+.inp:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px var(--goldbg)}
+.inp em{font-style:normal;color:var(--muted);font-size:13.5px;padding:0 0 0 12px;white-space:nowrap}
+.inp em.suf{padding:0 12px 0 0}
+.inp input,.inp select,.inp textarea{flex:1;min-width:0;border:0;background:transparent;padding:11px 12px;outline:none;width:100%}
+.inp select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236f6a5f' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+textarea{resize:vertical;min-height:120px}
+.row{display:grid;gap:14px}
+.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:560px){.c2,.c3{grid-template-columns:1fr}}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{border:1px solid var(--line);background:var(--card2);border-radius:20px;padding:7px 12px;cursor:pointer;font-size:13px;user-select:none}
-.chip.on{background:rgba(212,169,74,.15);border-color:var(--gold);color:var(--gold2)}
-.modo{display:inline-flex;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:4px;gap:4px;flex-wrap:wrap}
-.modo button{background:none;border:0;padding:9px 14px;border-radius:9px;color:var(--dim);cursor:pointer;font-weight:600}
-.modo button.on{background:var(--gold);color:#1b1404}
-.bloco{border-top:1px solid var(--line);padding-top:16px;margin-top:16px}
-.bloco h3{font-size:15px;color:var(--gold);margin-bottom:10px}
-.opc{display:flex;align-items:center;gap:10px;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
-.opc input[type=checkbox]{width:18px;height:18px;accent-color:var(--gold)}
-.opc input[type=number]{width:72px;padding:6px 8px}
-.opc .nome{flex:1;font-size:13px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line2);background:var(--surface);border-radius:10px;padding:8px 12px;cursor:pointer;font-size:13.5px;font-weight:500;user-select:none}
+.chip.on{border-color:var(--gold);background:var(--goldbg);box-shadow:0 0 0 1px var(--gold) inset}
+.erro{color:var(--bad);font-size:13.5px;min-height:20px;margin:6px 0 0}
+/* ======== APP ======== */
+.app-top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.88);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.app-top .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.tabs{display:flex;gap:2px;height:100%}
+.tab{display:flex;align-items:center;gap:8px;background:none;border:0;border-bottom:2px solid transparent;padding:0 14px;color:var(--muted);font-weight:600;font-size:14px;cursor:pointer;height:100%}
+.tab:hover{color:var(--ink)}
+.tab.on{color:var(--ink);border-bottom-color:var(--gold)}
+.user{margin-left:auto;display:flex;align-items:center;gap:10px}
+.creds{display:inline-flex;align-items:center;gap:7px;background:var(--goldbg);color:#7a5a17;border:1px solid #ecdcb4;border-radius:99px;padding:6px 12px;font-weight:700;font-size:13px;cursor:pointer}
+.avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;background:var(--line);border:2px solid #fff;box-shadow:0 0 0 1px var(--line2)}
+.menu{position:relative}
+.menu-box{position:absolute;right:0;top:44px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--sh2);min-width:220px;padding:8px;z-index:30}
+.menu-box .who{padding:8px 10px 10px;border-bottom:1px solid var(--line);margin-bottom:6px;font-size:13px}
+.menu-box .who b{display:block;font-size:14px}
+.menu-box button{width:100%;text-align:left;background:none;border:0;padding:9px 10px;border-radius:8px;cursor:pointer;font-size:14px}
+.menu-box button:hover{background:var(--surface2)}
+main.app{padding-top:28px;padding-bottom:64px}
+.page-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.page-h h1{font-size:26px;font-weight:800}
+.page-h p{margin:4px 0 0;color:var(--muted)}
+@media(max-width:760px){.app-top{position:static}.app-top .wrap{height:auto;flex-wrap:wrap;padding-top:10px;gap:8px}.tabs{order:3;width:100%;overflow-x:auto;height:46px}.tab{padding:0 10px;white-space:nowrap}}
+/* Calculadora */
+.calc{display:grid;grid-template-columns:380px 1fr;gap:20px;align-items:start}
+@media(max-width:1020px){.calc{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
+.form-p{position:sticky;top:84px;max-height:calc(100vh - 100px);overflow:auto}
+@media(max-width:1020px){.form-p{position:static;max-height:none}}
+.fs{padding:18px 20px;border-bottom:1px solid var(--line)}
+.fs:last-child{border-bottom:0}
+.fs-h{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.fs-h b{display:grid;place-items:center;width:20px;height:20px;border-radius:6px;background:var(--goldbg);color:var(--gold);font-size:11px;letter-spacing:0}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface2);border:1px solid var(--line);border-radius:11px;padding:3px;gap:3px;margin-bottom:14px}
+.seg button{border:0;background:none;border-radius:8px;padding:8px 6px;font-weight:600;font-size:12.5px;color:var(--muted);cursor:pointer}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.sw{display:flex;align-items:center;gap:10px;padding:9px 0}
+.sw+.sw{border-top:1px dashed var(--line)}
+.sw label.t{flex:1;font-size:14px;font-weight:500;cursor:pointer}
+.sw label.t small{display:block;font-size:12px;color:var(--muted);font-weight:400}
+.sw .inp{width:88px}
+.sw .inp input{padding:7px 8px;text-align:right}
+.tog{position:relative;width:38px;height:22px;flex:none}
+.tog input{opacity:0;width:0;height:0;position:absolute}
+.tog span{position:absolute;inset:0;background:#d8d3c6;border-radius:99px;cursor:pointer;transition:.18s}
+.tog span:after{content:"";position:absolute;width:16px;height:16px;left:3px;top:3px;background:#fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:.18s}
+.tog input:checked+span{background:var(--gold)}
+.tog input:checked+span:after{transform:translateX(16px)}
+.tog input:focus-visible+span{box-shadow:0 0 0 3px var(--goldbg)}
+.sw.off .inp{opacity:.45}
+.mpcfg{display:grid;gap:12px}
+.mpcfg .r{display:flex;align-items:center;gap:10px}
+.mpcfg .r .nm{flex:1;font-size:13.5px;font-weight:600}
+.mpcfg .inp{width:150px}
+.mpcfg .inp select{padding:7px 30px 7px 10px;font-size:13.5px}
 /* Resultados */
-.resultados{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}
-@media(max-width:1000px){.resultados{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){.resultados{grid-template-columns:1fr}}
-.res{background:var(--card2);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0;position:relative}
-.res.melhor{border-color:var(--gold)}
-.res .selo{position:absolute;top:-10px;right:12px;background:var(--gold);color:#1b1404;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px}
-.res h3{font-size:17px;display:flex;align-items:center;gap:8px}
-.res h3 i{width:10px;height:10px;border-radius:50%;display:inline-block}
-.preco{font-family:Oswald,sans-serif;font-size:32px;line-height:1}
-.preco small{display:block;font-family:Inter;font-size:12px;color:var(--dim);margin-top:4px}
-.linhas{font-size:13px;display:grid;grid-template-columns:1fr auto;gap:4px 10px;font-variant-numeric:tabular-nums}
-.linhas .n{text-align:right}
-.linhas .neg{color:#d9a59c}.linhas .tot{font-weight:700;border-top:1px solid var(--line);padding-top:4px}
-.lucro{display:flex;justify-content:space-between;align-items:baseline;border-radius:10px;padding:10px 12px;background:rgba(76,195,138,.1)}
-.lucro.ruim{background:rgba(255,107,91,.1)}
-.lucro b{font-family:Oswald,sans-serif;font-size:22px;color:var(--ok)}.lucro.ruim b{color:var(--bad)}
-.nota{font-size:12px;color:var(--dim)}
-/* Paywall / créditos */
-.trava{display:grid;place-items:center;text-align:center;padding:40px 20px}
-.trava .preco-grande{font-family:Oswald,sans-serif;font-size:54px;color:var(--gold2)}
-.pacotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-@media(max-width:720px){.pacotes{grid-template-columns:1fr}}
-.pacote{background:var(--card2);border:1px solid var(--line);border-radius:var(--r);padding:20px;text-align:center;display:flex;flex-direction:column;gap:8px}
-.pacote b{font-family:Oswald,sans-serif;font-size:36px;color:var(--gold2)}
+.best{display:flex;align-items:center;gap:16px;background:var(--dark);color:#fff;border-radius:var(--r);padding:16px 20px;margin-bottom:16px;flex-wrap:wrap}
+.best .lbl{font-size:12px;color:#a9a294;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.best .val{font:600 26px/1.1 Oswald,sans-serif}
+.best .sep{width:1px;align-self:stretch;background:rgba(255,255,255,.12)}
+.best .mpn{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px}
+.res-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:640px){.res-grid{grid-template-columns:1fr}}
+.res{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column}
+.res.top{border-color:var(--gold);box-shadow:0 0 0 3px var(--goldbg),var(--sh)}
+.res-h{display:flex;align-items:center;gap:12px;padding:16px 18px 0}
+.res-h h3{font-size:16px;font-weight:700}
+.res-h small{display:block;color:var(--muted);font-size:12px;font-weight:500}
+.res-h .badge{margin-left:auto;font-size:11px;font-weight:700;background:var(--goldbg);color:#7a5a17;border-radius:99px;padding:4px 9px}
+.res-b{padding:14px 18px 18px;display:flex;flex-direction:column;gap:14px;flex:1}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price b{font:600 38px/1 Oswald,sans-serif;letter-spacing:.01em}
+.price s{color:var(--muted);font-size:14px}
+.price .cp{margin-left:auto}
+.stack{height:10px;border-radius:99px;display:flex;overflow:hidden;background:var(--surface2)}
+.stack i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:11.5px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:8px;height:8px;border-radius:2px;display:inline-block}
+.lines{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:13.5px}
+.lines .v{text-align:right;font-variant-numeric:tabular-nums}
+.lines .neg{color:var(--ink2)}
+.lines .sub{font-weight:700;border-top:1px solid var(--line);padding-top:8px}
+.lines .k{color:var(--muted)}
+.profit{display:flex;align-items:center;justify-content:space-between;background:var(--okbg);color:var(--ok);border-radius:12px;padding:12px 14px;margin-top:auto}
+.profit.neg{background:var(--badbg);color:var(--bad)}
+.profit span{font-weight:600;font-size:13.5px}
+.profit b{font:600 24px Oswald,sans-serif}
+.profit em{font-style:normal;font-weight:700;font-size:13px;margin-left:8px;opacity:.85}
+.empty{color:var(--muted);font-size:14px;padding:6px 0 4px}
+.note{font-size:12.5px;color:var(--muted);margin-top:16px;line-height:1.6}
+.cat-ml{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);margin-top:8px}
+.cat-ml.ok{color:var(--ok)}
+/* Paywall */
+.lock{position:relative}
+.lock .blur{filter:blur(5px);pointer-events:none;user-select:none;opacity:.6}
+.lock-card{position:absolute;inset:0;display:grid;place-items:center;padding:16px;z-index:5}
+.lock-box{width:100%;max-width:440px;padding:32px;text-align:center}
+.lock-box .valor{font:600 52px/1 Oswald,sans-serif;margin:14px 0 4px}
+.lock-box ul{list-style:none;padding:0;margin:18px 0 22px;text-align:left;display:grid;gap:8px;font-size:14px}
+.lock-box li{display:flex;gap:10px}.lock-box li svg{flex:none;color:var(--gold);margin-top:3px}
 /* IA */
-.fotos-env{display:flex;gap:8px;flex-wrap:wrap}
-.fotos-env img{width:74px;height:98px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
-.galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
-.galeria figure{margin:0;background:var(--card2);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.galeria img{width:100%;display:block}
-.galeria figcaption{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;font-size:12px;color:var(--dim)}
-.copiar{display:flex;gap:10px;align-items:flex-start}
-.copiar .txt{flex:1;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px;white-space:pre-wrap;font-size:14px}
-.carregando{display:flex;align-items:center;gap:10px;color:var(--dim)}
-.spin{width:18px;height:18px;border:2px solid var(--line);border-top-color:var(--gold);border-radius:50%;animation:g 1s linear infinite}
+.ia{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
+@media(max-width:1020px){.ia{grid-template-columns:1fr}}
+.step{padding:22px 24px;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:0}
+.step-h{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.step-h b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px;flex:none}
+.step-h h3{font-size:16px}
+.step-h p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+.mp-pick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:560px){.mp-pick{grid-template-columns:1fr}}
+.mp-opt{display:flex;align-items:center;gap:12px;border:1px solid var(--line2);border-radius:12px;padding:12px 14px;cursor:pointer;background:#fff;text-align:left}
+.mp-opt b{display:block;font-size:14.5px}.mp-opt small{color:var(--muted);font-size:12px}
+.mp-opt.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset;background:var(--goldbg)}
+.drop{display:block;border:1.5px dashed var(--line2);border-radius:14px;padding:26px;text-align:center;cursor:pointer;background:var(--surface2);transition:.15s}
+.drop:hover,.drop.over{border-color:var(--gold);background:var(--goldbg)}
+.drop b{display:block;margin:10px 0 2px}.drop small{color:var(--muted)}
+.thumbs{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.thumb{position:relative;width:84px;height:112px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb button{position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;cursor:pointer;font-size:13px;line-height:1}
+.thumb .capa{position:absolute;left:4px;bottom:4px;background:var(--gold2);color:#1d1606;font-size:10px;font-weight:700;border-radius:5px;padding:2px 5px}
+.gen{padding:20px}
+.gen h3{font-size:15px;margin-bottom:12px}
+.opt{border:1px solid var(--line2);border-radius:14px;padding:16px;margin-bottom:12px}
+.opt-h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px}
+.opt-h b{font-size:15px}.opt-h small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.cost{white-space:nowrap;font-size:12px;font-weight:700;background:var(--goldbg);color:#7a5a17;border-radius:99px;padding:4px 9px}
+.qty{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:13.5px}
+.qty .inp{width:80px}
+.rules{font-size:12.5px;color:var(--muted);display:grid;gap:6px;margin-top:6px}
+.rules div{display:flex;gap:8px}.rules svg{flex:none;color:var(--ok);margin-top:2px}
+.out{margin-top:20px}
+.out-box{padding:20px 24px;border-bottom:1px solid var(--line)}
+.out-box:last-child{border-bottom:0}
+.out-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.out-h b{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.out-h span{font-size:12px;color:var(--muted)}
+.out-t{white-space:pre-wrap;font-size:14.5px;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.out-t.title{font-weight:600;font-size:16px}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.gal figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface2)}
+.gal img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+.gal figcaption{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;font-size:12px;color:var(--muted)}
+.loading{display:flex;align-items:center;gap:14px;padding:22px 24px}
+.spin{width:22px;height:22px;border:2.5px solid var(--line);border-top-color:var(--gold);border-radius:50%;animation:g 1s linear infinite;flex:none}
 @keyframes g{to{transform:rotate(360deg)}}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--card2);border:1px solid var(--gold);color:var(--text);padding:12px 18px;border-radius:12px;z-index:50;max-width:90vw}
-footer{color:#666;font-size:12px;text-align:center;padding:24px 16px}
-@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+.prog{height:4px;background:var(--line);border-radius:9px;overflow:hidden;margin-top:8px;width:240px;max-width:100%}
+.prog i{display:block;height:100%;width:30%;background:var(--gold);border-radius:9px;animation:p 1.6s ease-in-out infinite}
+@keyframes p{0%{transform:translateX(-100%)}100%{transform:translateX(340%)}}
+/* Créditos */
+.bal{display:flex;align-items:center;gap:20px;padding:24px;margin-bottom:20px;flex-wrap:wrap}
+.bal .big{font:600 46px/1 Oswald,sans-serif}
+.bal .lbl{color:var(--muted);font-size:13px}
+.bal .eq{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.bal .eq div{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--muted)}
+.bal .eq b{display:block;color:var(--ink);font-size:16px}
+.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.packs{grid-template-columns:1fr}}
+.pack{padding:26px;text-align:center;position:relative;display:flex;flex-direction:column;gap:6px}
+.pack.pop{border-color:var(--gold);box-shadow:0 0 0 3px var(--goldbg),var(--sh)}
+.pack .tag{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:11px;font-weight:700;border-radius:99px;padding:4px 10px;white-space:nowrap}
+.pack .q{font:600 48px/1 Oswald,sans-serif;margin-top:6px}
+.pack .ql{color:var(--muted);font-size:13px;margin-bottom:6px}
+.pack .eqv{font-size:13px;color:var(--ink2);background:var(--surface2);border-radius:8px;padding:8px;margin:6px 0 14px}
+.pack .pr{font-weight:700;font-size:18px;margin-bottom:10px}
+.pack .unit{font-size:12px;color:var(--muted);margin-top:4px}
+.doc-row{display:flex;align-items:flex-end;gap:12px;margin-top:20px;flex-wrap:wrap}
+.doc-row .f{width:280px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;box-shadow:var(--sh2);z-index:100;font-size:14px;max-width:calc(100vw - 32px)}
+@media(prefers-reduced-motion:reduce){.spin,.prog i{animation:none}}
 </style>
 </head>
 <body>
 
-<!-- ENTRAR -->
-<section id="telaEntrar" class="hero hidden">
-  <div class="hero-box">
-    <div>
-      <div class="marca">LB PRECIFICA<small>by LB MARKETPLACE</small></div>
-      <h1 style="margin-top:22px">Saiba o <b>preço certo</b> antes de anunciar.</h1>
-      <p>Taxas de 2026 da Shopee, Mercado Livre, TikTok Shop e Shein lado a lado, com custo, imposto, cupom, oferta e Ads. E título, descrição e fotos do anúncio criados com IA.</p>
-      <div class="mps"><span class="mp shopee">Shopee</span><span class="mp ml">Mercado Livre</span><span class="mp tiktok">TikTok Shop</span><span class="mp shein">Shein</span></div>
-    </div>
-    <div class="entrar">
-      <h2 style="font-size:24px">Entrar</h2>
-      <ul>
-        <li>Calculadora vitalícia: R$ 49,99 (pagamento único)</li>
-        <li>100 créditos de IA de bônus</li>
-        <li>Recarga de créditos quando precisar</li>
-      </ul>
-      <button class="btn-google" id="btnGoogle"><svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Entrar com Google</button>
-      <div class="aviso" id="avisoEntrar"></div>
-      <p class="nota" style="margin-top:14px">Sua conta funciona em um aparelho por vez. Entrando em outro, o anterior é desconectado.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CADASTRO -->
-<section id="telaCadastro" class="hero hidden">
-  <div class="entrar" style="max-width:620px;width:100%">
-    <div class="marca" style="font-size:20px">LB PRECIFICA</div>
-    <h2 style="font-size:26px;margin:10px 0 4px">Conte um pouco sobre você</h2>
-    <p class="nota" style="margin:0 0 18px">Leva 30 segundos e deixa a calculadora com a sua cara.</p>
-    <form id="formCadastro" class="grid" novalidate>
-      <div class="grid g2">
-        <label class="campo">Seu nome<input type="text" id="cadNome" autocomplete="name" required></label>
-        <label class="campo">WhatsApp com DDD<input type="tel" id="cadWhats" autocomplete="tel" placeholder="(11) 99999-9999" required></label>
-      </div>
-      <div class="grid g2">
-        <label class="campo">Nome da loja <span class="dica">(opcional)</span><input type="text" id="cadLoja"></label>
-        <label class="campo">O que você vende? <span class="dica">(opcional)</span><input type="text" id="cadSegmento" placeholder="Ex.: moda feminina"></label>
-      </div>
-      <label class="campo">Onde você vende hoje?
-        <div class="chips" id="cadMps"></div></label>
-      <label class="campo">Quanto sua loja fatura por mês?
-        <select id="cadFat" required><option value="">Escolha</option><option value="ainda_nao_vendo">Ainda não vendo</option><option value="ate_5mil">Até R$ 5 mil</option><option value="5a20mil">R$ 5 mil a R$ 20 mil</option><option value="20a50mil">R$ 20 mil a R$ 50 mil</option><option value="50a100mil">R$ 50 mil a R$ 100 mil</option><option value="acima_100mil">Acima de R$ 100 mil</option></select></label>
-      <div class="aviso" id="avisoCadastro"></div>
-      <button class="btn gold" type="submit" id="btnCadastro">Continuar</button>
-    </form>
-  </div>
-</section>
-
-<!-- APP -->
-<div id="telaApp" class="hidden">
-  <header class="topo"><div class="wrap">
-    <div class="marca" style="font-size:20px">LB PRECIFICA</div>
-    <nav class="abas">
-      <button class="aba on" data-aba="calc">Calculadora</button>
-      <button class="aba" data-aba="ia">Anúncio com IA</button>
-      <button class="aba" data-aba="creditos">Créditos</button>
-    </nav>
-    <div class="usuario"><span class="saldo" id="saldo" title="Seus créditos de IA">—</span><img class="avatar" id="avatar" alt=""><button class="btn sm" id="btnSair">Sair</button></div>
+<!-- ================= LANDING ================= -->
+<div id="telaEntrar" class="hidden">
+  <header class="lp-top"><div class="wrap">
+    <a class="marca" href="#"><img src="data:image/jpeg;base64,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" alt="LB Marketplace"><b>LB <span>PRECIFICA</span></b></a>
+    <button class="btn sm" data-entrar style="background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.2)">Entrar</button>
   </div></header>
 
-  <main class="wrap">
+  <section class="hero"><div class="wrap hero-grid">
+    <div>
+      <span class="pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Taxas oficiais atualizadas · outubro de 2026</span>
+      <h1>Descubra o <em>preço certo</em> antes de anunciar.</h1>
+      <p class="lead">Veja quanto cobrar na Shopee, no Mercado Livre, no TikTok Shop e na Shein, com custo, imposto, cupom, oferta e Ads já descontados. E crie título, descrição e fotos do anúncio com IA.</p>
+      <div class="hero-cta">
+        <button class="g-btn" data-entrar><svg width="20" height="20" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Entrar com Google</button>
+        <small>Acesso vitalício por R$ 49,99, pagamento único. Já vem com 100 créditos de IA.</small>
+      </div>
+      <div class="hero-mps">Funciona com <span class="mp-logo shopee" style="width:28px;height:28px;border-radius:7px"><svg width="17" height="17" viewBox="0 0 24 24"><path fill="#fff" d="M15.9414 17.9633c.229-1.879-.981-3.077-4.1758-4.0969-1.548-.528-2.277-1.22-2.26-2.1719.065-1.056 1.048-1.825 2.352-1.85a5.2898 5.2898 0 0 1 2.8838.89c.116.072.197.06.263-.039.09-.145.315-.494.39-.62.051-.081.061-.187-.068-.281-.185-.1369-.704-.4149-.983-.5319a6.4697 6.4697 0 0 0-2.5118-.514c-1.909.008-3.4129 1.215-3.5389 2.826-.082 1.1629.494 2.1078 1.73 2.8278.262.152 1.6799.716 2.2438.892 1.774.552 2.695 1.5419 2.478 2.6969-.197 1.047-1.299 1.7239-2.818 1.7439-1.2039-.046-2.2878-.537-3.1278-1.19l-.141-.11c-.104-.08-.218-.075-.287.03-.05.077-.376.547-.458.67-.077.108-.035.168.045.234.35.293.817.613 1.134.775a6.7097 6.7097 0 0 0 2.8289.727 4.9048 4.9048 0 0 0 2.0759-.354c1.095-.465 1.8029-1.394 1.9449-2.554zM11.9986 1.4009c-2.068 0-3.7539 1.95-3.8329 4.3899h7.6657c-.08-2.44-1.765-4.3899-3.8328-4.3899zm7.8516 22.5981-.08.001-15.7843-.002c-1.074-.04-1.863-.91-1.971-1.991l-.01-.195L1.298 6.2858a.459.459 0 0 1 .45-.494h4.9748C6.8448 2.568 9.1607 0 11.9996 0c2.8388 0 5.1537 2.5689 5.2757 5.7898h4.9678a.459.459 0 0 1 .458.483l-.773 15.5883-.007.131c-.094 1.094-.979 1.9769-2.0709 2.0059z"/></svg></span><span class="mp-logo ml" style="width:28px;height:28px;border-radius:7px"><svg width="24" height="24" viewBox="0 0 16.933 16.933"><defs><style>.cls-1{fill:#2d3277}.cls-3{fill:#fff}</style></defs><g><g transform="scale(.13168)"><g transform="translate(-37.295 20.094)scale(1.57694)"><path d="M105.19 26.67C105.19 12 86.94 0 64.42 0S23.65 12 23.65 26.67v1.56c0 15.59 16 28.21 40.77 28.21 25 0 40.78-12.62 40.78-28.21z" class="cls-1"/><path fill="#ffd100" d="M103.63 26.65c0 13.85-17.55 25.08-39.2 25.08S25.22 40.5 25.22 26.65 42.77 1.57 64.43 1.57s39.2 11.23 39.2 25.08"/><path d="M51.41 18.74s-.41.45-.16.77c.62.79 2.53 1.24 4.46.81 1.15-.26 2.63-1.43 4.06-2.56a15.9 15.9 0 0 1 4.62-3 5.23 5.23 0 0 1 3.38-.09 10.1 10.1 0 0 1 3.07 1.79c2.69 2 13.47 11.43 15.34 13.06A93 93 0 0 1 103.41 24c-.78-4.83-3.72-9.25-8.18-12.87-6.22 2.61-13.81 4-21.23.34a20.8 20.8 0 0 0-8-1.82c-5.89.14-8.44 2.69-11.14 5.39z" class="cls-3"/><path d="M85.74 30.59c-.13-.11-12.68-11.09-15.53-13.23a6.86 6.86 0 0 0-3.52-1.67 4.6 4.6 0 0 0-1.68.16 15.2 15.2 0 0 0-4.59 2.73c-1.59 1.27-3.09 2.46-4.48 2.77a7.24 7.24 0 0 1-4.94-.74 2.2 2.2 0 0 1-.82-.9 1.53 1.53 0 0 1 .42-1.64l3.47-3.75 1.22-1.2a23 23 0 0 0-3.16.71 13.5 13.5 0 0 1-3.68.69 35 35 0 0 1-3.76-.59 55.3 55.3 0 0 1-10-3.61c-4.93 3.67-8.22 8.25-9.17 13.3.71.19 1.85.53 2.33.64 11.14 2.47 14.61 5 15.24 5.56a3.69 3.69 0 0 1 5.79.34 4.25 4.25 0 0 1 2.66-.93 4.8 4.8 0 0 1 1.59.28 3.6 3.6 0 0 1 2.24 2 3.7 3.7 0 0 1 1.55-.33 4.7 4.7 0 0 1 1.86.41A4 4 0 0 1 61 36h.44a4.42 4.42 0 0 1 4.42 4.42 4.3 4.3 0 0 1-.53 2.09 7.1 7.1 0 0 0 3.84 1 2.43 2.43 0 0 0 1.79-.79c.11-.15.23-.34.12-.47l-3.17-3.45s-.52-.49-.35-.68.5.08.72.27c1.61 1.34 3.56 3.36 3.56 3.36s.16.27.88.4a3.22 3.22 0 0 0 2.49-.58 4 4 0 0 0 .55-.55 1.66 1.66 0 0 0-.13-2.02L72 34.85s-.53-.49-.35-.68.5.09.73.28c1.16 1 2.81 2.62 4.38 4.16a3 3 0 0 0 3.52-.12 2.53 2.53 0 0 0 1.31-2.3 2.65 2.65 0 0 0-.78-1.54l-5-5s-.53-.45-.35-.68.5.08.73.27c1.59 1.34 5.92 5.31 5.92 5.31a3.06 3.06 0 0 0 3.4-.07 2.3 2.3 0 0 0 1.12-1.8 2.69 2.69 0 0 0-.89-2.09" class="cls-3"/><path d="M61.41 37a11.6 11.6 0 0 0-1.74.38c-.06 0 0-.35.12-.53s1.1-3.26-1.4-4.33a2.94 2.94 0 0 0-3.48.52c-.1.11-.15.1-.16 0a2.75 2.75 0 0 0-1.94-2.56A3.76 3.76 0 0 0 48.56 32a2.72 2.72 0 1 0-.81 2.32.11.11 0 0 1 0 .09A3.58 3.58 0 0 0 50 38.49a2.66 2.66 0 0 0 2.64-.4c.21-.16.25-.09.22.11-.1.63 0 2 1.92 2.76a2.47 2.47 0 0 0 2.86-.53c.24-.23.31-.19.32.15A3.44 3.44 0 1 0 61.41 37" class="cls-3"/><path d="M86.22 29.28c-3.86-3.38-12.8-11.15-15.22-13a10.8 10.8 0 0 0-3.16-1.84 5.2 5.2 0 0 0-1.55-.24 6.5 6.5 0 0 0-2 .33 16 16 0 0 0-4.64 2.93l-.07.06c-1.41 1.12-2.86 2.27-4 2.52a6.5 6.5 0 0 1-1.46.16 3.74 3.74 0 0 1-2.75-.88c-.07-.09 0-.23.13-.43l3.5-3.66c2.66-2.66 5.18-5.18 11-5.31h.29a20.6 20.6 0 0 1 7.62 1.81 23.7 23.7 0 0 0 10.38 2.49 27.2 27.2 0 0 0 11.4-2.73c-.45-.38-.91-.74-1.38-1.09a25.15 25.15 0 0 1-10 2.27 22 22 0 0 1-9.71-2.34 21.9 21.9 0 0 0-8.3-2H66a14.38 14.38 0 0 0-9.45 3.35 19.2 19.2 0 0 0-4.72.86 13 13 0 0 1-3.32.64h-1.27a65.5 65.5 0 0 1-12-3.31c-.48.34-1 .7-1.41 1.06 5 2 11 3.62 13 3.74.53 0 1.1.1 1.66.1a13.8 13.8 0 0 0 3.75-.7c.73-.2 1.52-.42 2.36-.58-.22.22-.45.44-.67.67l-3.5 3.74a1.73 1.73 0 0 0-.43 1.91 2.44 2.44 0 0 0 .91 1 7.23 7.23 0 0 0 3.67.93 6.7 6.7 0 0 0 1.42-.15c1.45-.32 3-1.53 4.58-2.81a15.3 15.3 0 0 1 4.5-2.7 5.5 5.5 0 0 1 1.26-.17h.32a6.8 6.8 0 0 1 3.41 1.63c2.83 2.13 15.39 13.11 15.51 13.22a2.44 2.44 0 0 1 .76 1.85 2 2 0 0 1-1 1.6 3 3 0 0 1-1.64.51 2.7 2.7 0 0 1-1.46-.42s-4.35-4-5.93-5.31a1.3 1.3 0 0 0-.74-.39.4.4 0 0 0-.33.15c-.25.31 0 .73.35 1l5 5.06a2.27 2.27 0 0 1 .69 1.36 2.3 2.3 0 0 1-1.19 2.08 3.23 3.23 0 0 1-1.78.59 2.5 2.5 0 0 1-1.43-.44l-.72-.71c-1.32-1.29-2.68-2.63-3.68-3.46a1.28 1.28 0 0 0-.75-.39.4.4 0 0 0-.31.13c-.12.13-.2.35.09.73a1.6 1.6 0 0 0 .25.28l3.67 4.12a1.42 1.42 0 0 1 .08 1.76l-.13.17a3 3 0 0 1-.34.32 2.9 2.9 0 0 1-1.79.57 2.6 2.6 0 0 1-.5 0 1.35 1.35 0 0 1-.72-.3c-.2-.21-2-2.1-3.57-3.37a1.3 1.3 0 0 0-.72-.38.45.45 0 0 0-.33.14c-.3.34.15.83.35 1l3.12 3.45a.7.7 0 0 1-.11.21c-.12.16-.5.54-1.63.68a3 3 0 0 1-.42 0 7.2 7.2 0 0 1-3.06-.9 4.56 4.56 0 0 0 .45-2 4.68 4.68 0 0 0-4.67-4.67h-.16a4.15 4.15 0 0 0-2.37-4.38 4.8 4.8 0 0 0-2-.43 4 4 0 0 0-1.43.25 4 4 0 0 0-2.29-1.94 5.2 5.2 0 0 0-1.65-.28 4.4 4.4 0 0 0-2.61.84 3.91 3.91 0 0 0-5.85-.33c-1-.75-4.84-3.2-15.18-5.55-.5-.11-1.65-.44-2.35-.65a16 16 0 0 0-.27 1.7l2.29.54c10.56 2.34 14 4.78 14.63 5.24a4.2 4.2 0 0 0-.3 1.52 4 4 0 0 0 4 4 4.4 4.4 0 0 0 .72-.06 4.63 4.63 0 0 0 3 3.45 3.8 3.8 0 0 0 2.31.16 4.1 4.1 0 0 0 2.45 2.29 4.2 4.2 0 0 0 1.56.32 3.6 3.6 0 0 0 1.21-.21 4.66 4.66 0 0 0 7.65 1.48 8.8 8.8 0 0 0 4 1.17 6 6 0 0 0 .6 0 3.62 3.62 0 0 0 2.6-1.4 2 2 0 0 0 .16-.27 4.5 4.5 0 0 0 1.27.2 4.23 4.23 0 0 0 2.57-.92 3.5 3.5 0 0 0 1.51-2.19 4 4 0 0 0 .86.09 4.76 4.76 0 0 0 2.63-.86 3.77 3.77 0 0 0 1.88-3.37 5 5 0 0 0 .87.09 4.5 4.5 0 0 0 2.45-.76 3.58 3.58 0 0 0 1.71-2.78 3.76 3.76 0 0 0-.54-2.24 100 100 0 0 1 16.29-5.1c0-.57-.13-1.14-.23-1.69a93.4 93.4 0 0 0-17.21 5.57M61.41 43.62a3.17 3.17 0 0 1-3.19-3c0-.15 0-.54-.35-.54a.64.64 0 0 0-.39.2 2.2 2.2 0 0 1-1.56.71 2.7 2.7 0 0 1-1-.22c-1.82-.74-1.85-2-1.78-2.49a.45.45 0 0 0-.06-.38l-.11-.1h-.12a.53.53 0 0 0-.31.12 2.67 2.67 0 0 1-1.55.55 2.4 2.4 0 0 1-.86-.16A3.34 3.34 0 0 1 48 34.39a.35.35 0 0 0-.1-.32l-.17-.14-.16.16a2.49 2.49 0 1 1 .75-2.09l.08.67.37-.57a3.65 3.65 0 0 1 2.89-1.58 3.4 3.4 0 0 1 1.08.17A2.51 2.51 0 0 1 54.51 33c0 .32.25.34.3.34a.43.43 0 0 0 .29-.15 2.5 2.5 0 0 1 1.83-.77 3.4 3.4 0 0 1 1.37.31c2.34 1 1.28 4 1.27 4-.21.49-.21.71 0 .83l.09.05h.07a2 2 0 0 0 .45-.12 4 4 0 0 1 1.25-.28 3.24 3.24 0 0 1 3.2 3.2 3.2 3.2 0 0 1-3.22 3.21" class="cls-1"/></g></g></g></svg></span><span class="mp-logo tiktok" style="width:28px;height:28px;border-radius:7px"><svg width="17" height="17" viewBox="0 0 24 24"><path fill="#25F4EE" transform="translate(-.8,-.6)" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#FE2C55" transform="translate(.8,.6)" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#fff" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span><span class="mp-logo shein" style="width:28px;height:28px;border-radius:7px;font-size:6.7px">SHEIN</span></div>
+    </div>
+    <div class="preview" aria-hidden="true">
+      <div class="preview-head"><b>Vestido midi · receber R$ 60,00</b><span>Lucro com 6% de imposto</span></div>
+      <div class="pv-grid">
+        <div class="pv pvb"><div class="pv-top"><span class="mp-logo shopee" style="width:22px;height:22px;border-radius:6px"><svg width="14" height="14" viewBox="0 0 24 24"><path fill="#fff" d="M15.9414 17.9633c.229-1.879-.981-3.077-4.1758-4.0969-1.548-.528-2.277-1.22-2.26-2.1719.065-1.056 1.048-1.825 2.352-1.85a5.2898 5.2898 0 0 1 2.8838.89c.116.072.197.06.263-.039.09-.145.315-.494.39-.62.051-.081.061-.187-.068-.281-.185-.1369-.704-.4149-.983-.5319a6.4697 6.4697 0 0 0-2.5118-.514c-1.909.008-3.4129 1.215-3.5389 2.826-.082 1.1629.494 2.1078 1.73 2.8278.262.152 1.6799.716 2.2438.892 1.774.552 2.695 1.5419 2.478 2.6969-.197 1.047-1.299 1.7239-2.818 1.7439-1.2039-.046-2.2878-.537-3.1278-1.19l-.141-.11c-.104-.08-.218-.075-.287.03-.05.077-.376.547-.458.67-.077.108-.035.168.045.234.35.293.817.613 1.134.775a6.7097 6.7097 0 0 0 2.8289.727 4.9048 4.9048 0 0 0 2.0759-.354c1.095-.465 1.8029-1.394 1.9449-2.554zM11.9986 1.4009c-2.068 0-3.7539 1.95-3.8329 4.3899h7.6657c-.08-2.44-1.765-4.3899-3.8328-4.3899zm7.8516 22.5981-.08.001-15.7843-.002c-1.074-.04-1.863-.91-1.971-1.991l-.01-.195L1.298 6.2858a.459.459 0 0 1 .45-.494h4.9748C6.8448 2.568 9.1607 0 11.9996 0c2.8388 0 5.1537 2.5689 5.2757 5.7898h4.9678a.459.459 0 0 1 .458.483l-.773 15.5883-.007.131c-.094 1.094-.979 1.9769-2.0709 2.0059z"/></svg></span>Shopee</div><div class="pv-price">R$ 97,99</div><div class="pv-bar"><i style="width:34%;background:#9a9384"></i><i style="width:8%;background:#e0a24a"></i><i style="width:58%;background:#2f9e63"></i></div><div class="pv-l"><span>Recebe</span><b>R$ 60,52</b></div></div>
+        <div class="pv"><div class="pv-top"><span class="mp-logo ml" style="width:22px;height:22px;border-radius:6px"><svg width="19" height="19" viewBox="0 0 16.933 16.933"><defs><style>.cls-1{fill:#2d3277}.cls-3{fill:#fff}</style></defs><g><g transform="scale(.13168)"><g transform="translate(-37.295 20.094)scale(1.57694)"><path d="M105.19 26.67C105.19 12 86.94 0 64.42 0S23.65 12 23.65 26.67v1.56c0 15.59 16 28.21 40.77 28.21 25 0 40.78-12.62 40.78-28.21z" class="cls-1"/><path fill="#ffd100" d="M103.63 26.65c0 13.85-17.55 25.08-39.2 25.08S25.22 40.5 25.22 26.65 42.77 1.57 64.43 1.57s39.2 11.23 39.2 25.08"/><path d="M51.41 18.74s-.41.45-.16.77c.62.79 2.53 1.24 4.46.81 1.15-.26 2.63-1.43 4.06-2.56a15.9 15.9 0 0 1 4.62-3 5.23 5.23 0 0 1 3.38-.09 10.1 10.1 0 0 1 3.07 1.79c2.69 2 13.47 11.43 15.34 13.06A93 93 0 0 1 103.41 24c-.78-4.83-3.72-9.25-8.18-12.87-6.22 2.61-13.81 4-21.23.34a20.8 20.8 0 0 0-8-1.82c-5.89.14-8.44 2.69-11.14 5.39z" class="cls-3"/><path d="M85.74 30.59c-.13-.11-12.68-11.09-15.53-13.23a6.86 6.86 0 0 0-3.52-1.67 4.6 4.6 0 0 0-1.68.16 15.2 15.2 0 0 0-4.59 2.73c-1.59 1.27-3.09 2.46-4.48 2.77a7.24 7.24 0 0 1-4.94-.74 2.2 2.2 0 0 1-.82-.9 1.53 1.53 0 0 1 .42-1.64l3.47-3.75 1.22-1.2a23 23 0 0 0-3.16.71 13.5 13.5 0 0 1-3.68.69 35 35 0 0 1-3.76-.59 55.3 55.3 0 0 1-10-3.61c-4.93 3.67-8.22 8.25-9.17 13.3.71.19 1.85.53 2.33.64 11.14 2.47 14.61 5 15.24 5.56a3.69 3.69 0 0 1 5.79.34 4.25 4.25 0 0 1 2.66-.93 4.8 4.8 0 0 1 1.59.28 3.6 3.6 0 0 1 2.24 2 3.7 3.7 0 0 1 1.55-.33 4.7 4.7 0 0 1 1.86.41A4 4 0 0 1 61 36h.44a4.42 4.42 0 0 1 4.42 4.42 4.3 4.3 0 0 1-.53 2.09 7.1 7.1 0 0 0 3.84 1 2.43 2.43 0 0 0 1.79-.79c.11-.15.23-.34.12-.47l-3.17-3.45s-.52-.49-.35-.68.5.08.72.27c1.61 1.34 3.56 3.36 3.56 3.36s.16.27.88.4a3.22 3.22 0 0 0 2.49-.58 4 4 0 0 0 .55-.55 1.66 1.66 0 0 0-.13-2.02L72 34.85s-.53-.49-.35-.68.5.09.73.28c1.16 1 2.81 2.62 4.38 4.16a3 3 0 0 0 3.52-.12 2.53 2.53 0 0 0 1.31-2.3 2.65 2.65 0 0 0-.78-1.54l-5-5s-.53-.45-.35-.68.5.08.73.27c1.59 1.34 5.92 5.31 5.92 5.31a3.06 3.06 0 0 0 3.4-.07 2.3 2.3 0 0 0 1.12-1.8 2.69 2.69 0 0 0-.89-2.09" class="cls-3"/><path d="M61.41 37a11.6 11.6 0 0 0-1.74.38c-.06 0 0-.35.12-.53s1.1-3.26-1.4-4.33a2.94 2.94 0 0 0-3.48.52c-.1.11-.15.1-.16 0a2.75 2.75 0 0 0-1.94-2.56A3.76 3.76 0 0 0 48.56 32a2.72 2.72 0 1 0-.81 2.32.11.11 0 0 1 0 .09A3.58 3.58 0 0 0 50 38.49a2.66 2.66 0 0 0 2.64-.4c.21-.16.25-.09.22.11-.1.63 0 2 1.92 2.76a2.47 2.47 0 0 0 2.86-.53c.24-.23.31-.19.32.15A3.44 3.44 0 1 0 61.41 37" class="cls-3"/><path d="M86.22 29.28c-3.86-3.38-12.8-11.15-15.22-13a10.8 10.8 0 0 0-3.16-1.84 5.2 5.2 0 0 0-1.55-.24 6.5 6.5 0 0 0-2 .33 16 16 0 0 0-4.64 2.93l-.07.06c-1.41 1.12-2.86 2.27-4 2.52a6.5 6.5 0 0 1-1.46.16 3.74 3.74 0 0 1-2.75-.88c-.07-.09 0-.23.13-.43l3.5-3.66c2.66-2.66 5.18-5.18 11-5.31h.29a20.6 20.6 0 0 1 7.62 1.81 23.7 23.7 0 0 0 10.38 2.49 27.2 27.2 0 0 0 11.4-2.73c-.45-.38-.91-.74-1.38-1.09a25.15 25.15 0 0 1-10 2.27 22 22 0 0 1-9.71-2.34 21.9 21.9 0 0 0-8.3-2H66a14.38 14.38 0 0 0-9.45 3.35 19.2 19.2 0 0 0-4.72.86 13 13 0 0 1-3.32.64h-1.27a65.5 65.5 0 0 1-12-3.31c-.48.34-1 .7-1.41 1.06 5 2 11 3.62 13 3.74.53 0 1.1.1 1.66.1a13.8 13.8 0 0 0 3.75-.7c.73-.2 1.52-.42 2.36-.58-.22.22-.45.44-.67.67l-3.5 3.74a1.73 1.73 0 0 0-.43 1.91 2.44 2.44 0 0 0 .91 1 7.23 7.23 0 0 0 3.67.93 6.7 6.7 0 0 0 1.42-.15c1.45-.32 3-1.53 4.58-2.81a15.3 15.3 0 0 1 4.5-2.7 5.5 5.5 0 0 1 1.26-.17h.32a6.8 6.8 0 0 1 3.41 1.63c2.83 2.13 15.39 13.11 15.51 13.22a2.44 2.44 0 0 1 .76 1.85 2 2 0 0 1-1 1.6 3 3 0 0 1-1.64.51 2.7 2.7 0 0 1-1.46-.42s-4.35-4-5.93-5.31a1.3 1.3 0 0 0-.74-.39.4.4 0 0 0-.33.15c-.25.31 0 .73.35 1l5 5.06a2.27 2.27 0 0 1 .69 1.36 2.3 2.3 0 0 1-1.19 2.08 3.23 3.23 0 0 1-1.78.59 2.5 2.5 0 0 1-1.43-.44l-.72-.71c-1.32-1.29-2.68-2.63-3.68-3.46a1.28 1.28 0 0 0-.75-.39.4.4 0 0 0-.31.13c-.12.13-.2.35.09.73a1.6 1.6 0 0 0 .25.28l3.67 4.12a1.42 1.42 0 0 1 .08 1.76l-.13.17a3 3 0 0 1-.34.32 2.9 2.9 0 0 1-1.79.57 2.6 2.6 0 0 1-.5 0 1.35 1.35 0 0 1-.72-.3c-.2-.21-2-2.1-3.57-3.37a1.3 1.3 0 0 0-.72-.38.45.45 0 0 0-.33.14c-.3.34.15.83.35 1l3.12 3.45a.7.7 0 0 1-.11.21c-.12.16-.5.54-1.63.68a3 3 0 0 1-.42 0 7.2 7.2 0 0 1-3.06-.9 4.56 4.56 0 0 0 .45-2 4.68 4.68 0 0 0-4.67-4.67h-.16a4.15 4.15 0 0 0-2.37-4.38 4.8 4.8 0 0 0-2-.43 4 4 0 0 0-1.43.25 4 4 0 0 0-2.29-1.94 5.2 5.2 0 0 0-1.65-.28 4.4 4.4 0 0 0-2.61.84 3.91 3.91 0 0 0-5.85-.33c-1-.75-4.84-3.2-15.18-5.55-.5-.11-1.65-.44-2.35-.65a16 16 0 0 0-.27 1.7l2.29.54c10.56 2.34 14 4.78 14.63 5.24a4.2 4.2 0 0 0-.3 1.52 4 4 0 0 0 4 4 4.4 4.4 0 0 0 .72-.06 4.63 4.63 0 0 0 3 3.45 3.8 3.8 0 0 0 2.31.16 4.1 4.1 0 0 0 2.45 2.29 4.2 4.2 0 0 0 1.56.32 3.6 3.6 0 0 0 1.21-.21 4.66 4.66 0 0 0 7.65 1.48 8.8 8.8 0 0 0 4 1.17 6 6 0 0 0 .6 0 3.62 3.62 0 0 0 2.6-1.4 2 2 0 0 0 .16-.27 4.5 4.5 0 0 0 1.27.2 4.23 4.23 0 0 0 2.57-.92 3.5 3.5 0 0 0 1.51-2.19 4 4 0 0 0 .86.09 4.76 4.76 0 0 0 2.63-.86 3.77 3.77 0 0 0 1.88-3.37 5 5 0 0 0 .87.09 4.5 4.5 0 0 0 2.45-.76 3.58 3.58 0 0 0 1.71-2.78 3.76 3.76 0 0 0-.54-2.24 100 100 0 0 1 16.29-5.1c0-.57-.13-1.14-.23-1.69a93.4 93.4 0 0 0-17.21 5.57M61.41 43.62a3.17 3.17 0 0 1-3.19-3c0-.15 0-.54-.35-.54a.64.64 0 0 0-.39.2 2.2 2.2 0 0 1-1.56.71 2.7 2.7 0 0 1-1-.22c-1.82-.74-1.85-2-1.78-2.49a.45.45 0 0 0-.06-.38l-.11-.1h-.12a.53.53 0 0 0-.31.12 2.67 2.67 0 0 1-1.55.55 2.4 2.4 0 0 1-.86-.16A3.34 3.34 0 0 1 48 34.39a.35.35 0 0 0-.1-.32l-.17-.14-.16.16a2.49 2.49 0 1 1 .75-2.09l.08.67.37-.57a3.65 3.65 0 0 1 2.89-1.58 3.4 3.4 0 0 1 1.08.17A2.51 2.51 0 0 1 54.51 33c0 .32.25.34.3.34a.43.43 0 0 0 .29-.15 2.5 2.5 0 0 1 1.83-.77 3.4 3.4 0 0 1 1.37.31c2.34 1 1.28 4 1.27 4-.21.49-.21.71 0 .83l.09.05h.07a2 2 0 0 0 .45-.12 4 4 0 0 1 1.25-.28 3.24 3.24 0 0 1 3.2 3.2 3.2 3.2 0 0 1-3.22 3.21" class="cls-1"/></g></g></g></svg></span>Mercado Livre</div><div class="pv-price">R$ 89,99</div><div class="pv-bar"><i style="width:30%;background:#9a9384"></i><i style="width:8%;background:#e0a24a"></i><i style="width:62%;background:#2f9e63"></i></div><div class="pv-l"><span>Recebe</span><b>R$ 60,13</b></div></div>
+        <div class="pv"><div class="pv-top"><span class="mp-logo tiktok" style="width:22px;height:22px;border-radius:6px"><svg width="13" height="13" viewBox="0 0 24 24"><path fill="#25F4EE" transform="translate(-.8,-.6)" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#FE2C55" transform="translate(.8,.6)" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#fff" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span>TikTok Shop</div><div class="pv-price">R$ 82,99</div><div class="pv-bar"><i style="width:22%;background:#9a9384"></i><i style="width:8%;background:#e0a24a"></i><i style="width:70%;background:#2f9e63"></i></div><div class="pv-l"><span>Recebe</span><b>R$ 60,04</b></div></div>
+        <div class="pv"><div class="pv-top"><span class="mp-logo shein" style="width:22px;height:22px;border-radius:6px;font-size:5.3px">SHEIN</span>Shein</div><div class="pv-price">R$ 81,99</div><div class="pv-bar"><i style="width:20%;background:#9a9384"></i><i style="width:8%;background:#e0a24a"></i><i style="width:72%;background:#2f9e63"></i></div><div class="pv-l"><span>Recebe</span><b>R$ 60,68</b></div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="lp"><div class="wrap">
+    <div class="sec-h"><div class="kick">Por que usar</div><h2>Pare de perder dinheiro em cada venda</h2><p>A maioria das lojas define preço no chute e descobre o prejuízo só no extrato. Aqui você vê tudo antes.</p></div>
+    <div class="feats">
+      <div class="feat"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M14 10h2M8 14h2M14 14h2M8 18h2M14 18h2"/></svg></div><h3>Taxas oficiais de 2026</h3><p>Comissão por faixa de preço da Shopee, comissão real da categoria no Mercado Livre, taxas do TikTok Shop e da Shein. Tudo descontado do preço, do jeito que o marketplace cobra.</p></div>
+      <div class="feat"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div><h3>Os 4 marketplaces lado a lado</h3><p>Diga quanto quer ganhar e veja o preço em cada canal, com custo, embalagem, imposto, cupom, oferta relâmpago, Ads e afiliados.</p></div>
+      <div class="feat"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"/><path d="M19 17v4M17 19h4"/></svg></div><h3>Anúncio pronto com IA</h3><p>Título, descrição e fotos profissionais nas regras de cada marketplace, as mesmas que a LB Marketplace usa nas lojas dos clientes.</p></div>
+    </div>
+    <div class="mp-row">
+      <div class="mp-card"><span class="mp-logo shopee" style="width:40px;height:40px;border-radius:10px"><svg width="25" height="25" viewBox="0 0 24 24"><path fill="#fff" d="M15.9414 17.9633c.229-1.879-.981-3.077-4.1758-4.0969-1.548-.528-2.277-1.22-2.26-2.1719.065-1.056 1.048-1.825 2.352-1.85a5.2898 5.2898 0 0 1 2.8838.89c.116.072.197.06.263-.039.09-.145.315-.494.39-.62.051-.081.061-.187-.068-.281-.185-.1369-.704-.4149-.983-.5319a6.4697 6.4697 0 0 0-2.5118-.514c-1.909.008-3.4129 1.215-3.5389 2.826-.082 1.1629.494 2.1078 1.73 2.8278.262.152 1.6799.716 2.2438.892 1.774.552 2.695 1.5419 2.478 2.6969-.197 1.047-1.299 1.7239-2.818 1.7439-1.2039-.046-2.2878-.537-3.1278-1.19l-.141-.11c-.104-.08-.218-.075-.287.03-.05.077-.376.547-.458.67-.077.108-.035.168.045.234.35.293.817.613 1.134.775a6.7097 6.7097 0 0 0 2.8289.727 4.9048 4.9048 0 0 0 2.0759-.354c1.095-.465 1.8029-1.394 1.9449-2.554zM11.9986 1.4009c-2.068 0-3.7539 1.95-3.8329 4.3899h7.6657c-.08-2.44-1.765-4.3899-3.8328-4.3899zm7.8516 22.5981-.08.001-15.7843-.002c-1.074-.04-1.863-.91-1.971-1.991l-.01-.195L1.298 6.2858a.459.459 0 0 1 .45-.494h4.9748C6.8448 2.568 9.1607 0 11.9996 0c2.8388 0 5.1537 2.5689 5.2757 5.7898h4.9678a.459.459 0 0 1 .458.483l-.773 15.5883-.007.131c-.094 1.094-.979 1.9769-2.0709 2.0059z"/></svg></span><div><b>Shopee</b><span>CNPJ e CPF, por faixa de preço</span></div></div>
+      <div class="mp-card"><span class="mp-logo ml" style="width:40px;height:40px;border-radius:10px"><svg width="34" height="34" viewBox="0 0 16.933 16.933"><defs><style>.cls-1{fill:#2d3277}.cls-3{fill:#fff}</style></defs><g><g transform="scale(.13168)"><g transform="translate(-37.295 20.094)scale(1.57694)"><path d="M105.19 26.67C105.19 12 86.94 0 64.42 0S23.65 12 23.65 26.67v1.56c0 15.59 16 28.21 40.77 28.21 25 0 40.78-12.62 40.78-28.21z" class="cls-1"/><path fill="#ffd100" d="M103.63 26.65c0 13.85-17.55 25.08-39.2 25.08S25.22 40.5 25.22 26.65 42.77 1.57 64.43 1.57s39.2 11.23 39.2 25.08"/><path d="M51.41 18.74s-.41.45-.16.77c.62.79 2.53 1.24 4.46.81 1.15-.26 2.63-1.43 4.06-2.56a15.9 15.9 0 0 1 4.62-3 5.23 5.23 0 0 1 3.38-.09 10.1 10.1 0 0 1 3.07 1.79c2.69 2 13.47 11.43 15.34 13.06A93 93 0 0 1 103.41 24c-.78-4.83-3.72-9.25-8.18-12.87-6.22 2.61-13.81 4-21.23.34a20.8 20.8 0 0 0-8-1.82c-5.89.14-8.44 2.69-11.14 5.39z" class="cls-3"/><path d="M85.74 30.59c-.13-.11-12.68-11.09-15.53-13.23a6.86 6.86 0 0 0-3.52-1.67 4.6 4.6 0 0 0-1.68.16 15.2 15.2 0 0 0-4.59 2.73c-1.59 1.27-3.09 2.46-4.48 2.77a7.24 7.24 0 0 1-4.94-.74 2.2 2.2 0 0 1-.82-.9 1.53 1.53 0 0 1 .42-1.64l3.47-3.75 1.22-1.2a23 23 0 0 0-3.16.71 13.5 13.5 0 0 1-3.68.69 35 35 0 0 1-3.76-.59 55.3 55.3 0 0 1-10-3.61c-4.93 3.67-8.22 8.25-9.17 13.3.71.19 1.85.53 2.33.64 11.14 2.47 14.61 5 15.24 5.56a3.69 3.69 0 0 1 5.79.34 4.25 4.25 0 0 1 2.66-.93 4.8 4.8 0 0 1 1.59.28 3.6 3.6 0 0 1 2.24 2 3.7 3.7 0 0 1 1.55-.33 4.7 4.7 0 0 1 1.86.41A4 4 0 0 1 61 36h.44a4.42 4.42 0 0 1 4.42 4.42 4.3 4.3 0 0 1-.53 2.09 7.1 7.1 0 0 0 3.84 1 2.43 2.43 0 0 0 1.79-.79c.11-.15.23-.34.12-.47l-3.17-3.45s-.52-.49-.35-.68.5.08.72.27c1.61 1.34 3.56 3.36 3.56 3.36s.16.27.88.4a3.22 3.22 0 0 0 2.49-.58 4 4 0 0 0 .55-.55 1.66 1.66 0 0 0-.13-2.02L72 34.85s-.53-.49-.35-.68.5.09.73.28c1.16 1 2.81 2.62 4.38 4.16a3 3 0 0 0 3.52-.12 2.53 2.53 0 0 0 1.31-2.3 2.65 2.65 0 0 0-.78-1.54l-5-5s-.53-.45-.35-.68.5.08.73.27c1.59 1.34 5.92 5.31 5.92 5.31a3.06 3.06 0 0 0 3.4-.07 2.3 2.3 0 0 0 1.12-1.8 2.69 2.69 0 0 0-.89-2.09" class="cls-3"/><path d="M61.41 37a11.6 11.6 0 0 0-1.74.38c-.06 0 0-.35.12-.53s1.1-3.26-1.4-4.33a2.94 2.94 0 0 0-3.48.52c-.1.11-.15.1-.16 0a2.75 2.75 0 0 0-1.94-2.56A3.76 3.76 0 0 0 48.56 32a2.72 2.72 0 1 0-.81 2.32.11.11 0 0 1 0 .09A3.58 3.58 0 0 0 50 38.49a2.66 2.66 0 0 0 2.64-.4c.21-.16.25-.09.22.11-.1.63 0 2 1.92 2.76a2.47 2.47 0 0 0 2.86-.53c.24-.23.31-.19.32.15A3.44 3.44 0 1 0 61.41 37" class="cls-3"/><path d="M86.22 29.28c-3.86-3.38-12.8-11.15-15.22-13a10.8 10.8 0 0 0-3.16-1.84 5.2 5.2 0 0 0-1.55-.24 6.5 6.5 0 0 0-2 .33 16 16 0 0 0-4.64 2.93l-.07.06c-1.41 1.12-2.86 2.27-4 2.52a6.5 6.5 0 0 1-1.46.16 3.74 3.74 0 0 1-2.75-.88c-.07-.09 0-.23.13-.43l3.5-3.66c2.66-2.66 5.18-5.18 11-5.31h.29a20.6 20.6 0 0 1 7.62 1.81 23.7 23.7 0 0 0 10.38 2.49 27.2 27.2 0 0 0 11.4-2.73c-.45-.38-.91-.74-1.38-1.09a25.15 25.15 0 0 1-10 2.27 22 22 0 0 1-9.71-2.34 21.9 21.9 0 0 0-8.3-2H66a14.38 14.38 0 0 0-9.45 3.35 19.2 19.2 0 0 0-4.72.86 13 13 0 0 1-3.32.64h-1.27a65.5 65.5 0 0 1-12-3.31c-.48.34-1 .7-1.41 1.06 5 2 11 3.62 13 3.74.53 0 1.1.1 1.66.1a13.8 13.8 0 0 0 3.75-.7c.73-.2 1.52-.42 2.36-.58-.22.22-.45.44-.67.67l-3.5 3.74a1.73 1.73 0 0 0-.43 1.91 2.44 2.44 0 0 0 .91 1 7.23 7.23 0 0 0 3.67.93 6.7 6.7 0 0 0 1.42-.15c1.45-.32 3-1.53 4.58-2.81a15.3 15.3 0 0 1 4.5-2.7 5.5 5.5 0 0 1 1.26-.17h.32a6.8 6.8 0 0 1 3.41 1.63c2.83 2.13 15.39 13.11 15.51 13.22a2.44 2.44 0 0 1 .76 1.85 2 2 0 0 1-1 1.6 3 3 0 0 1-1.64.51 2.7 2.7 0 0 1-1.46-.42s-4.35-4-5.93-5.31a1.3 1.3 0 0 0-.74-.39.4.4 0 0 0-.33.15c-.25.31 0 .73.35 1l5 5.06a2.27 2.27 0 0 1 .69 1.36 2.3 2.3 0 0 1-1.19 2.08 3.23 3.23 0 0 1-1.78.59 2.5 2.5 0 0 1-1.43-.44l-.72-.71c-1.32-1.29-2.68-2.63-3.68-3.46a1.28 1.28 0 0 0-.75-.39.4.4 0 0 0-.31.13c-.12.13-.2.35.09.73a1.6 1.6 0 0 0 .25.28l3.67 4.12a1.42 1.42 0 0 1 .08 1.76l-.13.17a3 3 0 0 1-.34.32 2.9 2.9 0 0 1-1.79.57 2.6 2.6 0 0 1-.5 0 1.35 1.35 0 0 1-.72-.3c-.2-.21-2-2.1-3.57-3.37a1.3 1.3 0 0 0-.72-.38.45.45 0 0 0-.33.14c-.3.34.15.83.35 1l3.12 3.45a.7.7 0 0 1-.11.21c-.12.16-.5.54-1.63.68a3 3 0 0 1-.42 0 7.2 7.2 0 0 1-3.06-.9 4.56 4.56 0 0 0 .45-2 4.68 4.68 0 0 0-4.67-4.67h-.16a4.15 4.15 0 0 0-2.37-4.38 4.8 4.8 0 0 0-2-.43 4 4 0 0 0-1.43.25 4 4 0 0 0-2.29-1.94 5.2 5.2 0 0 0-1.65-.28 4.4 4.4 0 0 0-2.61.84 3.91 3.91 0 0 0-5.85-.33c-1-.75-4.84-3.2-15.18-5.55-.5-.11-1.65-.44-2.35-.65a16 16 0 0 0-.27 1.7l2.29.54c10.56 2.34 14 4.78 14.63 5.24a4.2 4.2 0 0 0-.3 1.52 4 4 0 0 0 4 4 4.4 4.4 0 0 0 .72-.06 4.63 4.63 0 0 0 3 3.45 3.8 3.8 0 0 0 2.31.16 4.1 4.1 0 0 0 2.45 2.29 4.2 4.2 0 0 0 1.56.32 3.6 3.6 0 0 0 1.21-.21 4.66 4.66 0 0 0 7.65 1.48 8.8 8.8 0 0 0 4 1.17 6 6 0 0 0 .6 0 3.62 3.62 0 0 0 2.6-1.4 2 2 0 0 0 .16-.27 4.5 4.5 0 0 0 1.27.2 4.23 4.23 0 0 0 2.57-.92 3.5 3.5 0 0 0 1.51-2.19 4 4 0 0 0 .86.09 4.76 4.76 0 0 0 2.63-.86 3.77 3.77 0 0 0 1.88-3.37 5 5 0 0 0 .87.09 4.5 4.5 0 0 0 2.45-.76 3.58 3.58 0 0 0 1.71-2.78 3.76 3.76 0 0 0-.54-2.24 100 100 0 0 1 16.29-5.1c0-.57-.13-1.14-.23-1.69a93.4 93.4 0 0 0-17.21 5.57M61.41 43.62a3.17 3.17 0 0 1-3.19-3c0-.15 0-.54-.35-.54a.64.64 0 0 0-.39.2 2.2 2.2 0 0 1-1.56.71 2.7 2.7 0 0 1-1-.22c-1.82-.74-1.85-2-1.78-2.49a.45.45 0 0 0-.06-.38l-.11-.1h-.12a.53.53 0 0 0-.31.12 2.67 2.67 0 0 1-1.55.55 2.4 2.4 0 0 1-.86-.16A3.34 3.34 0 0 1 48 34.39a.35.35 0 0 0-.1-.32l-.17-.14-.16.16a2.49 2.49 0 1 1 .75-2.09l.08.67.37-.57a3.65 3.65 0 0 1 2.89-1.58 3.4 3.4 0 0 1 1.08.17A2.51 2.51 0 0 1 54.51 33c0 .32.25.34.3.34a.43.43 0 0 0 .29-.15 2.5 2.5 0 0 1 1.83-.77 3.4 3.4 0 0 1 1.37.31c2.34 1 1.28 4 1.27 4-.21.49-.21.71 0 .83l.09.05h.07a2 2 0 0 0 .45-.12 4 4 0 0 1 1.25-.28 3.24 3.24 0 0 1 3.2 3.2 3.2 3.2 0 0 1-3.22 3.21" class="cls-1"/></g></g></g></svg></span><div><b>Mercado Livre</b><span>Clássico e Premium + frete</span></div></div>
+      <div class="mp-card"><span class="mp-logo tiktok" style="width:40px;height:40px;border-radius:10px"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#25F4EE" transform="translate(-.8,-.6)" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#FE2C55" transform="translate(.8,.6)" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#fff" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span><div><b>TikTok Shop</b><span>Comissão, taxa fixa e frete grátis</span></div></div>
+      <div class="mp-card"><span class="mp-logo shein" style="width:40px;height:40px;border-radius:10px;font-size:9.6px">SHEIN</span><div><b>Shein</b><span>Comissão por categoria</span></div></div>
+    </div>
+  </div></section>
+
+  <section class="lp" style="padding-top:0"><div class="wrap">
+    <div class="sec-h"><div class="kick">Preço</div><h2>Paga uma vez, usa pra sempre</h2><p>Sem mensalidade. Os créditos de IA você só recarrega se quiser.</p></div>
+    <div class="price-wrap">
+      <div class="plan">
+        <span class="tag">Acesso vitalício</span>
+        <h3>LB Precifica completa</h3>
+        <div class="valor">R$ 49,99<small>pagamento único</small></div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Calculadora dos 4 marketplaces, sem limite de uso</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Todas as taxas atualizadas sem custo extra</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>100 créditos de IA de bônus (10 fotos ou 50 textos)</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Pagamento por Pix, boleto ou cartão</li>
+        </ul>
+        <button class="btn gold lg" data-entrar style="position:relative;z-index:1">Começar agora</button>
+      </div>
+      <div class="packs-lp">
+        <h3>Recarga de créditos de IA</h3>
+        <p>Use pra criar fotos e textos de anúncio. Créditos não vencem.</p>
+        <div class="pk-line"><div><b>100 créditos</b><span>10 fotos ou 50 textos</span></div><div class="v">R$ 19,90</div></div>
+        <div class="pk-line"><div><b>300 créditos</b><span>30 fotos ou 150 textos</span></div><div class="v">R$ 49,90</div></div>
+        <div class="pk-line"><div><b>700 créditos</b><span>70 fotos ou 350 textos</span></div><div class="v">R$ 99,90</div></div>
+        <div class="custos"><div><b>10 créditos</b>por foto profissional</div><div><b>2 créditos</b>por título + descrição</div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="lp" style="padding-top:0"><div class="wrap">
+    <div class="sec-h"><div class="kick">Dúvidas</div><h2>Perguntas frequentes</h2></div>
+    <div class="faq">
+      <details><summary>As taxas são confiáveis?</summary><p>Seguimos as tabelas publicadas pelos marketplaces. No Mercado Livre a comissão vem direto da API oficial, pela categoria do seu produto. Quando um marketplace muda a regra, atualizamos a calculadora sem custo pra você.</p></details>
+      <details><summary>Por que as taxas são "descontadas" e não somadas?</summary><p>Porque o marketplace cobra em cima do preço de venda. Somar a taxa ao custo faz você vender barato demais. A LB Precifica acha o preço em que, depois de tirar todas as taxas, sobra exatamente o que você quer.</p></details>
+      <details><summary>Posso usar em mais de um aparelho?</summary><p>Sim, mas um de cada vez. Ao entrar em outro aparelho, o anterior é desconectado. Isso protege sua conta contra compartilhamento.</p></details>
+      <details><summary>E se a IA falhar?</summary><p>Os créditos voltam pra sua conta na hora. Você só paga pelo que foi gerado.</p></details>
+      <details><summary>Preciso de CNPJ?</summary><p>Não. A cobrança aceita CPF ou CNPJ, e a calculadora tem as regras de vendedor CPF e CNPJ da Shopee.</p></details>
+    </div>
+  </div></section>
+
+  <section class="lp" style="padding-top:0"><div class="wrap">
+    <div class="cta-band"><div><h2>Seu próximo anúncio com o preço certo.</h2><p>Entre com o Google e comece em menos de 1 minuto.</p></div><button class="g-btn" data-entrar style="width:auto;padding:13px 22px"><svg width="20" height="20" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Entrar com Google</button></div>
+    <p class="erro" id="avisoEntrar" style="text-align:center;margin-top:16px"></p>
+  </div></section>
+
+  <footer class="site"><div class="wrap"><span>LB Precifica é um produto da LB Marketplace Assessoria · CNPJ 58.943.847/0001-90</span><span>Shopee, Mercado Livre, TikTok Shop e Shein são marcas de seus respectivos donos.</span></div></footer>
+</div>
+
+<!-- ================= CADASTRO ================= -->
+<div id="telaCadastro" class="center-page hidden">
+  <div class="card cad">
+    <a class="marca"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAoKADAAQAAAABAAAAoAAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8IAEQgAoACgAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAMCBAEFAAYHCAkKC//EAMMQAAEDAwIEAwQGBAcGBAgGcwECAAMRBBIhBTETIhAGQVEyFGFxIweBIJFCFaFSM7EkYjAWwXLRQ5I0ggjhU0AlYxc18JNzolBEsoPxJlQ2ZJR0wmDShKMYcOInRTdls1V1pJXDhfLTRnaA40dWZrQJChkaKCkqODk6SElKV1hZWmdoaWp3eHl6hoeIiYqQlpeYmZqgpaanqKmqsLW2t7i5usDExcbHyMnK0NTV1tfY2drg5OXm5+jp6vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAQIAAwQFBgcICQoL/8QAwxEAAgIBAwMDAgMFAgUCBASHAQACEQMQEiEEIDFBEwUwIjJRFEAGMyNhQhVxUjSBUCSRoUOxFgdiNVPw0SVgwUThcvEXgmM2cCZFVJInotIICQoYGRooKSo3ODk6RkdISUpVVldYWVpkZWZnaGlqc3R1dnd4eXqAg4SFhoeIiYqQk5SVlpeYmZqgo6SlpqeoqaqwsrO0tba3uLm6wMLDxMXGx8jJytDT1NXW19jZ2uDi4+Tl5ufo6ery8/T19vf4+fr/2wBDAAICAgICAgMCAgMEAwMDBAUEBAQEBQcFBQUFBQcIBwcHBwcHCAgICAgICAgKCgoKCgoLCwsLCw0NDQ0NDQ0NDQ3/2wBDAQICAgMDAwYDAwYNCQcJDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ3/2gAMAwEAAhEDEQAAAfz/ANtW21bbVttW21bbVttW21bbVpiajbVttW21bbVttW21bbVttW21aYmo21bbVttW21bbVttW21bbVttWmJqNtW21bbVd/qx+Rn6leV0fL3zT6Z5Buf1O8V7f5x8vb6A8A6HuOhPhjbe1x7bVpiajbVttW21b69+Qvo/532eK8l9W8p9Pz/qG55nj/l/f9z8T8++oWHxptvtfmNtq0xNRtq21wKn3SoEn6U+bLDy/Q9paeIXWOv0rxfkjXl29j4XhKft5mevrj1/O4ndzw0NMS1G2rdhx5kPuXM8Q25N/UUef5D2d/wCetKd3fJuNU7JhzYQfRuK514w9V8PtqnRNMTukbattq22qVIwiSLUvI1Toxpjattq0xNRtq22rbattq22rbattq22rbatMTUbattq22rbattq22rbattq22rTE1//aAAgBAQABBQL/AJH7btxvNquvAW4SeIfDnjzxbuv6Xs7y4sLr6tN3uvEmzeNvG+87D4j8HeJNq8cS/WJ4Lj8K3v8AO/VPKmPwf49Tj4tf1Mypj2L61B/xL/qj2y5m8R/XHvNpdH+d8Lb9cbZ4f8brMviB+C95n2raPEPie3t7rbPHMO4Q75sKVD+d2SPLZvGf+1t7Ht8kGzeNBS72NK1bvbQAj+c223s7q5tL7w7ZWt//AET3K4gtfBUKl73sSk7r/Rfd5bOfwntCd58UqvIP5nb7G43O9stov9wvtt2u93ebbttn3SWbY76K4Vtl2i3l2C4gtrbw7c3VnabDc3dqvab6J28Et1Pc7beWu4Xmw3dlDcbBcWsH3vD88drvO37/AGwudsv7La9uRdbZBuYv7P3jeL623iHcJI7qwtZ40bNDfbfHsNteq3cbZ7ptF1+lbBN1ebZbWsW7SourT7yEGRfuErltVxJVt602FxY8mI7WP0jb2Cbi7gsudbo27KzVYJTt0dgZLq4t1W9x7hK1WciE/wAzUsqUXmvLNdciBkqlS6n/AJGv/9oACAEDEQE/Af8AQOAzvbF6mUvcI/JEsgxnIiJyRMpd/wAF/lP+Z63+PO/zLknLF8bAgPSgdd00o5eCPXup6LrT033Rjynr4ylvOIW5fl55Ye3OApyfJZPb9nGNo/o0WtYmjb70vyTkl+SZyN2PLGUh4DuNg0ymZeQ5JWb/ANAf/9oACAECEQE/Af8AQPyscIx+5lehx4/YiYjyGOPpT1fsUiUMHUjDhPn07/3mjE9HUvzD8X/keKvyDDBhzfMT/wB5/wBP6PVgfFdSJdP4l5Hn/fvduD8j8fDq/syTIH5MfizGAxxzyr/M4PgcOHJ7uLKQf8zi+Hw+7+oykzl/V3BEgfGuSO6BiX9Lj8bvP9f94/3gIwY7/Efy/wBgjFjAFS8cs44yTZ9f98OyFSG7j/eTjxCFGMnp8YhHaDf+gP/aAAgBAQAGPwL/AJH5N7Yr5cqa0VSvFxbhfRx87mLjUQkCuPm9w2WEojtEKVCUBA1DjvLVWEsRySeOrnm3MRrlgn5YVgBUYg6u42yxTAIYsaZRJJ1ALk2Xf9utjcYFaFBAosDj8Qfk45rEk2V1XAK1Mah+Wvn8P56MH/ixL/U9y+MuX49r6v8Axb/5AS51/txxq/VR/pXEi3tI1hS/IrWKBP8AW7Ta4FBckJK108q/z1vDCK1XIr/enJMeMkUC/wDCjSe0qYhULuFH8EpcCr3bLa8klgTJnKkFQFSKcPg/0dHD7rQaRRnAEfycaOXcLCRcnLGcschqoJ9QfMD9X89bn/dn/Bi6elvbD/lEntFJJxmkVIE/ySB/cr9rsR6WSP8Ag63aCPjzUk/2R7X6nKV9MaYZFLP8nE1/neVfXPuseJOeOWvo47SC9RhH+1WpJ1J4P3q6ugZCEpOKyPZFBpiXnzkLI/0xalD8MQ0p99j048eJ+xxz3N/iqOMRjlnTEEnzQfVldtPksihVqtZHoNAA12Fgjk26/bJ9tY9Pl/NQ7faDKadQQgE01LVt1tETOgLKknTHlglVflRqt7FGa0RqkOtNE/1ngPUtcUBQjlxmVapFYJCU8dXa245cnvqsIJI1hca1VxpkPQnVzXcgCYoZOTUn2l+ifWnn6NNxPcWqM4UziMzDmFKxkOn1IZvkXNmmJOOec4SUZ1oFDyOj98E1tFGqVUKTNMmPJSQCaV/tB3nNjwNhTngnVOSsft1cdtAnKSVQQkepU1bWuOtyF8vFHVkTwxpxr5Nc0kluvk0EqI5kLXHXTUA+vpV86e4tUnlJl5XOHMxWMh0+tD9+0uJZBElElSs+TiueZyrq6GN7IoaUjSaU/wB2GhV8QwrOQ3E8yZDyCAUJgNUA1B4q1+wPcLmNaTb3dmtQjrTqlxJi+BBq9kNqtMFrBMJFIOqopM05qUfMEAU+DVKFpgks1KTHCP3ckSlcUfy6+1+1xcXLl25WNnCglf8AjIKECqfmKUd/bmQBUsluUo/axzr+FXb29zH7ytN1Mvl5lGIKY9TTjWn6nu5uriG3lvExU5hwQcFpNB8gHcXNxOmRcEeMPu6q5LlFKpJFOgV+17Xu8S1hVt/F5UqoZQhAoiQaAHpNB/Zapkbhbzj+9pjyK1/MU6fteaJdtWBbQjL/AIE9CEinz0p98IFBX1NB+Jftw/7mR/dealRn+zIlR/UWm+r7SvZ9E8Ar8Q7eUKJE3E40odNPXzaLLM4rGQWR5a+Vfg5LYKUMa49OpPD1oPxc81TlD+Wn46v3nI1wK/Z6KJNKFX7TTfczU/l08yR61/L6UcVuFaLQlalU9lJGR/Brt1cUmlfL5v24f9zI/usqK4tPSVBP8P8ANip4cHnU5eryyNT5sgHQ8XjXT0/5G3//xAAzEAEAAwACAgICAgMBAQAAAgsBEQAhMUFRYXGBkaGxwfDREOHxIDBAUGBwgJCgsMDQ4P/aAAgBAQABPyH/APQzn/8ARDn/APRDn/8ARDn/APRDn/8AIj/sNj/8g5//ABwk+IGDCQjyV/QicnyHmHb61IAZlibEueGQHpyuPWVC8Eci05CMqpzUnlqF11VGmIZori6LdrtK6I1c+fL/APhOf/yHBhV/dSLz/hn/AJMGJqELwd7/APhY8ZQIgce2FXgLLVPUkUR/+I5//Igakt8w/q4nrfn+w/5PDM2NHZyoKA1VSDS/W2O02XXyke9vzK8d2fzCBG6Sn/4Tn/8AIcrzVz/+E/4ITEYuBB+wfAUC6nKyUeEn6bmqHJV0dnyZ/wDiOf8A8fniRTHECOfNXINBlYURHV48UraEFoGjqKLmSQ/BQvwyXgB1xtOjhkH1TAMHBAE8ipl7JPsoncG9tShBOMmRJxPYOf8A8Rz/APgGGGwHiJcLwRCUJjeIL7ymaASPvPYgcoBY79Rw6SvkqoGKOBUiBBBhJ8JZGKxjXfPGw4c8kpkQOlfKkEFNOGxWkaks9UPEYQdPCGnG2LZaMIBj5Djra/Y++1AfmrWLHVe0ozFHIkVbOk8l2zMPA83m2bSwj2kDH/Tn/wDAJB3AZdrETQQjU3f/AKMq6jcvhH1ue66DjOyKIcEzIPdIpi5fkLmNnSIkZYVFKJ2JmApnwewldg1lAeHsgrumRyXIfu+aKcPLQ5AYTHJTAfjyBKGON8Xg/RD0PNKlMhcMij+cAgeUE1TmSaAvKnJrOZwnm6PB2TcPq/If9Of/AMDAp2L7oA/47g5piPxRGv8A6jHVnkcKHHjzQIv0ghSCZR2gnqaKPvAigUnkxqPmxFT2JwDhJPLD83PPaOUNSkMjgl9UM/B9EnMxdEdnm9YHx6OEKWnR7TfmSpAsTsPZNTMffh1Lwm/H/PbxIZT6AE3/AKc//j9nqghkxJ4+L4CeW/m6fMpaz7oohwBxjzezTZ1k/Fwicvs9VV5//Cc//ohz/wDohz/+iHP/AOiHP/6Ic3//2gAMAwEAAhEDEQAAEAAAAAAAAAAwAAAAAAAAAwAABCDAAAAwAAMUq5AAAwAAB6ZrwAAwAgwCDwwCwwEdPjO8NCQwAAIowsAAAwAAAAAAAAAwAAAAAAAAA//EADMRAQEBAAMAAQIFBQEBAAEBCQEAESExEEFRYSBx8JGBobHRweHxMEBQYHCAkKCwwNDg/9oACAEDEQE/EP8A4nf/AMjv/wCR3+B3b+ctU+WH2mB9scPqfxBVwC7mc/H7uHp3+A7/ADf6krdv9kFTfuD2r8j8RoieBwdfIccf2fTvwLUwnVxrvX07ycrrl3bcN9HJ/Zl5K9g5frq/+32pR3HfjmTpngUcb8fXN/t/WxPHO+j5d/PPt1MYd4fTqAMOs6H53efn4gUcj+uqnH5tsA79uOcz/X7/AJsmwyO/wba2/gO//kd//I7v/9oACAECEQE/EP8A4nf/AMjv/wCR3+A5wYhv+o3EiX76TMBTdPpxv1uwAN0ufX8sOfTv8BIdP80QDp/qLdN53UQ8A7Q9k1yhyP1fC7y+Oe/r16d+KBrJ7r1ZpRzjOzeet6++faBAJgDwD4ONskLxvLv8xg5IzF6GcmABx2fHzdfPfUTq2O/DbYIm/TSNELMcfYqH1w0/gb864Yzz2fhHJ1uc7m/xbL5xbrw/X57Hvk5+Iwc4PCnOANMcw385Q6H2fTAIPeYf1c5tZcfqjpqnf5p+XHwJwMiO/wAGFhYWenf/AMjv/wCR3f/aAAgBAQABPxD/APQ+D5//AETg+f8A9E4Pn/8AROD5/wD0Tg+T/wDHzhZeGw+P+ehsvD/+RwfP/wCNFozQmRkhE4mmm4mQjAgQHkk0BcSZHTUWJmeeMgO5qbyEwqIU0pX2DfKECiT4ihEt5E4atKPclWNzB8EZDwmrMJZClzVUrgJJP/xHB8//AJAyNG8WyTDvYBfsf+ApIUn1Qx0ePTY+42YzUixGohQdhiSV/D0wizMkjfDJyP8A+Lg+f/yA2cHmtUNYY+2/v/gI08+CBx4aNpaXHS1Ik+YivTaQqCcZEpEh0ISPt2XgOBaT9EX/AOK8Hz/+QXPUtERu4+Tv7P8AjLEHYo8rqEwOY7BTQhTuVN+mp6gI6Bn0D9Js2fowS+vCfJQ7/wDxcHz/APjhqiCmM1IQVkwRHdM2OqLCAUQCABsKw3gid1AIQwwpMFh9weUcTuPlOxr+QQBCiwRACCAMBVGvazIBGlww5nmT3Z+OYg/AIxDKmqUYlosIguoTMb/+Hg+T/wDAji4j8IwC9uV6Ivk+UAIDPgNQp3XXwZIKCAbApUK9WfacY8hKOWaPhO9CFDyCQpIYzGHpoM6ZlRRRVHJxXFPejlZCzsRHpiQHW6rSyREsUCgmnk5u96JiNApLc0VBTbyjAOF3YSjXCr6V8lhgAzKMSEofainSLKQeJoRZGaBonx0Mc9/7wfJ/+DgFEfgTx4Xxcb9jSEyo8hJcioMzYH6N2ceIuCzx2U4wZ6KJCmCqk2bSm8WoBWGULQwkD7gGCAtSdfcKpMcx5SCdpCmK2VEYQcutQP0SepyyghKEm4wgoLM7DFlSCrqllJHvIiSXKk2E3hxCmQ3Z4AK6NE6WZWnnfiHAUPymTFnpqp8Hv/vB8/8A4H23APZOgXtT/mXHptBPx/yxBS8J2FKTrG4RuWMBNCckRNHOi5sOHhGNPgXEmAp4EWVVKACdmknCxAyLAxCAkJCuHsfJCok/rVhyHSZ4gzJjvUaooWAokrhgxDBI4CCUIGvyAMmtSnAhKylE4DMSGo073ms0HSyeAFf+8Hyf/jwSUILeQ4PjKIXYEQ8wHgnxVingSeMEESnDihGEEmxYZlLPdiobKHKIGMPE0BgwOSYwXhMd3sWIiciZ/nb7Gnbrx8VCUrAb4MD6P/w8Hz/wz/8AQuD5/wD0Tg+f/wBE4Pk//ROD5P8A9E4Pm//Z" alt=""><b>LB <span>PRECIFICA</span></b></a>
+    <h2>Falta pouco, <span id="cadPrimeiro"></span></h2>
+    <p class="sub">Conte um pouco sobre você e sua loja. Leva 30 segundos.</p>
+    <form id="formCadastro" class="row" novalidate>
+      <div class="row c2">
+        <label class="f"><span>Seu nome</span><div class="inp"><input id="cadNome" autocomplete="name" required></div></label>
+        <label class="f"><span>WhatsApp com DDD</span><div class="inp"><input id="cadWhats" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 99999-9999" required></div></label>
+      </div>
+      <div class="row c2">
+        <label class="f"><span>Nome da loja <i>(opcional)</i></span><div class="inp"><input id="cadLoja"></div></label>
+        <label class="f"><span>O que você vende? <i>(opcional)</i></span><div class="inp"><input id="cadSegmento" placeholder="Ex.: moda feminina"></div></label>
+      </div>
+      <div class="f"><span>Onde você vende hoje?</span><div class="chips" id="cadMps"></div></div>
+      <label class="f"><span>Faturamento mensal da loja</span><div class="inp"><select id="cadFat" required><option value="">Escolha uma faixa</option><option value="ainda_nao_vendo">Ainda não vendo</option><option value="ate_5mil">Até R$ 5 mil</option><option value="5a20mil">R$ 5 mil a R$ 20 mil</option><option value="20a50mil">R$ 20 mil a R$ 50 mil</option><option value="50a100mil">R$ 50 mil a R$ 100 mil</option><option value="acima_100mil">Acima de R$ 100 mil</option></select></div></label>
+      <p class="erro" id="avisoCadastro"></p>
+      <button class="btn prim lg" type="submit" id="btnCadastro">Continuar</button>
+    </form>
+  </div>
+</div>
+
+<!-- ================= APP ================= -->
+<div id="telaApp" class="hidden">
+  <header class="app-top"><div class="wrap">
+    <a class="marca"><img src="data:image/jpeg;base64,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" alt=""><b>LB <span>PRECIFICA</span></b></a>
+    <nav class="tabs">
+      <button class="tab on" data-aba="calc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h8M8 16h3"/></svg>Calculadora</button>
+      <button class="tab" data-aba="ia"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"/></svg>Anúncio com IA</button>
+      <button class="tab" data-aba="creditos"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h4a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3h4"/></svg>Créditos</button>
+    </nav>
+    <div class="user">
+      <span class="creds" id="saldo" title="Seus créditos de IA">—</span>
+      <div class="menu"><button class="btn ghost" id="btnMenu" style="padding:0" aria-label="Conta"><img class="avatar" id="avatar" alt=""></button>
+        <div class="menu-box hidden" id="menuBox"><div class="who"><b id="menuNome"></b><span id="menuEmail" style="color:var(--muted)"></span></div><button id="btnSair">Sair da conta</button></div></div>
+    </div>
+  </div></header>
+
+  <main class="app wrap">
     <!-- CALCULADORA -->
     <section id="abaCalc">
-      <div id="travaCalc" class="painel trava hidden">
-        <h2 style="font-size:28px">Libere a calculadora completa</h2>
-        <p class="nota" style="max-width:50ch">Pagamento único, sem mensalidade. Inclui 100 créditos de IA pra criar seus anúncios.</p>
-        <div class="preco-grande">R$ 49,99</div>
-        <label class="campo" style="max-width:320px;width:100%;margin:12px 0">CPF ou CNPJ (pra nota da cobrança)<input type="text" id="cpfAcesso" inputmode="numeric" placeholder="000.000.000-00"></label>
-        <button class="btn gold" id="btnComprarAcesso">Liberar por R$ 49,99</button>
-        <div class="aviso" id="avisoAcesso"></div>
+      <div class="page-h"><div><h1>Calculadora de preço</h1><p>Todas as taxas são descontadas do preço de venda, como o marketplace cobra.</p></div></div>
+      <div id="calcWrap">
+      <div class="calc">
+        <aside class="panel form-p" id="calcForm">
+          <div class="fs">
+            <div class="fs-h"><b>1</b>O que você quer</div>
+            <div class="seg" id="calcModo"><button data-m="lucro" class="on">Lucro</button><button data-m="receber">Receber</button><button data-m="preco">Tenho o preço</button></div>
+            <div class="row">
+              <label class="f" id="campoMeta"><span id="metaRot">Lucro desejado</span><div class="inp"><input id="cMeta" type="number" inputmode="decimal" min="0" step="0.5" value="20"><select id="cMetaTipo" style="width:110px;flex:none;border-left:1px solid var(--line)"><option value="pct">% da venda</option><option value="rs">R$ por venda</option></select></div></label>
+              <label class="f hidden" id="campoReceber"><span>Quero receber por venda</span><div class="inp"><em>R$</em><input id="cReceber" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div><span class="hint">Valor líquido que cai na sua conta, antes dos seus custos.</span></label>
+              <label class="f hidden" id="campoPreco"><span>Preço de venda</span><div class="inp"><em>R$</em><input id="cPreco" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+            </div>
+          </div>
+          <div class="fs">
+            <div class="fs-h"><b>2</b>Produto e custos</div>
+            <div class="row">
+              <label class="f"><span>Nome do produto <i>(acha a taxa do Mercado Livre)</i></span><div class="inp"><input id="cProduto" placeholder="Ex.: vestido midi tule"></div><div class="cat-ml" id="notaMl"></div></label>
+              <div class="row c2">
+                <label class="f"><span>Custo do produto</span><div class="inp"><em>R$</em><input id="cCusto" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+                <label class="f"><span>Embalagem</span><div class="inp"><em>R$</em><input id="cEmb" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+              </div>
+              <div class="row c2">
+                <label class="f"><span>Custo operacional</span><div class="inp"><em>R$</em><input id="cOper" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div><span class="hint">Etiqueta, mão de obra…</span></label>
+                <label class="f"><span>Imposto</span><div class="inp"><input id="cImp" type="number" inputmode="decimal" min="0" step="0.1" placeholder="0"><em class="suf">%</em></div><span class="hint">Simples, MEI…</span></label>
+              </div>
+              <label class="f"><span>Peso com embalagem</span><div class="inp"><input id="cPeso" type="number" inputmode="decimal" min="0" step="0.05" value="0.5"><em class="suf">kg</em></div><span class="hint">Usado no frete do Mercado Livre (a partir de R$ 79).</span></label>
+            </div>
+          </div>
+          <div class="fs">
+            <div class="fs-h"><b>3</b>Promoções e anúncios</div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="oCupom"><span></span></label><label class="t" for="oCupom">Cupom<small>Desconto do cupom da loja</small></label><div class="inp"><input id="vCupom" type="number" value="3" step="0.5"><em class="suf">%</em></div></div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="oRel"><span></span></label><label class="t" for="oRel">Oferta relâmpago<small>Desconto extra na oferta</small></label><div class="inp"><input id="vRel" type="number" value="5" step="0.5"><em class="suf">%</em></div></div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="oAds"><span></span></label><label class="t" for="oAds">Anúncios (Ads)<small>Quanto da venda vai pro Ads</small></label><div class="inp"><input id="vAds" type="number" value="10" step="0.5"><em class="suf">%</em></div></div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="oAfil"><span></span></label><label class="t" for="oAfil">Afiliados<small>Comissão de quem divulga</small></label><div class="inp"><input id="vAfil" type="number" value="5" step="0.5"><em class="suf">%</em></div></div>
+          </div>
+          <div class="fs">
+            <div class="fs-h"><b>4</b>Regras de cada marketplace</div>
+            <div class="mpcfg">
+              <div class="r"><span class="mp-logo shopee" style="width:26px;height:26px;border-radius:7px"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="#fff" d="M15.9414 17.9633c.229-1.879-.981-3.077-4.1758-4.0969-1.548-.528-2.277-1.22-2.26-2.1719.065-1.056 1.048-1.825 2.352-1.85a5.2898 5.2898 0 0 1 2.8838.89c.116.072.197.06.263-.039.09-.145.315-.494.39-.62.051-.081.061-.187-.068-.281-.185-.1369-.704-.4149-.983-.5319a6.4697 6.4697 0 0 0-2.5118-.514c-1.909.008-3.4129 1.215-3.5389 2.826-.082 1.1629.494 2.1078 1.73 2.8278.262.152 1.6799.716 2.2438.892 1.774.552 2.695 1.5419 2.478 2.6969-.197 1.047-1.299 1.7239-2.818 1.7439-1.2039-.046-2.2878-.537-3.1278-1.19l-.141-.11c-.104-.08-.218-.075-.287.03-.05.077-.376.547-.458.67-.077.108-.035.168.045.234.35.293.817.613 1.134.775a6.7097 6.7097 0 0 0 2.8289.727 4.9048 4.9048 0 0 0 2.0759-.354c1.095-.465 1.8029-1.394 1.9449-2.554zM11.9986 1.4009c-2.068 0-3.7539 1.95-3.8329 4.3899h7.6657c-.08-2.44-1.765-4.3899-3.8328-4.3899zm7.8516 22.5981-.08.001-15.7843-.002c-1.074-.04-1.863-.91-1.971-1.991l-.01-.195L1.298 6.2858a.459.459 0 0 1 .45-.494h4.9748C6.8448 2.568 9.1607 0 11.9996 0c2.8388 0 5.1537 2.5689 5.2757 5.7898h4.9678a.459.459 0 0 1 .458.483l-.773 15.5883-.007.131c-.094 1.094-.979 1.9769-2.0709 2.0059z"/></svg></span><span class="nm">Shopee</span><div class="inp"><select id="rShopee"><option value="cnpj">Vendedor CNPJ</option><option value="cpf">Vendedor CPF</option></select></div></div>
+              <div class="r"><span class="mp-logo ml" style="width:26px;height:26px;border-radius:7px"><svg width="22" height="22" viewBox="0 0 16.933 16.933"><defs><style>.cls-1{fill:#2d3277}.cls-3{fill:#fff}</style></defs><g><g transform="scale(.13168)"><g transform="translate(-37.295 20.094)scale(1.57694)"><path d="M105.19 26.67C105.19 12 86.94 0 64.42 0S23.65 12 23.65 26.67v1.56c0 15.59 16 28.21 40.77 28.21 25 0 40.78-12.62 40.78-28.21z" class="cls-1"/><path fill="#ffd100" d="M103.63 26.65c0 13.85-17.55 25.08-39.2 25.08S25.22 40.5 25.22 26.65 42.77 1.57 64.43 1.57s39.2 11.23 39.2 25.08"/><path d="M51.41 18.74s-.41.45-.16.77c.62.79 2.53 1.24 4.46.81 1.15-.26 2.63-1.43 4.06-2.56a15.9 15.9 0 0 1 4.62-3 5.23 5.23 0 0 1 3.38-.09 10.1 10.1 0 0 1 3.07 1.79c2.69 2 13.47 11.43 15.34 13.06A93 93 0 0 1 103.41 24c-.78-4.83-3.72-9.25-8.18-12.87-6.22 2.61-13.81 4-21.23.34a20.8 20.8 0 0 0-8-1.82c-5.89.14-8.44 2.69-11.14 5.39z" class="cls-3"/><path d="M85.74 30.59c-.13-.11-12.68-11.09-15.53-13.23a6.86 6.86 0 0 0-3.52-1.67 4.6 4.6 0 0 0-1.68.16 15.2 15.2 0 0 0-4.59 2.73c-1.59 1.27-3.09 2.46-4.48 2.77a7.24 7.24 0 0 1-4.94-.74 2.2 2.2 0 0 1-.82-.9 1.53 1.53 0 0 1 .42-1.64l3.47-3.75 1.22-1.2a23 23 0 0 0-3.16.71 13.5 13.5 0 0 1-3.68.69 35 35 0 0 1-3.76-.59 55.3 55.3 0 0 1-10-3.61c-4.93 3.67-8.22 8.25-9.17 13.3.71.19 1.85.53 2.33.64 11.14 2.47 14.61 5 15.24 5.56a3.69 3.69 0 0 1 5.79.34 4.25 4.25 0 0 1 2.66-.93 4.8 4.8 0 0 1 1.59.28 3.6 3.6 0 0 1 2.24 2 3.7 3.7 0 0 1 1.55-.33 4.7 4.7 0 0 1 1.86.41A4 4 0 0 1 61 36h.44a4.42 4.42 0 0 1 4.42 4.42 4.3 4.3 0 0 1-.53 2.09 7.1 7.1 0 0 0 3.84 1 2.43 2.43 0 0 0 1.79-.79c.11-.15.23-.34.12-.47l-3.17-3.45s-.52-.49-.35-.68.5.08.72.27c1.61 1.34 3.56 3.36 3.56 3.36s.16.27.88.4a3.22 3.22 0 0 0 2.49-.58 4 4 0 0 0 .55-.55 1.66 1.66 0 0 0-.13-2.02L72 34.85s-.53-.49-.35-.68.5.09.73.28c1.16 1 2.81 2.62 4.38 4.16a3 3 0 0 0 3.52-.12 2.53 2.53 0 0 0 1.31-2.3 2.65 2.65 0 0 0-.78-1.54l-5-5s-.53-.45-.35-.68.5.08.73.27c1.59 1.34 5.92 5.31 5.92 5.31a3.06 3.06 0 0 0 3.4-.07 2.3 2.3 0 0 0 1.12-1.8 2.69 2.69 0 0 0-.89-2.09" class="cls-3"/><path d="M61.41 37a11.6 11.6 0 0 0-1.74.38c-.06 0 0-.35.12-.53s1.1-3.26-1.4-4.33a2.94 2.94 0 0 0-3.48.52c-.1.11-.15.1-.16 0a2.75 2.75 0 0 0-1.94-2.56A3.76 3.76 0 0 0 48.56 32a2.72 2.72 0 1 0-.81 2.32.11.11 0 0 1 0 .09A3.58 3.58 0 0 0 50 38.49a2.66 2.66 0 0 0 2.64-.4c.21-.16.25-.09.22.11-.1.63 0 2 1.92 2.76a2.47 2.47 0 0 0 2.86-.53c.24-.23.31-.19.32.15A3.44 3.44 0 1 0 61.41 37" class="cls-3"/><path d="M86.22 29.28c-3.86-3.38-12.8-11.15-15.22-13a10.8 10.8 0 0 0-3.16-1.84 5.2 5.2 0 0 0-1.55-.24 6.5 6.5 0 0 0-2 .33 16 16 0 0 0-4.64 2.93l-.07.06c-1.41 1.12-2.86 2.27-4 2.52a6.5 6.5 0 0 1-1.46.16 3.74 3.74 0 0 1-2.75-.88c-.07-.09 0-.23.13-.43l3.5-3.66c2.66-2.66 5.18-5.18 11-5.31h.29a20.6 20.6 0 0 1 7.62 1.81 23.7 23.7 0 0 0 10.38 2.49 27.2 27.2 0 0 0 11.4-2.73c-.45-.38-.91-.74-1.38-1.09a25.15 25.15 0 0 1-10 2.27 22 22 0 0 1-9.71-2.34 21.9 21.9 0 0 0-8.3-2H66a14.38 14.38 0 0 0-9.45 3.35 19.2 19.2 0 0 0-4.72.86 13 13 0 0 1-3.32.64h-1.27a65.5 65.5 0 0 1-12-3.31c-.48.34-1 .7-1.41 1.06 5 2 11 3.62 13 3.74.53 0 1.1.1 1.66.1a13.8 13.8 0 0 0 3.75-.7c.73-.2 1.52-.42 2.36-.58-.22.22-.45.44-.67.67l-3.5 3.74a1.73 1.73 0 0 0-.43 1.91 2.44 2.44 0 0 0 .91 1 7.23 7.23 0 0 0 3.67.93 6.7 6.7 0 0 0 1.42-.15c1.45-.32 3-1.53 4.58-2.81a15.3 15.3 0 0 1 4.5-2.7 5.5 5.5 0 0 1 1.26-.17h.32a6.8 6.8 0 0 1 3.41 1.63c2.83 2.13 15.39 13.11 15.51 13.22a2.44 2.44 0 0 1 .76 1.85 2 2 0 0 1-1 1.6 3 3 0 0 1-1.64.51 2.7 2.7 0 0 1-1.46-.42s-4.35-4-5.93-5.31a1.3 1.3 0 0 0-.74-.39.4.4 0 0 0-.33.15c-.25.31 0 .73.35 1l5 5.06a2.27 2.27 0 0 1 .69 1.36 2.3 2.3 0 0 1-1.19 2.08 3.23 3.23 0 0 1-1.78.59 2.5 2.5 0 0 1-1.43-.44l-.72-.71c-1.32-1.29-2.68-2.63-3.68-3.46a1.28 1.28 0 0 0-.75-.39.4.4 0 0 0-.31.13c-.12.13-.2.35.09.73a1.6 1.6 0 0 0 .25.28l3.67 4.12a1.42 1.42 0 0 1 .08 1.76l-.13.17a3 3 0 0 1-.34.32 2.9 2.9 0 0 1-1.79.57 2.6 2.6 0 0 1-.5 0 1.35 1.35 0 0 1-.72-.3c-.2-.21-2-2.1-3.57-3.37a1.3 1.3 0 0 0-.72-.38.45.45 0 0 0-.33.14c-.3.34.15.83.35 1l3.12 3.45a.7.7 0 0 1-.11.21c-.12.16-.5.54-1.63.68a3 3 0 0 1-.42 0 7.2 7.2 0 0 1-3.06-.9 4.56 4.56 0 0 0 .45-2 4.68 4.68 0 0 0-4.67-4.67h-.16a4.15 4.15 0 0 0-2.37-4.38 4.8 4.8 0 0 0-2-.43 4 4 0 0 0-1.43.25 4 4 0 0 0-2.29-1.94 5.2 5.2 0 0 0-1.65-.28 4.4 4.4 0 0 0-2.61.84 3.91 3.91 0 0 0-5.85-.33c-1-.75-4.84-3.2-15.18-5.55-.5-.11-1.65-.44-2.35-.65a16 16 0 0 0-.27 1.7l2.29.54c10.56 2.34 14 4.78 14.63 5.24a4.2 4.2 0 0 0-.3 1.52 4 4 0 0 0 4 4 4.4 4.4 0 0 0 .72-.06 4.63 4.63 0 0 0 3 3.45 3.8 3.8 0 0 0 2.31.16 4.1 4.1 0 0 0 2.45 2.29 4.2 4.2 0 0 0 1.56.32 3.6 3.6 0 0 0 1.21-.21 4.66 4.66 0 0 0 7.65 1.48 8.8 8.8 0 0 0 4 1.17 6 6 0 0 0 .6 0 3.62 3.62 0 0 0 2.6-1.4 2 2 0 0 0 .16-.27 4.5 4.5 0 0 0 1.27.2 4.23 4.23 0 0 0 2.57-.92 3.5 3.5 0 0 0 1.51-2.19 4 4 0 0 0 .86.09 4.76 4.76 0 0 0 2.63-.86 3.77 3.77 0 0 0 1.88-3.37 5 5 0 0 0 .87.09 4.5 4.5 0 0 0 2.45-.76 3.58 3.58 0 0 0 1.71-2.78 3.76 3.76 0 0 0-.54-2.24 100 100 0 0 1 16.29-5.1c0-.57-.13-1.14-.23-1.69a93.4 93.4 0 0 0-17.21 5.57M61.41 43.62a3.17 3.17 0 0 1-3.19-3c0-.15 0-.54-.35-.54a.64.64 0 0 0-.39.2 2.2 2.2 0 0 1-1.56.71 2.7 2.7 0 0 1-1-.22c-1.82-.74-1.85-2-1.78-2.49a.45.45 0 0 0-.06-.38l-.11-.1h-.12a.53.53 0 0 0-.31.12 2.67 2.67 0 0 1-1.55.55 2.4 2.4 0 0 1-.86-.16A3.34 3.34 0 0 1 48 34.39a.35.35 0 0 0-.1-.32l-.17-.14-.16.16a2.49 2.49 0 1 1 .75-2.09l.08.67.37-.57a3.65 3.65 0 0 1 2.89-1.58 3.4 3.4 0 0 1 1.08.17A2.51 2.51 0 0 1 54.51 33c0 .32.25.34.3.34a.43.43 0 0 0 .29-.15 2.5 2.5 0 0 1 1.83-.77 3.4 3.4 0 0 1 1.37.31c2.34 1 1.28 4 1.27 4-.21.49-.21.71 0 .83l.09.05h.07a2 2 0 0 0 .45-.12 4 4 0 0 1 1.25-.28 3.24 3.24 0 0 1 3.2 3.2 3.2 3.2 0 0 1-3.22 3.21" class="cls-1"/></g></g></g></svg></span><span class="nm">Mercado Livre</span><div class="inp"><select id="rMl"><option value="classico">Clássico</option><option value="premium">Premium</option></select></div></div>
+              <div class="r"><span class="mp-logo tiktok" style="width:26px;height:26px;border-radius:7px"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="#25F4EE" transform="translate(-.8,-.6)" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#FE2C55" transform="translate(.8,.6)" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#fff" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span><span class="nm">TikTok Shop</span><div class="inp"><select id="rTt"><option value="0">Sem frete grátis</option><option value="1">Frete grátis (+6%)</option></select></div></div>
+              <div class="r"><span class="mp-logo shein" style="width:26px;height:26px;border-radius:7px;font-size:6.2px">SHEIN</span><span class="nm">Shein</span><div class="inp"><select id="rShein"><option value="16">Comissão 16%</option><option value="18">Comissão 18%</option><option value="20" selected>Comissão 20%</option></select></div></div>
+            </div>
+            <div class="sw" style="margin-top:10px"><label class="tog"><input type="checkbox" id="cArred" checked><span></span></label><label class="t" for="cArred">Terminar o preço em ,99</label></div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="cDeOn" checked><span></span></label><label class="t" for="cDeOn">Mostrar preço "de" (riscado)</label><div class="inp"><input id="cDe" type="number" value="30" step="5"><em class="suf">%</em></div></div>
+          </div>
+        </aside>
+        <div>
+          <div class="best hidden" id="melhor"></div>
+          <div class="res-grid" id="resultados"></div>
+          <p class="note">Taxas de outubro de 2026. Shopee: comissão e taxa fixa por faixa de preço (CNPJ e CPF). Mercado Livre: comissão oficial da categoria e frete grátis obrigatório a partir de R$ 79 pelo peso. TikTok Shop: 10% + R$ 4 até R$ 49,99 e 6% + R$ 6 acima; frete grátis opcional de 6% (até R$ 50). Shein: 16% a 20% conforme a categoria, sem taxa fixa. Confira sempre no painel do seu marketplace.</p>
+        </div>
       </div>
-
-      <div id="calc" class="painel">
-        <div class="titulo-sec"><h2>Calculadora</h2><p>Todas as taxas são descontadas do preço de venda. O preço sugerido já cobre tudo e entrega o lucro que você quer.</p></div>
-        <div class="modo" id="calcModo"><button data-m="lucro" class="on">Quero ganhar</button><button data-m="receber">Quero receber</button><button data-m="preco">Já tenho o preço</button></div>
-
-        <div class="grid g4" style="margin-top:16px">
-          <label class="campo">Nome do produto <span class="dica">(acha a taxa do Mercado Livre)</span><input type="text" id="cProduto" placeholder="Ex.: vestido midi tule"></label>
-          <label class="campo">Custo do produto (R$)<input type="number" id="cCusto" min="0" step="0.01" placeholder="0,00"></label>
-          <label class="campo" id="campoMeta">Lucro desejado<div style="display:flex;gap:6px"><input type="number" id="cMeta" min="0" step="0.01" placeholder="0"><select id="cMetaTipo" style="width:92px"><option value="pct">% venda</option><option value="rs">R$</option></select></div></label>
-          <label class="campo hidden" id="campoPreco">Preço de venda (R$)<input type="number" id="cPreco" min="0" step="0.01" placeholder="0,00"></label>
-          <label class="campo">Peso com embalagem (kg)<input type="number" id="cPeso" min="0" step="0.05" value="0.5"><span class="dica">frete do Mercado Livre</span></label>
-        </div>
-
-        <div class="bloco"><h3>Custos e imposto</h3>
-          <div class="grid g4">
-            <label class="campo">Embalagem (R$)<input type="number" id="cEmb" min="0" step="0.01" placeholder="0,00"></label>
-            <label class="campo">Custo operacional (R$ por venda)<input type="number" id="cOper" min="0" step="0.01" placeholder="0,00"><span class="dica">etiqueta, mão de obra, envio</span></label>
-            <label class="campo">Imposto (% da venda)<input type="number" id="cImp" min="0" step="0.1" placeholder="Ex.: 6"></label>
-            <label class="campo">Preço "de" (riscado)<div style="display:flex;gap:6px;align-items:center"><input type="number" id="cDe" min="0" step="1" value="30"><span class="nota">% acima</span></div></label>
-          </div>
-        </div>
-
-        <div class="bloco"><h3>Opcionais (liga e desliga)</h3>
-          <div class="grid g4">
-            <label class="opc"><input type="checkbox" id="oCupom"><span class="nome">Cupom</span><input type="number" id="vCupom" value="3" step="0.5">%</label>
-            <label class="opc"><input type="checkbox" id="oRel"><span class="nome">Oferta relâmpago</span><input type="number" id="vRel" value="5" step="0.5">%</label>
-            <label class="opc"><input type="checkbox" id="oAds"><span class="nome">Anúncios (Ads)</span><input type="number" id="vAds" value="10" step="0.5">%</label>
-            <label class="opc"><input type="checkbox" id="oAfil"><span class="nome">Afiliados</span><input type="number" id="vAfil" value="5" step="0.5">%</label>
-          </div>
-        </div>
-
-        <div class="bloco"><h3>Regras de cada marketplace</h3>
-          <div class="grid g4">
-            <label class="campo">Shopee: vendedor<select id="rShopee"><option value="cnpj">CNPJ</option><option value="cpf">CPF</option></select></label>
-            <label class="campo">Mercado Livre: anúncio<select id="rMl"><option value="classico">Clássico</option><option value="premium">Premium</option></select></label>
-            <label class="opc" style="align-self:end"><input type="checkbox" id="rTtFrete"><span class="nome">TikTok: frete grátis (+6%, teto R$ 50)</span></label>
-            <label class="campo">Shein: comissão da categoria<select id="rShein"><option value="16">16%</option><option value="18">18%</option><option value="20" selected>20%</option></select></label>
-          </div>
-          <p class="nota" id="notaMl" style="margin-top:10px">Mercado Livre: digite o nome do produto pra usar a comissão real da categoria (sem nome, usa 14% no Clássico e 19% no Premium).</p>
-        </div>
-
-        <label class="opc" style="margin-top:14px;max-width:340px"><input type="checkbox" id="cArred" checked><span class="nome">Arredondar o preço para ,99</span></label>
-        <div class="resultados" id="resultados"></div>
-        <p class="nota" style="margin-top:14px">Taxas de out/2026: Shopee (tabela por faixa de preço, mar/2026), TikTok Shop (jul/2026), Mercado Livre (comissão oficial da categoria + frete por peso a partir de R$ 79), Shein (16% a 20% por categoria, sem taxa fixa). Confira sempre no painel do seu marketplace.</p>
       </div>
     </section>
 
     <!-- IA -->
     <section id="abaIa" class="hidden">
-      <div class="painel">
-        <div class="titulo-sec"><h2>Anúncio com IA</h2><p>Mesmas regras de título e descrição que a LB Marketplace usa nas lojas dos clientes.</p></div>
-        <div class="grid g2">
-          <label class="campo">Descreva o produto<textarea id="iaProduto" placeholder="O que é, tecido/material, medidas, cores, detalhes. Só informações reais."></textarea></label>
-          <div class="grid">
-            <label class="campo">Marketplace<select id="iaMp"><option value="shopee">Shopee</option><option value="ml">Mercado Livre</option><option value="tiktok">TikTok Shop</option></select></label>
-            <label class="campo">Fotos do produto <span class="dica">(até 5; a 1ª é a principal)</span><input type="file" id="iaFotos" accept="image/*" multiple></label>
-            <div class="fotos-env" id="iaPrev"></div>
+      <div class="page-h"><div><h1>Anúncio com IA</h1><p>Mesmas regras de título, descrição e foto que a LB Marketplace usa nas lojas dos clientes.</p></div></div>
+      <div class="ia">
+        <div class="panel">
+          <div class="step"><div class="step-h"><b>1</b><div><h3>Onde vai anunciar?</h3><p>Cada marketplace tem regra própria de título e foto.</p></div></div>
+            <div class="mp-pick" id="iaMp">
+              <button class="mp-opt on" data-mp="shopee"><span class="mp-logo shopee" style="width:32px;height:32px;border-radius:8px"><svg width="20" height="20" viewBox="0 0 24 24"><path fill="#fff" d="M15.9414 17.9633c.229-1.879-.981-3.077-4.1758-4.0969-1.548-.528-2.277-1.22-2.26-2.1719.065-1.056 1.048-1.825 2.352-1.85a5.2898 5.2898 0 0 1 2.8838.89c.116.072.197.06.263-.039.09-.145.315-.494.39-.62.051-.081.061-.187-.068-.281-.185-.1369-.704-.4149-.983-.5319a6.4697 6.4697 0 0 0-2.5118-.514c-1.909.008-3.4129 1.215-3.5389 2.826-.082 1.1629.494 2.1078 1.73 2.8278.262.152 1.6799.716 2.2438.892 1.774.552 2.695 1.5419 2.478 2.6969-.197 1.047-1.299 1.7239-2.818 1.7439-1.2039-.046-2.2878-.537-3.1278-1.19l-.141-.11c-.104-.08-.218-.075-.287.03-.05.077-.376.547-.458.67-.077.108-.035.168.045.234.35.293.817.613 1.134.775a6.7097 6.7097 0 0 0 2.8289.727 4.9048 4.9048 0 0 0 2.0759-.354c1.095-.465 1.8029-1.394 1.9449-2.554zM11.9986 1.4009c-2.068 0-3.7539 1.95-3.8329 4.3899h7.6657c-.08-2.44-1.765-4.3899-3.8328-4.3899zm7.8516 22.5981-.08.001-15.7843-.002c-1.074-.04-1.863-.91-1.971-1.991l-.01-.195L1.298 6.2858a.459.459 0 0 1 .45-.494h4.9748C6.8448 2.568 9.1607 0 11.9996 0c2.8388 0 5.1537 2.5689 5.2757 5.7898h4.9678a.459.459 0 0 1 .458.483l-.773 15.5883-.007.131c-.094 1.094-.979 1.9769-2.0709 2.0059z"/></svg></span><span><b>Shopee</b><small>Título até 100 · foto 3:4</small></span></button>
+              <button class="mp-opt" data-mp="ml"><span class="mp-logo ml" style="width:32px;height:32px;border-radius:8px"><svg width="28" height="28" viewBox="0 0 16.933 16.933"><defs><style>.cls-1{fill:#2d3277}.cls-3{fill:#fff}</style></defs><g><g transform="scale(.13168)"><g transform="translate(-37.295 20.094)scale(1.57694)"><path d="M105.19 26.67C105.19 12 86.94 0 64.42 0S23.65 12 23.65 26.67v1.56c0 15.59 16 28.21 40.77 28.21 25 0 40.78-12.62 40.78-28.21z" class="cls-1"/><path fill="#ffd100" d="M103.63 26.65c0 13.85-17.55 25.08-39.2 25.08S25.22 40.5 25.22 26.65 42.77 1.57 64.43 1.57s39.2 11.23 39.2 25.08"/><path d="M51.41 18.74s-.41.45-.16.77c.62.79 2.53 1.24 4.46.81 1.15-.26 2.63-1.43 4.06-2.56a15.9 15.9 0 0 1 4.62-3 5.23 5.23 0 0 1 3.38-.09 10.1 10.1 0 0 1 3.07 1.79c2.69 2 13.47 11.43 15.34 13.06A93 93 0 0 1 103.41 24c-.78-4.83-3.72-9.25-8.18-12.87-6.22 2.61-13.81 4-21.23.34a20.8 20.8 0 0 0-8-1.82c-5.89.14-8.44 2.69-11.14 5.39z" class="cls-3"/><path d="M85.74 30.59c-.13-.11-12.68-11.09-15.53-13.23a6.86 6.86 0 0 0-3.52-1.67 4.6 4.6 0 0 0-1.68.16 15.2 15.2 0 0 0-4.59 2.73c-1.59 1.27-3.09 2.46-4.48 2.77a7.24 7.24 0 0 1-4.94-.74 2.2 2.2 0 0 1-.82-.9 1.53 1.53 0 0 1 .42-1.64l3.47-3.75 1.22-1.2a23 23 0 0 0-3.16.71 13.5 13.5 0 0 1-3.68.69 35 35 0 0 1-3.76-.59 55.3 55.3 0 0 1-10-3.61c-4.93 3.67-8.22 8.25-9.17 13.3.71.19 1.85.53 2.33.64 11.14 2.47 14.61 5 15.24 5.56a3.69 3.69 0 0 1 5.79.34 4.25 4.25 0 0 1 2.66-.93 4.8 4.8 0 0 1 1.59.28 3.6 3.6 0 0 1 2.24 2 3.7 3.7 0 0 1 1.55-.33 4.7 4.7 0 0 1 1.86.41A4 4 0 0 1 61 36h.44a4.42 4.42 0 0 1 4.42 4.42 4.3 4.3 0 0 1-.53 2.09 7.1 7.1 0 0 0 3.84 1 2.43 2.43 0 0 0 1.79-.79c.11-.15.23-.34.12-.47l-3.17-3.45s-.52-.49-.35-.68.5.08.72.27c1.61 1.34 3.56 3.36 3.56 3.36s.16.27.88.4a3.22 3.22 0 0 0 2.49-.58 4 4 0 0 0 .55-.55 1.66 1.66 0 0 0-.13-2.02L72 34.85s-.53-.49-.35-.68.5.09.73.28c1.16 1 2.81 2.62 4.38 4.16a3 3 0 0 0 3.52-.12 2.53 2.53 0 0 0 1.31-2.3 2.65 2.65 0 0 0-.78-1.54l-5-5s-.53-.45-.35-.68.5.08.73.27c1.59 1.34 5.92 5.31 5.92 5.31a3.06 3.06 0 0 0 3.4-.07 2.3 2.3 0 0 0 1.12-1.8 2.69 2.69 0 0 0-.89-2.09" class="cls-3"/><path d="M61.41 37a11.6 11.6 0 0 0-1.74.38c-.06 0 0-.35.12-.53s1.1-3.26-1.4-4.33a2.94 2.94 0 0 0-3.48.52c-.1.11-.15.1-.16 0a2.75 2.75 0 0 0-1.94-2.56A3.76 3.76 0 0 0 48.56 32a2.72 2.72 0 1 0-.81 2.32.11.11 0 0 1 0 .09A3.58 3.58 0 0 0 50 38.49a2.66 2.66 0 0 0 2.64-.4c.21-.16.25-.09.22.11-.1.63 0 2 1.92 2.76a2.47 2.47 0 0 0 2.86-.53c.24-.23.31-.19.32.15A3.44 3.44 0 1 0 61.41 37" class="cls-3"/><path d="M86.22 29.28c-3.86-3.38-12.8-11.15-15.22-13a10.8 10.8 0 0 0-3.16-1.84 5.2 5.2 0 0 0-1.55-.24 6.5 6.5 0 0 0-2 .33 16 16 0 0 0-4.64 2.93l-.07.06c-1.41 1.12-2.86 2.27-4 2.52a6.5 6.5 0 0 1-1.46.16 3.74 3.74 0 0 1-2.75-.88c-.07-.09 0-.23.13-.43l3.5-3.66c2.66-2.66 5.18-5.18 11-5.31h.29a20.6 20.6 0 0 1 7.62 1.81 23.7 23.7 0 0 0 10.38 2.49 27.2 27.2 0 0 0 11.4-2.73c-.45-.38-.91-.74-1.38-1.09a25.15 25.15 0 0 1-10 2.27 22 22 0 0 1-9.71-2.34 21.9 21.9 0 0 0-8.3-2H66a14.38 14.38 0 0 0-9.45 3.35 19.2 19.2 0 0 0-4.72.86 13 13 0 0 1-3.32.64h-1.27a65.5 65.5 0 0 1-12-3.31c-.48.34-1 .7-1.41 1.06 5 2 11 3.62 13 3.74.53 0 1.1.1 1.66.1a13.8 13.8 0 0 0 3.75-.7c.73-.2 1.52-.42 2.36-.58-.22.22-.45.44-.67.67l-3.5 3.74a1.73 1.73 0 0 0-.43 1.91 2.44 2.44 0 0 0 .91 1 7.23 7.23 0 0 0 3.67.93 6.7 6.7 0 0 0 1.42-.15c1.45-.32 3-1.53 4.58-2.81a15.3 15.3 0 0 1 4.5-2.7 5.5 5.5 0 0 1 1.26-.17h.32a6.8 6.8 0 0 1 3.41 1.63c2.83 2.13 15.39 13.11 15.51 13.22a2.44 2.44 0 0 1 .76 1.85 2 2 0 0 1-1 1.6 3 3 0 0 1-1.64.51 2.7 2.7 0 0 1-1.46-.42s-4.35-4-5.93-5.31a1.3 1.3 0 0 0-.74-.39.4.4 0 0 0-.33.15c-.25.31 0 .73.35 1l5 5.06a2.27 2.27 0 0 1 .69 1.36 2.3 2.3 0 0 1-1.19 2.08 3.23 3.23 0 0 1-1.78.59 2.5 2.5 0 0 1-1.43-.44l-.72-.71c-1.32-1.29-2.68-2.63-3.68-3.46a1.28 1.28 0 0 0-.75-.39.4.4 0 0 0-.31.13c-.12.13-.2.35.09.73a1.6 1.6 0 0 0 .25.28l3.67 4.12a1.42 1.42 0 0 1 .08 1.76l-.13.17a3 3 0 0 1-.34.32 2.9 2.9 0 0 1-1.79.57 2.6 2.6 0 0 1-.5 0 1.35 1.35 0 0 1-.72-.3c-.2-.21-2-2.1-3.57-3.37a1.3 1.3 0 0 0-.72-.38.45.45 0 0 0-.33.14c-.3.34.15.83.35 1l3.12 3.45a.7.7 0 0 1-.11.21c-.12.16-.5.54-1.63.68a3 3 0 0 1-.42 0 7.2 7.2 0 0 1-3.06-.9 4.56 4.56 0 0 0 .45-2 4.68 4.68 0 0 0-4.67-4.67h-.16a4.15 4.15 0 0 0-2.37-4.38 4.8 4.8 0 0 0-2-.43 4 4 0 0 0-1.43.25 4 4 0 0 0-2.29-1.94 5.2 5.2 0 0 0-1.65-.28 4.4 4.4 0 0 0-2.61.84 3.91 3.91 0 0 0-5.85-.33c-1-.75-4.84-3.2-15.18-5.55-.5-.11-1.65-.44-2.35-.65a16 16 0 0 0-.27 1.7l2.29.54c10.56 2.34 14 4.78 14.63 5.24a4.2 4.2 0 0 0-.3 1.52 4 4 0 0 0 4 4 4.4 4.4 0 0 0 .72-.06 4.63 4.63 0 0 0 3 3.45 3.8 3.8 0 0 0 2.31.16 4.1 4.1 0 0 0 2.45 2.29 4.2 4.2 0 0 0 1.56.32 3.6 3.6 0 0 0 1.21-.21 4.66 4.66 0 0 0 7.65 1.48 8.8 8.8 0 0 0 4 1.17 6 6 0 0 0 .6 0 3.62 3.62 0 0 0 2.6-1.4 2 2 0 0 0 .16-.27 4.5 4.5 0 0 0 1.27.2 4.23 4.23 0 0 0 2.57-.92 3.5 3.5 0 0 0 1.51-2.19 4 4 0 0 0 .86.09 4.76 4.76 0 0 0 2.63-.86 3.77 3.77 0 0 0 1.88-3.37 5 5 0 0 0 .87.09 4.5 4.5 0 0 0 2.45-.76 3.58 3.58 0 0 0 1.71-2.78 3.76 3.76 0 0 0-.54-2.24 100 100 0 0 1 16.29-5.1c0-.57-.13-1.14-.23-1.69a93.4 93.4 0 0 0-17.21 5.57M61.41 43.62a3.17 3.17 0 0 1-3.19-3c0-.15 0-.54-.35-.54a.64.64 0 0 0-.39.2 2.2 2.2 0 0 1-1.56.71 2.7 2.7 0 0 1-1-.22c-1.82-.74-1.85-2-1.78-2.49a.45.45 0 0 0-.06-.38l-.11-.1h-.12a.53.53 0 0 0-.31.12 2.67 2.67 0 0 1-1.55.55 2.4 2.4 0 0 1-.86-.16A3.34 3.34 0 0 1 48 34.39a.35.35 0 0 0-.1-.32l-.17-.14-.16.16a2.49 2.49 0 1 1 .75-2.09l.08.67.37-.57a3.65 3.65 0 0 1 2.89-1.58 3.4 3.4 0 0 1 1.08.17A2.51 2.51 0 0 1 54.51 33c0 .32.25.34.3.34a.43.43 0 0 0 .29-.15 2.5 2.5 0 0 1 1.83-.77 3.4 3.4 0 0 1 1.37.31c2.34 1 1.28 4 1.27 4-.21.49-.21.71 0 .83l.09.05h.07a2 2 0 0 0 .45-.12 4 4 0 0 1 1.25-.28 3.24 3.24 0 0 1 3.2 3.2 3.2 3.2 0 0 1-3.22 3.21" class="cls-1"/></g></g></g></svg></span><span><b>Mercado Livre</b><small>Título até 60 · foto 4:5</small></span></button>
+              <button class="mp-opt" data-mp="tiktok"><span class="mp-logo tiktok" style="width:32px;height:32px;border-radius:8px"><svg width="19" height="19" viewBox="0 0 24 24"><path fill="#25F4EE" transform="translate(-.8,-.6)" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#FE2C55" transform="translate(.8,.6)" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#fff" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span><span><b>TikTok Shop</b><small>Título detalhado · foto 3:4</small></span></button>
+            </div></div>
+          <div class="step"><div class="step-h"><b>2</b><div><h3>Fotos do produto</h3><p>Até 5 fotos reais. A primeira vira a base das fotos profissionais.</p></div></div>
+            <label class="drop" id="drop"><input type="file" id="iaFotos" accept="image/*" multiple hidden>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+              <b>Clique ou arraste as fotos aqui</b><small>JPG ou PNG · até 5 fotos</small></label>
+            <div class="thumbs" id="iaPrev"></div></div>
+          <div class="step"><div class="step-h"><b>3</b><div><h3>Descreva o produto</h3><p>Só informações reais: a IA não inventa o que você não disser.</p></div></div>
+            <div class="inp"><textarea id="iaProduto" placeholder="Ex.: Vestido midi de tule com forro, alça regulável, cores preto e verde, tamanhos P ao GG. Comprimento 110 cm."></textarea></div></div>
+        </div>
+        <aside class="panel gen">
+          <h3>O que você quer criar?</h3>
+          <div class="opt"><div class="opt-h"><div><b>Título e descrição</b><small>Otimizados pra busca do marketplace</small></div><span class="cost">2 créditos</span></div>
+            <button class="btn prim" style="width:100%" id="btnIaTexto">Gerar texto</button></div>
+          <div class="opt"><div class="opt-h"><div><b>Fotos profissionais</b><small>A partir da sua foto, + título e descrição</small></div><span class="cost" id="custoFotos">50 créditos</span></div>
+            <div class="qty">Quantidade<div class="inp"><select id="iaQtd"><option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option><option>6</option></select></div><span style="color:var(--muted)">× 10 créditos</span></div>
+            <button class="btn gold" style="width:100%" id="btnIaFotos">Gerar fotos</button></div>
+          <div class="rules">
+            <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Mantém a peça, a cor e a estampa da sua foto</div>
+            <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Sem logo, texto inventado ou acessório que não vem junto</div>
+            <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Se a IA falhar, os créditos voltam na hora</div>
           </div>
-        </div>
-        <div class="bloco grid g2">
-          <div class="opc" style="flex-wrap:wrap"><span class="nome"><b>Título + descrição</b><br><span class="nota">2 créditos</span></span><button class="btn gold sm" id="btnIaTexto">Gerar texto</button></div>
-          <div class="opc" style="flex-wrap:wrap"><span class="nome"><b>Fotos profissionais</b> + título e descrição<br><span class="nota">10 créditos por foto</span></span><select id="iaQtd" style="width:auto"><option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option><option>6</option></select><button class="btn gold sm" id="btnIaFotos">Gerar fotos</button></div>
-        </div>
-        <div id="iaStatus" style="margin-top:16px"></div>
-        <div id="iaResultado" class="grid" style="margin-top:12px"></div>
+        </aside>
       </div>
+      <div id="iaOut" class="panel out hidden"></div>
     </section>
 
     <!-- CRÉDITOS -->
     <section id="abaCreditos" class="hidden">
-      <div class="painel">
-        <div class="titulo-sec"><h2>Créditos de IA</h2><p id="saldoTexto"></p></div>
-        <div class="pacotes" id="pacotes"></div>
-        <label class="campo" style="max-width:320px;margin-top:16px">CPF ou CNPJ <span class="dica">(só na primeira compra)</span><input type="text" id="cpfCreditos" inputmode="numeric"></label>
-        <div class="aviso" id="avisoCreditos"></div>
-        <p class="nota" style="margin-top:12px">Foto profissional com IA = 10 créditos · Título + descrição = 2 créditos. Se a IA falhar, os créditos voltam pra sua conta na hora.</p>
-      </div>
+      <div class="page-h"><div><h1>Créditos de IA</h1><p>Recarregue quando precisar. Créditos não vencem.</p></div></div>
+      <div class="panel bal"><div><div class="lbl">Seu saldo</div><div class="big num" id="saldoGrande">—</div></div>
+        <div class="eq"><div><b>10 créditos</b>1 foto profissional</div><div><b>2 créditos</b>título + descrição</div></div></div>
+      <div class="packs" id="pacotes"></div>
+      <div class="doc-row"><label class="f"><span>CPF ou CNPJ <i>(pra emitir a cobrança)</i></span><div class="inp"><input id="cpfCreditos" inputmode="numeric" placeholder="000.000.000-00"></div></label></div>
+      <p class="erro" id="avisoCreditos"></p>
     </section>
   </main>
-  <footer>LB Precifica · LB Marketplace Assessoria · CNPJ 58.943.847/0001-90</footer>
+  <footer class="site"><div class="wrap"><span>LB Precifica · LB Marketplace Assessoria · CNPJ 58.943.847/0001-90</span><span>Dúvidas? <a href="https://wa.me/5511991277027" target="_blank" rel="noopener">Fale com a LB no WhatsApp</a></span></div></footer>
 </div>
 
-<div id="toast" class="toast hidden"></div>
+<div id="toast" class="toast hidden" role="status"></div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
@@ -281,9 +568,11 @@ const auth = getAuth(app);
 const $ = (id) => document.getElementById(id);
 const brl = (v) => (Number(v) || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const toast = (t) => { const e = $("toast"); e.textContent = t; e.classList.remove("hidden"); clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.add("hidden"), 4000); };
-let token = null, perfil = null, fotoUsuario = null;
-try { token = localStorage.getItem("lbp_token"); } catch {}
+const toast = (t) => { const e = $("toast"); e.textContent = t; e.classList.remove("hidden"); clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.add("hidden"), 4500); };
+const LOGO = { shopee: (px) => `<span class="mp-logo shopee" style="width:${px}px;height:${px}px;border-radius:${Math.max(6,Math.round(px*.26))}px"><svg width="${Math.round(px*0.62)}" height="${Math.round(px*0.62)}" viewBox="0 0 24 24"><path fill="#fff" d="M15.9414 17.9633c.229-1.879-.981-3.077-4.1758-4.0969-1.548-.528-2.277-1.22-2.26-2.1719.065-1.056 1.048-1.825 2.352-1.85a5.2898 5.2898 0 0 1 2.8838.89c.116.072.197.06.263-.039.09-.145.315-.494.39-.62.051-.081.061-.187-.068-.281-.185-.1369-.704-.4149-.983-.5319a6.4697 6.4697 0 0 0-2.5118-.514c-1.909.008-3.4129 1.215-3.5389 2.826-.082 1.1629.494 2.1078 1.73 2.8278.262.152 1.6799.716 2.2438.892 1.774.552 2.695 1.5419 2.478 2.6969-.197 1.047-1.299 1.7239-2.818 1.7439-1.2039-.046-2.2878-.537-3.1278-1.19l-.141-.11c-.104-.08-.218-.075-.287.03-.05.077-.376.547-.458.67-.077.108-.035.168.045.234.35.293.817.613 1.134.775a6.7097 6.7097 0 0 0 2.8289.727 4.9048 4.9048 0 0 0 2.0759-.354c1.095-.465 1.8029-1.394 1.9449-2.554zM11.9986 1.4009c-2.068 0-3.7539 1.95-3.8329 4.3899h7.6657c-.08-2.44-1.765-4.3899-3.8328-4.3899zm7.8516 22.5981-.08.001-15.7843-.002c-1.074-.04-1.863-.91-1.971-1.991l-.01-.195L1.298 6.2858a.459.459 0 0 1 .45-.494h4.9748C6.8448 2.568 9.1607 0 11.9996 0c2.8388 0 5.1537 2.5689 5.2757 5.7898h4.9678a.459.459 0 0 1 .458.483l-.773 15.5883-.007.131c-.094 1.094-.979 1.9769-2.0709 2.0059z"/></svg></span>`, ml: (px) => `<span class="mp-logo ml" style="width:${px}px;height:${px}px;border-radius:${Math.max(6,Math.round(px*.26))}px"><svg width="${Math.round(px*0.86)}" height="${Math.round(px*0.86)}" viewBox="0 0 16.933 16.933"><defs><style>.cls-1{fill:#2d3277}.cls-3{fill:#fff}</style></defs><g><g transform="scale(.13168)"><g transform="translate(-37.295 20.094)scale(1.57694)"><path d="M105.19 26.67C105.19 12 86.94 0 64.42 0S23.65 12 23.65 26.67v1.56c0 15.59 16 28.21 40.77 28.21 25 0 40.78-12.62 40.78-28.21z" class="cls-1"/><path fill="#ffd100" d="M103.63 26.65c0 13.85-17.55 25.08-39.2 25.08S25.22 40.5 25.22 26.65 42.77 1.57 64.43 1.57s39.2 11.23 39.2 25.08"/><path d="M51.41 18.74s-.41.45-.16.77c.62.79 2.53 1.24 4.46.81 1.15-.26 2.63-1.43 4.06-2.56a15.9 15.9 0 0 1 4.62-3 5.23 5.23 0 0 1 3.38-.09 10.1 10.1 0 0 1 3.07 1.79c2.69 2 13.47 11.43 15.34 13.06A93 93 0 0 1 103.41 24c-.78-4.83-3.72-9.25-8.18-12.87-6.22 2.61-13.81 4-21.23.34a20.8 20.8 0 0 0-8-1.82c-5.89.14-8.44 2.69-11.14 5.39z" class="cls-3"/><path d="M85.74 30.59c-.13-.11-12.68-11.09-15.53-13.23a6.86 6.86 0 0 0-3.52-1.67 4.6 4.6 0 0 0-1.68.16 15.2 15.2 0 0 0-4.59 2.73c-1.59 1.27-3.09 2.46-4.48 2.77a7.24 7.24 0 0 1-4.94-.74 2.2 2.2 0 0 1-.82-.9 1.53 1.53 0 0 1 .42-1.64l3.47-3.75 1.22-1.2a23 23 0 0 0-3.16.71 13.5 13.5 0 0 1-3.68.69 35 35 0 0 1-3.76-.59 55.3 55.3 0 0 1-10-3.61c-4.93 3.67-8.22 8.25-9.17 13.3.71.19 1.85.53 2.33.64 11.14 2.47 14.61 5 15.24 5.56a3.69 3.69 0 0 1 5.79.34 4.25 4.25 0 0 1 2.66-.93 4.8 4.8 0 0 1 1.59.28 3.6 3.6 0 0 1 2.24 2 3.7 3.7 0 0 1 1.55-.33 4.7 4.7 0 0 1 1.86.41A4 4 0 0 1 61 36h.44a4.42 4.42 0 0 1 4.42 4.42 4.3 4.3 0 0 1-.53 2.09 7.1 7.1 0 0 0 3.84 1 2.43 2.43 0 0 0 1.79-.79c.11-.15.23-.34.12-.47l-3.17-3.45s-.52-.49-.35-.68.5.08.72.27c1.61 1.34 3.56 3.36 3.56 3.36s.16.27.88.4a3.22 3.22 0 0 0 2.49-.58 4 4 0 0 0 .55-.55 1.66 1.66 0 0 0-.13-2.02L72 34.85s-.53-.49-.35-.68.5.09.73.28c1.16 1 2.81 2.62 4.38 4.16a3 3 0 0 0 3.52-.12 2.53 2.53 0 0 0 1.31-2.3 2.65 2.65 0 0 0-.78-1.54l-5-5s-.53-.45-.35-.68.5.08.73.27c1.59 1.34 5.92 5.31 5.92 5.31a3.06 3.06 0 0 0 3.4-.07 2.3 2.3 0 0 0 1.12-1.8 2.69 2.69 0 0 0-.89-2.09" class="cls-3"/><path d="M61.41 37a11.6 11.6 0 0 0-1.74.38c-.06 0 0-.35.12-.53s1.1-3.26-1.4-4.33a2.94 2.94 0 0 0-3.48.52c-.1.11-.15.1-.16 0a2.75 2.75 0 0 0-1.94-2.56A3.76 3.76 0 0 0 48.56 32a2.72 2.72 0 1 0-.81 2.32.11.11 0 0 1 0 .09A3.58 3.58 0 0 0 50 38.49a2.66 2.66 0 0 0 2.64-.4c.21-.16.25-.09.22.11-.1.63 0 2 1.92 2.76a2.47 2.47 0 0 0 2.86-.53c.24-.23.31-.19.32.15A3.44 3.44 0 1 0 61.41 37" class="cls-3"/><path d="M86.22 29.28c-3.86-3.38-12.8-11.15-15.22-13a10.8 10.8 0 0 0-3.16-1.84 5.2 5.2 0 0 0-1.55-.24 6.5 6.5 0 0 0-2 .33 16 16 0 0 0-4.64 2.93l-.07.06c-1.41 1.12-2.86 2.27-4 2.52a6.5 6.5 0 0 1-1.46.16 3.74 3.74 0 0 1-2.75-.88c-.07-.09 0-.23.13-.43l3.5-3.66c2.66-2.66 5.18-5.18 11-5.31h.29a20.6 20.6 0 0 1 7.62 1.81 23.7 23.7 0 0 0 10.38 2.49 27.2 27.2 0 0 0 11.4-2.73c-.45-.38-.91-.74-1.38-1.09a25.15 25.15 0 0 1-10 2.27 22 22 0 0 1-9.71-2.34 21.9 21.9 0 0 0-8.3-2H66a14.38 14.38 0 0 0-9.45 3.35 19.2 19.2 0 0 0-4.72.86 13 13 0 0 1-3.32.64h-1.27a65.5 65.5 0 0 1-12-3.31c-.48.34-1 .7-1.41 1.06 5 2 11 3.62 13 3.74.53 0 1.1.1 1.66.1a13.8 13.8 0 0 0 3.75-.7c.73-.2 1.52-.42 2.36-.58-.22.22-.45.44-.67.67l-3.5 3.74a1.73 1.73 0 0 0-.43 1.91 2.44 2.44 0 0 0 .91 1 7.23 7.23 0 0 0 3.67.93 6.7 6.7 0 0 0 1.42-.15c1.45-.32 3-1.53 4.58-2.81a15.3 15.3 0 0 1 4.5-2.7 5.5 5.5 0 0 1 1.26-.17h.32a6.8 6.8 0 0 1 3.41 1.63c2.83 2.13 15.39 13.11 15.51 13.22a2.44 2.44 0 0 1 .76 1.85 2 2 0 0 1-1 1.6 3 3 0 0 1-1.64.51 2.7 2.7 0 0 1-1.46-.42s-4.35-4-5.93-5.31a1.3 1.3 0 0 0-.74-.39.4.4 0 0 0-.33.15c-.25.31 0 .73.35 1l5 5.06a2.27 2.27 0 0 1 .69 1.36 2.3 2.3 0 0 1-1.19 2.08 3.23 3.23 0 0 1-1.78.59 2.5 2.5 0 0 1-1.43-.44l-.72-.71c-1.32-1.29-2.68-2.63-3.68-3.46a1.28 1.28 0 0 0-.75-.39.4.4 0 0 0-.31.13c-.12.13-.2.35.09.73a1.6 1.6 0 0 0 .25.28l3.67 4.12a1.42 1.42 0 0 1 .08 1.76l-.13.17a3 3 0 0 1-.34.32 2.9 2.9 0 0 1-1.79.57 2.6 2.6 0 0 1-.5 0 1.35 1.35 0 0 1-.72-.3c-.2-.21-2-2.1-3.57-3.37a1.3 1.3 0 0 0-.72-.38.45.45 0 0 0-.33.14c-.3.34.15.83.35 1l3.12 3.45a.7.7 0 0 1-.11.21c-.12.16-.5.54-1.63.68a3 3 0 0 1-.42 0 7.2 7.2 0 0 1-3.06-.9 4.56 4.56 0 0 0 .45-2 4.68 4.68 0 0 0-4.67-4.67h-.16a4.15 4.15 0 0 0-2.37-4.38 4.8 4.8 0 0 0-2-.43 4 4 0 0 0-1.43.25 4 4 0 0 0-2.29-1.94 5.2 5.2 0 0 0-1.65-.28 4.4 4.4 0 0 0-2.61.84 3.91 3.91 0 0 0-5.85-.33c-1-.75-4.84-3.2-15.18-5.55-.5-.11-1.65-.44-2.35-.65a16 16 0 0 0-.27 1.7l2.29.54c10.56 2.34 14 4.78 14.63 5.24a4.2 4.2 0 0 0-.3 1.52 4 4 0 0 0 4 4 4.4 4.4 0 0 0 .72-.06 4.63 4.63 0 0 0 3 3.45 3.8 3.8 0 0 0 2.31.16 4.1 4.1 0 0 0 2.45 2.29 4.2 4.2 0 0 0 1.56.32 3.6 3.6 0 0 0 1.21-.21 4.66 4.66 0 0 0 7.65 1.48 8.8 8.8 0 0 0 4 1.17 6 6 0 0 0 .6 0 3.62 3.62 0 0 0 2.6-1.4 2 2 0 0 0 .16-.27 4.5 4.5 0 0 0 1.27.2 4.23 4.23 0 0 0 2.57-.92 3.5 3.5 0 0 0 1.51-2.19 4 4 0 0 0 .86.09 4.76 4.76 0 0 0 2.63-.86 3.77 3.77 0 0 0 1.88-3.37 5 5 0 0 0 .87.09 4.5 4.5 0 0 0 2.45-.76 3.58 3.58 0 0 0 1.71-2.78 3.76 3.76 0 0 0-.54-2.24 100 100 0 0 1 16.29-5.1c0-.57-.13-1.14-.23-1.69a93.4 93.4 0 0 0-17.21 5.57M61.41 43.62a3.17 3.17 0 0 1-3.19-3c0-.15 0-.54-.35-.54a.64.64 0 0 0-.39.2 2.2 2.2 0 0 1-1.56.71 2.7 2.7 0 0 1-1-.22c-1.82-.74-1.85-2-1.78-2.49a.45.45 0 0 0-.06-.38l-.11-.1h-.12a.53.53 0 0 0-.31.12 2.67 2.67 0 0 1-1.55.55 2.4 2.4 0 0 1-.86-.16A3.34 3.34 0 0 1 48 34.39a.35.35 0 0 0-.1-.32l-.17-.14-.16.16a2.49 2.49 0 1 1 .75-2.09l.08.67.37-.57a3.65 3.65 0 0 1 2.89-1.58 3.4 3.4 0 0 1 1.08.17A2.51 2.51 0 0 1 54.51 33c0 .32.25.34.3.34a.43.43 0 0 0 .29-.15 2.5 2.5 0 0 1 1.83-.77 3.4 3.4 0 0 1 1.37.31c2.34 1 1.28 4 1.27 4-.21.49-.21.71 0 .83l.09.05h.07a2 2 0 0 0 .45-.12 4 4 0 0 1 1.25-.28 3.24 3.24 0 0 1 3.2 3.2 3.2 3.2 0 0 1-3.22 3.21" class="cls-1"/></g></g></g></svg></span>`, tiktok: (px) => `<span class="mp-logo tiktok" style="width:${px}px;height:${px}px;border-radius:${Math.max(6,Math.round(px*.26))}px"><svg width="${Math.round(px*0.60)}" height="${Math.round(px*0.60)}" viewBox="0 0 24 24"><path fill="#25F4EE" transform="translate(-.8,-.6)" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#FE2C55" transform="translate(.8,.6)" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#fff" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span>`, shein: (px) => `<span class="mp-logo shein" style="width:${px}px;height:${px}px;border-radius:${Math.max(6,Math.round(px*.26))}px;font-size:${(px*.24).toFixed(1)}px">SHEIN</span>` };
+const CHECK = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>`;
+let token = null, perfil = null, fotoUsuario = null, precos = null;
+try { token = localStorage.getItem("lbp_token"); fotoUsuario = localStorage.getItem("lbp_foto"); } catch {}
 
 async function api(caminho, opt = {}) {
   const r = await fetch(API + caminho, { ...opt, headers: { "Content-Type": "application/json", ...(token ? { Authorization: "Bearer " + token } : {}), ...(opt.headers || {}) } });
@@ -291,42 +580,50 @@ async function api(caminho, opt = {}) {
   if (r.status === 401 && caminho !== "/api/login-google") { sair("Sua conta entrou em outro aparelho ou a sessão expirou. Entre de novo."); throw new Error("sessao"); }
   return { ok: r.ok, status: r.status, d };
 }
-function mostrar(tela) { for (const t of ["telaEntrar", "telaCadastro", "telaApp"]) $(t).classList.toggle("hidden", t !== tela); }
+function mostrar(tela) { for (const t of ["telaEntrar", "telaCadastro", "telaApp"]) $(t).classList.toggle("hidden", t !== tela); window.scrollTo(0, 0); }
 function sair(msg) {
   if (token) fetch(API + "/api/me", { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + token }, body: JSON.stringify({ acao: "sair" }) }).catch(() => {});
-  token = null; perfil = null; try { localStorage.removeItem("lbp_token"); } catch {}
+  token = null; perfil = null; try { localStorage.removeItem("lbp_token"); localStorage.removeItem("lbp_foto"); } catch {}
   signOut(auth).catch(() => {}); mostrar("telaEntrar"); $("avisoEntrar").textContent = msg || "";
+  if (msg) toast(msg);
 }
 
 // ---------- Entrar com Google ----------
-$("btnGoogle").onclick = async () => {
+async function entrar() {
   $("avisoEntrar").textContent = "";
   try {
     const res = await signInWithPopup(auth, new GoogleAuthProvider());
-    fotoUsuario = res.user.photoURL;
+    fotoUsuario = res.user.photoURL; try { localStorage.setItem("lbp_foto", fotoUsuario || ""); } catch {}
     const { d } = await api("/api/login-google", { method: "POST", body: JSON.stringify({ idToken: await res.user.getIdToken() }) });
-    if (!d.success) { $("avisoEntrar").textContent = d.error || "Não deu pra entrar."; return; }
+    if (!d.success) { $("avisoEntrar").textContent = d.error || "Não deu pra entrar."; toast(d.error || "Não deu pra entrar."); return; }
     token = d.token; try { localStorage.setItem("lbp_token", token); } catch {}
     perfil = d.perfil;
     if (d.precisaCadastro) { abrirCadastro(res.user.displayName); return; }
     await abrirApp();
-  } catch (e) { if (e.message !== "sessao") $("avisoEntrar").textContent = e.code === "auth/popup-closed-by-user" ? "" : "Não deu pra entrar com o Google. Tente de novo."; }
-};
+  } catch (e) {
+    if (e.message === "sessao" || e.code === "auth/popup-closed-by-user" || e.code === "auth/cancelled-popup-request") return;
+    const m = "Não deu pra entrar com o Google. Tente de novo."; $("avisoEntrar").textContent = m; toast(m);
+  }
+}
+document.querySelectorAll("[data-entrar]").forEach((b) => b.onclick = entrar);
 $("btnSair").onclick = () => sair();
+$("btnMenu").onclick = (e) => { e.stopPropagation(); $("menuBox").classList.toggle("hidden"); };
+document.addEventListener("click", () => $("menuBox").classList.add("hidden"));
 
 // ---------- Cadastro ----------
 const MPS = [["shopee", "Shopee"], ["ml", "Mercado Livre"], ["tiktok", "TikTok Shop"], ["shein", "Shein"], ["amazon", "Amazon"], ["outro", "Outro"]];
 function abrirCadastro(nome) {
-  $("cadNome").value = nome || "";
-  $("cadMps").innerHTML = MPS.map(([k, n]) => `<span class="chip" data-mp="${k}">${n}</span>`).join("");
+  $("cadNome").value = nome || ""; $("cadPrimeiro").textContent = (nome || "").split(" ")[0] || "";
+  $("cadMps").innerHTML = MPS.map(([k, n]) => `<span class="chip" data-mp="${k}" role="button" tabindex="0">${LOGO[k] ? LOGO[k](20) : ""}${n}</span>`).join("");
   $("cadMps").onclick = (e) => { const c = e.target.closest(".chip"); if (c) c.classList.toggle("on"); };
   mostrar("telaCadastro");
 }
+$("cadWhats").addEventListener("input", (e) => { const d = e.target.value.replace(/\D/g, "").slice(0, 11); e.target.value = d.length > 6 ? `(${d.slice(0, 2)}) ${d.slice(2, d.length - 4)}-${d.slice(-4)}` : d.length > 2 ? `(${d.slice(0, 2)}) ${d.slice(2)}` : d; });
 $("formCadastro").onsubmit = async (e) => {
   e.preventDefault();
   const corpo = { nome: $("cadNome").value, whatsapp: $("cadWhats").value, loja: $("cadLoja").value, segmento: $("cadSegmento").value,
     faturamento: $("cadFat").value, marketplaces: [...document.querySelectorAll("#cadMps .chip.on")].map((c) => c.dataset.mp) };
-  $("btnCadastro").disabled = true;
+  $("btnCadastro").disabled = true; $("avisoCadastro").textContent = "";
   try {
     const { d } = await api("/api/cadastro", { method: "POST", body: JSON.stringify(corpo) });
     if (!d.success) { $("avisoCadastro").textContent = d.error || "Confira os dados."; return; }
@@ -335,49 +632,90 @@ $("formCadastro").onsubmit = async (e) => {
 };
 
 // ---------- App ----------
+function pintarSaldo() {
+  const t = perfil.iaIlimitada ? "IA ilimitada" : `${perfil.creditos ?? 0} créditos`;
+  $("saldo").innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m12 3 1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"/></svg>${t}`;
+  $("saldoGrande").textContent = perfil.iaIlimitada ? "Ilimitado" : String(perfil.creditos ?? 0);
+}
 async function carregarPerfil() {
   const { d } = await api("/api/me");
-  if (!d.success) throw new Error(d.error);
-  perfil = d.perfil; window.__precos = d.precos;
-  $("saldo").textContent = perfil.iaIlimitada ? "IA ilimitada" : `${perfil.creditos ?? 0} créditos`;
-  $("saldoTexto").textContent = perfil.iaIlimitada ? "Conta da equipe LB: IA sem desconto de créditos." : `Você tem ${perfil.creditos ?? 0} créditos.`;
-  $("travaCalc").classList.toggle("hidden", perfil.calculadora);
-  $("calc").classList.toggle("hidden", !perfil.calculadora);
-  if (fotoUsuario) $("avatar").src = fotoUsuario; else $("avatar").classList.add("hidden");
-  $("pacotes").innerHTML = ["c100", "c300", "c700"].map((k) => { const p = d.precos?.[k]; return p ? `<div class="pacote"><b>${p.creditos}</b><span>créditos</span><span class="nota">${Math.floor(p.creditos / 10)} fotos ou ${Math.floor(p.creditos / 2)} textos</span><button class="btn gold" data-pacote="${k}">${brl(p.valor)}</button></div>` : ""; }).join("");
+  if (!d.success) throw new Error(d.error || "erro");
+  perfil = d.perfil; precos = d.precos || {};
+  pintarSaldo();
+  $("menuNome").textContent = perfil.nome || "Sua conta"; $("menuEmail").textContent = perfil.email || "";
+  if (fotoUsuario) $("avatar").src = fotoUsuario; else $("avatar").src = `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="40" height="40" fill="#f7efdc"/><text x="20" y="26" text-anchor="middle" font-family="Arial" font-weight="700" font-size="16" fill="#7a5a17">${esc((perfil.nome || perfil.email || "?")[0].toUpperCase())}</text></svg>`)}`;
+  montarTrava(); montarPacotes();
 }
 async function abrirApp() {
   mostrar("telaApp");
-  try { await carregarPerfil(); } catch (e) { if (e.message !== "sessao") toast("Não deu pra carregar sua conta: " + e.message); return; }
+  try { await carregarPerfil(); } catch (e) { if (e.message !== "sessao") toast("Não deu pra carregar sua conta. Tente de novo em instantes."); return; }
   const pago = new URLSearchParams(location.search).get("paid");
   if (pago) { history.replaceState(null, "", location.pathname); esperarPagamento(pago); }
   calcular();
 }
-document.querySelectorAll(".aba").forEach((b) => b.onclick = () => {
-  document.querySelectorAll(".aba").forEach((x) => x.classList.toggle("on", x === b));
-  for (const [aba, sec] of [["calc", "abaCalc"], ["ia", "abaIa"], ["creditos", "abaCreditos"]]) $(sec).classList.toggle("hidden", b.dataset.aba !== aba);
-});
-$("saldo").onclick = () => document.querySelector('.aba[data-aba="creditos"]').click();
+function irAba(aba) {
+  document.querySelectorAll(".tab").forEach((x) => x.classList.toggle("on", x.dataset.aba === aba));
+  for (const [a, sec] of [["calc", "abaCalc"], ["ia", "abaIa"], ["creditos", "abaCreditos"]]) $(sec).classList.toggle("hidden", a !== aba);
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll(".tab").forEach((b) => b.onclick = () => irAba(b.dataset.aba));
+$("saldo").onclick = () => irAba("creditos");
+
+// ---------- Paywall ----------
+function montarTrava() {
+  const w = $("calcWrap"); const travado = !perfil.calculadora;
+  w.classList.toggle("lock", travado);
+  w.querySelector(".calc").classList.toggle("blur", travado);
+  w.querySelector(".lock-card")?.remove();
+  if (!travado) return;
+  w.insertAdjacentHTML("beforeend", `<div class="lock-card"><div class="card lock-box">
+    <span class="pill" style="color:#7a5a17;background:var(--goldbg);border-color:#ecdcb4">Acesso vitalício</span>
+    <h2 style="font-size:24px;margin-top:14px">Libere a calculadora completa</h2>
+    <div class="valor">R$ 49,99</div><div style="color:var(--muted);font-size:13px">pagamento único · sem mensalidade</div>
+    <ul><li>${CHECK}Shopee, Mercado Livre, TikTok Shop e Shein lado a lado</li><li>${CHECK}Taxas sempre atualizadas</li><li>${CHECK}100 créditos de IA de bônus</li></ul>
+    <label class="f" style="text-align:left;margin-bottom:12px"><span>CPF ou CNPJ <i>(pra emitir a cobrança)</i></span><div class="inp"><input id="cpfAcesso" inputmode="numeric" placeholder="000.000.000-00"></div></label>
+    <button class="btn gold lg" style="width:100%" id="btnComprarAcesso">Liberar por R$ 49,99</button>
+    <p class="erro" id="avisoAcesso"></p>
+    <div style="font-size:12px;color:var(--muted)">Pix, boleto ou cartão · pagamento seguro pelo Asaas</div></div></div>`);
+  $("cpfAcesso").addEventListener("input", mascaraDoc);
+  $("btnComprarAcesso").onclick = () => comprar("acesso", $("cpfAcesso").value, $("avisoAcesso"), $("btnComprarAcesso"));
+}
+function montarPacotes() {
+  const lista = [["c100", ""], ["c300", "Mais escolhido"], ["c700", "Melhor preço"]];
+  $("pacotes").innerHTML = lista.map(([k, tag]) => { const p = precos?.[k]; if (!p) return "";
+    return `<div class="panel pack ${tag === "Mais escolhido" ? "pop" : ""}">${tag ? `<span class="tag">${tag}</span>` : ""}
+      <div class="q num">${p.creditos}</div><div class="ql">créditos</div>
+      <div class="eqv">${Math.floor(p.creditos / 10)} fotos ou ${Math.floor(p.creditos / 2)} textos</div>
+      <div class="pr">${brl(p.valor)}</div>
+      <button class="btn ${tag === "Mais escolhido" ? "gold" : "prim"}" data-pacote="${k}">Comprar</button>
+      <div class="unit">${brl(p.valor / (p.creditos / 10))} por foto</div></div>`; }).join("");
+}
+function mascaraDoc(e) { const d = e.target.value.replace(/\D/g, "").slice(0, 14);
+  e.target.value = d.length <= 11 ? d.replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+    : d.replace(/^(\d{2})(\d)/, "$1.$2").replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3").replace(/\.(\d{3})(\d)/, ".$1/$2").replace(/(\d{4})(\d)/, "$1-$2"); }
+$("cpfCreditos").addEventListener("input", mascaraDoc);
 
 // ---------- Compras ----------
-async function comprar(produto, cpf, aviso) {
+async function comprar(produto, cpf, aviso, botao) {
   aviso.textContent = "";
+  if (![11, 14].includes(String(cpf).replace(/\D/g, "").length)) { aviso.textContent = "Informe um CPF ou CNPJ válido."; return; }
+  botao.disabled = true;
   try {
     const { d } = await api("/api/create-payment", { method: "POST", body: JSON.stringify({ produto, cpfCnpj: cpf }) });
     if (!d.checkoutUrl) { aviso.textContent = d.error || "Não deu pra gerar a cobrança."; return; }
     location.href = d.checkoutUrl;
   } catch (e) { if (e.message !== "sessao") aviso.textContent = "Sem conexão. Tente de novo."; }
+  finally { botao.disabled = false; }
 }
-$("btnComprarAcesso").onclick = () => comprar("acesso", $("cpfAcesso").value, $("avisoAcesso"));
-$("pacotes").onclick = (e) => { const b = e.target.closest("[data-pacote]"); if (b) comprar(b.dataset.pacote, $("cpfCreditos").value, $("avisoCreditos")); };
+$("pacotes").onclick = (e) => { const b = e.target.closest("[data-pacote]"); if (b) comprar(b.dataset.pacote, $("cpfCreditos").value, $("avisoCreditos"), b); };
 async function esperarPagamento(id) {
-  toast("Confirmando seu pagamento...");
+  toast("Confirmando seu pagamento…");
   for (let i = 0; i < 40; i++) {
     const r = await fetch(`${API}/api/check-payment?requestId=${encodeURIComponent(id)}`).then((r) => r.json()).catch(() => ({}));
     if (r.ready) { await carregarPerfil(); calcular(); toast("Pagamento confirmado! Tudo liberado."); return; }
     await new Promise((ok) => setTimeout(ok, 4000));
   }
-  toast("O pagamento ainda não foi confirmado. Se pagou por boleto, pode levar até 3 dias úteis.");
+  toast("Ainda não recebemos a confirmação. Se pagou por boleto, pode levar até 3 dias úteis.");
 }
 
 // ---------- Calculadora (todas as taxas como desconto sobre o preço de venda) ----------
@@ -389,9 +727,9 @@ let mlComissao = null, mlCategoria = null; // vem da API oficial do ML
 
 function regras() {
   const n = (id) => Number($(id).value) || 0, on = (id) => $(id).checked;
-  return { custo: n("cCusto"), emb: n("cEmb"), oper: n("cOper"), imp: n("cImp") / 100, peso: n("cPeso") || 0.5, de: n("cDe") / 100,
+  return { custo: n("cCusto"), emb: n("cEmb"), oper: n("cOper"), imp: n("cImp") / 100, peso: n("cPeso") || 0.5, de: on("cDeOn") ? n("cDe") / 100 : 0,
     extras: (on("oCupom") ? n("vCupom") : 0) + (on("oRel") ? n("vRel") : 0) + (on("oAds") ? n("vAds") : 0) + (on("oAfil") ? n("vAfil") : 0),
-    shopee: $("rShopee").value, ml: $("rMl").value, ttFrete: on("rTtFrete"), shein: n("rShein") / 100, arred: on("cArred") };
+    shopee: $("rShopee").value, ml: $("rMl").value, ttFrete: $("rTt").value === "1", shein: n("rShein") / 100, arred: on("cArred") };
 }
 // Quanto cada marketplace tira de um preço P (tudo subtraído do preço)
 function taxas(mp, P, R) {
@@ -414,82 +752,113 @@ function precoPara(mp, R, objetivo) {
   return hi;
 }
 const ate99 = (p) => { const r = Math.floor(p) + 0.99; return r >= p ? r : r + 1; };
-const NOMES = { shopee: ["Shopee", "var(--shopee)"], ml: ["Mercado Livre", "var(--ml)"], tiktok: ["TikTok Shop", "var(--tiktok)"], shein: ["Shein", "var(--shein)"] };
+const NOMES = { shopee: "Shopee", ml: "Mercado Livre", tiktok: "TikTok Shop", shein: "Shein" };
+const SUBT = (mp, R) => mp === "shopee" ? `Vendedor ${R.shopee.toUpperCase()}` : mp === "ml" ? (R.ml === "premium" ? "Anúncio Premium" : "Anúncio Clássico") : mp === "tiktok" ? (R.ttFrete ? "Com frete grátis" : "Sem frete grátis") : `Comissão ${Math.round(R.shein * 100)}%`;
+const CORES = { taxa: "#9a9384", frete: "#5b7fbf", promo: "#e0a24a", imp: "#a074c4", custo: "#5d5a52", lucro: "#2f9e63" };
 let modo = "lucro";
 $("calcModo").onclick = (e) => { const b = e.target.closest("button"); if (!b) return; modo = b.dataset.m; [...$("calcModo").children].forEach((x) => x.classList.toggle("on", x === b));
-  $("campoMeta").classList.toggle("hidden", modo === "preco"); $("campoPreco").classList.toggle("hidden", modo !== "preco");
-  $("campoMeta").firstChild.textContent = modo === "receber" ? "Quero receber (R$ por venda)" : "Lucro desejado"; $("cMetaTipo").classList.toggle("hidden", modo === "receber"); calcular(); };
+  $("campoMeta").classList.toggle("hidden", modo !== "lucro"); $("campoReceber").classList.toggle("hidden", modo !== "receber"); $("campoPreco").classList.toggle("hidden", modo !== "preco"); calcular(); };
+$("campoReceber").classList.add("hidden");
 function calcular() {
-  if (!perfil?.calculadora) return;
-  const R = regras(); const cards = [];
+  if (!perfil) return;
+  const R = regras(); const res = {};
   for (const mp of ["shopee", "ml", "tiktok", "shein"]) {
     let P;
     if (modo === "preco") P = Number($("cPreco").value) || 0;
     else {
-      const v = Number($("cMeta").value) || 0;
-      const objetivo = modo === "receber" ? { tipo: "receber", v } : { tipo: $("cMetaTipo").value, v: $("cMetaTipo").value === "pct" ? v / 100 : v };
-      P = precoPara(mp, R, objetivo); if (P != null && R.arred) P = ate99(P);
+      const objetivo = modo === "receber" ? { tipo: "receber", v: Number($("cReceber").value) || 0 } : { tipo: $("cMetaTipo").value, v: $("cMetaTipo").value === "pct" ? (Number($("cMeta").value) || 0) / 100 : Number($("cMeta").value) || 0 };
+      const temBase = modo === "receber" ? objetivo.v > 0 : (R.custo + R.emb + R.oper) > 0 || objetivo.tipo === "rs" && objetivo.v > 0;
+      P = temBase ? precoPara(mp, R, objetivo) : null; if (P != null && R.arred) P = ate99(P);
     }
-    cards.push({ mp, t: P ? taxas(mp, P, R) : null });
+    res[mp] = P > 0 ? taxas(mp, P, R) : null;
   }
-  const validos = cards.filter((c) => c.t && c.t.P > 0);
-  const melhor = modo === "preco" ? validos.sort((a, b) => b.t.lucro - a.t.lucro)[0]?.mp : validos.sort((a, b) => a.t.P - b.t.P)[0]?.mp;
+  const validos = Object.entries(res).filter(([, t]) => t);
+  const melhor = !validos.length ? null : modo === "preco" ? validos.sort((a, b) => b[1].lucro - a[1].lucro)[0] : validos.sort((a, b) => a[1].P - b[1].P)[0];
+  const mb = $("melhor");
+  if (melhor) {
+    const [mp, t] = melhor;
+    mb.innerHTML = `<div><div class="lbl">${modo === "preco" ? "Mais lucro" : "Menor preço"}</div><div class="mpn">${LOGO[mp](28)}${NOMES[mp]}</div></div><div class="sep"></div>
+      <div><div class="lbl">Preço</div><div class="val num">${brl(t.P)}</div></div><div class="sep"></div>
+      <div><div class="lbl">Lucro por venda</div><div class="val num" style="color:${t.lucro < 0 ? "#ff8a75" : "#7fe0a8"}">${brl(t.lucro)}</div></div>`;
+    mb.classList.remove("hidden");
+  } else mb.classList.add("hidden");
   $("resultados").innerHTML = ["shopee", "ml", "tiktok", "shein"].map((mp) => {
-    const t = cards.find((c) => c.mp === mp).t; const [nome, cor] = NOMES[mp];
-    if (!t || !(t.P > 0)) return `<div class="res"><h3><i style="background:${cor}"></i>${nome}</h3><p class="nota">${modo === "preco" ? "Digite o preço de venda." : "Preencha custo e lucro desejado."}</p></div>`;
+    const t = res[mp];
+    const head = `<div class="res-h">${LOGO[mp](36)}<div><h3>${NOMES[mp]}</h3><small>${SUBT(mp, R)}</small></div>${melhor && melhor[0] === mp ? `<span class="badge">${modo === "preco" ? "Mais lucro" : "Melhor preço"}</span>` : ""}</div>`;
+    if (!t) return `<div class="res">${head}<div class="res-b"><p class="empty">${modo === "preco" ? "Digite o preço de venda pra ver quanto sobra." : modo === "receber" ? "Digite quanto quer receber por venda." : "Preencha o custo do produto pra calcular o preço."}</p></div></div>`;
     const de = R.de > 0 ? ate99(t.P * (1 + R.de)) : null;
-    const linha = (r, v, cls = "neg") => v ? `<span>${r}</span><span class="n ${cls}">− ${brl(v)}</span>` : "";
-    return `<div class="res ${mp === melhor ? "melhor" : ""}">${mp === melhor ? `<span class="selo">${modo === "preco" ? "mais lucro" : "menor preço"}</span>` : ""}
-      <h3><i style="background:${cor}"></i>${nome}</h3>
-      <div class="preco">${brl(t.P)}<small>${de ? `Preço "de": ${brl(de)}` : "preço de venda"}</small></div>
-      <div class="linhas">${linha(mp === "ml" && mlCategoria ? `Comissão (${mlComissao}% · ${esc(mlCategoria)})` : "Comissão", t.comissao)}${linha("Taxa fixa", t.fixa)}${linha(mp === "tiktok" ? "Frete grátis" : "Frete", t.frete)}${linha("Cupom, oferta, Ads e afiliados", t.promo)}${linha("Imposto", t.imposto)}
-        <span class="tot">Você recebe</span><span class="n tot">${brl(t.recebe)}</span>${linha("Custos (produto, embalagem, operação)", t.custos)}</div>
-      <div class="lucro ${t.lucro < 0 ? "ruim" : ""}"><span>Lucro</span><span><b>${brl(t.lucro)}</b> <span class="nota">${(t.margem * 100).toFixed(1)}%</span></span></div></div>`;
+    const pc = (v) => Math.max(0, v) / t.P * 100;
+    const seg = [[CORES.taxa, t.comissao + t.fixa], [CORES.frete, t.frete], [CORES.promo, t.promo], [CORES.imp, t.imposto], [CORES.custo, Math.min(t.custos, Math.max(0, t.recebe))], [CORES.lucro, t.lucro]];
+    const ln = (r, v, k = "") => v ? `<span class="k">${r}</span><span class="v neg">− ${brl(v)}</span>` : "";
+    const comRot = mp === "ml" && mlCategoria ? `Comissão ${mlComissao}%` : mp === "shopee" ? `Comissão ${t.P <= 79.99 ? 20 : 14}%` : mp === "tiktok" ? `Comissão ${t.P < 50 ? 10 : 6}%` : mp === "shein" ? `Comissão ${Math.round(R.shein * 100)}%` : `Comissão ${R.ml === "premium" ? 19 : 14}%`;
+    return `<div class="res ${melhor && melhor[0] === mp ? "top" : ""}">${head}<div class="res-b">
+      <div class="price"><b class="num">${brl(t.P)}</b>${de ? `<s class="num">${brl(de)}</s>` : ""}</div>
+      <div><div class="stack">${seg.map(([c, v]) => v > 0 ? `<i style="width:${pc(v)}%;background:${c}"></i>` : "").join("")}</div>
+        <div class="legend" style="margin-top:8px"><span><i style="background:${CORES.taxa}"></i>Taxas</span>${t.frete ? `<span><i style="background:${CORES.frete}"></i>Frete</span>` : ""}${t.promo ? `<span><i style="background:${CORES.promo}"></i>Promoções</span>` : ""}${t.imposto ? `<span><i style="background:${CORES.imp}"></i>Imposto</span>` : ""}${t.custos ? `<span><i style="background:${CORES.custo}"></i>Custos</span>` : ""}<span><i style="background:${CORES.lucro}"></i>Lucro</span></div></div>
+      <div class="lines">${ln(comRot, t.comissao)}${ln("Taxa fixa", t.fixa)}${ln(mp === "tiktok" ? "Frete grátis" : "Frete grátis (ML)", t.frete)}${ln("Cupom, oferta, Ads e afiliados", t.promo)}${ln("Imposto", t.imposto)}
+        <span class="sub">Você recebe</span><span class="v sub">${brl(t.recebe)}</span>${ln("Produto, embalagem e operação", t.custos)}</div>
+      <div class="profit ${t.lucro < 0 ? "neg" : ""}"><span>${t.lucro < 0 ? "Prejuízo" : "Lucro"} por venda</span><span><b class="num">${brl(t.lucro)}</b><em>${(t.margem * 100).toFixed(1)}%</em></span></div>
+    </div></div>`;
   }).join("");
 }
-document.querySelectorAll("#calc input, #calc select").forEach((el) => el.addEventListener("input", calcular));
+document.querySelectorAll("#calcForm input, #calcForm select").forEach((el) => { el.addEventListener("input", calcular); el.addEventListener("change", calcular); });
+document.querySelectorAll(".sw").forEach((s) => { const c = s.querySelector('input[type=checkbox]'); const upd = () => s.classList.toggle("off", !c.checked); c.addEventListener("change", upd); upd(); });
 let tMl = null;
 $("cProduto").addEventListener("input", () => { clearTimeout(tMl); tMl = setTimeout(buscarTaxaMl, 700); });
 $("rMl").addEventListener("change", buscarTaxaMl);
 async function buscarTaxaMl() {
-  const q = $("cProduto").value.trim();
-  if (q.length < 3) { mlComissao = null; mlCategoria = null; $("notaMl").textContent = "Mercado Livre: digite o nome do produto pra usar a comissão real da categoria (sem nome, usa 14% no Clássico e 19% no Premium)."; calcular(); return; }
+  const q = $("cProduto").value.trim(), nota = $("notaMl");
+  nota.className = "cat-ml";
+  if (q.length < 3) { mlComissao = null; mlCategoria = null; nota.textContent = ""; calcular(); return; }
+  nota.innerHTML = `<span class="spin" style="width:12px;height:12px;border-width:2px"></span>Buscando a categoria no Mercado Livre…`;
   try {
     const d = await fetch(`${ML_API}?acao=taxa_ml_publica&titulo=${encodeURIComponent(q)}&preco=100&tipo=${$("rMl").value}`).then((r) => r.json());
-    if (d.ok) { mlComissao = d.comissaoPct; mlCategoria = d.nomeCategoria; $("notaMl").textContent = `Mercado Livre: categoria "${d.nomeCategoria}" — comissão oficial de ${d.comissaoPct}% no ${$("rMl").value === "premium" ? "Premium" : "Clássico"}.`; }
-    else { mlComissao = null; mlCategoria = null; $("notaMl").textContent = "Mercado Livre: " + (d.erro || "não achei a categoria") + " Usando 14%/19%."; }
-  } catch { $("notaMl").textContent = "Mercado Livre: sem conexão com o ML agora. Usando 14%/19%."; }
+    if (d.ok) { mlComissao = d.comissaoPct; mlCategoria = d.nomeCategoria; nota.className = "cat-ml ok"; nota.innerHTML = `${LOGO.ml(16)}Categoria “${esc(d.nomeCategoria)}”: comissão de ${d.comissaoPct}%`; }
+    else { mlComissao = null; mlCategoria = null; nota.textContent = "Não achei a categoria no Mercado Livre. Usando 14% (Clássico) / 19% (Premium)."; }
+  } catch { mlComissao = null; mlCategoria = null; nota.textContent = "Sem conexão com o Mercado Livre. Usando 14% (Clássico) / 19% (Premium)."; }
   calcular();
 }
 
 // ---------- IA ----------
-let iaImagens = [];
+let iaImagens = [], iaMp = "shopee";
+$("iaMp").onclick = (e) => { const b = e.target.closest(".mp-opt"); if (!b) return; iaMp = b.dataset.mp; [...$("iaMp").children].forEach((x) => x.classList.toggle("on", x === b)); };
+$("iaQtd").onchange = () => { $("custoFotos").textContent = `${Number($("iaQtd").value) * 10} créditos`; };
 function reduzir(arq) { return new Promise((ok, erro) => { const img = new Image(); img.onload = () => { const s = Math.min(1, 1280 / Math.max(img.width, img.height)); const c = document.createElement("canvas"); c.width = Math.round(img.width * s); c.height = Math.round(img.height * s); c.getContext("2d").drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(img.src); ok(c.toDataURL("image/jpeg", 0.85)); }; img.onerror = () => erro(new Error("foto inválida")); img.src = URL.createObjectURL(arq); }); }
-$("iaFotos").onchange = async (e) => { iaImagens = []; for (const f of [...e.target.files].slice(0, 5)) iaImagens.push(await reduzir(f)); $("iaPrev").innerHTML = iaImagens.map((s) => `<img src="${s}" alt="">`).join(""); };
+function pintarThumbs() { $("iaPrev").innerHTML = iaImagens.map((s, i) => `<div class="thumb"><img src="${s}" alt="">${i === 0 ? '<span class="capa">Base</span>' : ""}<button data-rm="${i}" aria-label="Remover">×</button></div>`).join(""); }
+async function addFotos(files) { for (const f of [...files]) { if (iaImagens.length >= 5) { toast("Máximo de 5 fotos."); break; } if (!/^image\//.test(f.type)) continue; try { iaImagens.push(await reduzir(f)); } catch { toast("Uma das fotos não abriu."); } } pintarThumbs(); }
+$("iaFotos").onchange = (e) => { addFotos(e.target.files); e.target.value = ""; };
+$("iaPrev").onclick = (e) => { const b = e.target.closest("[data-rm]"); if (!b) return; iaImagens.splice(Number(b.dataset.rm), 1); pintarThumbs(); };
+const drop = $("drop");
+["dragenter", "dragover"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add("over"); }));
+["dragleave", "drop"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove("over"); }));
+drop.addEventListener("drop", (e) => addFotos(e.dataTransfer.files));
 async function gerar(tipo) {
-  const produto = $("iaProduto").value.trim(), marketplace = $("iaMp").value, qtd = Number($("iaQtd").value);
-  if (produto.length < 10) { toast("Descreva o produto com um pouco mais de detalhe."); return; }
+  const produto = $("iaProduto").value.trim(), qtd = Number($("iaQtd").value);
+  if (produto.length < 10) { toast("Descreva o produto com um pouco mais de detalhe."); $("iaProduto").focus(); return; }
   if (tipo === "fotos" && !iaImagens.length) { toast("Envie pelo menos 1 foto do produto."); return; }
   const custo = tipo === "fotos" ? qtd * 10 : 2;
-  if (!perfil.iaIlimitada && (perfil.creditos ?? 0) < custo) { toast(`Precisa de ${custo} créditos e você tem ${perfil.creditos ?? 0}. Recarregue na aba Créditos.`); return; }
+  if (!perfil.iaIlimitada && (perfil.creditos ?? 0) < custo) { toast(`Precisa de ${custo} créditos e você tem ${perfil.creditos ?? 0}.`); irAba("creditos"); return; }
+  const out = $("iaOut");
   $("btnIaTexto").disabled = $("btnIaFotos").disabled = true;
-  $("iaStatus").innerHTML = `<div class="carregando"><span class="spin"></span>${tipo === "fotos" ? "Criando as fotos (leva de 1 a 2 minutos)..." : "Escrevendo título e descrição..."}</div>`;
-  $("iaResultado").innerHTML = "";
+  out.classList.remove("hidden");
+  out.innerHTML = `<div class="loading"><span class="spin"></span><div><b>${tipo === "fotos" ? `Criando ${qtd} foto${qtd > 1 ? "s" : ""} profissionais…` : "Escrevendo título e descrição…"}</b><div style="color:var(--muted);font-size:13px">${tipo === "fotos" ? "Leva de 1 a 2 minutos. Não feche esta página." : "Leva uns 15 segundos."}</div><div class="prog"><i></i></div></div></div>`;
+  out.scrollIntoView({ behavior: "smooth", block: "start" });
   try {
-    const corpo = tipo === "fotos" ? { tipo, produto, marketplace, imagens: iaImagens, quantidade: qtd } : { tipo, produto, marketplace, imagem: iaImagens[0] || null };
+    const corpo = tipo === "fotos" ? { tipo, produto, marketplace: iaMp, imagens: iaImagens, quantidade: qtd } : { tipo, produto, marketplace: iaMp, imagem: iaImagens[0] || null };
     const { d } = await api("/api/ia", { method: "POST", body: JSON.stringify(corpo) });
-    if (!d.success) { $("iaStatus").innerHTML = `<p class="aviso">${esc(d.error)}</p>`; return; }
-    $("iaStatus").innerHTML = `<p class="nota">${d.cobrado ? `Usou ${d.cobrado} créditos.` : "Pronto."}${d.saldo != null ? ` Saldo: ${d.saldo}.` : ""}</p>`;
-    if (d.saldo != null) { perfil.creditos = d.saldo; $("saldo").textContent = `${d.saldo} créditos`; }
-    const bloco = (rot, txt) => `<div><div class="nota" style="margin-bottom:6px">${rot}</div><div class="copiar"><div class="txt">${esc(txt)}</div><button class="btn sm" data-copiar="${esc(txt)}">Copiar</button></div></div>`;
-    $("iaResultado").innerHTML = bloco("Título", d.titulo) + bloco("Descrição", d.descricao) +
-      (d.fotos?.length ? `<div class="galeria">${d.fotos.map((f, i) => `<figure><img src="${f.imagem}" alt="${esc(f.tipo)}"><figcaption>${esc(f.tipo)}<a class="btn sm" download="foto-${i + 1}.png" href="${f.imagem}">Baixar</a></figcaption></figure>`).join("")}</div>` : "");
-  } catch (e) { if (e.message !== "sessao") $("iaStatus").innerHTML = `<p class="aviso">Sem conexão. Tente de novo.</p>`; }
+    if (!d.success) { out.innerHTML = `<div class="loading" style="color:var(--bad)">${esc(d.error || "A IA não respondeu. Seus créditos foram devolvidos.")}</div>`; return; }
+    if (d.saldo != null) { perfil.creditos = d.saldo; pintarSaldo(); }
+    const bloco = (rot, txt, cls, extra) => `<div class="out-box"><div class="out-h"><b>${rot}</b><span>${extra || ""} <button class="btn sm" data-copiar="${esc(txt)}">Copiar</button></span></div><div class="out-t ${cls}">${esc(txt)}</div></div>`;
+    out.innerHTML = `<div class="out-box" style="display:flex;align-items:center;gap:12px">${LOGO[iaMp](28)}<b style="flex:1">Anúncio para ${NOMES[iaMp]}</b><span style="color:var(--muted);font-size:13px">${d.cobrado ? `${d.cobrado} créditos usados` : "Pronto"}</span></div>` +
+      (d.titulo ? bloco("Título", d.titulo, "title", `${d.titulo.length} caracteres ·`) : "") + (d.descricao ? bloco("Descrição", d.descricao, "") : "") +
+      (d.fotos?.length ? `<div class="out-box"><div class="out-h"><b>Fotos</b><span><button class="btn sm" id="baixarTodas">Baixar todas</button></span></div><div class="gal">${d.fotos.map((f, i) => `<figure><img src="${f.imagem}" alt="${esc(f.tipo)}"><figcaption>${esc(f.tipo || `Foto ${i + 1}`)}<a class="btn sm" download="lb-precifica-foto-${i + 1}.png" href="${f.imagem}">Baixar</a></figcaption></figure>`).join("")}</div></div>` : "");
+    $("baixarTodas")?.addEventListener("click", () => out.querySelectorAll(".gal a[download]").forEach((a, i) => setTimeout(() => a.click(), i * 300)));
+  } catch (e) { if (e.message !== "sessao") out.innerHTML = `<div class="loading" style="color:var(--bad)">Sem conexão. Tente de novo.</div>`; }
   finally { $("btnIaTexto").disabled = $("btnIaFotos").disabled = false; }
 }
 $("btnIaTexto").onclick = () => gerar("texto");
 $("btnIaFotos").onclick = () => gerar("fotos");
-$("iaResultado").onclick = async (e) => { const b = e.target.closest("[data-copiar]"); if (!b) return; try { await navigator.clipboard.writeText(b.dataset.copiar); toast("Copiado!"); } catch { toast("Selecione o texto e copie."); } };
+$("iaOut").onclick = async (e) => { const b = e.target.closest("[data-copiar]"); if (!b) return; try { await navigator.clipboard.writeText(b.dataset.copiar); toast("Copiado!"); } catch { toast("Selecione o texto e copie."); } };
 
 // ---------- Início ----------
 if (token) abrirApp(); else mostrar("telaEntrar");

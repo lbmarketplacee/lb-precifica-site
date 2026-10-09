@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LB Precifica — Preço certo e anúncio pronto para marketplaces</title>
+<meta name="description" content="Calcule o preço de venda na Shopee, Mercado Livre, TikTok Shop e Shein com as taxas oficiais de 2026 e crie título, descrição e fotos do anúncio com IA.">
+<meta name="theme-color" content="#0e0d0b">
+<link rel="icon" href="data:image/jpeg;base64,{{LOGO}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f1;--surface:#fff;--surface2:#faf9f6;--ink:#16140f;--ink2:#3a372f;--muted:#6f6a5f;--line:#e8e4da;--line2:#d9d4c7;
+  --gold:#b8892b;--gold2:#d9ae52;--goldbg:#f7efdc;--dark:#0e0d0b;--dark2:#1a1814;
+  --ok:#14804a;--okbg:#e5f4ea;--bad:#c2341d;--badbg:#fbe9e5;
+  --shopee:#ee4d2d;--ml:#2d3277;--mly:#ffe600;--tiktok:#010101;--shein:#111;
+  --r:16px;--r2:12px;--sh:0 1px 2px rgba(22,20,15,.05),0 4px 16px rgba(22,20,15,.06);--sh2:0 12px 40px rgba(22,20,15,.12)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,system-ui,-apple-system,Segoe UI,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{margin:0;line-height:1.15;letter-spacing:-.02em}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.hidden{display:none!important}
+.num{font-variant-numeric:tabular-nums}
+/* Botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;padding:11px 18px;font-weight:600;font-size:14.5px;cursor:pointer;border:1px solid var(--line2);background:var(--surface);color:var(--ink);transition:.15s;text-decoration:none;white-space:nowrap}
+.btn:hover{border-color:var(--ink2)}
+.btn.prim{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn.prim:hover{background:#2c2920}
+.btn.gold{background:linear-gradient(180deg,#d9ae52,#b8892b);color:#1d1606;border:0;box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 6px 18px rgba(184,137,43,.28)}
+.btn.gold:hover{filter:brightness(1.05)}
+.btn.lg{padding:14px 22px;font-size:15.5px;border-radius:12px}
+.btn.sm{padding:7px 12px;font-size:13px;border-radius:8px}
+.btn.ghost{background:transparent;border-color:transparent}
+.btn:disabled{opacity:.5;cursor:default}
+.g-btn{display:flex;width:100%;align-items:center;justify-content:center;gap:12px;background:#fff;color:#1f1f1f;border:1px solid #dadce0;border-radius:12px;padding:13px 18px;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.g-btn:hover{background:#f8f9fa}
+/* Marca */
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none}
+.marca img{width:36px;height:36px;border-radius:9px;display:block}
+.marca b{font-family:Oswald,sans-serif;font-weight:600;font-size:19px;letter-spacing:.04em}
+.marca b span{color:var(--gold)}
+/* Logos de marketplace */
+.mp-logo{display:inline-grid;place-items:center;flex:none;border-radius:10px;overflow:hidden}
+.mp-logo svg{display:block}
+.mp-logo.shopee{background:var(--shopee)}
+.mp-logo.tiktok{background:#000}
+.mp-logo.ml{background:var(--mly)}
+.mp-logo.shein{background:#000;color:#fff;font:800 9px/1 Inter,sans-serif;letter-spacing:.02em}
+/* ======== LANDING ======== */
+.lp-top{position:absolute;inset:0 0 auto 0;z-index:3}
+.lp-top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.lp-top .marca b{color:#fff}
+.hero{background:radial-gradient(900px 500px at 85% 0%,rgba(217,174,82,.22),transparent 60%),radial-gradient(700px 400px at 0% 100%,rgba(217,174,82,.08),transparent 60%),var(--dark);color:#f3efe6;padding:128px 0 88px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(217,174,82,.35);background:rgba(217,174,82,.08);color:#ecd49a;border-radius:99px;padding:6px 12px;font-size:12.5px;font-weight:600}
+.hero h1{font-size:clamp(36px,5.2vw,60px);font-weight:800;margin:20px 0 18px;color:#fff}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#f0cf7a,#d9ae52);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:18px;color:#bdb6a6;max-width:540px;margin:0 0 28px}
+.hero-cta{display:flex;flex-direction:column;gap:12px;max-width:380px}
+.hero-cta small{color:#8e877a;font-size:12.5px}
+.hero-mps{display:flex;align-items:center;gap:14px;margin-top:30px;color:#8e877a;font-size:13px;flex-wrap:wrap}
+.preview{position:relative;background:#fff;color:var(--ink);border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,.45);padding:18px;transform:perspective(1400px) rotateY(-6deg) rotateX(2deg)}
+.preview-head{display:flex;align-items:center;justify-content:space-between;padding:4px 4px 14px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.preview-head b{font-size:13px}.preview-head span{font-size:12px;color:var(--muted)}
+.pv-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pv{border:1px solid var(--line);border-radius:12px;padding:12px}
+.pv-top{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600}
+.pv-price{font:600 26px/1 Oswald,sans-serif;margin:10px 0 8px;letter-spacing:.01em}
+.pv-bar{height:7px;border-radius:9px;display:flex;overflow:hidden;background:#eee}
+.pv-l{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:8px}
+.pv-l b{color:var(--ok)}
+.pv.pvb{border-color:var(--gold);box-shadow:0 0 0 3px var(--goldbg)}
+section.lp{padding:88px 0}
+.sec-h{text-align:center;max-width:640px;margin:0 auto 44px}
+.sec-h .kick{color:var(--gold);font-weight:700;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase}
+.sec-h h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;margin:10px 0 12px}
+.sec-h p{color:var(--muted);font-size:16.5px;margin:0}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:var(--sh)}
+.feat .ico{width:44px;height:44px;border-radius:12px;background:var(--goldbg);color:var(--gold);display:grid;place-items:center;margin-bottom:16px}
+.feat h3{font-size:18px;margin-bottom:8px}
+.feat p{color:var(--muted);margin:0;font-size:14.5px}
+.mp-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.mp-card{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:16px}
+.mp-card b{display:block;font-size:15px}.mp-card span{font-size:12.5px;color:var(--muted)}
+.price-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:stretch}
+.plan{background:var(--dark);color:#f3efe6;border-radius:20px;padding:34px;position:relative;overflow:hidden}
+.plan:after{content:"";position:absolute;inset:auto -80px -120px auto;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(217,174,82,.28),transparent 70%)}
+.plan .tag{display:inline-block;background:var(--gold2);color:#1d1606;font-weight:700;font-size:12px;border-radius:99px;padding:4px 10px}
+.plan h3{font-size:22px;margin:16px 0 4px;color:#fff}
+.plan .valor{font:600 58px/1 Oswald,sans-serif;color:#fff;margin:14px 0 2px}
+.plan .valor small{font:500 15px Inter;color:#a9a294;margin-left:6px}
+.plan ul{list-style:none;padding:0;margin:22px 0 26px;display:grid;gap:10px;color:#d9d3c5}
+.plan li{display:flex;gap:10px;align-items:flex-start}
+.plan li svg{flex:none;margin-top:3px;color:var(--gold2)}
+.packs-lp{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px;box-shadow:var(--sh)}
+.packs-lp h3{font-size:19px;margin-bottom:6px}
+.packs-lp p{color:var(--muted);margin:0 0 18px;font-size:14px}
+.pk-line{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.pk-line b{font-size:16px}.pk-line span{color:var(--muted);font-size:13px;display:block}
+.pk-line .v{font:600 20px Oswald,sans-serif}
+.custos{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.custos div{flex:1;min-width:140px;background:var(--surface2);border:1px dashed var(--line2);border-radius:10px;padding:10px 12px;font-size:13px;color:var(--muted)}
+.custos b{display:block;color:var(--ink);font-size:15px}
+.faq{max-width:760px;margin:0 auto;display:grid;gap:10px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.faq summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";color:var(--gold);font-size:20px;line-height:1}
+.faq details[open] summary:after{content:"–"}
+.faq p{color:var(--muted);margin:10px 0 0}
+.cta-band{background:var(--dark);color:#fff;border-radius:24px;padding:48px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.cta-band h2{font-size:30px}
+.cta-band p{color:#a9a294;margin:8px 0 0}
+footer.site{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}
+footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+@media(max-width:960px){.hero-grid,.price-wrap{grid-template-columns:1fr}.preview{transform:none}.feats{grid-template-columns:1fr}.mp-row{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.hero{padding:104px 0 64px}.pv-grid{grid-template-columns:1fr 1fr}.mp-row{grid-template-columns:1fr}.cta-band{padding:30px}section.lp{padding:64px 0}}
+/* ======== CADASTRO ======== */
+.center-page{min-height:100vh;display:grid;place-items:center;padding:40px 16px;background:radial-gradient(800px 400px at 50% -10%,rgba(217,174,82,.16),transparent),var(--bg)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh2)}
+.cad{width:100%;max-width:620px;padding:34px}
+.cad h2{font-size:26px;margin:18px 0 6px}
+.cad .sub{color:var(--muted);margin:0 0 24px}
+/* Form */
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.f>span{font-size:13px;font-weight:600;color:var(--ink2)}
+.f>span i{font-style:normal;font-weight:400;color:var(--muted)}
+.f .hint{font-size:12px;color:var(--muted)}
+.inp{display:flex;align-items:center;background:var(--surface);border:1px solid var(--line2);border-radius:10px;transition:.15s;min-width:0}
+.inp:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px var(--goldbg)}
+.inp em{font-style:normal;color:var(--muted);font-size:13.5px;padding:0 0 0 12px;white-space:nowrap}
+.inp em.suf{padding:0 12px 0 0}
+.inp input,.inp select,.inp textarea{flex:1;min-width:0;border:0;background:transparent;padding:11px 12px;outline:none;width:100%}
+.inp select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236f6a5f' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+textarea{resize:vertical;min-height:120px}
+.row{display:grid;gap:14px}
+.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:560px){.c2,.c3{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line2);background:var(--surface);border-radius:10px;padding:8px 12px;cursor:pointer;font-size:13.5px;font-weight:500;user-select:none}
+.chip.on{border-color:var(--gold);background:var(--goldbg);box-shadow:0 0 0 1px var(--gold) inset}
+.erro{color:var(--bad);font-size:13.5px;min-height:20px;margin:6px 0 0}
+/* ======== APP ======== */
+.app-top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.88);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.app-top .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.tabs{display:flex;gap:2px;height:100%}
+.tab{display:flex;align-items:center;gap:8px;background:none;border:0;border-bottom:2px solid transparent;padding:0 14px;color:var(--muted);font-weight:600;font-size:14px;cursor:pointer;height:100%}
+.tab:hover{color:var(--ink)}
+.tab.on{color:var(--ink);border-bottom-color:var(--gold)}
+.user{margin-left:auto;display:flex;align-items:center;gap:10px}
+.creds{display:inline-flex;align-items:center;gap:7px;background:var(--goldbg);color:#7a5a17;border:1px solid #ecdcb4;border-radius:99px;padding:6px 12px;font-weight:700;font-size:13px;cursor:pointer}
+.avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;background:var(--line);border:2px solid #fff;box-shadow:0 0 0 1px var(--line2)}
+.menu{position:relative}
+.menu-box{position:absolute;right:0;top:44px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--sh2);min-width:220px;padding:8px;z-index:30}
+.menu-box .who{padding:8px 10px 10px;border-bottom:1px solid var(--line);margin-bottom:6px;font-size:13px}
+.menu-box .who b{display:block;font-size:14px}
+.menu-box button{width:100%;text-align:left;background:none;border:0;padding:9px 10px;border-radius:8px;cursor:pointer;font-size:14px}
+.menu-box button:hover{background:var(--surface2)}
+main.app{padding-top:28px;padding-bottom:64px}
+.page-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.page-h h1{font-size:26px;font-weight:800}
+.page-h p{margin:4px 0 0;color:var(--muted)}
+@media(max-width:760px){.app-top{position:static}.app-top .wrap{height:auto;flex-wrap:wrap;padding-top:10px;gap:8px}.tabs{order:3;width:100%;overflow-x:auto;height:46px}.tab{padding:0 10px;white-space:nowrap}}
+/* Calculadora */
+.calc{display:grid;grid-template-columns:380px 1fr;gap:20px;align-items:start}
+@media(max-width:1020px){.calc{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
+.form-p{position:sticky;top:84px;max-height:calc(100vh - 100px);overflow:auto}
+@media(max-width:1020px){.form-p{position:static;max-height:none}}
+.fs{padding:18px 20px;border-bottom:1px solid var(--line)}
+.fs:last-child{border-bottom:0}
+.fs-h{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.fs-h b{display:grid;place-items:center;width:20px;height:20px;border-radius:6px;background:var(--goldbg);color:var(--gold);font-size:11px;letter-spacing:0}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface2);border:1px solid var(--line);border-radius:11px;padding:3px;gap:3px;margin-bottom:14px}
+.seg button{border:0;background:none;border-radius:8px;padding:8px 6px;font-weight:600;font-size:12.5px;color:var(--muted);cursor:pointer}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.sw{display:flex;align-items:center;gap:10px;padding:9px 0}
+.sw+.sw{border-top:1px dashed var(--line)}
+.sw label.t{flex:1;font-size:14px;font-weight:500;cursor:pointer}
+.sw label.t small{display:block;font-size:12px;color:var(--muted);font-weight:400}
+.sw .inp{width:88px}
+.sw .inp input{padding:7px 8px;text-align:right}
+.tog{position:relative;width:38px;height:22px;flex:none}
+.tog input{opacity:0;width:0;height:0;position:absolute}
+.tog span{position:absolute;inset:0;background:#d8d3c6;border-radius:99px;cursor:pointer;transition:.18s}
+.tog span:after{content:"";position:absolute;width:16px;height:16px;left:3px;top:3px;background:#fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:.18s}
+.tog input:checked+span{background:var(--gold)}
+.tog input:checked+span:after{transform:translateX(16px)}
+.tog input:focus-visible+span{box-shadow:0 0 0 3px var(--goldbg)}
+.sw.off .inp{opacity:.45}
+.mpcfg{display:grid;gap:12px}
+.mpcfg .r{display:flex;align-items:center;gap:10px}
+.mpcfg .r .nm{flex:1;font-size:13.5px;font-weight:600}
+.mpcfg .inp{width:150px}
+.mpcfg .inp select{padding:7px 30px 7px 10px;font-size:13.5px}
+/* Resultados */
+.best{display:flex;align-items:center;gap:16px;background:var(--dark);color:#fff;border-radius:var(--r);padding:16px 20px;margin-bottom:16px;flex-wrap:wrap}
+.best .lbl{font-size:12px;color:#a9a294;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.best .val{font:600 26px/1.1 Oswald,sans-serif}
+.best .sep{width:1px;align-self:stretch;background:rgba(255,255,255,.12)}
+.best .mpn{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px}
+.res-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:640px){.res-grid{grid-template-columns:1fr}}
+.res{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column}
+.res.top{border-color:var(--gold);box-shadow:0 0 0 3px var(--goldbg),var(--sh)}
+.res-h{display:flex;align-items:center;gap:12px;padding:16px 18px 0}
+.res-h h3{font-size:16px;font-weight:700}
+.res-h small{display:block;color:var(--muted);font-size:12px;font-weight:500}
+.res-h .badge{margin-left:auto;font-size:11px;font-weight:700;background:var(--goldbg);color:#7a5a17;border-radius:99px;padding:4px 9px}
+.res-b{padding:14px 18px 18px;display:flex;flex-direction:column;gap:14px;flex:1}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price b{font:600 38px/1 Oswald,sans-serif;letter-spacing:.01em}
+.price s{color:var(--muted);font-size:14px}
+.price .cp{margin-left:auto}
+.stack{height:10px;border-radius:99px;display:flex;overflow:hidden;background:var(--surface2)}
+.stack i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:11.5px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:8px;height:8px;border-radius:2px;display:inline-block}
+.lines{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:13.5px}
+.lines .v{text-align:right;font-variant-numeric:tabular-nums}
+.lines .neg{color:var(--ink2)}
+.lines .sub{font-weight:700;border-top:1px solid var(--line);padding-top:8px}
+.lines .k{color:var(--muted)}
+.profit{display:flex;align-items:center;justify-content:space-between;background:var(--okbg);color:var(--ok);border-radius:12px;padding:12px 14px;margin-top:auto}
+.profit.neg{background:var(--badbg);color:var(--bad)}
+.profit span{font-weight:600;font-size:13.5px}
+.profit b{font:600 24px Oswald,sans-serif}
+.profit em{font-style:normal;font-weight:700;font-size:13px;margin-left:8px;opacity:.85}
+.empty{color:var(--muted);font-size:14px;padding:6px 0 4px}
+.note{font-size:12.5px;color:var(--muted);margin-top:16px;line-height:1.6}
+.cat-ml{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);margin-top:8px}
+.cat-ml.ok{color:var(--ok)}
+/* Paywall */
+.lock{position:relative}
+.lock .blur{filter:blur(5px);pointer-events:none;user-select:none;opacity:.6}
+.lock-card{position:absolute;inset:0;display:grid;place-items:center;padding:16px;z-index:5}
+.lock-box{width:100%;max-width:440px;padding:32px;text-align:center}
+.lock-box .valor{font:600 52px/1 Oswald,sans-serif;margin:14px 0 4px}
+.lock-box ul{list-style:none;padding:0;margin:18px 0 22px;text-align:left;display:grid;gap:8px;font-size:14px}
+.lock-box li{display:flex;gap:10px}.lock-box li svg{flex:none;color:var(--gold);margin-top:3px}
+/* IA */
+.ia{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
+@media(max-width:1020px){.ia{grid-template-columns:1fr}}
+.step{padding:22px 24px;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:0}
+.step-h{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.step-h b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px;flex:none}
+.step-h h3{font-size:16px}
+.step-h p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+.mp-pick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:560px){.mp-pick{grid-template-columns:1fr}}
+.mp-opt{display:flex;align-items:center;gap:12px;border:1px solid var(--line2);border-radius:12px;padding:12px 14px;cursor:pointer;background:#fff;text-align:left}
+.mp-opt b{display:block;font-size:14.5px}.mp-opt small{color:var(--muted);font-size:12px}
+.mp-opt.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset;background:var(--goldbg)}
+.drop{display:block;border:1.5px dashed var(--line2);border-radius:14px;padding:26px;text-align:center;cursor:pointer;background:var(--surface2);transition:.15s}
+.drop:hover,.drop.over{border-color:var(--gold);background:var(--goldbg)}
+.drop b{display:block;margin:10px 0 2px}.drop small{color:var(--muted)}
+.thumbs{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.thumb{position:relative;width:84px;height:112px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb button{position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;cursor:pointer;font-size:13px;line-height:1}
+.thumb .capa{position:absolute;left:4px;bottom:4px;background:var(--gold2);color:#1d1606;font-size:10px;font-weight:700;border-radius:5px;padding:2px 5px}
+.gen{padding:20px}
+.gen h3{font-size:15px;margin-bottom:12px}
+.opt{border:1px solid var(--line2);border-radius:14px;padding:16px;margin-bottom:12px}
+.opt-h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px}
+.opt-h b{font-size:15px}.opt-h small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.cost{white-space:nowrap;font-size:12px;font-weight:700;background:var(--goldbg);color:#7a5a17;border-radius:99px;padding:4px 9px}
+.qty{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:13.5px}
+.qty .inp{width:80px}
+.rules{font-size:12.5px;color:var(--muted);display:grid;gap:6px;margin-top:6px}
+.rules div{display:flex;gap:8px}.rules svg{flex:none;color:var(--ok);margin-top:2px}
+.out{margin-top:20px}
+.out-box{padding:20px 24px;border-bottom:1px solid var(--line)}
+.out-box:last-child{border-bottom:0}
+.out-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.out-h b{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.out-h span{font-size:12px;color:var(--muted)}
+.out-t{white-space:pre-wrap;font-size:14.5px;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.out-t.title{font-weight:600;font-size:16px}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.gal figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface2)}
+.gal img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+.gal figcaption{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;font-size:12px;color:var(--muted)}
+.loading{display:flex;align-items:center;gap:14px;padding:22px 24px}
+.spin{width:22px;height:22px;border:2.5px solid var(--line);border-top-color:var(--gold);border-radius:50%;animation:g 1s linear infinite;flex:none}
+@keyframes g{to{transform:rotate(360deg)}}
+.prog{height:4px;background:var(--line);border-radius:9px;overflow:hidden;margin-top:8px;width:240px;max-width:100%}
+.prog i{display:block;height:100%;width:30%;background:var(--gold);border-radius:9px;animation:p 1.6s ease-in-out infinite}
+@keyframes p{0%{transform:translateX(-100%)}100%{transform:translateX(340%)}}
+/* Créditos */
+.bal{display:flex;align-items:center;gap:20px;padding:24px;margin-bottom:20px;flex-wrap:wrap}
+.bal .big{font:600 46px/1 Oswald,sans-serif}
+.bal .lbl{color:var(--muted);font-size:13px}
+.bal .eq{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.bal .eq div{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--muted)}
+.bal .eq b{display:block;color:var(--ink);font-size:16px}
+.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.packs{grid-template-columns:1fr}}
+.pack{padding:26px;text-align:center;position:relative;display:flex;flex-direction:column;gap:6px}
+.pack.pop{border-color:var(--gold);box-shadow:0 0 0 3px var(--goldbg),var(--sh)}
+.pack .tag{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:11px;font-weight:700;border-radius:99px;padding:4px 10px;white-space:nowrap}
+.pack .q{font:600 48px/1 Oswald,sans-serif;margin-top:6px}
+.pack .ql{color:var(--muted);font-size:13px;margin-bottom:6px}
+.pack .eqv{font-size:13px;color:var(--ink2);background:var(--surface2);border-radius:8px;padding:8px;margin:6px 0 14px}
+.pack .pr{font-weight:700;font-size:18px;margin-bottom:10px}
+.pack .unit{font-size:12px;color:var(--muted);margin-top:4px}
+.doc-row{display:flex;align-items:flex-end;gap:12px;margin-top:20px;flex-wrap:wrap}
+.doc-row .f{width:280px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;box-shadow:var(--sh2);z-index:100;font-size:14px;max-width:calc(100vw - 32px)}
+@media(prefers-reduced-motion:reduce){.spin,.prog i{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- ================= LANDING ================= -->
+<div id="telaEntrar" class="hidden">
+  <header class="lp-top"><div class="wrap">
+    <a class="marca" href="#"><img src="data:image/jpeg;base64,{{LOGO}}" alt="LB Marketplace"><b>LB <span>PRECIFICA</span></b></a>
+    <button class="btn sm" data-entrar style="background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.2)">Entrar</button>
+  </div></header>
+
+  <section class="hero"><div class="wrap hero-grid">
+    <div>
+      <span class="pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Taxas oficiais atualizadas · outubro de 2026</span>
+      <h1>Descubra o <em>preço certo</em> antes de anunciar.</h1>
+      <p class="lead">Veja quanto cobrar na Shopee, no Mercado Livre, no TikTok Shop e na Shein, com custo, imposto, cupom, oferta e Ads já descontados. E crie título, descrição e fotos do anúncio com IA.</p>
+      <div class="hero-cta">
+        <button class="g-btn" data-entrar>{{GOOGLE}}Entrar com Google</button>
+        <small>Acesso vitalício por R$ 49,99, pagamento único. Já vem com 100 créditos de IA.</small>
+      </div>
+      <div class="hero-mps">Funciona com {{L_SHOPEE_28}}{{L_ML_28}}{{L_TIKTOK_28}}{{L_SHEIN_28}}</div>
+    </div>
+    <div class="preview" aria-hidden="true">
+      <div class="preview-head"><b>Vestido midi · receber R$ 60,00</b><span>Lucro com 6% de imposto</span></div>
+      <div class="pv-grid">
+        <div class="pv pvb"><div class="pv-top">{{L_SHOPEE_22}}Shopee</div><div class="pv-price">R$ 97,99</div><div class="pv-bar"><i style="width:34%;background:#9a9384"></i><i style="width:8%;background:#e0a24a"></i><i style="width:58%;background:#2f9e63"></i></div><div class="pv-l"><span>Recebe</span><b>R$ 60,52</b></div></div>
+        <div class="pv"><div class="pv-top">{{L_ML_22}}Mercado Livre</div><div class="pv-price">R$ 89,99</div><div class="pv-bar"><i style="width:30%;background:#9a9384"></i><i style="width:8%;background:#e0a24a"></i><i style="width:62%;background:#2f9e63"></i></div><div class="pv-l"><span>Recebe</span><b>R$ 60,13</b></div></div>
+        <div class="pv"><div class="pv-top">{{L_TIKTOK_22}}TikTok Shop</div><div class="pv-price">R$ 82,99</div><div class="pv-bar"><i style="width:22%;background:#9a9384"></i><i style="width:8%;background:#e0a24a"></i><i style="width:70%;background:#2f9e63"></i></div><div class="pv-l"><span>Recebe</span><b>R$ 60,04</b></div></div>
+        <div class="pv"><div class="pv-top">{{L_SHEIN_22}}Shein</div><div class="pv-price">R$ 81,99</div><div class="pv-bar"><i style="width:20%;background:#9a9384"></i><i style="width:8%;background:#e0a24a"></i><i style="width:72%;background:#2f9e63"></i></div><div class="pv-l"><span>Recebe</span><b>R$ 60,68</b></div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="lp"><div class="wrap">
+    <div class="sec-h"><div class="kick">Por que usar</div><h2>Pare de perder dinheiro em cada venda</h2><p>A maioria das lojas define preço no chute e descobre o prejuízo só no extrato. Aqui você vê tudo antes.</p></div>
+    <div class="feats">
+      <div class="feat"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M14 10h2M8 14h2M14 14h2M8 18h2M14 18h2"/></svg></div><h3>Taxas oficiais de 2026</h3><p>Comissão por faixa de preço da Shopee, comissão real da categoria no Mercado Livre, taxas do TikTok Shop e da Shein. Tudo descontado do preço, do jeito que o marketplace cobra.</p></div>
+      <div class="feat"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div><h3>Os 4 marketplaces lado a lado</h3><p>Diga quanto quer ganhar e veja o preço em cada canal, com custo, embalagem, imposto, cupom, oferta relâmpago, Ads e afiliados.</p></div>
+      <div class="feat"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"/><path d="M19 17v4M17 19h4"/></svg></div><h3>Anúncio pronto com IA</h3><p>Título, descrição e fotos profissionais nas regras de cada marketplace, as mesmas que a LB Marketplace usa nas lojas dos clientes.</p></div>
+    </div>
+    <div class="mp-row">
+      <div class="mp-card">{{L_SHOPEE_40}}<div><b>Shopee</b><span>CNPJ e CPF, por faixa de preço</span></div></div>
+      <div class="mp-card">{{L_ML_40}}<div><b>Mercado Livre</b><span>Clássico e Premium + frete</span></div></div>
+      <div class="mp-card">{{L_TIKTOK_40}}<div><b>TikTok Shop</b><span>Comissão, taxa fixa e frete grátis</span></div></div>
+      <div class="mp-card">{{L_SHEIN_40}}<div><b>Shein</b><span>Comissão por categoria</span></div></div>
+    </div>
+  </div></section>
+
+  <section class="lp" style="padding-top:0"><div class="wrap">
+    <div class="sec-h"><div class="kick">Preço</div><h2>Paga uma vez, usa pra sempre</h2><p>Sem mensalidade. Os créditos de IA você só recarrega se quiser.</p></div>
+    <div class="price-wrap">
+      <div class="plan">
+        <span class="tag">Acesso vitalício</span>
+        <h3>LB Precifica completa</h3>
+        <div class="valor">R$ 49,99<small>pagamento único</small></div>
+        <ul>
+          <li>{{CHECK}}Calculadora dos 4 marketplaces, sem limite de uso</li>
+          <li>{{CHECK}}Todas as taxas atualizadas sem custo extra</li>
+          <li>{{CHECK}}100 créditos de IA de bônus (10 fotos ou 50 textos)</li>
+          <li>{{CHECK}}Pagamento por Pix, boleto ou cartão</li>
+        </ul>
+        <button class="btn gold lg" data-entrar style="position:relative;z-index:1">Começar agora</button>
+      </div>
+      <div class="packs-lp">
+        <h3>Recarga de créditos de IA</h3>
+        <p>Use pra criar fotos e textos de anúncio. Créditos não vencem.</p>
+        <div class="pk-line"><div><b>100 créditos</b><span>10 fotos ou 50 textos</span></div><div class="v">R$ 19,90</div></div>
+        <div class="pk-line"><div><b>300 créditos</b><span>30 fotos ou 150 textos</span></div><div class="v">R$ 49,90</div></div>
+        <div class="pk-line"><div><b>700 créditos</b><span>70 fotos ou 350 textos</span></div><div class="v">R$ 99,90</div></div>
+        <div class="custos"><div><b>10 créditos</b>por foto profissional</div><div><b>2 créditos</b>por título + descrição</div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="lp" style="padding-top:0"><div class="wrap">
+    <div class="sec-h"><div class="kick">Dúvidas</div><h2>Perguntas frequentes</h2></div>
+    <div class="faq">
+      <details><summary>As taxas são confiáveis?</summary><p>Seguimos as tabelas publicadas pelos marketplaces. No Mercado Livre a comissão vem direto da API oficial, pela categoria do seu produto. Quando um marketplace muda a regra, atualizamos a calculadora sem custo pra você.</p></details>
+      <details><summary>Por que as taxas são "descontadas" e não somadas?</summary><p>Porque o marketplace cobra em cima do preço de venda. Somar a taxa ao custo faz você vender barato demais. A LB Precifica acha o preço em que, depois de tirar todas as taxas, sobra exatamente o que você quer.</p></details>
+      <details><summary>Posso usar em mais de um aparelho?</summary><p>Sim, mas um de cada vez. Ao entrar em outro aparelho, o anterior é desconectado. Isso protege sua conta contra compartilhamento.</p></details>
+      <details><summary>E se a IA falhar?</summary><p>Os créditos voltam pra sua conta na hora. Você só paga pelo que foi gerado.</p></details>
+      <details><summary>Preciso de CNPJ?</summary><p>Não. A cobrança aceita CPF ou CNPJ, e a calculadora tem as regras de vendedor CPF e CNPJ da Shopee.</p></details>
+    </div>
+  </div></section>
+
+  <section class="lp" style="padding-top:0"><div class="wrap">
+    <div class="cta-band"><div><h2>Seu próximo anúncio com o preço certo.</h2><p>Entre com o Google e comece em menos de 1 minuto.</p></div><button class="g-btn" data-entrar style="width:auto;padding:13px 22px">{{GOOGLE}}Entrar com Google</button></div>
+    <p class="erro" id="avisoEntrar" style="text-align:center;margin-top:16px"></p>
+  </div></section>
+
+  <footer class="site"><div class="wrap"><span>LB Precifica é um produto da LB Marketplace Assessoria · CNPJ 58.943.847/0001-90</span><span>Shopee, Mercado Livre, TikTok Shop e Shein são marcas de seus respectivos donos.</span></div></footer>
+</div>
+
+<!-- ================= CADASTRO ================= -->
+<div id="telaCadastro" class="center-page hidden">
+  <div class="card cad">
+    <a class="marca"><img src="data:image/jpeg;base64,{{LOGO}}" alt=""><b>LB <span>PRECIFICA</span></b></a>
+    <h2>Falta pouco, <span id="cadPrimeiro"></span></h2>
+    <p class="sub">Conte um pouco sobre você e sua loja. Leva 30 segundos.</p>
+    <form id="formCadastro" class="row" novalidate>
+      <div class="row c2">
+        <label class="f"><span>Seu nome</span><div class="inp"><input id="cadNome" autocomplete="name" required></div></label>
+        <label class="f"><span>WhatsApp com DDD</span><div class="inp"><input id="cadWhats" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 99999-9999" required></div></label>
+      </div>
+      <div class="row c2">
+        <label class="f"><span>Nome da loja <i>(opcional)</i></span><div class="inp"><input id="cadLoja"></div></label>
+        <label class="f"><span>O que você vende? <i>(opcional)</i></span><div class="inp"><input id="cadSegmento" placeholder="Ex.: moda feminina"></div></label>
+      </div>
+      <div class="f"><span>Onde você vende hoje?</span><div class="chips" id="cadMps"></div></div>
+      <label class="f"><span>Faturamento mensal da loja</span><div class="inp"><select id="cadFat" required><option value="">Escolha uma faixa</option><option value="ainda_nao_vendo">Ainda não vendo</option><option value="ate_5mil">Até R$ 5 mil</option><option value="5a20mil">R$ 5 mil a R$ 20 mil</option><option value="20a50mil">R$ 20 mil a R$ 50 mil</option><option value="50a100mil">R$ 50 mil a R$ 100 mil</option><option value="acima_100mil">Acima de R$ 100 mil</option></select></div></label>
+      <p class="erro" id="avisoCadastro"></p>
+      <button class="btn prim lg" type="submit" id="btnCadastro">Continuar</button>
+    </form>
+  </div>
+</div>
+
+<!-- ================= APP ================= -->
+<div id="telaApp" class="hidden">
+  <header class="app-top"><div class="wrap">
+    <a class="marca"><img src="data:image/jpeg;base64,{{LOGO}}" alt=""><b>LB <span>PRECIFICA</span></b></a>
+    <nav class="tabs">
+      <button class="tab on" data-aba="calc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h8M8 16h3"/></svg>Calculadora</button>
+      <button class="tab" data-aba="ia"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"/></svg>Anúncio com IA</button>
+      <button class="tab" data-aba="creditos"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h4a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3h4"/></svg>Créditos</button>
+    </nav>
+    <div class="user">
+      <span class="creds" id="saldo" title="Seus créditos de IA">—</span>
+      <div class="menu"><button class="btn ghost" id="btnMenu" style="padding:0" aria-label="Conta"><img class="avatar" id="avatar" alt=""></button>
+        <div class="menu-box hidden" id="menuBox"><div class="who"><b id="menuNome"></b><span id="menuEmail" style="color:var(--muted)"></span></div><button id="btnSair">Sair da conta</button></div></div>
+    </div>
+  </div></header>
+
+  <main class="app wrap">
+    <!-- CALCULADORA -->
+    <section id="abaCalc">
+      <div class="page-h"><div><h1>Calculadora de preço</h1><p>Todas as taxas são descontadas do preço de venda, como o marketplace cobra.</p></div></div>
+      <div id="calcWrap">
+      <div class="calc">
+        <aside class="panel form-p" id="calcForm">
+          <div class="fs">
+            <div class="fs-h"><b>1</b>O que você quer</div>
+            <div class="seg" id="calcModo"><button data-m="lucro" class="on">Lucro</button><button data-m="receber">Receber</button><button data-m="preco">Tenho o preço</button></div>
+            <div class="row">
+              <label class="f" id="campoMeta"><span id="metaRot">Lucro desejado</span><div class="inp"><input id="cMeta" type="number" inputmode="decimal" min="0" step="0.5" value="20"><select id="cMetaTipo" style="width:110px;flex:none;border-left:1px solid var(--line)"><option value="pct">% da venda</option><option value="rs">R$ por venda</option></select></div></label>
+              <label class="f hidden" id="campoReceber"><span>Quero receber por venda</span><div class="inp"><em>R$</em><input id="cReceber" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div><span class="hint">Valor líquido que cai na sua conta, antes dos seus custos.</span></label>
+              <label class="f hidden" id="campoPreco"><span>Preço de venda</span><div class="inp"><em>R$</em><input id="cPreco" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+            </div>
+          </div>
+          <div class="fs">
+            <div class="fs-h"><b>2</b>Produto e custos</div>
+            <div class="row">
+              <label class="f"><span>Nome do produto <i>(acha a taxa do Mercado Livre)</i></span><div class="inp"><input id="cProduto" placeholder="Ex.: vestido midi tule"></div><div class="cat-ml" id="notaMl"></div></label>
+              <div class="row c2">
+                <label class="f"><span>Custo do produto</span><div class="inp"><em>R$</em><input id="cCusto" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+                <label class="f"><span>Embalagem</span><div class="inp"><em>R$</em><input id="cEmb" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+              </div>
+              <div class="row c2">
+                <label class="f"><span>Custo operacional</span><div class="inp"><em>R$</em><input id="cOper" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div><span class="hint">Etiqueta, mão de obra…</span></label>
+                <label class="f"><span>Imposto</span><div class="inp"><input id="cImp" type="number" inputmode="decimal" min="0" step="0.1" placeholder="0"><em class="suf">%</em></div><span class="hint">Simples, MEI…</span></label>
+              </div>
+              <label class="f"><span>Peso com embalagem</span><div class="inp"><input id="cPeso" type="number" inputmode="decimal" min="0" step="0.05" value="0.5"><em class="suf">kg</em></div><span class="hint">Usado no frete do Mercado Livre (a partir de R$ 79).</span></label>
+            </div>
+          </div>
+          <div class="fs">
+            <div class="fs-h"><b>3</b>Promoções e anúncios</div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="oCupom"><span></span></label><label class="t" for="oCupom">Cupom<small>Desconto do cupom da loja</small></label><div class="inp"><input id="vCupom" type="number" value="3" step="0.5"><em class="suf">%</em></div></div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="oRel"><span></span></label><label class="t" for="oRel">Oferta relâmpago<small>Desconto extra na oferta</small></label><div class="inp"><input id="vRel" type="number" value="5" step="0.5"><em class="suf">%</em></div></div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="oAds"><span></span></label><label class="t" for="oAds">Anúncios (Ads)<small>Quanto da venda vai pro Ads</small></label><div class="inp"><input id="vAds" type="number" value="10" step="0.5"><em class="suf">%</em></div></div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="oAfil"><span></span></label><label class="t" for="oAfil">Afiliados<small>Comissão de quem divulga</small></label><div class="inp"><input id="vAfil" type="number" value="5" step="0.5"><em class="suf">%</em></div></div>
+          </div>
+          <div class="fs">
+            <div class="fs-h"><b>4</b>Regras de cada marketplace</div>
+            <div class="mpcfg">
+              <div class="r">{{L_SHOPEE_26}}<span class="nm">Shopee</span><div class="inp"><select id="rShopee"><option value="cnpj">Vendedor CNPJ</option><option value="cpf">Vendedor CPF</option></select></div></div>
+              <div class="r">{{L_ML_26}}<span class="nm">Mercado Livre</span><div class="inp"><select id="rMl"><option value="classico">Clássico</option><option value="premium">Premium</option></select></div></div>
+              <div class="r">{{L_TIKTOK_26}}<span class="nm">TikTok Shop</span><div class="inp"><select id="rTt"><option value="0">Sem frete grátis</option><option value="1">Frete grátis (+6%)</option></select></div></div>
+              <div class="r">{{L_SHEIN_26}}<span class="nm">Shein</span><div class="inp"><select id="rShein"><option value="16">Comissão 16%</option><option value="18">Comissão 18%</option><option value="20" selected>Comissão 20%</option></select></div></div>
+            </div>
+            <div class="sw" style="margin-top:10px"><label class="tog"><input type="checkbox" id="cArred" checked><span></span></label><label class="t" for="cArred">Terminar o preço em ,99</label></div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="cDeOn" checked><span></span></label><label class="t" for="cDeOn">Mostrar preço "de" (riscado)</label><div class="inp"><input id="cDe" type="number" value="30" step="5"><em class="suf">%</em></div></div>
+          </div>
+        </aside>
+        <div>
+          <div class="best hidden" id="melhor"></div>
+          <div class="res-grid" id="resultados"></div>
+          <p class="note">Taxas de outubro de 2026. Shopee: comissão e taxa fixa por faixa de preço (CNPJ e CPF). Mercado Livre: comissão oficial da categoria e frete grátis obrigatório a partir de R$ 79 pelo peso. TikTok Shop: 10% + R$ 4 até R$ 49,99 e 6% + R$ 6 acima; frete grátis opcional de 6% (até R$ 50). Shein: 16% a 20% conforme a categoria, sem taxa fixa. Confira sempre no painel do seu marketplace.</p>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- IA -->
+    <section id="abaIa" class="hidden">
+      <div class="page-h"><div><h1>Anúncio com IA</h1><p>Mesmas regras de título, descrição e foto que a LB Marketplace usa nas lojas dos clientes.</p></div></div>
+      <div class="ia">
+        <div class="panel">
+          <div class="step"><div class="step-h"><b>1</b><div><h3>Onde vai anunciar?</h3><p>Cada marketplace tem regra própria de título e foto.</p></div></div>
+            <div class="mp-pick" id="iaMp">
+              <button class="mp-opt on" data-mp="shopee">{{L_SHOPEE_32}}<span><b>Shopee</b><small>Título até 100 · foto 3:4</small></span></button>
+              <button class="mp-opt" data-mp="ml">{{L_ML_32}}<span><b>Mercado Livre</b><small>Título até 60 · foto 4:5</small></span></button>
+              <button class="mp-opt" data-mp="tiktok">{{L_TIKTOK_32}}<span><b>TikTok Shop</b><small>Título detalhado · foto 3:4</small></span></button>
+            </div></div>
+          <div class="step"><div class="step-h"><b>2</b><div><h3>Fotos do produto</h3><p>Até 5 fotos reais. A primeira vira a base das fotos profissionais.</p></div></div>
+            <label class="drop" id="drop"><input type="file" id="iaFotos" accept="image/*" multiple hidden>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+              <b>Clique ou arraste as fotos aqui</b><small>JPG ou PNG · até 5 fotos</small></label>
+            <div class="thumbs" id="iaPrev"></div></div>
+          <div class="step"><div class="step-h"><b>3</b><div><h3>Descreva o produto</h3><p>Só informações reais: a IA não inventa o que você não disser.</p></div></div>
+            <div class="inp"><textarea id="iaProduto" placeholder="Ex.: Vestido midi de tule com forro, alça regulável, cores preto e verde, tamanhos P ao GG. Comprimento 110 cm."></textarea></div></div>
+        </div>
+        <aside class="panel gen">
+          <h3>O que você quer criar?</h3>
+          <div class="opt"><div class="opt-h"><div><b>Título e descrição</b><small>Otimizados pra busca do marketplace</small></div><span class="cost">2 créditos</span></div>
+            <button class="btn prim" style="width:100%" id="btnIaTexto">Gerar texto</button></div>
+          <div class="opt"><div class="opt-h"><div><b>Fotos profissionais</b><small>A partir da sua foto, + título e descrição</small></div><span class="cost" id="custoFotos">50 créditos</span></div>
+            <div class="qty">Quantidade<div class="inp"><select id="iaQtd"><option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option><option>6</option></select></div><span style="color:var(--muted)">× 10 créditos</span></div>
+            <button class="btn gold" style="width:100%" id="btnIaFotos">Gerar fotos</button></div>
+          <div class="rules">
+            <div>{{CHECK}}Mantém a peça, a cor e a estampa da sua foto</div>
+            <div>{{CHECK}}Sem logo, texto inventado ou acessório que não vem junto</div>
+            <div>{{CHECK}}Se a IA falhar, os créditos voltam na hora</div>
+          </div>
+        </aside>
+      </div>
+      <div id="iaOut" class="panel out hidden"></div>
+    </section>
+
+    <!-- CRÉDITOS -->
+    <section id="abaCreditos" class="hidden">
+      <div class="page-h"><div><h1>Créditos de IA</h1><p>Recarregue quando precisar. Créditos não vencem.</p></div></div>
+      <div class="panel bal"><div><div class="lbl">Seu saldo</div><div class="big num" id="saldoGrande">—</div></div>
+        <div class="eq"><div><b>10 créditos</b>1 foto profissional</div><div><b>2 créditos</b>título + descrição</div></div></div>
+      <div class="packs" id="pacotes"></div>
+      <div class="doc-row"><label class="f"><span>CPF ou CNPJ <i>(pra emitir a cobrança)</i></span><div class="inp"><input id="cpfCreditos" inputmode="numeric" placeholder="000.000.000-00"></div></label></div>
+      <p class="erro" id="avisoCreditos"></p>
+    </section>
+  </main>
+  <footer class="site"><div class="wrap"><span>LB Precifica · LB Marketplace Assessoria · CNPJ 58.943.847/0001-90</span><span>Dúvidas? <a href="https://wa.me/5511991277027" target="_blank" rel="noopener">Fale com a LB no WhatsApp</a></span></div></footer>
+</div>
+
+<div id="toast" class="toast hidden" role="status"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+
+const API = "https://lbprecifica.vercel.app";
+const ML_API = "https://lb-mercadolivre.vercel.app/api/mercadolivre";
+const app = initializeApp({ apiKey: "AIzaSyD7kPODN3ZHzM8SuRlB_vdYC276YOzzXPE", authDomain: "lb-gestao-clientes.firebaseapp.com", projectId: "lb-gestao-clientes", appId: "1:344033285587:web:fbdae7d44eaf5bac760b26" });
+const auth = getAuth(app);
+const $ = (id) => document.getElementById(id);
+const brl = (v) => (Number(v) || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const toast = (t) => { const e = $("toast"); e.textContent = t; e.classList.remove("hidden"); clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.add("hidden"), 4500); };
+const LOGO = { shopee: (px) => `{{JS_SHOPEE}}`, ml: (px) => `{{JS_ML}}`, tiktok: (px) => `{{JS_TIKTOK}}`, shein: (px) => `{{JS_SHEIN}}` };
+const CHECK = `{{CHECK}}`;
+let token = null, perfil = null, fotoUsuario = null, precos = null;
+try { token = localStorage.getItem("lbp_token"); fotoUsuario = localStorage.getItem("lbp_foto"); } catch {}
+
+async function api(caminho, opt = {}) {
+  const r = await fetch(API + caminho, { ...opt, headers: { "Content-Type": "application/json", ...(token ? { Authorization: "Bearer " + token } : {}), ...(opt.headers || {}) } });
+  const d = await r.json().catch(() => ({}));
+  if (r.status === 401 && caminho !== "/api/login-google") { sair("Sua conta entrou em outro aparelho ou a sessão expirou. Entre de novo."); throw new Error("sessao"); }
+  return { ok: r.ok, status: r.status, d };
+}
+function mostrar(tela) { for (const t of ["telaEntrar", "telaCadastro", "telaApp"]) $(t).classList.toggle("hidden", t !== tela); window.scrollTo(0, 0); }
+function sair(msg) {
+  if (token) fetch(API + "/api/me", { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + token }, body: JSON.stringify({ acao: "sair" }) }).catch(() => {});
+  token = null; perfil = null; try { localStorage.removeItem("lbp_token"); localStorage.removeItem("lbp_foto"); } catch {}
+  signOut(auth).catch(() => {}); mostrar("telaEntrar"); $("avisoEntrar").textContent = msg || "";
+  if (msg) toast(msg);
+}
+
+// ---------- Entrar com Google ----------
+async function entrar() {
+  $("avisoEntrar").textContent = "";
+  try {
+    const res = await signInWithPopup(auth, new GoogleAuthProvider());
+    fotoUsuario = res.user.photoURL; try { localStorage.setItem("lbp_foto", fotoUsuario || ""); } catch {}
+    const { d } = await api("/api/login-google", { method: "POST", body: JSON.stringify({ idToken: await res.user.getIdToken() }) });
+    if (!d.success) { $("avisoEntrar").textContent = d.error || "Não deu pra entrar."; toast(d.error || "Não deu pra entrar."); return; }
+    token = d.token; try { localStorage.setItem("lbp_token", token); } catch {}
+    perfil = d.perfil;
+    if (d.precisaCadastro) { abrirCadastro(res.user.displayName); return; }
+    await abrirApp();
+  } catch (e) {
+    if (e.message === "sessao" || e.code === "auth/popup-closed-by-user" || e.code === "auth/cancelled-popup-request") return;
+    const m = "Não deu pra entrar com o Google. Tente de novo."; $("avisoEntrar").textContent = m; toast(m);
+  }
+}
+document.querySelectorAll("[data-entrar]").forEach((b) => b.onclick = entrar);
+$("btnSair").onclick = () => sair();
+$("btnMenu").onclick = (e) => { e.stopPropagation(); $("menuBox").classList.toggle("hidden"); };
+document.addEventListener("click", () => $("menuBox").classList.add("hidden"));
+
+// ---------- Cadastro ----------
+const MPS = [["shopee", "Shopee"], ["ml", "Mercado Livre"], ["tiktok", "TikTok Shop"], ["shein", "Shein"], ["amazon", "Amazon"], ["outro", "Outro"]];
+function abrirCadastro(nome) {
+  $("cadNome").value = nome || ""; $("cadPrimeiro").textContent = (nome || "").split(" ")[0] || "";
+  $("cadMps").innerHTML = MPS.map(([k, n]) => `<span class="chip" data-mp="${k}" role="button" tabindex="0">${LOGO[k] ? LOGO[k](20) : ""}${n}</span>`).join("");
+  $("cadMps").onclick = (e) => { const c = e.target.closest(".chip"); if (c) c.classList.toggle("on"); };
+  mostrar("telaCadastro");
+}
+$("cadWhats").addEventListener("input", (e) => { const d = e.target.value.replace(/\D/g, "").slice(0, 11); e.target.value = d.length > 6 ? `(${d.slice(0, 2)}) ${d.slice(2, d.length - 4)}-${d.slice(-4)}` : d.length > 2 ? `(${d.slice(0, 2)}) ${d.slice(2)}` : d; });
+$("formCadastro").onsubmit = async (e) => {
+  e.preventDefault();
+  const corpo = { nome: $("cadNome").value, whatsapp: $("cadWhats").value, loja: $("cadLoja").value, segmento: $("cadSegmento").value,
+    faturamento: $("cadFat").value, marketplaces: [...document.querySelectorAll("#cadMps .chip.on")].map((c) => c.dataset.mp) };
+  $("btnCadastro").disabled = true; $("avisoCadastro").textContent = "";
+  try {
+    const { d } = await api("/api/cadastro", { method: "POST", body: JSON.stringify(corpo) });
+    if (!d.success) { $("avisoCadastro").textContent = d.error || "Confira os dados."; return; }
+    await abrirApp();
+  } catch {} finally { $("btnCadastro").disabled = false; }
+};
+
+// ---------- App ----------
+function pintarSaldo() {
+  const t = perfil.iaIlimitada ? "IA ilimitada" : `${perfil.creditos ?? 0} créditos`;
+  $("saldo").innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m12 3 1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"/></svg>${t}`;
+  $("saldoGrande").textContent = perfil.iaIlimitada ? "Ilimitado" : String(perfil.creditos ?? 0);
+}
+async function carregarPerfil() {
+  const { d } = await api("/api/me");
+  if (!d.success) throw new Error(d.error || "erro");
+  perfil = d.perfil; precos = d.precos || {};
+  pintarSaldo();
+  $("menuNome").textContent = perfil.nome || "Sua conta"; $("menuEmail").textContent = perfil.email || "";
+  if (fotoUsuario) $("avatar").src = fotoUsuario; else $("avatar").src = `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="40" height="40" fill="#f7efdc"/><text x="20" y="26" text-anchor="middle" font-family="Arial" font-weight="700" font-size="16" fill="#7a5a17">${esc((perfil.nome || perfil.email || "?")[0].toUpperCase())}</text></svg>`)}`;
+  montarTrava(); montarPacotes();
+}
+async function abrirApp() {
+  mostrar("telaApp");
+  try { await carregarPerfil(); } catch (e) { if (e.message !== "sessao") toast("Não deu pra carregar sua conta. Tente de novo em instantes."); return; }
+  const pago = new URLSearchParams(location.search).get("paid");
+  if (pago) { history.replaceState(null, "", location.pathname); esperarPagamento(pago); }
+  calcular();
+}
+function irAba(aba) {
+  document.querySelectorAll(".tab").forEach((x) => x.classList.toggle("on", x.dataset.aba === aba));
+  for (const [a, sec] of [["calc", "abaCalc"], ["ia", "abaIa"], ["creditos", "abaCreditos"]]) $(sec).classList.toggle("hidden", a !== aba);
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll(".tab").forEach((b) => b.onclick = () => irAba(b.dataset.aba));
+$("saldo").onclick = () => irAba("creditos");
+
+// ---------- Paywall ----------
+function montarTrava() {
+  const w = $("calcWrap"); const travado = !perfil.calculadora;
+  w.classList.toggle("lock", travado);
+  w.querySelector(".calc").classList.toggle("blur", travado);
+  w.querySelector(".lock-card")?.remove();
+  if (!travado) return;
+  w.insertAdjacentHTML("beforeend", `<div class="lock-card"><div class="card lock-box">
+    <span class="pill" style="color:#7a5a17;background:var(--goldbg);border-color:#ecdcb4">Acesso vitalício</span>
+    <h2 style="font-size:24px;margin-top:14px">Libere a calculadora completa</h2>
+    <div class="valor">R$ 49,99</div><div style="color:var(--muted);font-size:13px">pagamento único · sem mensalidade</div>
+    <ul><li>${CHECK}Shopee, Mercado Livre, TikTok Shop e Shein lado a lado</li><li>${CHECK}Taxas sempre atualizadas</li><li>${CHECK}100 créditos de IA de bônus</li></ul>
+    <label class="f" style="text-align:left;margin-bottom:12px"><span>CPF ou CNPJ <i>(pra emitir a cobrança)</i></span><div class="inp"><input id="cpfAcesso" inputmode="numeric" placeholder="000.000.000-00"></div></label>
+    <button class="btn gold lg" style="width:100%" id="btnComprarAcesso">Liberar por R$ 49,99</button>
+    <p class="erro" id="avisoAcesso"></p>
+    <div style="font-size:12px;color:var(--muted)">Pix, boleto ou cartão · pagamento seguro pelo Asaas</div></div></div>`);
+  $("cpfAcesso").addEventListener("input", mascaraDoc);
+  $("btnComprarAcesso").onclick = () => comprar("acesso", $("cpfAcesso").value, $("avisoAcesso"), $("btnComprarAcesso"));
+}
+function montarPacotes() {
+  const lista = [["c100", ""], ["c300", "Mais escolhido"], ["c700", "Melhor preço"]];
+  $("pacotes").innerHTML = lista.map(([k, tag]) => { const p = precos?.[k]; if (!p) return "";
+    return `<div class="panel pack ${tag === "Mais escolhido" ? "pop" : ""}">${tag ? `<span class="tag">${tag}</span>` : ""}
+      <div class="q num">${p.creditos}</div><div class="ql">créditos</div>
+      <div class="eqv">${Math.floor(p.creditos / 10)} fotos ou ${Math.floor(p.creditos / 2)} textos</div>
+      <div class="pr">${brl(p.valor)}</div>
+      <button class="btn ${tag === "Mais escolhido" ? "gold" : "prim"}" data-pacote="${k}">Comprar</button>
+      <div class="unit">${brl(p.valor / (p.creditos / 10))} por foto</div></div>`; }).join("");
+}
+function mascaraDoc(e) { const d = e.target.value.replace(/\D/g, "").slice(0, 14);
+  e.target.value = d.length <= 11 ? d.replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+    : d.replace(/^(\d{2})(\d)/, "$1.$2").replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3").replace(/\.(\d{3})(\d)/, ".$1/$2").replace(/(\d{4})(\d)/, "$1-$2"); }
+$("cpfCreditos").addEventListener("input", mascaraDoc);
+
+// ---------- Compras ----------
+async function comprar(produto, cpf, aviso, botao) {
+  aviso.textContent = "";
+  if (![11, 14].includes(String(cpf).replace(/\D/g, "").length)) { aviso.textContent = "Informe um CPF ou CNPJ válido."; return; }
+  botao.disabled = true;
+  try {
+    const { d } = await api("/api/create-payment", { method: "POST", body: JSON.stringify({ produto, cpfCnpj: cpf }) });
+    if (!d.checkoutUrl) { aviso.textContent = d.error || "Não deu pra gerar a cobrança."; return; }
+    location.href = d.checkoutUrl;
+  } catch (e) { if (e.message !== "sessao") aviso.textContent = "Sem conexão. Tente de novo."; }
+  finally { botao.disabled = false; }
+}
+$("pacotes").onclick = (e) => { const b = e.target.closest("[data-pacote]"); if (b) comprar(b.dataset.pacote, $("cpfCreditos").value, $("avisoCreditos"), b); };
+async function esperarPagamento(id) {
+  toast("Confirmando seu pagamento…");
+  for (let i = 0; i < 40; i++) {
+    const r = await fetch(`${API}/api/check-payment?requestId=${encodeURIComponent(id)}`).then((r) => r.json()).catch(() => ({}));
+    if (r.ready) { await carregarPerfil(); calcular(); toast("Pagamento confirmado! Tudo liberado."); return; }
+    await new Promise((ok) => setTimeout(ok, 4000));
+  }
+  toast("Ainda não recebemos a confirmação. Se pagou por boleto, pode levar até 3 dias úteis.");
+}
+
+// ---------- Calculadora (todas as taxas como desconto sobre o preço de venda) ----------
+const ML_FRETE = [[0.3,[6.46,7.49,8.86,14.82,17.22,19.74,22.14,25.14]],[0.5,[6.80,7.60,8.97,15.90,18.54,21.18,23.82,27.06]],[1,[6.91,7.71,9.09,16.62,19.38,22.14,24.90,28.38]],[1.5,[7.03,7.83,9.20,16.98,19.74,22.62,25.38,29.58]],[2,[7.14,7.94,9.31,17.34,20.22,23.10,25.98,29.58]],[3,[7.26,9.09,9.77,18.90,22.02,25.26,28.38,31.50]],[4,[7.37,9.31,10.23,20.46,23.82,27.18,30.66,34.02]],[5,[7.49,9.54,11.14,22.14,25.86,29.58,33.30,36.90]],[6,[7.60,9.77,11.37,30.54,34.26,39.18,42.90,47.70]],[7,[7.71,10.00,11.60,32.46,37.26,43.26,48.06,52.86]],[8,[7.83,10.23,11.83,34.62,40.38,46.14,51.90,57.66]],[9,[7.94,10.46,12.06,35.58,41.46,47.46,53.34,59.22]],[11,[8.06,10.91,12.51,49.50,57.66,65.94,74.10,82.38]],[13,[8.17,11.37,12.97,50.58,59.10,67.50,75.90,84.30]],[15,[8.29,11.60,13.20,54.06,62.94,71.94,80.94,89.94]],[17,[8.40,11.83,13.43,58.26,67.26,76.26,84.90,94.38]],[20,[8.51,12.06,13.66,65.70,76.62,87.54,98.46,109.38]],[999,[8.74,12.51,13.89,76.86,90.06,101.70,114.42,127.14]]];
+const faixaMl = (p) => p < 19 ? 0 : p < 49 ? 1 : p < 79 ? 2 : p < 100 ? 3 : p < 120 ? 4 : p < 150 ? 5 : p < 200 ? 6 : 7;
+const freteMl = (peso, p) => { if (p < 79) return 0; const row = ML_FRETE.find((r) => peso <= r[0]) || ML_FRETE[ML_FRETE.length - 1]; return row[1][faixaMl(p)]; }; // frete grátis obrigatório a partir de R$ 79
+const SHOPEE = { cnpj: [[79.99, 0.20, 4], [99.99, 0.14, 16], [199.99, 0.14, 20], [Infinity, 0.14, 26]], cpf: [[79.99, 0.20, 7], [99.99, 0.14, 19], [199.99, 0.14, 23], [Infinity, 0.14, 29]] };
+let mlComissao = null, mlCategoria = null; // vem da API oficial do ML
+
+function regras() {
+  const n = (id) => Number($(id).value) || 0, on = (id) => $(id).checked;
+  return { custo: n("cCusto"), emb: n("cEmb"), oper: n("cOper"), imp: n("cImp") / 100, peso: n("cPeso") || 0.5, de: on("cDeOn") ? n("cDe") / 100 : 0,
+    extras: (on("oCupom") ? n("vCupom") : 0) + (on("oRel") ? n("vRel") : 0) + (on("oAds") ? n("vAds") : 0) + (on("oAfil") ? n("vAfil") : 0),
+    shopee: $("rShopee").value, ml: $("rMl").value, ttFrete: $("rTt").value === "1", shein: n("rShein") / 100, arred: on("cArred") };
+}
+// Quanto cada marketplace tira de um preço P (tudo subtraído do preço)
+function taxas(mp, P, R) {
+  let comissao = 0, fixa = 0, frete = 0;
+  if (mp === "shopee") { const f = SHOPEE[R.shopee].find((x) => P <= x[0]); comissao = P * f[1]; fixa = f[2]; }
+  if (mp === "ml") { comissao = P * ((mlComissao ?? (R.ml === "premium" ? 19 : 14)) / 100); frete = freteMl(R.peso, P); }
+  if (mp === "tiktok") { const ate50 = P < 50; comissao = P * (ate50 ? 0.10 : 0.06); fixa = ate50 ? 4 : 6; if (R.ttFrete) frete = Math.min(P * 0.06, 50); }
+  if (mp === "shein") comissao = P * R.shein;
+  const promo = P * R.extras / 100, imposto = P * R.imp;
+  const custos = R.custo + R.emb + R.oper;
+  const recebe = P - comissao - fixa - frete - promo - imposto;
+  return { P, comissao, fixa, frete, promo, imposto, custos, recebe, lucro: recebe - custos, margem: P > 0 ? (recebe - custos) / P : 0 };
+}
+// Menor preço que atinge o objetivo (as faixas fazem a conta "pular", por isso procura centavo a centavo até R$ 3 mil)
+function precoPara(mp, R, objetivo) {
+  const atinge = (P) => { const t = taxas(mp, P, R); return objetivo.tipo === "receber" ? t.recebe >= objetivo.v : objetivo.tipo === "rs" ? t.lucro >= objetivo.v : t.lucro >= objetivo.v * P; };
+  for (let c = 1; c <= 300000; c++) if (atinge(c / 100)) return c / 100;
+  let lo = 3000, hi = 1e6; if (!atinge(hi)) return null;
+  for (let i = 0; i < 60; i++) { const m = (lo + hi) / 2; atinge(m) ? hi = m : lo = m; }
+  return hi;
+}
+const ate99 = (p) => { const r = Math.floor(p) + 0.99; return r >= p ? r : r + 1; };
+const NOMES = { shopee: "Shopee", ml: "Mercado Livre", tiktok: "TikTok Shop", shein: "Shein" };
+const SUBT = (mp, R) => mp === "shopee" ? `Vendedor ${R.shopee.toUpperCase()}` : mp === "ml" ? (R.ml === "premium" ? "Anúncio Premium" : "Anúncio Clássico") : mp === "tiktok" ? (R.ttFrete ? "Com frete grátis" : "Sem frete grátis") : `Comissão ${Math.round(R.shein * 100)}%`;
+const CORES = { taxa: "#9a9384", frete: "#5b7fbf", promo: "#e0a24a", imp: "#a074c4", custo: "#5d5a52", lucro: "#2f9e63" };
+let modo = "lucro";
+$("calcModo").onclick = (e) => { const b = e.target.closest("button"); if (!b) return; modo = b.dataset.m; [...$("calcModo").children].forEach((x) => x.classList.toggle("on", x === b));
+  $("campoMeta").classList.toggle("hidden", modo !== "lucro"); $("campoReceber").classList.toggle("hidden", modo !== "receber"); $("campoPreco").classList.toggle("hidden", modo !== "preco"); calcular(); };
+$("campoReceber").classList.add("hidden");
+function calcular() {
+  if (!perfil) return;
+  const R = regras(); const res = {};
+  for (const mp of ["shopee", "ml", "tiktok", "shein"]) {
+    let P;
+    if (modo === "preco") P = Number($("cPreco").value) || 0;
+    else {
+      const objetivo = modo === "receber" ? { tipo: "receber", v: Number($("cReceber").value) || 0 } : { tipo: $("cMetaTipo").value, v: $("cMetaTipo").value === "pct" ? (Number($("cMeta").value) || 0) / 100 : Number($("cMeta").value) || 0 };
+      const temBase = modo === "receber" ? objetivo.v > 0 : (R.custo + R.emb + R.oper) > 0 || objetivo.tipo === "rs" && objetivo.v > 0;
+      P = temBase ? precoPara(mp, R, objetivo) : null; if (P != null && R.arred) P = ate99(P);
+    }
+    res[mp] = P > 0 ? taxas(mp, P, R) : null;
+  }
+  const validos = Object.entries(res).filter(([, t]) => t);
+  const melhor = !validos.length ? null : modo === "preco" ? validos.sort((a, b) => b[1].lucro - a[1].lucro)[0] : validos.sort((a, b) => a[1].P - b[1].P)[0];
+  const mb = $("melhor");
+  if (melhor) {
+    const [mp, t] = melhor;
+    mb.innerHTML = `<div><div class="lbl">${modo === "preco" ? "Mais lucro" : "Menor preço"}</div><div class="mpn">${LOGO[mp](28)}${NOMES[mp]}</div></div><div class="sep"></div>
+      <div><div class="lbl">Preço</div><div class="val num">${brl(t.P)}</div></div><div class="sep"></div>
+      <div><div class="lbl">Lucro por venda</div><div class="val num" style="color:${t.lucro < 0 ? "#ff8a75" : "#7fe0a8"}">${brl(t.lucro)}</div></div>`;
+    mb.classList.remove("hidden");
+  } else mb.classList.add("hidden");
+  $("resultados").innerHTML = ["shopee", "ml", "tiktok", "shein"].map((mp) => {
+    const t = res[mp];
+    const head = `<div class="res-h">${LOGO[mp](36)}<div><h3>${NOMES[mp]}</h3><small>${SUBT(mp, R)}</small></div>${melhor && melhor[0] === mp ? `<span class="badge">${modo === "preco" ? "Mais lucro" : "Melhor preço"}</span>` : ""}</div>`;
+    if (!t) return `<div class="res">${head}<div class="res-b"><p class="empty">${modo === "preco" ? "Digite o preço de venda pra ver quanto sobra." : modo === "receber" ? "Digite quanto quer receber por venda." : "Preencha o custo do produto pra calcular o preço."}</p></div></div>`;
+    const de = R.de > 0 ? ate99(t.P * (1 + R.de)) : null;
+    const pc = (v) => Math.max(0, v) / t.P * 100;
+    const seg = [[CORES.taxa, t.comissao + t.fixa], [CORES.frete, t.frete], [CORES.promo, t.promo], [CORES.imp, t.imposto], [CORES.custo, Math.min(t.custos, Math.max(0, t.recebe))], [CORES.lucro, t.lucro]];
+    const ln = (r, v, k = "") => v ? `<span class="k">${r}</span><span class="v neg">− ${brl(v)}</span>` : "";
+    const comRot = mp === "ml" && mlCategoria ? `Comissão ${mlComissao}%` : mp === "shopee" ? `Comissão ${t.P <= 79.99 ? 20 : 14}%` : mp === "tiktok" ? `Comissão ${t.P < 50 ? 10 : 6}%` : mp === "shein" ? `Comissão ${Math.round(R.shein * 100)}%` : `Comissão ${R.ml === "premium" ? 19 : 14}%`;
+    return `<div class="res ${melhor && melhor[0] === mp ? "top" : ""}">${head}<div class="res-b">
+      <div class="price"><b class="num">${brl(t.P)}</b>${de ? `<s class="num">${brl(de)}</s>` : ""}</div>
+      <div><div class="stack">${seg.map(([c, v]) => v > 0 ? `<i style="width:${pc(v)}%;background:${c}"></i>` : "").join("")}</div>
+        <div class="legend" style="margin-top:8px"><span><i style="background:${CORES.taxa}"></i>Taxas</span>${t.frete ? `<span><i style="background:${CORES.frete}"></i>Frete</span>` : ""}${t.promo ? `<span><i style="background:${CORES.promo}"></i>Promoções</span>` : ""}${t.imposto ? `<span><i style="background:${CORES.imp}"></i>Imposto</span>` : ""}${t.custos ? `<span><i style="background:${CORES.custo}"></i>Custos</span>` : ""}<span><i style="background:${CORES.lucro}"></i>Lucro</span></div></div>
+      <div class="lines">${ln(comRot, t.comissao)}${ln("Taxa fixa", t.fixa)}${ln(mp === "tiktok" ? "Frete grátis" : "Frete grátis (ML)", t.frete)}${ln("Cupom, oferta, Ads e afiliados", t.promo)}${ln("Imposto", t.imposto)}
+        <span class="sub">Você recebe</span><span class="v sub">${brl(t.recebe)}</span>${ln("Produto, embalagem e operação", t.custos)}</div>
+      <div class="profit ${t.lucro < 0 ? "neg" : ""}"><span>${t.lucro < 0 ? "Prejuízo" : "Lucro"} por venda</span><span><b class="num">${brl(t.lucro)}</b><em>${(t.margem * 100).toFixed(1)}%</em></span></div>
+    </div></div>`;
+  }).join("");
+}
+document.querySelectorAll("#calcForm input, #calcForm select").forEach((el) => { el.addEventListener("input", calcular); el.addEventListener("change", calcular); });
+document.querySelectorAll(".sw").forEach((s) => { const c = s.querySelector('input[type=checkbox]'); const upd = () => s.classList.toggle("off", !c.checked); c.addEventListener("change", upd); upd(); });
+let tMl = null;
+$("cProduto").addEventListener("input", () => { clearTimeout(tMl); tMl = setTimeout(buscarTaxaMl, 700); });
+$("rMl").addEventListener("change", buscarTaxaMl);
+async function buscarTaxaMl() {
+  const q = $("cProduto").value.trim(), nota = $("notaMl");
+  nota.className = "cat-ml";
+  if (q.length < 3) { mlComissao = null; mlCategoria = null; nota.textContent = ""; calcular(); return; }
+  nota.innerHTML = `<span class="spin" style="width:12px;height:12px;border-width:2px"></span>Buscando a categoria no Mercado Livre…`;
+  try {
+    const d = await fetch(`${ML_API}?acao=taxa_ml_publica&titulo=${encodeURIComponent(q)}&preco=100&tipo=${$("rMl").value}`).then((r) => r.json());
+    if (d.ok) { mlComissao = d.comissaoPct; mlCategoria = d.nomeCategoria; nota.className = "cat-ml ok"; nota.innerHTML = `${LOGO.ml(16)}Categoria “${esc(d.nomeCategoria)}”: comissão de ${d.comissaoPct}%`; }
+    else { mlComissao = null; mlCategoria = null; nota.textContent = "Não achei a categoria no Mercado Livre. Usando 14% (Clássico) / 19% (Premium)."; }
+  } catch { mlComissao = null; mlCategoria = null; nota.textContent = "Sem conexão com o Mercado Livre. Usando 14% (Clássico) / 19% (Premium)."; }
+  calcular();
+}
+
+// ---------- IA ----------
+let iaImagens = [], iaMp = "shopee";
+$("iaMp").onclick = (e) => { const b = e.target.closest(".mp-opt"); if (!b) return; iaMp = b.dataset.mp; [...$("iaMp").children].forEach((x) => x.classList.toggle("on", x === b)); };
+$("iaQtd").onchange = () => { $("custoFotos").textContent = `${Number($("iaQtd").value) * 10} créditos`; };
+function reduzir(arq) { return new Promise((ok, erro) => { const img = new Image(); img.onload = () => { const s = Math.min(1, 1280 / Math.max(img.width, img.height)); const c = document.createElement("canvas"); c.width = Math.round(img.width * s); c.height = Math.round(img.height * s); c.getContext("2d").drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(img.src); ok(c.toDataURL("image/jpeg", 0.85)); }; img.onerror = () => erro(new Error("foto inválida")); img.src = URL.createObjectURL(arq); }); }
+function pintarThumbs() { $("iaPrev").innerHTML = iaImagens.map((s, i) => `<div class="thumb"><img src="${s}" alt="">${i === 0 ? '<span class="capa">Base</span>' : ""}<button data-rm="${i}" aria-label="Remover">×</button></div>`).join(""); }
+async function addFotos(files) { for (const f of [...files]) { if (iaImagens.length >= 5) { toast("Máximo de 5 fotos."); break; } if (!/^image\//.test(f.type)) continue; try { iaImagens.push(await reduzir(f)); } catch { toast("Uma das fotos não abriu."); } } pintarThumbs(); }
+$("iaFotos").onchange = (e) => { addFotos(e.target.files); e.target.value = ""; };
+$("iaPrev").onclick = (e) => { const b = e.target.closest("[data-rm]"); if (!b) return; iaImagens.splice(Number(b.dataset.rm), 1); pintarThumbs(); };
+const drop = $("drop");
+["dragenter", "dragover"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add("over"); }));
+["dragleave", "drop"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove("over"); }));
+drop.addEventListener("drop", (e) => addFotos(e.dataTransfer.files));
+async function gerar(tipo) {
+  const produto = $("iaProduto").value.trim(), qtd = Number($("iaQtd").value);
+  if (produto.length < 10) { toast("Descreva o produto com um pouco mais de detalhe."); $("iaProduto").focus(); return; }
+  if (tipo === "fotos" && !iaImagens.length) { toast("Envie pelo menos 1 foto do produto."); return; }
+  const custo = tipo === "fotos" ? qtd * 10 : 2;
+  if (!perfil.iaIlimitada && (perfil.creditos ?? 0) < custo) { toast(`Precisa de ${custo} créditos e você tem ${perfil.creditos ?? 0}.`); irAba("creditos"); return; }
+  const out = $("iaOut");
+  $("btnIaTexto").disabled = $("btnIaFotos").disabled = true;
+  out.classList.remove("hidden");
+  out.innerHTML = `<div class="loading"><span class="spin"></span><div><b>${tipo === "fotos" ? `Criando ${qtd} foto${qtd > 1 ? "s" : ""} profissionais…` : "Escrevendo título e descrição…"}</b><div style="color:var(--muted);font-size:13px">${tipo === "fotos" ? "Leva de 1 a 2 minutos. Não feche esta página." : "Leva uns 15 segundos."}</div><div class="prog"><i></i></div></div></div>`;
+  out.scrollIntoView({ behavior: "smooth", block: "start" });
+  try {
+    const corpo = tipo === "fotos" ? { tipo, produto, marketplace: iaMp, imagens: iaImagens, quantidade: qtd } : { tipo, produto, marketplace: iaMp, imagem: iaImagens[0] || null };
+    const { d } = await api("/api/ia", { method: "POST", body: JSON.stringify(corpo) });
+    if (!d.success) { out.innerHTML = `<div class="loading" style="color:var(--bad)">${esc(d.error || "A IA não respondeu. Seus créditos foram devolvidos.")}</div>`; return; }
+    if (d.saldo != null) { perfil.creditos = d.saldo; pintarSaldo(); }
+    const bloco = (rot, txt, cls, extra) => `<div class="out-box"><div class="out-h"><b>${rot}</b><span>${extra || ""} <button class="btn sm" data-copiar="${esc(txt)}">Copiar</button></span></div><div class="out-t ${cls}">${esc(txt)}</div></div>`;
+    out.innerHTML = `<div class="out-box" style="display:flex;align-items:center;gap:12px">${LOGO[iaMp](28)}<b style="flex:1">Anúncio para ${NOMES[iaMp]}</b><span style="color:var(--muted);font-size:13px">${d.cobrado ? `${d.cobrado} créditos usados` : "Pronto"}</span></div>` +
+      (d.titulo ? bloco("Título", d.titulo, "title", `${d.titulo.length} caracteres ·`) : "") + (d.descricao ? bloco("Descrição", d.descricao, "") : "") +
+      (d.fotos?.length ? `<div class="out-box"><div class="out-h"><b>Fotos</b><span><button class="btn sm" id="baixarTodas">Baixar todas</button></span></div><div class="gal">${d.fotos.map((f, i) => `<figure><img src="${f.imagem}" alt="${esc(f.tipo)}"><figcaption>${esc(f.tipo || `Foto ${i + 1}`)}<a class="btn sm" download="lb-precifica-foto-${i + 1}.png" href="${f.imagem}">Baixar</a></figcaption></figure>`).join("")}</div></div>` : "");
+    $("baixarTodas")?.addEventListener("click", () => out.querySelectorAll(".gal a[download]").forEach((a, i) => setTimeout(() => a.click(), i * 300)));
+  } catch (e) { if (e.message !== "sessao") out.innerHTML = `<div class="loading" style="color:var(--bad)">Sem conexão. Tente de novo.</div>`; }
+  finally { $("btnIaTexto").disabled = $("btnIaFotos").disabled = false; }
+}
+$("btnIaTexto").onclick = () => gerar("texto");
+$("btnIaFotos").onclick = () => gerar("fotos");
+$("iaOut").onclick = async (e) => { const b = e.target.closest("[data-copiar]"); if (!b) return; try { await navigator.clipboard.writeText(b.dataset.copiar); toast("Copiado!"); } catch { toast("Selecione o texto e copie."); } };
+
+// ---------- Início ----------
+if (token) abrirApp(); else mostrar("telaEntrar");
+</script>
+</body>
+</html>
