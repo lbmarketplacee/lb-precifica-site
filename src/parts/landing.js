@@ -1,0 +1,10 @@
+// ---------- Landing: faixas, menu e animações ----------
+const MQ1 = [["shopee","Vestido midi tule","Vendedor CNPJ",97.99,127.99,[30,8,62],60.43],["ml","Tênis casual","Clássico · 1 kg",189.99,246.99,[27,8,65],123.29],["tiktok","Conjunto fitness","Sem frete grátis",79.99,103.99,[14,8,78],62.79],["shein","Bolsa transversal","Comissão 18%",69.99,90.99,[18,8,74],51.79],["shopee","Kit 3 camisetas","Vendedor CNPJ",119.99,155.99,[31,8,61],73.59],["ml","Fone bluetooth","Premium",149.99,194.99,[33,8,59],88.31]];
+const MQ2 = [["tiktok","Body canelado","Frete grátis",59.99,77.99,[22,8,70],41.99],["shopee","Luminária LED","Vendedor CPF",64.99,84.99,[31,8,61],39.79],["ml","Pijama americano","Clássico",89.99,116.99,[32,8,60],54.29],["shein","Vestido estampado","Comissão 20%",74.99,97.99,[20,8,72],53.99],["tiktok","Shorts linho","Sem frete grátis",54.99,71.99,[17,8,75],41.29],["shopee","Capinha de celular","Vendedor CNPJ",29.99,38.99,[33,8,59],17.59]];
+const mqCard = ([mp, nome, sub, p, de, bar, rec]) => `<div class="mc"><div class="mc-top">${LOGO[mp](34)}<div><b>${nome}</b><small>${NOMES[mp]} · ${sub}</small></div></div><div class="mc-p num">${brl(p)}<s>${brl(de)}</s></div><div class="mc-bar"><i style="width:${bar[0]}%;background:#8d8576"></i><i style="width:${bar[1]}%;background:#e8a948"></i><i style="width:${bar[2]}%;background:#3fbf7a"></i></div><div class="mc-f"><span>Recebe c/ cupom+oferta</span><b class="num">${brl(rec)}</b></div></div>`;
+function montarLanding() {
+  $("marq1").innerHTML = [...MQ1, ...MQ1].map(mqCard).join(""); $("marq2").innerHTML = [...MQ2, ...MQ2].map(mqCard).join("");
+  const nav = $("nav"); addEventListener("scroll", () => nav.classList.toggle("sc", scrollY > 20), { passive: true });
+  const io = "IntersectionObserver" in window ? new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 }) : null;
+  document.querySelectorAll(".reveal").forEach((el) => io ? io.observe(el) : el.classList.add("in"));
+}

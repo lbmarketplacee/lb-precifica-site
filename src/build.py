@@ -28,6 +28,9 @@ for mp in ['shopee', 'ml', 'tiktok', 'shein']:  # versão JS com tamanho variáv
     js = re.sub(r'width="(\d+)" height="\1"', lambda m: f'width="${{Math.round(px*{int(m.group(1))/999:.2f})}}" height="${{Math.round(px*{int(m.group(1))/999:.2f})}}"', js)
     js = js.replace('font-size:239.8px', 'font-size:${(px*.24).toFixed(1)}px')
     t = t.replace('{{JS_%s}}' % mp.upper(), js)
+ARROW = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+STAR = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>'
+t = t.replace('{{ARROW}}', ARROW).replace('{{STAR}}', STAR)
 t = t.replace('{{LOGO}}', LOGO).replace('{{GOOGLE}}', GOOGLE).replace('{{CHECK}}', CHECK)
 assert '{{' not in t, re.findall(r'\{\{[^}]+\}\}', t)
 open(os.path.join(D, '..', 'index.html'), 'w').write(t)
