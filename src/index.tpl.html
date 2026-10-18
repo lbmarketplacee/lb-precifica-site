@@ -375,6 +375,135 @@ main.app{padding-top:32px;padding-bottom:64px;position:relative}
 .doc-row .f{width:280px}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--surface2);color:var(--ink);border:1px solid var(--goldln);padding:12px 18px;border-radius:12px;box-shadow:var(--sh2);z-index:100;font-size:14px;max-width:calc(100vw - 32px)}
 @media(prefers-reduced-motion:reduce){.spin,.prog i{animation:none}}
+/* ======== APP "ESTÚDIO" (estilo Kitty, 18/10/2026) ======== */
+/* Cor do painel escolhida pelo cliente (Minha loja) */
+body[data-cor=rosa]{--gold:#ec4f8c;--gold2:#ff8fbb;--gold3:#c23a70;--goldbg:rgba(236,79,140,.13);--goldln:rgba(236,79,140,.4)}
+body[data-cor=azul]{--gold:#4f8cff;--gold2:#8fb6ff;--gold3:#2f66d6;--goldbg:rgba(79,140,255,.13);--goldln:rgba(79,140,255,.4)}
+body[data-cor=verde]{--gold:#3fbf7a;--gold2:#7fe0a8;--gold3:#2a9a5d;--goldbg:rgba(63,191,122,.13);--goldln:rgba(63,191,122,.4)}
+body[data-cor=roxo]{--gold:#9b6bff;--gold2:#c3a6ff;--gold3:#7547e0;--goldbg:rgba(155,107,255,.13);--goldln:rgba(155,107,255,.4)}
+body[data-cor]:not([data-cor=dourado]) #telaApp .serif{background:linear-gradient(100deg,var(--gold2),var(--gold) 60%,var(--gold3));-webkit-background-clip:text;background-clip:text}
+body[data-cor]:not([data-cor=dourado]) #telaApp .btn.gold{background:linear-gradient(180deg,var(--gold2),var(--gold) 60%,var(--gold3));color:#fff;box-shadow:0 10px 30px var(--goldbg)}
+#telaApp .dotc{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);flex:none;display:inline-block}
+
+/* Esqueleto: barra lateral + conteúdo */
+.studio{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.side{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:18px;padding:22px 16px;border-right:1px solid var(--line);
+  background:linear-gradient(180deg,#100e0c,#0b0a09)}
+.side .marca{padding:0 6px}
+.side-loja{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:14px;padding:10px 12px;color:var(--ink);cursor:pointer;transition:.15s}
+.side-loja:hover{border-color:var(--goldln)}
+.side-loja small{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.side-loja b{display:block;font-size:13.5px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px}
+.side .tabs{display:flex;flex-direction:column;gap:2px;height:auto}
+.side-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;padding:12px 10px 4px}
+.side .tab{height:auto;border:0;border-radius:11px;padding:10px 12px;gap:11px;font-size:14px;color:var(--muted);text-align:left;width:100%}
+.side .tab:hover{background:rgba(255,255,255,.04);color:var(--ink)}
+.side .tab.on{background:var(--goldbg);color:var(--ink);box-shadow:0 0 0 1px var(--goldln) inset}
+.side .tab.on svg{color:var(--gold)}
+.side-cred{margin-top:auto;border:1px solid var(--goldln);border-radius:16px;padding:14px;display:grid;gap:4px;
+  background:radial-gradient(160px 90px at 0 0,var(--goldbg),transparent 70%),var(--surface)}
+.side-cred small{font-size:12px;color:var(--muted)}
+.side-cred b{font:800 28px/1.1 var(--disp);letter-spacing:-.03em}
+.side-cred .btn{margin-top:6px}
+.studio-main{min-width:0;position:relative}
+.studio-main:before{content:"";position:absolute;inset:0 0 auto 0;height:520px;pointer-events:none;background:radial-gradient(600px 300px at 50% -80px,var(--goldbg),transparent 70%)}
+#telaApp .app-top{background:transparent;border-bottom:0;backdrop-filter:none;position:relative}
+#telaApp .app-top .wrap{height:60px;justify-content:flex-end}
+#telaApp .marca.mob{display:none}
+main.app{max-width:1180px;padding-top:4px}
+
+/* Calculadora: título + caixa grande */
+.st-hero{text-align:center;margin:6px auto 26px;max-width:760px;position:relative}
+.st-hero .badge-top{font-size:13px;padding:6px 14px}
+.st-hero .badge-top b{color:var(--ink);font-weight:600}
+.st-hero h1{font-size:clamp(34px,5vw,62px);letter-spacing:-.045em;line-height:1;margin:18px 0 12px}
+.st-hero p{color:var(--muted);margin:0;font-size:15.5px}
+.calc{display:block}
+.prompt{position:relative;max-width:920px;margin:0 auto;border-radius:24px;padding:18px;background:linear-gradient(180deg,#191613,#121010);
+  border:1px solid var(--goldln);box-shadow:0 0 0 6px var(--goldbg),0 30px 80px rgba(0,0,0,.55),0 0 80px var(--goldbg)}
+.prompt .seg{max-width:460px;margin:0 auto 16px;border-radius:99px}
+.prompt .seg button{border-radius:99px;padding:9px 8px;font-size:13px}
+.prompt-g{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.prompt-g .wide{grid-column:1/-1}
+.f.big>span{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.f.big .inp{border-radius:14px;background:rgba(255,255,255,.03)}
+.f.big .inp input{font:700 22px/1.2 var(--disp);padding:14px 14px;letter-spacing:-.02em}
+.f.big .inp em{font:600 18px var(--disp);color:var(--gold)}
+.f.big.wide .inp input{font:500 16px Inter,sans-serif}
+.pills-row{display:flex;align-items:center;gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.pills{display:flex;flex-wrap:wrap;gap:6px;flex:1}
+.pill-b{border:1px solid var(--line2);background:rgba(255,255,255,.03);color:var(--ink2);border-radius:99px;padding:5px 11px;font-size:12.5px;cursor:pointer;transition:.15s}
+.pill-b:hover{border-color:var(--goldln);color:var(--ink)}
+#btnAjustes{flex:none;border:1px solid var(--line2);border-radius:99px}
+#btnAjustes svg{transition:.2s}#btnAjustes.on svg{transform:rotate(180deg)}
+.ajustes{max-width:920px;margin:12px auto 0;border:1px solid var(--line);border-radius:20px;background:var(--surface);overflow:hidden}
+.aj-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.aj-grid .fs{border-bottom:0;border-right:1px solid var(--line)}
+.aj-grid .fs:last-child{border-right:0}
+.aj-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+.aj-foot .btn{border:1px solid var(--goldln);color:var(--gold2)}
+.ajustes .sw .inp{width:80px}
+.ajustes .mpcfg .inp{width:140px}
+
+/* Resultado */
+.res-area{margin-top:34px}
+.res-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.res-bar b{font:800 13px var(--disp);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.res-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.res-grid[data-n="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}
+.res-grid[data-n="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+.res-grid[data-n="1"]{grid-template-columns:minmax(0,520px)}
+.res{border-radius:22px;background:linear-gradient(180deg,#171512,#110f0d)}
+.res.top{border-color:var(--goldln);box-shadow:0 0 0 1px var(--gold) inset,0 0 50px var(--goldbg),var(--sh)}
+.res-h .badge{background:var(--gold);color:#120f08}
+.res .price b{font:800 34px/1 var(--disp);letter-spacing:-.04em}
+.res .profit b{font:800 22px var(--disp);letter-spacing:-.02em}
+.best{max-width:none;border-radius:20px}
+.best .val{font:800 28px/1.1 var(--disp);letter-spacing:-.03em}
+@media(max-width:1180px){.res-grid,.res-grid[data-n="3"]{grid-template-columns:repeat(2,minmax(0,1fr))}.aj-grid{grid-template-columns:1fr 1fr}.aj-grid .fs:last-child{grid-column:1/-1;border-top:1px solid var(--line)}}
+
+/* Meus cálculos */
+.calc-list{display:grid;gap:12px}
+.cl{padding:16px 18px;border-radius:18px}
+.cl-h{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.cl-h h3{font-size:17px}.cl-h small{color:var(--muted);font-size:12.5px}
+.cl-a{display:flex;gap:6px}
+.cl-mps{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.cl-mp{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:14px;padding:8px 12px;background:rgba(255,255,255,.02);min-width:170px}
+.cl-mp b{display:block;font:800 18px/1.1 var(--disp);letter-spacing:-.02em}
+.cl-mp small{font-size:12px}.cl-mp .pos{color:var(--ok)}.cl-mp .neg{color:var(--bad)}
+.vazio{padding:40px 24px;text-align:center;border-radius:20px}
+.vazio h3{font-size:20px;margin-bottom:6px}.vazio p{color:var(--muted);margin:0 0 18px}
+
+/* Minha loja */
+.loja-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.loja-grid .panel{border-radius:20px}
+.swatches{display:flex;gap:10px}
+.sw-c{width:34px;height:34px;border-radius:50%;border:2px solid var(--bg);background:var(--c);cursor:pointer;box-shadow:0 0 0 1px var(--line2);transition:.15s}
+.sw-c.on{box-shadow:0 0 0 2px var(--c),0 0 18px var(--c);transform:scale(1.06)}
+#pVende .chip{border-radius:99px;padding:7px 14px 7px 8px}
+#abaLoja .seg{border-radius:99px;margin-bottom:12px}#abaLoja .seg button{border-radius:99px}
+.loja-save{border-top:1px solid var(--line)}
+@media(max-width:900px){.loja-grid{grid-template-columns:1fr}}
+
+/* Celular/tablet: barra lateral vira barra de baixo */
+@media(max-width:900px){
+  .studio{grid-template-columns:1fr}
+  .side{position:fixed;top:auto;bottom:0;left:0;right:0;height:auto;z-index:40;flex-direction:row;padding:6px 8px calc(6px + env(safe-area-inset-bottom));border-right:0;border-top:1px solid var(--line);background:rgba(12,11,10,.92);backdrop-filter:blur(14px)}
+  .side .marca,.side-loja,.side-cred,.side-lbl{display:none}
+  .side .tabs{flex-direction:row;width:100%;justify-content:space-around}
+  .side .tab{flex-direction:column;gap:3px;font-size:10.5px;padding:7px 4px;width:auto;flex:1;align-items:center;text-align:center}
+  .side .tab.on{box-shadow:none;background:transparent;color:var(--gold2)}
+  #telaApp .marca.mob{display:flex;margin-right:auto}
+  #telaApp .app-top .wrap{justify-content:space-between}
+  #telaApp footer.site{padding-bottom:90px}
+  .prompt-g{grid-template-columns:1fr}
+  .aj-grid{grid-template-columns:1fr}.aj-grid .fs{border-right:0;border-bottom:1px solid var(--line)}
+  .res-grid,.res-grid[data-n]{grid-template-columns:1fr}
+}
+@media(max-width:560px){.prompt{padding:14px;border-radius:20px}.prompt .seg button{font-size:11.5px}.cl-mp{min-width:0;flex:1 1 140px}}
+#telaApp .lock-card{place-items:start center;padding-top:30px}
+
 </style>
 </head>
 <body>
@@ -508,13 +637,25 @@ main.app{padding-top:32px;padding-bottom:64px;position:relative}
 
 <!-- ================= APP ================= -->
 <div id="telaApp" class="hidden">
-  <header class="app-top"><div class="wrap">
+ <div class="studio">
+  <aside class="side">
     <a class="marca"><img src="data:image/jpeg;base64,{{LOGO}}" alt=""><b>LB <span>Precifica</span></b></a>
+    <button class="side-loja" id="sideLoja" type="button"><span class="dotc"></span><span><small>Sua loja</small><b id="sideLojaNome">Configurar minha loja</b></span></button>
     <nav class="tabs">
-      <button class="tab on" data-aba="calc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h8M8 16h3"/></svg>Calculadora</button>
-      <button class="tab" data-aba="ia"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"/></svg>Anúncio com IA</button>
-      <button class="tab" data-aba="creditos"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h4a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3h4"/></svg>Créditos</button>
+      <small class="side-lbl">Preço</small>
+      <button class="tab on" data-aba="calc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h8M8 16h3"/></svg><span>Calculadora</span></button>
+      <button class="tab" data-aba="calculos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21 12 16l-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg><span>Meus cálculos</span></button>
+      <small class="side-lbl">Criar</small>
+      <button class="tab" data-aba="ia"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"/></svg><span>Anúncio com IA</span></button>
+      <small class="side-lbl">Conta</small>
+      <button class="tab" data-aba="loja"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg><span>Minha loja</span></button>
+      <button class="tab" data-aba="creditos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h4a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3h4"/></svg><span>Créditos</span></button>
     </nav>
+    <div class="side-cred"><small>Créditos de IA</small><b class="num" id="saldoSide">—</b><button class="btn gold sm" id="btnRecarregar" type="button">Recarregar</button></div>
+  </aside>
+  <div class="studio-main">
+  <header class="app-top"><div class="wrap">
+    <a class="marca mob"><img src="data:image/jpeg;base64,{{LOGO}}" alt=""><b>LB <span>Precifica</span></b></a>
     <div class="user">
       <span class="creds" id="saldo" title="Seus créditos de IA">—</span>
       <div class="menu"><button class="btn ghost" id="btnMenu" style="padding:0" aria-label="Conta"><img class="avatar" id="avatar" alt=""></button>
@@ -525,54 +666,60 @@ main.app{padding-top:32px;padding-bottom:64px;position:relative}
   <main class="app wrap">
     <!-- CALCULADORA -->
     <section id="abaCalc">
-      <div class="page-h"><div><h1>Calculadora de preço</h1><p>Todas as taxas são descontadas do preço de venda, como o marketplace cobra.</p></div></div>
+      <div class="st-hero">
+        <span class="badge-top" id="calcSaud"><span class="dotc"></span>Calculadora da sua loja</span>
+        <h1>Qual o preço <span class="serif">certo</span>?</h1>
+        <p>Shopee, Mercado Livre, TikTok Shop e Shein lado a lado. As taxas saem do preço, do jeito que o marketplace cobra.</p>
+      </div>
       <div id="calcWrap">
       <div class="calc">
-        <aside class="panel form-p" id="calcForm">
-          <div class="fs">
-            <div class="fs-h"><b>1</b>O que você quer</div>
-            <div class="seg" id="calcModo"><button data-m="lucro" class="on">Lucro</button><button data-m="receber">Receber</button><button data-m="preco">Tenho o preço</button></div>
-            <div class="row">
-              <label class="f" id="campoMeta"><span id="metaRot">Lucro desejado</span><div class="inp"><input id="cMeta" type="number" inputmode="decimal" min="0" step="0.5" value="20"><select id="cMetaTipo" style="width:110px;flex:none;border-left:1px solid var(--line)"><option value="pct">% da venda</option><option value="rs">R$ fixo</option></select></div></label>
-              <label class="f hidden" id="campoReceber"><span>Quero receber por venda</span><div class="inp"><em>R$</em><input id="cReceber" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div><span class="hint">Valor líquido que cai na sua conta, antes dos seus custos.</span></label>
-              <label class="f hidden" id="campoPreco"><span>Preço de venda</span><div class="inp"><em>R$</em><input id="cPreco" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+        <div id="calcForm">
+          <div class="prompt">
+            <div class="seg" id="calcModo"><button data-m="lucro" class="on">Quero lucrar</button><button data-m="receber">Quero receber</button><button data-m="preco">Já tenho o preço</button></div>
+            <div class="prompt-g">
+              <label class="f big" id="campoMeta"><span id="metaRot">Lucro desejado</span><div class="inp"><input id="cMeta" type="number" inputmode="decimal" min="0" step="0.5" value="20"><select id="cMetaTipo" style="width:142px;flex:none;border-left:1px solid var(--line)"><option value="pct">% da venda</option><option value="rs">R$ fixo</option></select></div></label>
+              <label class="f big hidden" id="campoReceber"><span>Quero receber por venda</span><div class="inp"><em>R$</em><input id="cReceber" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+              <label class="f big hidden" id="campoPreco"><span>Preço de venda</span><div class="inp"><em>R$</em><input id="cPreco" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+              <label class="f big"><span>Custo do produto</span><div class="inp"><em>R$</em><input id="cCusto" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+              <label class="f big wide"><span>Nome do produto <i>(acha a taxa do Mercado Livre)</i></span><div class="inp"><input id="cProduto" placeholder="Ex.: vestido midi tule"></div><div class="cat-ml" id="notaMl"></div></label>
             </div>
+            <div class="pills-row"><div class="pills" id="calcPills"></div><button class="btn ghost sm" type="button" id="btnAjustes">Ajustes<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button></div>
           </div>
-          <div class="fs">
-            <div class="fs-h"><b>2</b>Produto e custos</div>
-            <div class="row">
-              <label class="f"><span>Nome do produto <i>(acha a taxa do Mercado Livre)</i></span><div class="inp"><input id="cProduto" placeholder="Ex.: vestido midi tule"></div><div class="cat-ml" id="notaMl"></div></label>
+          <div class="ajustes hidden" id="ajustes">
+            <div class="aj-grid">
+            <div class="fs">
+              <div class="fs-h"><b>1</b>Custos</div>
               <div class="row c2">
-                <label class="f"><span>Custo do produto</span><div class="inp"><em>R$</em><input id="cCusto" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
                 <label class="f"><span>Embalagem</span><div class="inp"><em>R$</em><input id="cEmb" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+                <label class="f"><span>Custo operacional</span><div class="inp"><em>R$</em><input id="cOper" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+                <label class="f"><span>Imposto</span><div class="inp"><input id="cImp" type="number" inputmode="decimal" min="0" step="0.1" placeholder="0"><em class="suf">%</em></div></label>
+                <label class="f"><span>Peso com embalagem</span><div class="inp"><input id="cPeso" type="number" inputmode="decimal" min="0" step="0.05" value="0.5"><em class="suf">kg</em></div></label>
               </div>
-              <div class="row c2">
-                <label class="f"><span>Custo operacional</span><div class="inp"><em>R$</em><input id="cOper" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div><span class="hint">Etiqueta, mão de obra…</span></label>
-                <label class="f"><span>Imposto</span><div class="inp"><input id="cImp" type="number" inputmode="decimal" min="0" step="0.1" placeholder="0"><em class="suf">%</em></div><span class="hint">Simples, MEI…</span></label>
+            </div>
+            <div class="fs">
+              <div class="fs-h"><b>2</b>Promoções e anúncios</div>
+              <div class="sw"><label class="tog"><input type="checkbox" id="oCupom"><span></span></label><label class="t" for="oCupom">Cupom</label><div class="inp"><input id="vCupom" type="number" value="3" step="0.5"><em class="suf">%</em></div></div>
+              <div class="sw"><label class="tog"><input type="checkbox" id="oRel"><span></span></label><label class="t" for="oRel">Oferta relâmpago</label><div class="inp"><input id="vRel" type="number" value="5" step="0.5"><em class="suf">%</em></div></div>
+              <div class="sw"><label class="tog"><input type="checkbox" id="oAds"><span></span></label><label class="t" for="oAds">Anúncios (Ads)</label><div class="inp"><input id="vAds" type="number" value="10" step="0.5"><em class="suf">%</em></div></div>
+              <div class="sw"><label class="tog"><input type="checkbox" id="oAfil"><span></span></label><label class="t" for="oAfil">Afiliados</label><div class="inp"><input id="vAfil" type="number" value="5" step="0.5"><em class="suf">%</em></div></div>
+            </div>
+            <div class="fs">
+              <div class="fs-h"><b>3</b>Regras de cada marketplace</div>
+              <div class="mpcfg">
+                <div class="r">{{L_SHOPEE_26}}<span class="nm">Shopee</span><div class="inp"><select id="rShopee"><option value="cnpj">Vendedor CNPJ</option><option value="cpf">Vendedor CPF</option></select></div></div>
+                <div class="r">{{L_ML_26}}<span class="nm">Mercado Livre</span><div class="inp"><select id="rMl"><option value="classico">Clássico</option><option value="premium">Premium</option></select></div></div>
+                <div class="r">{{L_TIKTOK_26}}<span class="nm">TikTok Shop</span><div class="inp"><select id="rTt"><option value="0">Sem frete grátis</option><option value="1">Frete grátis (+6%)</option></select></div></div>
+                <div class="r">{{L_SHEIN_26}}<span class="nm">Shein</span><div class="inp"><select id="rShein"><option value="16">Comissão 16%</option><option value="18">Comissão 18%</option><option value="20" selected>Comissão 20%</option></select></div></div>
               </div>
-              <label class="f"><span>Peso com embalagem</span><div class="inp"><input id="cPeso" type="number" inputmode="decimal" min="0" step="0.05" value="0.5"><em class="suf">kg</em></div><span class="hint">Usado no frete do Mercado Livre (a partir de R$ 79).</span></label>
+              <div class="sw" style="margin-top:10px"><label class="tog"><input type="checkbox" id="cArred" checked><span></span></label><label class="t" for="cArred">Terminar o preço em ,99</label></div>
+              <div class="sw"><label class="tog"><input type="checkbox" id="cDeOn" checked><span></span></label><label class="t" for="cDeOn">Preço "de" (riscado)</label><div class="inp"><input id="cDe" type="number" value="30" step="5"><em class="suf">%</em></div></div>
             </div>
-          </div>
-          <div class="fs">
-            <div class="fs-h"><b>3</b>Promoções e anúncios</div>
-            <div class="sw"><label class="tog"><input type="checkbox" id="oCupom"><span></span></label><label class="t" for="oCupom">Cupom<small>Desconto do cupom da loja</small></label><div class="inp"><input id="vCupom" type="number" value="3" step="0.5"><em class="suf">%</em></div></div>
-            <div class="sw"><label class="tog"><input type="checkbox" id="oRel"><span></span></label><label class="t" for="oRel">Oferta relâmpago<small>Desconto extra na oferta</small></label><div class="inp"><input id="vRel" type="number" value="5" step="0.5"><em class="suf">%</em></div></div>
-            <div class="sw"><label class="tog"><input type="checkbox" id="oAds"><span></span></label><label class="t" for="oAds">Anúncios (Ads)<small>Quanto da venda vai pro Ads</small></label><div class="inp"><input id="vAds" type="number" value="10" step="0.5"><em class="suf">%</em></div></div>
-            <div class="sw"><label class="tog"><input type="checkbox" id="oAfil"><span></span></label><label class="t" for="oAfil">Afiliados<small>Comissão de quem divulga</small></label><div class="inp"><input id="vAfil" type="number" value="5" step="0.5"><em class="suf">%</em></div></div>
-          </div>
-          <div class="fs">
-            <div class="fs-h"><b>4</b>Regras de cada marketplace</div>
-            <div class="mpcfg">
-              <div class="r">{{L_SHOPEE_26}}<span class="nm">Shopee</span><div class="inp"><select id="rShopee"><option value="cnpj">Vendedor CNPJ</option><option value="cpf">Vendedor CPF</option></select></div></div>
-              <div class="r">{{L_ML_26}}<span class="nm">Mercado Livre</span><div class="inp"><select id="rMl"><option value="classico">Clássico</option><option value="premium">Premium</option></select></div></div>
-              <div class="r">{{L_TIKTOK_26}}<span class="nm">TikTok Shop</span><div class="inp"><select id="rTt"><option value="0">Sem frete grátis</option><option value="1">Frete grátis (+6%)</option></select></div></div>
-              <div class="r">{{L_SHEIN_26}}<span class="nm">Shein</span><div class="inp"><select id="rShein"><option value="16">Comissão 16%</option><option value="18">Comissão 18%</option><option value="20" selected>Comissão 20%</option></select></div></div>
             </div>
-            <div class="sw" style="margin-top:10px"><label class="tog"><input type="checkbox" id="cArred" checked><span></span></label><label class="t" for="cArred">Terminar o preço em ,99</label></div>
-            <div class="sw"><label class="tog"><input type="checkbox" id="cDeOn" checked><span></span></label><label class="t" for="cDeOn">Mostrar preço "de" (riscado)</label><div class="inp"><input id="cDe" type="number" value="30" step="5"><em class="suf">%</em></div></div>
+            <div class="aj-foot"><span>Esses ajustes vêm do padrão da sua loja.</span><button class="btn ghost sm" type="button" id="btnVirarPadrao">Salvar como padrão da loja</button></div>
           </div>
-        </aside>
-        <div>
+        </div>
+        <div class="res-area">
+          <div class="res-bar"><b>Resultado</b><button class="btn sm" type="button" id="btnSalvarCalc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 21 12 16l-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>Salvar cálculo</button></div>
           <div class="best hidden" id="melhor"></div>
           <div class="res-grid" id="resultados"></div>
           <p class="note">Taxas de outubro de 2026. Shopee: comissão e taxa fixa por faixa de preço (CNPJ e CPF). Mercado Livre: comissão oficial da categoria e frete grátis obrigatório a partir de R$ 79 pelo peso. TikTok Shop: 10% + R$ 4 até R$ 49,99 e 6% + R$ 6 acima; frete grátis opcional de 6% (até R$ 50). Shein: 16% a 20% conforme a categoria, sem taxa fixa. Confira sempre no painel do seu marketplace.</p>
@@ -581,6 +728,11 @@ main.app{padding-top:32px;padding-bottom:64px;position:relative}
       </div>
     </section>
 
+    <!-- MEUS CÁLCULOS -->
+    <section id="abaCalculos" class="hidden">
+      <div class="page-h"><div><h1>Meus <span class="serif">cálculos</span></h1><p>Os preços que você salvou. Abra pra recalcular com as taxas de hoje.</p></div></div>
+      <div class="calc-list" id="listaCalculos"></div>
+    </section>
     <!-- IA -->
     <section id="abaIa" class="hidden">
       <div class="page-h"><div><h1>Anúncio com IA</h1><p>Mesmas regras de título, descrição e foto que a LB Marketplace usa nas lojas dos clientes.</p></div></div>
@@ -626,8 +778,65 @@ main.app{padding-top:32px;padding-bottom:64px;position:relative}
       <div class="doc-row"><label class="f"><span>CPF ou CNPJ <i>(pra emitir a cobrança)</i></span><div class="inp"><input id="cpfCreditos" inputmode="numeric" placeholder="000.000.000-00"></div></label></div>
       <p class="erro" id="avisoCreditos"></p>
     </section>
+    <!-- MINHA LOJA -->
+    <section id="abaLoja" class="hidden">
+      <div class="page-h"><div><h1>Minha <span class="serif">loja</span></h1><p>Preencha uma vez. Vira o padrão de todo cálculo, e você só digita o custo e o lucro.</p></div></div>
+      <div class="loja-grid">
+        <div class="panel">
+          <div class="fs">
+            <div class="fs-h"><b>1</b>Sua loja</div>
+            <div class="row">
+              <label class="f"><span>Nome da loja</span><div class="inp"><input id="pLoja" maxlength="60" placeholder="Ex.: Ateliê da Ana"></div></label>
+              <div class="f"><span>Cor do seu painel</span><div class="swatches" id="pCor"></div></div>
+            </div>
+          </div>
+          <div class="fs">
+            <div class="fs-h"><b>2</b>Onde você vende</div>
+            <div class="chips" id="pVende"></div>
+            <span class="hint" style="font-size:12px;color:var(--muted);display:block;margin-top:8px">A calculadora mostra só esses marketplaces.</span>
+          </div>
+          <div class="fs">
+            <div class="fs-h"><b>3</b>Objetivo de sempre</div>
+            <div class="seg" id="pModo"><button type="button" data-m="lucro" class="on">Quero lucrar</button><button type="button" data-m="receber">Quero receber</button><button type="button" data-m="preco">Já tenho o preço</button></div>
+            <label class="f" id="pMetaCampo"><span>Lucro desejado</span><div class="inp"><input id="pMeta" type="number" inputmode="decimal" min="0" step="0.5"><select id="pMetaTipo" style="width:142px;flex:none;border-left:1px solid var(--line)"><option value="pct">% da venda</option><option value="rs">R$ fixo</option></select></div></label>
+          </div>
+          <div class="fs">
+            <div class="fs-h"><b>4</b>Custos que se repetem</div>
+            <div class="row c2">
+              <label class="f"><span>Embalagem</span><div class="inp"><em>R$</em><input id="pEmb" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+              <label class="f"><span>Custo operacional</span><div class="inp"><em>R$</em><input id="pOper" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div><span class="hint">Etiqueta, mão de obra…</span></label>
+              <label class="f"><span>Imposto</span><div class="inp"><input id="pImp" type="number" inputmode="decimal" min="0" step="0.1" placeholder="0"><em class="suf">%</em></div><span class="hint">Simples, MEI…</span></label>
+              <label class="f"><span>Peso padrão com embalagem</span><div class="inp"><input id="pPeso" type="number" inputmode="decimal" min="0" step="0.05"><em class="suf">kg</em></div></label>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="fs">
+            <div class="fs-h"><b>5</b>Promoções que você sempre usa</div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="pCupomOn"><span></span></label><label class="t" for="pCupomOn">Cupom</label><div class="inp"><input id="pCupom" type="number" step="0.5"><em class="suf">%</em></div></div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="pRelOn"><span></span></label><label class="t" for="pRelOn">Oferta relâmpago</label><div class="inp"><input id="pRel" type="number" step="0.5"><em class="suf">%</em></div></div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="pAdsOn"><span></span></label><label class="t" for="pAdsOn">Anúncios (Ads)</label><div class="inp"><input id="pAds" type="number" step="0.5"><em class="suf">%</em></div></div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="pAfilOn"><span></span></label><label class="t" for="pAfilOn">Afiliados</label><div class="inp"><input id="pAfil" type="number" step="0.5"><em class="suf">%</em></div></div>
+          </div>
+          <div class="fs">
+            <div class="fs-h"><b>6</b>Regras de cada marketplace</div>
+            <div class="mpcfg">
+              <div class="r">{{L_SHOPEE_26}}<span class="nm">Shopee</span><div class="inp"><select id="pShopee"><option value="cnpj">Vendedor CNPJ</option><option value="cpf">Vendedor CPF</option></select></div></div>
+              <div class="r">{{L_ML_26}}<span class="nm">Mercado Livre</span><div class="inp"><select id="pMl"><option value="classico">Clássico</option><option value="premium">Premium</option></select></div></div>
+              <div class="r">{{L_TIKTOK_26}}<span class="nm">TikTok Shop</span><div class="inp"><select id="pTt"><option value="0">Sem frete grátis</option><option value="1">Frete grátis (+6%)</option></select></div></div>
+              <div class="r">{{L_SHEIN_26}}<span class="nm">Shein</span><div class="inp"><select id="pShein"><option value="16">Comissão 16%</option><option value="18">Comissão 18%</option><option value="20">Comissão 20%</option></select></div></div>
+            </div>
+            <div class="sw" style="margin-top:10px"><label class="tog"><input type="checkbox" id="pArred"><span></span></label><label class="t" for="pArred">Terminar o preço em ,99</label></div>
+            <div class="sw"><label class="tog"><input type="checkbox" id="pDeOn"><span></span></label><label class="t" for="pDeOn">Preço "de" (riscado)</label><div class="inp"><input id="pDe" type="number" step="5"><em class="suf">%</em></div></div>
+          </div>
+          <div class="fs loja-save"><p class="erro" id="avisoLoja"></p><button class="btn gold lg" style="width:100%" id="btnSalvarLoja" type="button">Salvar padrão da loja</button></div>
+        </div>
+      </div>
+    </section>
   </main>
   <footer class="site"><div class="wrap"><span>LB Precifica · LB Marketplace Assessoria · CNPJ 58.943.847/0001-90</span><span>Dúvidas? <a href="https://wa.me/5511991277027" target="_blank" rel="noopener">Fale com a LB no WhatsApp</a></span></div></footer>
+  </div>
+ </div>
 </div>
 
 <div id="toast" class="toast hidden" role="status"></div>
@@ -646,7 +855,9 @@ const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "
 const toast = (t) => { const e = $("toast"); e.textContent = t; e.classList.remove("hidden"); clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.add("hidden"), 4500); };
 const LOGO = { shopee: (px) => `{{JS_SHOPEE}}`, ml: (px) => `{{JS_ML}}`, tiktok: (px) => `{{JS_TIKTOK}}`, shein: (px) => `{{JS_SHEIN}}` };
 const CHECK = `{{CHECK}}`;
-let token = null, perfil = null, fotoUsuario = null, precos = null;
+let token = null, perfil = null, fotoUsuario = null, precos = null, prefs = null, calculos = null, ultimoRes = null;
+const MP4 = ["shopee", "ml", "tiktok", "shein"];
+const mpsAtivos = () => (prefs?.vende?.length ? MP4.filter((m) => prefs.vende.includes(m)) : MP4);
 try { token = localStorage.getItem("lbp_token"); fotoUsuario = localStorage.getItem("lbp_foto"); } catch {}
 
 async function api(caminho, opt = {}) {
@@ -711,11 +922,13 @@ function pintarSaldo() {
   const t = perfil.iaIlimitada ? "IA ilimitada" : `${perfil.creditos ?? 0} créditos`;
   $("saldo").innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m12 3 1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"/></svg>${t}`;
   $("saldoGrande").textContent = perfil.iaIlimitada ? "Ilimitado" : String(perfil.creditos ?? 0);
+  $("saldoSide").textContent = perfil.iaIlimitada ? "Ilimitado" : String(perfil.creditos ?? 0);
 }
 async function carregarPerfil() {
   const { d } = await api("/api/me");
   if (!d.success) throw new Error(d.error || "erro");
-  perfil = d.perfil; precos = d.precos || {};
+  perfil = d.perfil; precos = d.precos || {}; prefs = d.preferencias || null;
+  aplicarPrefs();
   pintarSaldo();
   $("menuNome").textContent = perfil.nome || "Sua conta"; $("menuEmail").textContent = perfil.email || "";
   if (fotoUsuario) $("avatar").src = fotoUsuario; else $("avatar").src = `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="40" height="40" fill="#f7efdc"/><text x="20" y="26" text-anchor="middle" font-family="Arial" font-weight="700" font-size="16" fill="#7a5a17">${esc((perfil.nome || perfil.email || "?")[0].toUpperCase())}</text></svg>`)}`;
@@ -730,11 +943,15 @@ async function abrirApp() {
 }
 function irAba(aba) {
   document.querySelectorAll(".tab").forEach((x) => x.classList.toggle("on", x.dataset.aba === aba));
-  for (const [a, sec] of [["calc", "abaCalc"], ["ia", "abaIa"], ["creditos", "abaCreditos"]]) $(sec).classList.toggle("hidden", a !== aba);
+  for (const [a, sec] of [["calc", "abaCalc"], ["calculos", "abaCalculos"], ["ia", "abaIa"], ["loja", "abaLoja"], ["creditos", "abaCreditos"]]) $(sec).classList.toggle("hidden", a !== aba);
+  if (aba === "calculos") carregarCalculos();
+  if (aba === "loja") preencherLoja();
   window.scrollTo(0, 0);
 }
 document.querySelectorAll(".tab").forEach((b) => b.onclick = () => irAba(b.dataset.aba));
 $("saldo").onclick = () => irAba("creditos");
+$("btnRecarregar").onclick = () => irAba("creditos");
+$("sideLoja").onclick = () => irAba("loja");
 
 // ---------- Paywall ----------
 function montarTrava() {
@@ -848,7 +1065,8 @@ $("campoReceber").classList.add("hidden");
 function calcular() {
   if (!perfil) return;
   const R = regras(); const res = {};
-  for (const mp of ["shopee", "ml", "tiktok", "shein"]) {
+  pintarPills();
+  for (const mp of mpsAtivos()) {
     let P;
     if (modo === "preco") P = Number($("cPreco").value) || 0;
     else {
@@ -858,6 +1076,7 @@ function calcular() {
     }
     res[mp] = P > 0 ? taxas(mp, P, R) : null;
   }
+  ultimoRes = res;
   const validos = Object.entries(res).filter(([, t]) => t);
   const melhor = !validos.length ? null : modo === "preco" ? validos.sort((a, b) => b[1].lucro - a[1].lucro)[0] : validos.sort((a, b) => a[1].P - b[1].P)[0];
   const mb = $("melhor");
@@ -868,7 +1087,8 @@ function calcular() {
       <div><div class="lbl">Lucro por venda</div><div class="val num" style="color:${t.lucro < 0 ? "var(--bad)" : "var(--ok)"}">${brl(t.lucro)}</div></div>`;
     mb.classList.remove("hidden");
   } else mb.classList.add("hidden");
-  $("resultados").innerHTML = ["shopee", "ml", "tiktok", "shein"].map((mp) => {
+  $("resultados").dataset.n = mpsAtivos().length;
+  $("resultados").innerHTML = mpsAtivos().map((mp) => {
     const t = res[mp];
     const head = `<div class="res-h">${LOGO[mp](36)}<div><h3>${NOMES[mp]}</h3><small>${SUBT(mp, R)}</small></div>${melhor && melhor[0] === mp ? `<span class="badge">${modo === "preco" ? "Mais lucro" : "Melhor preço"}</span>` : ""}</div>`;
     if (!t) return `<div class="res">${head}<div class="res-b"><p class="empty">${modo === "preco" ? "Digite o preço de venda pra ver quanto sobra." : modo === "receber" ? "Digite quanto quer receber por venda." : "Preencha o custo do produto pra calcular o preço."}</p></div></div>`;
@@ -904,6 +1124,145 @@ async function buscarTaxaMl() {
   } catch { mlComissao = null; mlCategoria = null; nota.textContent = "Sem conexão com o Mercado Livre. Usando 14% (Clássico) / 19% (Premium)."; }
   calcular();
 }
+
+// ---------- Minha loja (padrão do cliente) e Meus cálculos ----------
+const CORES_TEMA = { dourado: "#d9ae52", rosa: "#ec4f8c", azul: "#4f8cff", verde: "#3fbf7a", roxo: "#9b6bff" };
+const PROMOS = [["cupom", "oCupom", "vCupom", "Cupom"], ["rel", "oRel", "vRel", "Relâmpago"], ["ads", "oAds", "vAds", "Ads"], ["afil", "oAfil", "vAfil", "Afiliados"]];
+const setV = (id, v) => { const el = $(id); if (!el) return; if (el.type === "checkbox") el.checked = !!v; else el.value = v ?? ""; };
+const disparar = (id) => $(id).dispatchEvent(new Event("change"));
+function aplicarCor(c) { document.body.dataset.cor = CORES_TEMA[c] ? c : "dourado"; }
+function aplicarPrefs() {
+  const p = prefs; if (!p) return;
+  aplicarCor(p.cor);
+  $("sideLojaNome").textContent = p.loja || "Configurar minha loja";
+  $("calcSaud").innerHTML = `<span class="dotc"></span>${p.loja ? `Calculadora da <b>${esc(p.loja)}</b>` : "Calculadora da sua loja"}`;
+  $("calcModo").querySelector(`[data-m="${p.modo}"]`)?.click();
+  setV("cMeta", p.meta); setV("cMetaTipo", p.metaTipo);
+  setV("cEmb", p.emb || ""); setV("cOper", p.oper || ""); setV("cImp", p.imp || ""); setV("cPeso", p.peso);
+  for (const [k, o, v] of PROMOS) { setV(o, p[k]?.on); setV(v, p[k]?.v); disparar(o); }
+  setV("rShopee", p.shopee); setV("rMl", p.ml); setV("rTt", p.ttFrete ? "1" : "0"); setV("rShein", String(p.shein));
+  setV("cArred", p.arred); setV("cDeOn", p.deOn); setV("cDe", p.de); disparar("cArred"); disparar("cDeOn");
+  calcular();
+}
+function pintarPills() {
+  const R = regras(), n = (id) => Number($(id).value) || 0, on = (id) => $(id).checked, pc = (v) => `${String(v).replace(".", ",")}%`;
+  const ps = [];
+  if (mpsAtivos().includes("shopee")) ps.push(`Shopee ${R.shopee.toUpperCase()}`);
+  if (mpsAtivos().includes("ml")) ps.push(`ML ${R.ml === "premium" ? "Premium" : "Clássico"}`);
+  if (R.emb) ps.push(`Embalagem ${brl(R.emb)}`);
+  if (R.oper) ps.push(`Operação ${brl(R.oper)}`);
+  ps.push(R.imp ? `Imposto ${pc(n("cImp"))}` : "Sem imposto");
+  for (const [, o, v, nome] of PROMOS) if (on(o)) ps.push(`${nome} ${pc(n(v))}`);
+  if (R.arred) ps.push("Termina em ,99");
+  $("calcPills").innerHTML = ps.map((t) => `<button type="button" class="pill-b">${esc(t)}</button>`).join("");
+}
+$("calcPills").onclick = (e) => { if (e.target.closest(".pill-b")) abrirAjustes(true); };
+function abrirAjustes(abrir) { const a = $("ajustes"); const v = abrir ?? a.classList.contains("hidden"); a.classList.toggle("hidden", !v); $("btnAjustes").classList.toggle("on", v); }
+$("btnAjustes").onclick = () => abrirAjustes();
+
+// Lê a calculadora como preferências (pra "Salvar como padrão da loja")
+function prefsDaCalc() {
+  const n = (id) => Number($(id).value) || 0;
+  const p = { ...(prefs || {}), modo, meta: n("cMeta"), metaTipo: $("cMetaTipo").value, emb: n("cEmb"), oper: n("cOper"), imp: n("cImp"), peso: n("cPeso") || 0.5,
+    shopee: $("rShopee").value, ml: $("rMl").value, ttFrete: $("rTt").value === "1", shein: n("rShein"), arred: $("cArred").checked, deOn: $("cDeOn").checked, de: n("cDe") };
+  for (const [k, o, v] of PROMOS) p[k] = { on: $(o).checked, v: n(v) };
+  return p;
+}
+async function gravarPrefs(dados, botao) {
+  if (botao) botao.disabled = true;
+  try {
+    const { d } = await api("/api/minha-loja", { method: "POST", body: JSON.stringify({ acao: "preferencias", dados }) });
+    if (!d.success) throw new Error(d.error || "erro");
+    prefs = d.preferencias; aplicarPrefs(); return true;
+  } catch (e) { if (e.message !== "sessao") toast("Não deu pra salvar agora. Tente de novo."); return false; }
+  finally { if (botao) botao.disabled = false; }
+}
+$("btnVirarPadrao").onclick = async () => { if (await gravarPrefs(prefsDaCalc(), $("btnVirarPadrao"))) toast("Pronto: esses ajustes viraram o padrão da sua loja."); };
+
+// Tela Minha loja
+let pModo = "lucro", pCor = "dourado", pVende = [...MP4];
+const NOMES_MP = { shopee: "Shopee", ml: "Mercado Livre", tiktok: "TikTok Shop", shein: "Shein" };
+function pintarLojaChips() {
+  $("pCor").innerHTML = Object.entries(CORES_TEMA).map(([k, c]) => `<button type="button" class="sw-c ${k === pCor ? "on" : ""}" data-c="${k}" style="--c:${c}" title="${k}"></button>`).join("");
+  $("pVende").innerHTML = MP4.map((m) => `<button type="button" class="chip ${pVende.includes(m) ? "on" : ""}" data-mp="${m}">${LOGO[m](20)}${NOMES_MP[m]}</button>`).join("");
+  [...$("pModo").children].forEach((b) => b.classList.toggle("on", b.dataset.m === pModo));
+  $("pMetaCampo").classList.toggle("hidden", pModo !== "lucro");
+}
+function preencherLoja() {
+  const p = prefs || {};
+  pModo = p.modo || "lucro"; pCor = p.cor || "dourado"; pVende = p.vende?.length ? [...p.vende] : [...MP4];
+  setV("pLoja", p.loja); setV("pMeta", p.meta ?? 20); setV("pMetaTipo", p.metaTipo || "pct");
+  setV("pEmb", p.emb || ""); setV("pOper", p.oper || ""); setV("pImp", p.imp || ""); setV("pPeso", p.peso ?? 0.5);
+  for (const [k] of PROMOS) { const K = k[0].toUpperCase() + k.slice(1); setV(`p${K}On`, p[k]?.on); setV(`p${K}`, p[k]?.v ?? { cupom: 3, rel: 5, ads: 10, afil: 5 }[k]); }
+  setV("pShopee", p.shopee || "cnpj"); setV("pMl", p.ml || "classico"); setV("pTt", p.ttFrete ? "1" : "0"); setV("pShein", String(p.shein || 20));
+  setV("pArred", p.arred !== false); setV("pDeOn", p.deOn !== false); setV("pDe", p.de ?? 30);
+  $("avisoLoja").textContent = "";
+  pintarLojaChips();
+  document.querySelectorAll("#abaLoja .sw").forEach((s) => { const c = s.querySelector("input[type=checkbox]"); s.classList.toggle("off", !c.checked); c.onchange = () => s.classList.toggle("off", !c.checked); });
+}
+$("pCor").onclick = (e) => { const b = e.target.closest(".sw-c"); if (!b) return; pCor = b.dataset.c; aplicarCor(pCor); pintarLojaChips(); };
+$("pVende").onclick = (e) => { const b = e.target.closest(".chip"); if (!b) return; const m = b.dataset.mp;
+  pVende = pVende.includes(m) ? pVende.filter((x) => x !== m) : MP4.filter((x) => pVende.includes(x) || x === m); pintarLojaChips(); };
+$("pModo").onclick = (e) => { const b = e.target.closest("button"); if (!b) return; pModo = b.dataset.m; pintarLojaChips(); };
+$("btnSalvarLoja").onclick = async () => {
+  if (!pVende.length) { $("avisoLoja").textContent = "Escolha pelo menos um marketplace."; return; }
+  const n = (id) => Number($(id).value) || 0;
+  const dados = { loja: $("pLoja").value, cor: pCor, vende: pVende, modo: pModo, meta: n("pMeta"), metaTipo: $("pMetaTipo").value,
+    emb: n("pEmb"), oper: n("pOper"), imp: n("pImp"), peso: n("pPeso") || 0.5,
+    shopee: $("pShopee").value, ml: $("pMl").value, ttFrete: $("pTt").value === "1", shein: n("pShein"), arred: $("pArred").checked, deOn: $("pDeOn").checked, de: n("pDe") };
+  for (const [k] of PROMOS) { const K = k[0].toUpperCase() + k.slice(1); dados[k] = { on: $(`p${K}On`).checked, v: n(`p${K}`) }; }
+  if (await gravarPrefs(dados, $("btnSalvarLoja"))) { toast("Padrão salvo. A calculadora já está usando."); irAba("calc"); }
+};
+
+// Meus cálculos
+$("btnSalvarCalc").onclick = async () => {
+  const nome = $("cProduto").value.trim();
+  if (!nome) { abrirAjustes(false); $("cProduto").focus(); toast("Dê um nome ao produto pra salvar o cálculo."); return; }
+  const validos = Object.entries(ultimoRes || {}).filter(([, t]) => t);
+  if (!validos.length) { toast("Preencha o cálculo antes de salvar."); return; }
+  const n = (id) => Number($(id).value) || 0;
+  const calculo = { nome, entradas: { produto: nome, modo, meta: n("cMeta"), metaTipo: $("cMetaTipo").value, receber: n("cReceber"), preco: n("cPreco"),
+    custo: n("cCusto"), emb: n("cEmb"), oper: n("cOper"), imp: n("cImp"), peso: n("cPeso") },
+    resultado: Object.fromEntries(validos.map(([m, t]) => [m, { P: t.P, lucro: t.lucro, recebe: t.recebe }])) };
+  $("btnSalvarCalc").disabled = true;
+  try { const { d } = await api("/api/minha-loja", { method: "POST", body: JSON.stringify({ acao: "salvar_calculo", calculo }) });
+    if (!d.success) throw new Error(d.error); calculos = d.calculos; toast(`“${nome}” salvo em Meus cálculos.`); }
+  catch (e) { if (e.message !== "sessao") toast("Não deu pra salvar agora. Tente de novo."); }
+  finally { $("btnSalvarCalc").disabled = false; }
+};
+async function carregarCalculos() {
+  if (!calculos) $("listaCalculos").innerHTML = `<div class="loading"><span class="spin"></span>Carregando…</div>`;
+  try { const { d } = await api("/api/minha-loja"); if (d.success) calculos = d.calculos || []; } catch {}
+  pintarCalculos();
+}
+function pintarCalculos() {
+  const l = calculos || [];
+  if (!l.length) { $("listaCalculos").innerHTML = `<div class="panel vazio"><h3>Nenhum cálculo salvo ainda</h3><p>Na calculadora, dê um nome ao produto e clique em <b>Salvar cálculo</b>.</p><button class="btn gold" type="button" data-ir="calc">Ir pra calculadora</button></div>`; return; }
+  $("listaCalculos").innerHTML = l.map((c) => {
+    const e = c.entradas || {}, quando = c.em ? new Date(c.em).toLocaleDateString("pt-BR") : "";
+    const obj = e.modo === "receber" ? `Receber ${brl(e.receber)}` : e.modo === "preco" ? `Preço ${brl(e.preco)}` : e.metaTipo === "rs" ? `Lucro ${brl(e.meta)}` : `Lucro ${e.meta}%`;
+    return `<div class="panel cl"><div class="cl-h"><div><h3>${esc(c.nome)}</h3><small>${quando} · custo ${brl(e.custo)} · ${obj}</small></div>
+      <div class="cl-a"><button class="btn sm gold" type="button" data-abrir="${esc(c.id)}">Abrir</button><button class="btn sm ghost" type="button" data-apagar="${esc(c.id)}" aria-label="Apagar">Apagar</button></div></div>
+      <div class="cl-mps">${MP4.filter((m) => c.resultado?.[m]).map((m) => { const r = c.resultado[m];
+        return `<div class="cl-mp">${LOGO[m](26)}<div><b class="num">${brl(r.P)}</b><small class="${r.lucro < 0 ? "neg" : "pos"}">${r.lucro < 0 ? "prejuízo" : "lucro"} ${brl(r.lucro)}</small></div></div>`; }).join("")}</div></div>`;
+  }).join("");
+}
+$("listaCalculos").onclick = async (e) => {
+  if (e.target.closest("[data-ir]")) return irAba("calc");
+  const ab = e.target.closest("[data-abrir]"), ap = e.target.closest("[data-apagar]");
+  if (ab) {
+    const c = calculos.find((x) => x.id === ab.dataset.abrir); if (!c) return; const en = c.entradas || {};
+    irAba("calc"); $("calcModo").querySelector(`[data-m="${en.modo || "lucro"}"]`)?.click();
+    setV("cProduto", en.produto || c.nome); setV("cCusto", en.custo || ""); setV("cMeta", en.meta); setV("cMetaTipo", en.metaTipo || "pct");
+    setV("cReceber", en.receber || ""); setV("cPreco", en.preco || ""); setV("cEmb", en.emb || ""); setV("cOper", en.oper || ""); setV("cImp", en.imp || ""); setV("cPeso", en.peso || 0.5);
+    buscarTaxaMl(); toast("Recalculado com as taxas de hoje.");
+  }
+  if (ap) {
+    ap.disabled = true;
+    try { const { d } = await api("/api/minha-loja", { method: "POST", body: JSON.stringify({ acao: "apagar_calculo", id: ap.dataset.apagar }) }); if (d.success) { calculos = d.calculos; pintarCalculos(); } }
+    catch (er) { ap.disabled = false; }
+  }
+};
 
 // ---------- IA ----------
 let iaImagens = [], iaMp = "shopee";

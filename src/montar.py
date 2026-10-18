@@ -34,5 +34,5 @@ for a,b in rep:
 js=open('parts/landing.js').read()
 rest=rest.replace('// ---------- Início ----------','// ---------- Início ----------\nmontarLanding();')
 rest=rest.replace('// ---------- Calculadora (todas',js+'\n// ---------- Calculadora (todas',1)
-out=open('parts/head.html').read()+open('parts/landing.css').read()+'\n'+app_css+'\n</style>\n</head>\n<body>\n\n'+open('parts/landing.html').read()+rest
+out=open('parts/head.html').read()+open('parts/landing.css').read()+'\n'+app_css+'\n'+open('parts/studio.css').read()+'\n</style>\n</head>\n<body>\n\n'+open('parts/landing.html').read()+rest
 open('index.tpl.html','w').write(out); print('ok')
