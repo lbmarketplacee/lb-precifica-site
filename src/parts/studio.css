@@ -227,3 +227,12 @@ main.app{max-width:1180px;padding-top:4px}
 @media(prefers-reduced-motion:reduce){.rx-grade,.rx-laser,.rx-scan-img .cn,.rx-mk i{animation:none}.rx-laser{top:50%}
   .rx-mk,.rx-acao,.rx-selo{animation:none;opacity:1}.rx-ring .fg,.rx-bar i,.rx-radar-g{transition:none}}
 @media(max-width:900px){.side .tab{font-size:9.5px;padding:7px 1px;min-width:0;white-space:nowrap;letter-spacing:-.01em}.side .tab span{overflow:hidden;text-overflow:ellipsis;max-width:100%}}
+
+/* Raio-X: puxar pelo link do ML */
+.rx-link{margin-top:14px;border:1px dashed var(--goldln);border-radius:16px;padding:14px;background:var(--goldbg);display:grid;gap:10px}
+.rx-link-h{display:flex;align-items:center;gap:10px;font-size:14px}.rx-link-h span{flex:1}
+.rx-link-h .lnk{background:none;border:0;color:var(--muted);cursor:pointer;text-decoration:underline;font-size:12.5px}
+.rx-link-f{display:flex;gap:8px}.rx-link-f .inp{flex:1}
+.rx-link small{color:var(--muted);font-size:12px}
+.rx-link>.btn{justify-self:start}
+@media(max-width:560px){.rx-link-f{flex-direction:column}}
