@@ -443,6 +443,7 @@ main.app{padding-top:28px;padding-bottom:64px}
       <button class="tab" data-aba="calculos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21 12 16l-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg><span>Meus cálculos</span></button>
       <small class="side-lbl">Criar</small>
       <button class="tab" data-aba="ia"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"/></svg><span>Anúncio com IA</span></button>
+      <button class="tab" data-aba="raiox"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M3 12h18"/></svg><span>Raio-X</span></button>
       <small class="side-lbl">Conta</small>
       <button class="tab" data-aba="loja"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg><span>Minha loja</span></button>
       <button class="tab" data-aba="creditos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h4a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3h4"/></svg><span>Créditos</span></button>
@@ -574,6 +575,56 @@ main.app{padding-top:28px;padding-bottom:64px}
       <div class="doc-row"><label class="f"><span>CPF ou CNPJ <i>(pra emitir a cobrança)</i></span><div class="inp"><input id="cpfCreditos" inputmode="numeric" placeholder="000.000.000-00"></div></label></div>
       <p class="erro" id="avisoCreditos"></p>
     </section>
+    <!-- RAIO-X -->
+    <section id="abaRaiox" class="hidden">
+      <div class="page-h"><div><h1>Raio-<span class="serif">X</span> do anúncio</h1><p>Descubra o que está travando as vendas do seu anúncio. A IA olha as fotos de verdade e confere as regras de cada marketplace.</p></div></div>
+      <div id="rxForm" class="rx-grid">
+        <div class="panel">
+          <div class="step"><div class="step-h"><b>1</b><div><h3>Onde está o anúncio?</h3><p>Cada marketplace tem regra própria de título e foto.</p></div></div>
+            <div class="mp-pick rx-mp" id="rxMp">
+              <button class="mp-opt on" data-mp="shopee" type="button">{{L_SHOPEE_32}}<span><b>Shopee</b></span></button>
+              <button class="mp-opt" data-mp="ml" type="button">{{L_ML_32}}<span><b>Mercado Livre</b></span></button>
+              <button class="mp-opt" data-mp="tiktok" type="button">{{L_TIKTOK_32}}<span><b>TikTok Shop</b></span></button>
+              <button class="mp-opt" data-mp="shein" type="button">{{L_SHEIN_32}}<span><b>Shein</b></span></button>
+            </div></div>
+          <div class="step"><div class="step-h"><b>2</b><div><h3>Fotos do anúncio</h3><p>Até 6, na mesma ordem do anúncio. A 1ª é a capa.</p></div></div>
+            <label class="drop" id="rxDrop"><input type="file" id="rxFotos" accept="image/*" multiple hidden>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+              <b>Clique ou arraste as fotos aqui</b><small>JPG ou PNG · até 6 fotos · tire print das fotos do anúncio</small></label>
+            <div class="thumbs" id="rxPrev"></div></div>
+          <div class="step"><div class="step-h"><b>3</b><div><h3>Texto do anúncio</h3><p>Copie e cole do jeito que está publicado.</p></div></div>
+            <div class="row">
+              <label class="f"><span>Título <i id="rxTitCont"></i></span><div class="inp"><input id="rxTitulo" maxlength="190" placeholder="Cole aqui o título do anúncio"></div></label>
+              <label class="f"><span>Descrição <i>(opcional)</i></span><div class="inp"><textarea id="rxDesc" placeholder="Cole aqui a descrição"></textarea></div></label>
+            </div></div>
+          <div class="step"><div class="step-h"><b>4</b><div><h3>Preço, estoque e vendas</h3><p>Tudo opcional. O que ficar em branco não entra na nota.</p></div></div>
+            <div class="row c2">
+              <label class="f"><span>Preço de venda</span><div class="inp"><em>R$</em><input id="rxPreco" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+              <label class="f"><span>Preço riscado ("de")</span><div class="inp"><em>R$</em><input id="rxCheio" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+              <label class="f"><span>Tem vídeo?</span><div class="inp"><select id="rxVideo"><option value="">Não informar</option><option value="sim">Sim</option><option value="nao">Não</option></select></div></label>
+              <label class="f"><span>Está em promoção?</span><div class="inp"><select id="rxPromo"><option value="">Não informar</option><option value="sim">Sim</option><option value="nao">Não</option></select></div></label>
+              <label class="f"><span>Estoque</span><div class="inp"><input id="rxEstoque" type="number" inputmode="numeric" min="0" placeholder="un."></div></label>
+              <label class="f"><span>Vendas</span><div class="inp"><input id="rxVendas" type="number" inputmode="numeric" min="0" placeholder="total"></div></label>
+              <label class="f"><span>Nota das avaliações</span><div class="inp"><input id="rxNota" type="number" inputmode="decimal" min="0" max="5" step="0.1" placeholder="0 a 5"></div></label>
+            </div></div>
+        </div>
+        <aside class="panel gen">
+          <h3>O Raio-X confere</h3>
+          <div class="rx-lista-p"><span>Capa</span><span>Fotos</span><span>Título</span><span>Descrição</span><span>Preço e oferta</span><span>Estoque</span><span>Prova social</span></div>
+          <button class="btn gold lg" style="width:100%;margin-top:14px" id="btnRx" type="button">Fazer Raio-X — 5 créditos</button>
+          <p class="erro" id="avisoRx"></p>
+          <div class="rules">
+            <div>{{CHECK}}Nota de 0 a 100 e o que mais mexe nas vendas</div>
+            <div>{{CHECK}}Não precisa de link: só as fotos e o texto</div>
+            <div>{{CHECK}}Se a análise falhar, os créditos voltam na hora</div>
+          </div>
+          <div id="rxHist"></div>
+        </aside>
+      </div>
+      <div id="rxScan" class="hidden"></div>
+      <div id="rxRes" class="hidden"></div>
+    </section>
+
     <!-- MINHA LOJA -->
     <section id="abaLoja" class="hidden">
       <div class="page-h"><div><h1>Minha <span class="serif">loja</span></h1><p>Preencha uma vez. Vira o padrão de todo cálculo, e você só digita o custo e o lucro.</p></div></div>
@@ -739,9 +790,10 @@ async function abrirApp() {
 }
 function irAba(aba) {
   document.querySelectorAll(".tab").forEach((x) => x.classList.toggle("on", x.dataset.aba === aba));
-  for (const [a, sec] of [["calc", "abaCalc"], ["calculos", "abaCalculos"], ["ia", "abaIa"], ["loja", "abaLoja"], ["creditos", "abaCreditos"]]) $(sec).classList.toggle("hidden", a !== aba);
+  for (const [a, sec] of [["calc", "abaCalc"], ["calculos", "abaCalculos"], ["ia", "abaIa"], ["raiox", "abaRaiox"], ["loja", "abaLoja"], ["creditos", "abaCreditos"]]) $(sec).classList.toggle("hidden", a !== aba);
   if (aba === "calculos") carregarCalculos();
   if (aba === "loja") preencherLoja();
+  if (aba === "raiox") rxPintarHist();
   window.scrollTo(0, 0);
 }
 document.querySelectorAll(".tab").forEach((b) => b.onclick = () => irAba(b.dataset.aba));
@@ -1089,6 +1141,147 @@ async function gerar(tipo) {
 $("btnIaTexto").onclick = () => gerar("texto");
 $("btnIaFotos").onclick = () => gerar("fotos");
 $("iaOut").onclick = async (e) => { const b = e.target.closest("[data-copiar]"); if (!b) return; try { await navigator.clipboard.writeText(b.dataset.copiar); toast("Copiado!"); } catch { toast("Selecione o texto e copie."); } };
+
+// ---------- Raio-X do anúncio (19/10/2026) ----------
+let rxMp = "shopee", rxImgs = [], rxHist = null;
+const RX_CALMO = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const RX_COR = (n) => (n >= 85 ? "#3fbf7a" : n >= 70 ? "#9be07a" : n >= 50 ? "#e8a948" : "#ff6b5b");
+const RX_FAIXA_TIT = { shopee: [70, 100], ml: [35, 60], tiktok: [80, 140], shein: [40, 190] };
+const RX_PASSOS = ["Lendo o título", "Analisando a capa", "Contando as fotos", "Lendo a descrição", "Conferindo preço e desconto", "Checando o estoque", "Olhando vendas e avaliações", "Montando o diagnóstico"];
+const RX_CURTO = { capa: "Capa", fotos: "Fotos", titulo: "Título", descricao: "Descrição", oferta: "Oferta", estoque: "Estoque", confianca: "Prova social" };
+const rxEspera = (ms) => new Promise((r) => setTimeout(r, ms));
+function rxReduzir(src, max, q) { return new Promise((ok, erro) => { const img = new Image(); img.onload = () => { const s = Math.min(1, max / Math.max(img.width, img.height)); const c = document.createElement("canvas"); c.width = Math.round(img.width * s); c.height = Math.round(img.height * s); const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height); ok(c.toDataURL("image/jpeg", q)); }; img.onerror = erro; img.src = src; }); }
+function rxPintarFotos() { $("rxPrev").innerHTML = rxImgs.map((s, i) => `<div class="thumb"><img src="${s}" alt="">${i === 0 ? '<span class="capa">Capa</span>' : ""}<button data-rm="${i}" aria-label="Remover">×</button></div>`).join(""); }
+async function rxAddFotos(files) {
+  for (const f of [...files]) {
+    if (rxImgs.length >= 6) { toast("Máximo de 6 fotos."); break; }
+    if (!/^image\//.test(f.type)) continue;
+    const u = URL.createObjectURL(f);
+    try { rxImgs.push(await rxReduzir(u, 1600, 0.85)); } catch { toast("Uma das fotos não abriu."); } finally { URL.revokeObjectURL(u); }
+  }
+  rxPintarFotos();
+}
+$("rxFotos").onchange = (e) => { rxAddFotos(e.target.files); e.target.value = ""; };
+$("rxPrev").onclick = (e) => { const b = e.target.closest("[data-rm]"); if (!b) return; rxImgs.splice(Number(b.dataset.rm), 1); rxPintarFotos(); };
+{ const d = $("rxDrop");
+  ["dragenter", "dragover"].forEach((ev) => d.addEventListener(ev, (e) => { e.preventDefault(); d.classList.add("over"); }));
+  ["dragleave", "drop"].forEach((ev) => d.addEventListener(ev, (e) => { e.preventDefault(); d.classList.remove("over"); }));
+  d.addEventListener("drop", (e) => rxAddFotos(e.dataTransfer.files)); }
+function rxContador() { const n = $("rxTitulo").value.trim().length, [a, b] = RX_FAIXA_TIT[rxMp];
+  $("rxTitCont").textContent = n ? `· ${n} caracteres (o ideal no ${NOMES[rxMp]} é ${a} a ${b})` : `(o ideal no ${NOMES[rxMp]} é ${a} a ${b} caracteres)`; }
+$("rxTitulo").addEventListener("input", rxContador);
+$("rxMp").onclick = (e) => { const b = e.target.closest(".mp-opt"); if (!b) return; rxMp = b.dataset.mp; [...$("rxMp").children].forEach((x) => x.classList.toggle("on", x === b)); rxContador(); };
+rxContador();
+
+function rxTela(qual) { $("rxForm").classList.toggle("hidden", qual !== "form"); $("rxScan").classList.toggle("hidden", qual !== "scan"); $("rxRes").classList.toggle("hidden", qual !== "res"); window.scrollTo({ top: 0, behavior: RX_CALMO ? "auto" : "smooth" }); }
+function rxCapaHtml(src) { return src ? `<img src="${src}" alt="Capa do anúncio">` : `<div class="rx-sem">Sem foto<br><small>a capa não entra na nota</small></div>`; }
+
+// a) enquanto analisa: laser varrendo a capa + passos ficando ✓
+function rxScanIniciar(capa) {
+  $("rxScan").innerHTML = `<div class="rx-scan">
+    <div class="rx-scan-img">${rxCapaHtml(capa)}<div class="rx-grade"></div><div class="rx-laser"></div><i class="cn tl"></i><i class="cn tr"></i><i class="cn bl"></i><i class="cn br"></i></div>
+    <div class="rx-passos"><span class="badge-top"><span class="dotc"></span>Raio-X em andamento</span><h3>Analisando seu anúncio…</h3>
+      <ul>${RX_PASSOS.map((p, i) => `<li data-i="${i}"><span class="ck"></span>${p}</li>`).join("")}</ul>
+      <small>Leva uns 20 segundos. Não feche esta página.</small></div></div>`;
+  rxTela("scan");
+  let i = 0; const lis = $("rxScan").querySelectorAll("li");
+  const marcar = (k, st) => lis[k] && (lis[k].className = st);
+  marcar(0, "vai");
+  const t = setInterval(() => { if (i < RX_PASSOS.length - 2) { marcar(i, "ok"); i++; marcar(i, "vai"); } }, 2400);
+  return async () => { clearInterval(t); for (; i < RX_PASSOS.length; i++) { marcar(i, "ok"); marcar(i + 1, "vai"); await rxEspera(RX_CALMO ? 0 : 160); } await rxEspera(RX_CALMO ? 0 : 350); };
+}
+
+function rxRadar(pilares) {
+  const av = pilares.filter((p) => p.nota != null);
+  if (av.length < 3) return "";
+  const c = 120, R = 78, n = av.length, ang = (k) => -Math.PI / 2 + (2 * Math.PI * k) / n;
+  const pt = (k, r) => [c + r * Math.cos(ang(k)), c + r * Math.sin(ang(k))].map((v) => v.toFixed(1)).join(",");
+  const anel = (f) => `<polygon class="rg" points="${av.map((_, k) => pt(k, R * f)).join(" ")}"/>`;
+  return `<svg viewBox="0 0 240 240" class="rx-radar" role="img" aria-label="Notas por parte do anúncio">
+    ${[0.25, 0.5, 0.75, 1].map(anel).join("")}${av.map((_, k) => `<line class="rg" x1="${c}" y1="${c}" x2="${pt(k, R).split(",")[0]}" y2="${pt(k, R).split(",")[1]}"/>`).join("")}
+    <g class="rx-radar-g"><polygon class="rv" points="${av.map((p, k) => pt(k, (R * p.nota) / 100)).join(" ")}"/>${av.map((p, k) => { const [x, y] = pt(k, (R * p.nota) / 100).split(","); return `<circle cx="${x}" cy="${y}" r="3.5" fill="${RX_COR(p.nota)}"/>`; }).join("")}</g>
+    ${av.map((p, k) => { const [x, y] = pt(k, R + 20).split(",").map(Number); return `<text x="${x}" y="${y}" text-anchor="${Math.abs(x - c) < 8 ? "middle" : x > c ? "start" : "end"}" dominant-baseline="middle">${esc(RX_CURTO[p.id] || p.nome)}</text>`; }).join("")}
+  </svg>`;
+}
+
+// b) resultado
+function rxMostrar(item, capa) {
+  const r = item.resultado || {}, a = item.anuncio || {}, nota = Math.round(r.nota || 0), cor = RX_COR(nota), C = 2 * Math.PI * 58;
+  const icon = { ok: "✓", atencao: "!", ruim: "✕" };
+  const marc = (r.marcadores || []).map((m, i) => `<div class="rx-mk ${m.tipo === "bom" ? "bom" : "mel"} ${m.x >= 0.45 ? "esq" : ""}" style="left:${(m.x * 100).toFixed(1)}%;top:${(m.y * 100).toFixed(1)}%;animation-delay:${1.2 + i * 0.35}s"><i></i><span>${esc(m.texto)}</span></div>`).join("");
+  const acoes = (r.acoes || []).slice(0, 3).map((x, i) => `<div class="rx-acao" style="animation-delay:${0.9 + i * 0.25}s"><span class="imp ${x.impacto}">${x.impacto === "alto" ? "Impacto alto" : x.impacto === "medio" ? "Impacto médio" : "Impacto baixo"}</span><b>${i + 1}. ${esc(x.titulo)}</b><p>${esc(x.porque)}</p></div>`).join("");
+  const pils = (r.pilares || []).map((p, i) => `<div class="rx-pil"><button type="button" class="rx-pil-h"><span class="nm">${esc(p.nome)}</span><span class="rx-bar"><i style="--w:${p.nota ?? 0}%;--c:${p.nota == null ? "#3a3631" : RX_COR(p.nota)};transition-delay:${1.4 + i * 0.15}s"></i></span><b class="num">${p.nota ?? "—"}</b><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button>
+    <div class="rx-pil-d hidden">${p.nota == null ? `<p class="vd">Não avaliado: faltou informação ou foto.</p>` : p.veredito ? `<p class="vd">${esc(p.veredito)}</p>` : ""}${(p.itens || []).length ? `<ul>${p.itens.map((x) => `<li class="${x.status}"><span>${icon[x.status] || "•"}</span>${esc(x.texto)}</li>`).join("")}</ul>` : ""}</div></div>`).join("");
+  $("rxRes").innerHTML = `<div class="rx-res">
+    <div class="rx-col-capa">
+      <div class="rx-capa-box">${rxCapaHtml(capa || item.capa)}${marc}</div>
+      <div class="rx-meta">${LOGO[a.marketplace] ? LOGO[a.marketplace](22) : ""}<span>${esc(NOMES[a.marketplace] || "")} · ${r.fotosAnalisadas || 0} foto${r.fotosAnalisadas === 1 ? "" : "s"} analisada${r.fotosAnalisadas === 1 ? "" : "s"}</span></div>
+      ${r.tituloSugerido ? `<div class="panel rx-tit"><div class="out-h"><b>Título sugerido</b><span>${r.tituloSugerido.length} caracteres</span></div><p>${esc(r.tituloSugerido)}</p><button class="btn sm" type="button" data-copiar="${esc(r.tituloSugerido)}">Copiar título</button></div>` : ""}
+    </div>
+    <div class="rx-col-dados">
+      <div class="panel rx-topo">
+        <div class="rx-ring"><svg viewBox="0 0 140 140"><circle class="bg" cx="70" cy="70" r="58"/><circle class="fg" cx="70" cy="70" r="58" style="stroke:${cor};stroke-dasharray:${C.toFixed(1)};stroke-dashoffset:${C.toFixed(1)}" data-alvo="${(C * (1 - nota / 100)).toFixed(1)}"/></svg><div class="rx-ring-n"><b class="num" id="rxNum" style="color:${cor}">0</b><small>de 100</small></div></div>
+        <div class="rx-topo-t"><span class="rx-selo" style="--c:${cor}">${esc(r.faixa?.nome || "")}</span>
+          ${r.primeiraImpressao ? `<p class="rx-imp"><small>Primeira impressão do comprador</small>“<span id="rxImp"></span>”</p>` : ""}
+          <span class="rx-sub">${r.problemas || 0} ponto${r.problemas === 1 ? "" : "s"} pra melhorar · ${esc(a.titulo || "").slice(0, 60)}${(a.titulo || "").length > 60 ? "…" : ""}</span></div>
+        ${rxRadar(r.pilares || [])}
+      </div>
+      ${acoes ? `<h3 class="rx-h">O que mais mexe nas vendas</h3><div class="rx-acoes">${acoes}</div>` : ""}
+      <h3 class="rx-h">Nota por parte do anúncio <small>toque pra ver os detalhes</small></h3>
+      <div class="rx-pilares">${pils}</div>
+      <div class="rx-botoes"><button class="btn" type="button" data-rx="refazer">Fazer outro Raio-X</button><button class="btn gold" type="button" data-rx="gerar">Gerar título e descrição com IA</button></div>
+    </div></div>`;
+  rxTela("res");
+  const box = $("rxRes").querySelector(".rx-res"), fg = box.querySelector(".rx-ring .fg");
+  if (RX_CALMO) { box.classList.add("on", "calmo"); fg.style.strokeDashoffset = fg.dataset.alvo; $("rxNum").textContent = nota; if ($("rxImp")) $("rxImp").textContent = r.primeiraImpressao; return; }
+  requestAnimationFrame(() => requestAnimationFrame(() => { box.classList.add("on"); fg.style.strokeDashoffset = fg.dataset.alvo; }));
+  const t0 = performance.now(), dur = 1500;
+  const conta = (t) => { const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3); $("rxNum").textContent = Math.round(nota * e); if (p < 1) requestAnimationFrame(conta); };
+  requestAnimationFrame(conta);
+  if (r.primeiraImpressao) { let k = 0; const txt = r.primeiraImpressao; setTimeout(() => { const iv = setInterval(() => { const el = $("rxImp"); if (!el) return clearInterval(iv); el.textContent = txt.slice(0, ++k); if (k >= txt.length) clearInterval(iv); }, 26); }, 700); }
+}
+$("rxRes").onclick = async (e) => {
+  const h = e.target.closest(".rx-pil-h"); if (h) { h.nextElementSibling.classList.toggle("hidden"); h.classList.toggle("aberto"); return; }
+  const cp = e.target.closest("[data-copiar]"); if (cp) { try { await navigator.clipboard.writeText(cp.dataset.copiar); toast("Título copiado!"); } catch { toast("Selecione o texto e copie."); } return; }
+  const b = e.target.closest("[data-rx]"); if (!b) return;
+  if (b.dataset.rx === "refazer") { rxTela("form"); rxPintarHist(); return; }
+  // leva pra aba IA já preenchida
+  const mp = ["shopee", "ml", "tiktok"].includes(rxMp) ? rxMp : "shopee";
+  irAba("ia"); $("iaMp").querySelector(`[data-mp="${mp}"]`)?.click();
+  $("iaProduto").value = [$("rxTitulo").value.trim(), $("rxDesc").value.trim()].filter(Boolean).join("\n\n");
+  if (rxImgs.length) { iaImagens = []; for (const s of rxImgs.slice(0, 5)) iaImagens.push(await rxReduzir(s, 1280, 0.85)); pintarThumbs(); }
+  toast("Dados do anúncio já preenchidos. Confira e gere.");
+};
+
+async function rxFazer() {
+  const titulo = $("rxTitulo").value.trim(); $("avisoRx").textContent = "";
+  if (titulo.length < 5) { $("avisoRx").textContent = "Cole o título do anúncio."; $("rxTitulo").focus(); return; }
+  if (!perfil.iaIlimitada && (perfil.creditos ?? 0) < 5) { toast(`O Raio-X usa 5 créditos e você tem ${perfil.creditos ?? 0}.`); irAba("creditos"); return; }
+  const v = (id) => $(id).value.trim();
+  const corpo = { tipo: "raio_x", marketplace: rxMp, titulo, descricao: v("rxDesc"), preco: v("rxPreco"), precoCheio: v("rxCheio"), video: v("rxVideo"), emDesconto: v("rxPromo"),
+    estoque: v("rxEstoque"), vendas: v("rxVendas"), nota: v("rxNota"), imagens: rxImgs };
+  for (const k of Object.keys(corpo)) if (corpo[k] === "") delete corpo[k];
+  try { if (rxImgs[0]) corpo.capaMini = await rxReduzir(rxImgs[0], 360, 0.72); } catch {}
+  const capa = rxImgs[0] || null, terminar = rxScanIniciar(capa);
+  $("btnRx").disabled = true;
+  try {
+    const { d } = await api("/api/ia", { method: "POST", body: JSON.stringify(corpo) });
+    if (!d.success) { rxTela("form"); $("avisoRx").textContent = d.error || "O Raio-X não respondeu. Seus créditos foram devolvidos."; return; }
+    if (d.saldo != null) { perfil.creditos = d.saldo; pintarSaldo(); }
+    if (rxHist) rxHist = [d.raiox, ...rxHist.filter((x) => x.id !== d.raiox.id)].slice(0, 10);
+    await terminar();
+    rxMostrar(d.raiox, capa);
+  } catch (e) { if (e.message !== "sessao") { rxTela("form"); $("avisoRx").textContent = "Sem conexão. Tente de novo."; } }
+  finally { $("btnRx").disabled = false; }
+}
+$("btnRx").onclick = rxFazer;
+
+async function rxPintarHist() {
+  if (!rxHist) { try { const { d } = await api("/api/minha-loja"); rxHist = d.success ? d.raiox || [] : []; } catch { rxHist = []; } }
+  $("rxHist").innerHTML = rxHist.length ? `<h3 class="rx-hist-h">Seus últimos Raio-X <small>rever é grátis</small></h3>${rxHist.map((x) => { const n = Math.round(x.resultado?.nota || 0);
+    return `<button type="button" class="rx-hist" data-rxid="${esc(x.id)}">${x.capa ? `<img src="${x.capa}" alt="">` : `<span class="ph">${LOGO[x.anuncio?.marketplace] ? LOGO[x.anuncio.marketplace](26) : ""}</span>`}<span class="tx"><b>${esc((x.anuncio?.titulo || "").slice(0, 48))}</b><small>${new Date(x.em).toLocaleDateString("pt-BR")} · ${esc(NOMES[x.anuncio?.marketplace] || "")}</small></span><span class="nt" style="--c:${RX_COR(n)}">${n}</span></button>`; }).join("")}` : "";
+}
+$("rxHist").onclick = (e) => { const b = e.target.closest("[data-rxid]"); if (!b) return; const it = rxHist.find((x) => x.id === b.dataset.rxid); if (it) rxMostrar(it, it.capa); };
 
 // ---------- Início ----------
 if (token) abrirApp(); else mostrar("telaEntrar");

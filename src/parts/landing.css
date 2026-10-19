@@ -123,3 +123,14 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 .demo-row .pr,.plan .valor,.mc-p{white-space:nowrap}
 .plan .valor{font-size:clamp(52px,12vw,76px)}
 @media(max-width:560px){.demo-row{gap:10px;padding:10px 12px}.demo-row .nm{font-size:13px}.demo-row .pr{font-size:17px}.demo-row .lc{min-width:0;font-size:12px}.plan .valor small{display:block;margin:8px 0 0}.badge-top{font-size:12px;padding:7px 12px}}
+
+/* Raio-X na landing */
+.bx.w6{grid-column:1/-1}
+.rx-lp{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:30px;align-items:center}
+.rx-lp-demo{display:flex;align-items:center;gap:26px}
+.rx-lp-ring{position:relative;width:120px;height:120px}.rx-lp-ring svg{width:100%;height:100%}
+.rx-lp-ring b{position:absolute;inset:0;display:grid;place-items:center;font:800 40px var(--disp);color:#e8a948;letter-spacing:-.04em}
+.rx-lp-bars{display:grid;gap:10px;width:240px}
+.rx-lp-bars span{display:grid;grid-template-columns:56px 1fr;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.rx-lp-bars i{font-style:normal}.rx-lp-bars em{display:block;height:8px;border-radius:99px;background:linear-gradient(90deg,var(--c) var(--w),rgba(255,255,255,.07) var(--w))}
+@media(max-width:960px){.rx-lp{grid-template-columns:1fr}.rx-lp-demo{flex-wrap:wrap}}

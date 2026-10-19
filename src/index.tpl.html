@@ -183,6 +183,17 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 .plan .valor{font-size:clamp(52px,12vw,76px)}
 @media(max-width:560px){.demo-row{gap:10px;padding:10px 12px}.demo-row .nm{font-size:13px}.demo-row .pr{font-size:17px}.demo-row .lc{min-width:0;font-size:12px}.plan .valor small{display:block;margin:8px 0 0}.badge-top{font-size:12px;padding:7px 12px}}
 
+/* Raio-X na landing */
+.bx.w6{grid-column:1/-1}
+.rx-lp{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:30px;align-items:center}
+.rx-lp-demo{display:flex;align-items:center;gap:26px}
+.rx-lp-ring{position:relative;width:120px;height:120px}.rx-lp-ring svg{width:100%;height:100%}
+.rx-lp-ring b{position:absolute;inset:0;display:grid;place-items:center;font:800 40px var(--disp);color:#e8a948;letter-spacing:-.04em}
+.rx-lp-bars{display:grid;gap:10px;width:240px}
+.rx-lp-bars span{display:grid;grid-template-columns:56px 1fr;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.rx-lp-bars i{font-style:normal}.rx-lp-bars em{display:block;height:8px;border-radius:99px;background:linear-gradient(90deg,var(--c) var(--w),rgba(255,255,255,.07) var(--w))}
+@media(max-width:960px){.rx-lp{grid-template-columns:1fr}.rx-lp-demo{flex-wrap:wrap}}
+
 /* ======== CADASTRO ======== */
 .center-page{min-height:100vh;display:grid;place-items:center;padding:40px 16px;background:radial-gradient(800px 400px at 50% -10%,rgba(217,174,82,.22),transparent),var(--bg)}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh2)}
@@ -507,6 +518,107 @@ main.app{max-width:1180px;padding-top:4px}
 @media(max-width:560px){.prompt{padding:14px;border-radius:20px}.prompt .seg button{font-size:11.5px}.cl-mp{min-width:0;flex:1 1 140px}}
 #telaApp .lock-card{place-items:start center;padding-top:30px}
 
+/* ======== RAIO-X DO ANÚNCIO (19/10/2026) ======== */
+.rx-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px;align-items:start}
+.rx-grid .gen{position:sticky;top:16px}
+.rx-mp{grid-template-columns:repeat(4,1fr)}
+.rx-mp .mp-opt{flex-direction:column;text-align:center;gap:8px;padding:14px 8px}
+.rx-lista-p{display:flex;flex-wrap:wrap;gap:6px}
+.rx-lista-p span{border:1px solid var(--line2);border-radius:99px;padding:4px 10px;font-size:12.5px;color:var(--ink2)}
+.rx-hist-h{font-size:14px;margin:22px 0 10px;display:flex;justify-content:space-between;align-items:baseline}
+.rx-hist-h small{color:var(--muted);font:500 12px Inter}
+.rx-hist{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:12px;padding:8px;margin-bottom:8px;cursor:pointer;color:var(--ink);transition:.15s}
+.rx-hist:hover{border-color:var(--goldln)}
+.rx-hist img,.rx-hist .ph{width:40px;height:52px;border-radius:8px;object-fit:cover;flex:none;display:grid;place-items:center;background:var(--surface2)}
+.rx-hist .tx{flex:1;min-width:0}.rx-hist .tx b{display:block;font-size:13px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rx-hist .tx small{color:var(--muted);font-size:11.5px}
+.rx-hist .nt{font:800 16px var(--disp);color:var(--c);border:1.5px solid var(--c);border-radius:99px;min-width:42px;text-align:center;padding:3px 6px}
+@media(max-width:1020px){.rx-grid{grid-template-columns:1fr}.rx-grid .gen{position:static}}
+@media(max-width:560px){.rx-mp{grid-template-columns:1fr 1fr}}
+
+/* a) análise: grade + laser */
+.rx-scan{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:36px;align-items:center;max-width:980px;margin:10px auto}
+.rx-scan-img{position:relative;border-radius:22px;overflow:hidden;background:#0d0c0a;border:1px solid var(--goldln);box-shadow:0 0 60px var(--goldbg);aspect-ratio:3/4}
+.rx-scan-img img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.85) brightness(.85)}
+.rx-sem{height:100%;display:grid;place-items:center;text-align:center;color:var(--muted);font-weight:600;padding:20px}
+.rx-sem small{font-weight:400;font-size:12px}
+.rx-grade{position:absolute;inset:0;background-image:linear-gradient(rgba(64,224,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(64,224,255,.16) 1px,transparent 1px);background-size:28px 28px;mix-blend-mode:screen;animation:rxGrade 3s linear infinite}
+.rx-laser{position:absolute;left:0;right:0;height:3px;top:0;background:linear-gradient(90deg,transparent,#52e8ff 20%,#fff 50%,#52e8ff 80%,transparent);box-shadow:0 0 18px 4px rgba(82,232,255,.7),0 0 60px 12px rgba(82,232,255,.25);animation:rxLaser 2.2s cubic-bezier(.45,0,.55,1) infinite alternate}
+.rx-laser:after{content:"";position:absolute;left:0;right:0;bottom:3px;height:70px;background:linear-gradient(0deg,rgba(82,232,255,.18),transparent)}
+.rx-scan-img .cn{position:absolute;width:28px;height:28px;border:3px solid var(--gold2);animation:rxPisca 1.1s ease-in-out infinite}
+.cn.tl{top:12px;left:12px;border-right:0;border-bottom:0;border-radius:8px 0 0 0}.cn.tr{top:12px;right:12px;border-left:0;border-bottom:0;border-radius:0 8px 0 0}
+.cn.bl{bottom:12px;left:12px;border-right:0;border-top:0;border-radius:0 0 0 8px}.cn.br{bottom:12px;right:12px;border-left:0;border-top:0;border-radius:0 0 8px 0}
+.rx-passos h3{font-size:clamp(26px,3vw,36px);margin:16px 0 18px;letter-spacing:-.03em}
+.rx-passos ul{list-style:none;padding:0;margin:0 0 18px;display:grid;gap:10px}
+.rx-passos li{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:15.5px;transition:.3s}
+.rx-passos li .ck{width:22px;height:22px;border-radius:50%;border:2px solid var(--line2);flex:none;display:grid;place-items:center;font-size:12px;transition:.3s}
+.rx-passos li.vai{color:var(--ink)}.rx-passos li.vai .ck{border-color:var(--gold);border-top-color:transparent;animation:g .8s linear infinite}
+.rx-passos li.ok{color:var(--ink2)}.rx-passos li.ok .ck{background:var(--ok);border-color:var(--ok);color:#06210f}.rx-passos li.ok .ck:after{content:"✓";font-weight:800}
+.rx-passos small{color:var(--muted)}
+@keyframes rxLaser{from{top:0}to{top:calc(100% - 3px)}}
+@keyframes rxGrade{to{background-position:0 28px,28px 0}}
+@keyframes rxPisca{50%{opacity:.25}}
+
+/* b) resultado */
+.rx-res{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:22px;align-items:start}
+.rx-col-capa{position:sticky;top:16px;display:grid;gap:12px}
+.rx-capa-box{position:relative;border-radius:22px;overflow:visible;background:#0d0c0a;border:1px solid var(--line2);aspect-ratio:3/4}
+.rx-capa-box>img{width:100%;height:100%;object-fit:cover;display:block;border-radius:21px}
+.rx-mk{position:absolute;transform:translate(-50%,-50%);opacity:0;animation:rxEntra .5s ease-out forwards;z-index:2}
+.rx-mk i{display:block;width:16px;height:16px;border-radius:50%;background:var(--c);box-shadow:0 0 0 0 var(--c);animation:rxPulso 1.8s ease-out infinite;border:2px solid #fff}
+.rx-mk.bom{--c:#3fbf7a}.rx-mk.mel{--c:#ff9a3c}
+.rx-mk span{position:absolute;top:50%;left:22px;transform:translateY(-50%);width:max-content;max-width:170px;background:rgba(10,9,8,.88);border:1px solid var(--c);color:#fff;font-size:12px;font-weight:600;line-height:1.3;padding:6px 9px;border-radius:9px;backdrop-filter:blur(6px)}
+.rx-mk.esq span{left:auto;right:22px}
+@keyframes rxPulso{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 70%,transparent)}100%{box-shadow:0 0 0 16px transparent}}
+@keyframes rxEntra{from{opacity:0;transform:translate(-50%,-50%) scale(.6)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.rx-meta{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}
+.rx-tit{padding:16px 18px;border-radius:18px}.rx-tit p{margin:6px 0 12px;font-weight:600;line-height:1.45}
+.rx-topo{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px;align-items:center;padding:22px;border-radius:22px;background:radial-gradient(420px 200px at 0 0,var(--goldbg),transparent 70%),var(--surface)}
+.rx-ring{position:relative;width:150px;height:150px}
+.rx-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.rx-ring circle{fill:none;stroke-width:11}.rx-ring .bg{stroke:rgba(255,255,255,.07)}
+.rx-ring .fg{stroke-linecap:round;transition:stroke-dashoffset 1.5s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 0 8px currentColor)}
+.rx-ring-n{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.rx-ring-n b{font:800 50px/1 var(--disp);letter-spacing:-.04em}.rx-ring-n small{color:var(--muted);font-size:12px}
+.rx-selo{display:inline-block;font-weight:800;font-size:13px;color:var(--c);border:1.5px solid var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);border-radius:99px;padding:5px 12px;opacity:0;animation:rxSobe .5s .9s forwards}
+.rx-imp{margin:12px 0 8px;font:italic 400 21px/1.35 var(--serif);color:var(--ink)}
+.rx-imp small{display:block;font:600 11px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-style:normal;margin-bottom:4px}
+.rx-sub{color:var(--muted);font-size:12.5px}
+.rx-radar{width:230px;height:230px;overflow:visible}
+.rx-radar .rg{fill:none;stroke:rgba(255,255,255,.09)}
+.rx-radar .rv{fill:color-mix(in srgb,var(--gold) 28%,transparent);stroke:var(--gold2);stroke-width:2}
+.rx-radar text{fill:var(--muted);font:600 10.5px Inter}
+.rx-radar-g{transform-origin:120px 120px;transform:scale(0);transition:transform 1.1s .5s cubic-bezier(.2,1.2,.3,1)}
+.rx-res.on .rx-radar-g{transform:scale(1)}
+.rx-h{font-size:16px;margin:24px 0 12px}.rx-h small{color:var(--muted);font:500 12px Inter;margin-left:6px}
+.rx-acoes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.rx-acao{border:1px solid var(--line);border-radius:18px;padding:16px;background:linear-gradient(180deg,#171512,#110f0d);opacity:0;animation:rxSobe .55s ease-out forwards}
+.rx-acao b{display:block;font-size:15px;margin:10px 0 6px;line-height:1.3}.rx-acao p{margin:0;color:var(--muted);font-size:13.5px}
+.rx-acao .imp{font-size:11px;font-weight:800;border-radius:99px;padding:3px 9px;text-transform:uppercase;letter-spacing:.05em}
+.imp.alto{background:rgba(255,107,91,.15);color:#ff8a75}.imp.medio{background:rgba(232,169,72,.15);color:#f0c070}.imp.baixo{background:rgba(255,255,255,.07);color:var(--muted)}
+@keyframes rxSobe{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.rx-pilares{display:grid;gap:8px}
+.rx-pil{border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.rx-pil-h{display:grid;grid-template-columns:120px minmax(0,1fr) 40px 16px;align-items:center;gap:12px;width:100%;background:none;border:0;color:var(--ink);padding:12px 14px;cursor:pointer;text-align:left}
+.rx-pil-h .nm{font-weight:600;font-size:14px}.rx-pil-h b{font:800 17px var(--disp);text-align:right}
+.rx-pil-h svg{color:var(--muted);transition:.2s}.rx-pil-h.aberto svg{transform:rotate(180deg)}
+.rx-bar{height:9px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden}
+.rx-bar i{display:block;height:100%;width:0;border-radius:99px;background:var(--c);box-shadow:0 0 12px var(--c);transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.rx-res.on .rx-bar i{width:var(--w)}
+.rx-pil-d{padding:0 14px 14px}.rx-pil-d .vd{margin:0 0 10px;color:var(--ink2);font-size:13.5px}
+.rx-pil-d ul{list-style:none;padding:0;margin:0;display:grid;gap:7px;font-size:13.5px}
+.rx-pil-d li{display:flex;gap:9px;align-items:flex-start}
+.rx-pil-d li span{width:20px;height:20px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:11px;font-weight:800}
+.rx-pil-d li.ok span{background:var(--okbg);color:var(--ok)}.rx-pil-d li.atencao span{background:rgba(232,169,72,.15);color:#f0c070}.rx-pil-d li.ruim span{background:var(--badbg);color:var(--bad)}
+.rx-botoes{display:flex;gap:10px;justify-content:flex-end;margin-top:22px;flex-wrap:wrap}
+@media(max-width:1100px){.rx-topo{grid-template-columns:auto minmax(0,1fr)}.rx-radar{grid-column:1/-1;justify-self:center}.rx-acoes{grid-template-columns:1fr}}
+@media(max-width:900px){.rx-scan{grid-template-columns:1fr;gap:20px}.rx-scan-img{max-width:340px;width:100%;justify-self:center}
+  .rx-res{grid-template-columns:1fr}.rx-col-capa{position:static;max-width:420px;width:100%;justify-self:center}}
+@media(max-width:560px){.rx-topo{grid-template-columns:1fr;justify-items:center;text-align:center}.rx-pil-h{grid-template-columns:96px minmax(0,1fr) 34px 14px;gap:8px}.rx-mk span{max-width:120px;font-size:11px}.rx-botoes .btn{flex:1}}
+@media(prefers-reduced-motion:reduce){.rx-grade,.rx-laser,.rx-scan-img .cn,.rx-mk i{animation:none}.rx-laser{top:50%}
+  .rx-mk,.rx-acao,.rx-selo{animation:none;opacity:1}.rx-ring .fg,.rx-bar i,.rx-radar-g{transition:none}}
+@media(max-width:900px){.side .tab{font-size:9.5px;padding:7px 1px;min-width:0;white-space:nowrap;letter-spacing:-.01em}.side .tab span{overflow:hidden;text-overflow:ellipsis;max-width:100%}}
+
 </style>
 </head>
 <body>
@@ -565,6 +677,10 @@ main.app{max-width:1180px;padding-top:4px}
           <div class="t" style="grid-column:auto"><small>Mercado Livre</small>Vestido Midi Feminino Tule Forro Alça Regulável</div>
           <div class="t" style="grid-column:auto"><small>Fotos</small>Modelo, detalhe do tecido e capa no formato de cada marketplace</div>
         </div><div class="glow"></div></div>
+      <div class="bx w6 reveal rx-lp"><div><span class="kick">Raio-X do anúncio</span><h3>Descubra o que está travando as vendas do seu anúncio</h3><p>A IA olha a capa, as fotos, o título, a descrição, o preço e o estoque e dá uma nota de 0 a 100, com as 3 mudanças que mais aumentam as vendas e o título certo pro seu marketplace.</p></div>
+        <div class="rx-lp-demo"><div class="rx-lp-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="10"/><circle cx="60" cy="60" r="50" fill="none" stroke="#e8a948" stroke-width="10" stroke-linecap="round" stroke-dasharray="314.2" stroke-dashoffset="119.4" transform="rotate(-90 60 60)"/></svg><b>62</b></div>
+          <div class="rx-lp-bars"><span><i>Capa</i><em style="--w:48%;--c:#ff6b5b"></em></span><span><i>Título</i><em style="--w:82%;--c:#9be07a"></em></span><span><i>Fotos</i><em style="--w:55%;--c:#e8a948"></em></span><span><i>Oferta</i><em style="--w:90%;--c:#3fbf7a"></em></span></div></div>
+        <div class="glow"></div></div>
     </div>
   </div></section>
 
@@ -578,7 +694,7 @@ main.app{max-width:1180px;padding-top:4px}
         <ul>
           <li>{{CHECK}}Calculadora dos 4 marketplaces, sem limite de uso</li>
           <li>{{CHECK}}Taxas atualizadas sem custo extra, pra sempre</li>
-          <li>{{CHECK}}100 créditos de IA de bônus (10 fotos ou 50 textos)</li>
+          <li>{{CHECK}}100 créditos de IA de bônus (10 fotos, 50 textos ou 20 Raio-X)</li>
           <li>{{CHECK}}Pix, boleto ou cartão</li>
         </ul>
         <button class="btn gold pill lg" style="width:100%" data-entrar>Quero minha calculadora {{ARROW}}</button>
@@ -650,6 +766,7 @@ main.app{max-width:1180px;padding-top:4px}
       <button class="tab" data-aba="calculos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21 12 16l-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg><span>Meus cálculos</span></button>
       <small class="side-lbl">Criar</small>
       <button class="tab" data-aba="ia"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"/></svg><span>Anúncio com IA</span></button>
+      <button class="tab" data-aba="raiox"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M3 12h18"/></svg><span>Raio-X</span></button>
       <small class="side-lbl">Conta</small>
       <button class="tab" data-aba="loja"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9v11h18V9M9 20v-6h6v6"/></svg><span>Minha loja</span></button>
       <button class="tab" data-aba="creditos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h4a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3h4"/></svg><span>Créditos</span></button>
@@ -781,6 +898,56 @@ main.app{max-width:1180px;padding-top:4px}
       <div class="doc-row"><label class="f"><span>CPF ou CNPJ <i>(pra emitir a cobrança)</i></span><div class="inp"><input id="cpfCreditos" inputmode="numeric" placeholder="000.000.000-00"></div></label></div>
       <p class="erro" id="avisoCreditos"></p>
     </section>
+    <!-- RAIO-X -->
+    <section id="abaRaiox" class="hidden">
+      <div class="page-h"><div><h1>Raio-<span class="serif">X</span> do anúncio</h1><p>Descubra o que está travando as vendas do seu anúncio. A IA olha as fotos de verdade e confere as regras de cada marketplace.</p></div></div>
+      <div id="rxForm" class="rx-grid">
+        <div class="panel">
+          <div class="step"><div class="step-h"><b>1</b><div><h3>Onde está o anúncio?</h3><p>Cada marketplace tem regra própria de título e foto.</p></div></div>
+            <div class="mp-pick rx-mp" id="rxMp">
+              <button class="mp-opt on" data-mp="shopee" type="button">{{L_SHOPEE_32}}<span><b>Shopee</b></span></button>
+              <button class="mp-opt" data-mp="ml" type="button">{{L_ML_32}}<span><b>Mercado Livre</b></span></button>
+              <button class="mp-opt" data-mp="tiktok" type="button">{{L_TIKTOK_32}}<span><b>TikTok Shop</b></span></button>
+              <button class="mp-opt" data-mp="shein" type="button">{{L_SHEIN_32}}<span><b>Shein</b></span></button>
+            </div></div>
+          <div class="step"><div class="step-h"><b>2</b><div><h3>Fotos do anúncio</h3><p>Até 6, na mesma ordem do anúncio. A 1ª é a capa.</p></div></div>
+            <label class="drop" id="rxDrop"><input type="file" id="rxFotos" accept="image/*" multiple hidden>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+              <b>Clique ou arraste as fotos aqui</b><small>JPG ou PNG · até 6 fotos · tire print das fotos do anúncio</small></label>
+            <div class="thumbs" id="rxPrev"></div></div>
+          <div class="step"><div class="step-h"><b>3</b><div><h3>Texto do anúncio</h3><p>Copie e cole do jeito que está publicado.</p></div></div>
+            <div class="row">
+              <label class="f"><span>Título <i id="rxTitCont"></i></span><div class="inp"><input id="rxTitulo" maxlength="190" placeholder="Cole aqui o título do anúncio"></div></label>
+              <label class="f"><span>Descrição <i>(opcional)</i></span><div class="inp"><textarea id="rxDesc" placeholder="Cole aqui a descrição"></textarea></div></label>
+            </div></div>
+          <div class="step"><div class="step-h"><b>4</b><div><h3>Preço, estoque e vendas</h3><p>Tudo opcional. O que ficar em branco não entra na nota.</p></div></div>
+            <div class="row c2">
+              <label class="f"><span>Preço de venda</span><div class="inp"><em>R$</em><input id="rxPreco" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+              <label class="f"><span>Preço riscado ("de")</span><div class="inp"><em>R$</em><input id="rxCheio" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0,00"></div></label>
+              <label class="f"><span>Tem vídeo?</span><div class="inp"><select id="rxVideo"><option value="">Não informar</option><option value="sim">Sim</option><option value="nao">Não</option></select></div></label>
+              <label class="f"><span>Está em promoção?</span><div class="inp"><select id="rxPromo"><option value="">Não informar</option><option value="sim">Sim</option><option value="nao">Não</option></select></div></label>
+              <label class="f"><span>Estoque</span><div class="inp"><input id="rxEstoque" type="number" inputmode="numeric" min="0" placeholder="un."></div></label>
+              <label class="f"><span>Vendas</span><div class="inp"><input id="rxVendas" type="number" inputmode="numeric" min="0" placeholder="total"></div></label>
+              <label class="f"><span>Nota das avaliações</span><div class="inp"><input id="rxNota" type="number" inputmode="decimal" min="0" max="5" step="0.1" placeholder="0 a 5"></div></label>
+            </div></div>
+        </div>
+        <aside class="panel gen">
+          <h3>O Raio-X confere</h3>
+          <div class="rx-lista-p"><span>Capa</span><span>Fotos</span><span>Título</span><span>Descrição</span><span>Preço e oferta</span><span>Estoque</span><span>Prova social</span></div>
+          <button class="btn gold lg" style="width:100%;margin-top:14px" id="btnRx" type="button">Fazer Raio-X — 5 créditos</button>
+          <p class="erro" id="avisoRx"></p>
+          <div class="rules">
+            <div>{{CHECK}}Nota de 0 a 100 e o que mais mexe nas vendas</div>
+            <div>{{CHECK}}Não precisa de link: só as fotos e o texto</div>
+            <div>{{CHECK}}Se a análise falhar, os créditos voltam na hora</div>
+          </div>
+          <div id="rxHist"></div>
+        </aside>
+      </div>
+      <div id="rxScan" class="hidden"></div>
+      <div id="rxRes" class="hidden"></div>
+    </section>
+
     <!-- MINHA LOJA -->
     <section id="abaLoja" class="hidden">
       <div class="page-h"><div><h1>Minha <span class="serif">loja</span></h1><p>Preencha uma vez. Vira o padrão de todo cálculo, e você só digita o custo e o lucro.</p></div></div>
@@ -946,9 +1113,10 @@ async function abrirApp() {
 }
 function irAba(aba) {
   document.querySelectorAll(".tab").forEach((x) => x.classList.toggle("on", x.dataset.aba === aba));
-  for (const [a, sec] of [["calc", "abaCalc"], ["calculos", "abaCalculos"], ["ia", "abaIa"], ["loja", "abaLoja"], ["creditos", "abaCreditos"]]) $(sec).classList.toggle("hidden", a !== aba);
+  for (const [a, sec] of [["calc", "abaCalc"], ["calculos", "abaCalculos"], ["ia", "abaIa"], ["raiox", "abaRaiox"], ["loja", "abaLoja"], ["creditos", "abaCreditos"]]) $(sec).classList.toggle("hidden", a !== aba);
   if (aba === "calculos") carregarCalculos();
   if (aba === "loja") preencherLoja();
+  if (aba === "raiox") rxPintarHist();
   window.scrollTo(0, 0);
 }
 document.querySelectorAll(".tab").forEach((b) => b.onclick = () => irAba(b.dataset.aba));
@@ -1307,6 +1475,147 @@ async function gerar(tipo) {
 $("btnIaTexto").onclick = () => gerar("texto");
 $("btnIaFotos").onclick = () => gerar("fotos");
 $("iaOut").onclick = async (e) => { const b = e.target.closest("[data-copiar]"); if (!b) return; try { await navigator.clipboard.writeText(b.dataset.copiar); toast("Copiado!"); } catch { toast("Selecione o texto e copie."); } };
+
+// ---------- Raio-X do anúncio (19/10/2026) ----------
+let rxMp = "shopee", rxImgs = [], rxHist = null;
+const RX_CALMO = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const RX_COR = (n) => (n >= 85 ? "#3fbf7a" : n >= 70 ? "#9be07a" : n >= 50 ? "#e8a948" : "#ff6b5b");
+const RX_FAIXA_TIT = { shopee: [70, 100], ml: [35, 60], tiktok: [80, 140], shein: [40, 190] };
+const RX_PASSOS = ["Lendo o título", "Analisando a capa", "Contando as fotos", "Lendo a descrição", "Conferindo preço e desconto", "Checando o estoque", "Olhando vendas e avaliações", "Montando o diagnóstico"];
+const RX_CURTO = { capa: "Capa", fotos: "Fotos", titulo: "Título", descricao: "Descrição", oferta: "Oferta", estoque: "Estoque", confianca: "Prova social" };
+const rxEspera = (ms) => new Promise((r) => setTimeout(r, ms));
+function rxReduzir(src, max, q) { return new Promise((ok, erro) => { const img = new Image(); img.onload = () => { const s = Math.min(1, max / Math.max(img.width, img.height)); const c = document.createElement("canvas"); c.width = Math.round(img.width * s); c.height = Math.round(img.height * s); const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height); ok(c.toDataURL("image/jpeg", q)); }; img.onerror = erro; img.src = src; }); }
+function rxPintarFotos() { $("rxPrev").innerHTML = rxImgs.map((s, i) => `<div class="thumb"><img src="${s}" alt="">${i === 0 ? '<span class="capa">Capa</span>' : ""}<button data-rm="${i}" aria-label="Remover">×</button></div>`).join(""); }
+async function rxAddFotos(files) {
+  for (const f of [...files]) {
+    if (rxImgs.length >= 6) { toast("Máximo de 6 fotos."); break; }
+    if (!/^image\//.test(f.type)) continue;
+    const u = URL.createObjectURL(f);
+    try { rxImgs.push(await rxReduzir(u, 1600, 0.85)); } catch { toast("Uma das fotos não abriu."); } finally { URL.revokeObjectURL(u); }
+  }
+  rxPintarFotos();
+}
+$("rxFotos").onchange = (e) => { rxAddFotos(e.target.files); e.target.value = ""; };
+$("rxPrev").onclick = (e) => { const b = e.target.closest("[data-rm]"); if (!b) return; rxImgs.splice(Number(b.dataset.rm), 1); rxPintarFotos(); };
+{ const d = $("rxDrop");
+  ["dragenter", "dragover"].forEach((ev) => d.addEventListener(ev, (e) => { e.preventDefault(); d.classList.add("over"); }));
+  ["dragleave", "drop"].forEach((ev) => d.addEventListener(ev, (e) => { e.preventDefault(); d.classList.remove("over"); }));
+  d.addEventListener("drop", (e) => rxAddFotos(e.dataTransfer.files)); }
+function rxContador() { const n = $("rxTitulo").value.trim().length, [a, b] = RX_FAIXA_TIT[rxMp];
+  $("rxTitCont").textContent = n ? `· ${n} caracteres (o ideal no ${NOMES[rxMp]} é ${a} a ${b})` : `(o ideal no ${NOMES[rxMp]} é ${a} a ${b} caracteres)`; }
+$("rxTitulo").addEventListener("input", rxContador);
+$("rxMp").onclick = (e) => { const b = e.target.closest(".mp-opt"); if (!b) return; rxMp = b.dataset.mp; [...$("rxMp").children].forEach((x) => x.classList.toggle("on", x === b)); rxContador(); };
+rxContador();
+
+function rxTela(qual) { $("rxForm").classList.toggle("hidden", qual !== "form"); $("rxScan").classList.toggle("hidden", qual !== "scan"); $("rxRes").classList.toggle("hidden", qual !== "res"); window.scrollTo({ top: 0, behavior: RX_CALMO ? "auto" : "smooth" }); }
+function rxCapaHtml(src) { return src ? `<img src="${src}" alt="Capa do anúncio">` : `<div class="rx-sem">Sem foto<br><small>a capa não entra na nota</small></div>`; }
+
+// a) enquanto analisa: laser varrendo a capa + passos ficando ✓
+function rxScanIniciar(capa) {
+  $("rxScan").innerHTML = `<div class="rx-scan">
+    <div class="rx-scan-img">${rxCapaHtml(capa)}<div class="rx-grade"></div><div class="rx-laser"></div><i class="cn tl"></i><i class="cn tr"></i><i class="cn bl"></i><i class="cn br"></i></div>
+    <div class="rx-passos"><span class="badge-top"><span class="dotc"></span>Raio-X em andamento</span><h3>Analisando seu anúncio…</h3>
+      <ul>${RX_PASSOS.map((p, i) => `<li data-i="${i}"><span class="ck"></span>${p}</li>`).join("")}</ul>
+      <small>Leva uns 20 segundos. Não feche esta página.</small></div></div>`;
+  rxTela("scan");
+  let i = 0; const lis = $("rxScan").querySelectorAll("li");
+  const marcar = (k, st) => lis[k] && (lis[k].className = st);
+  marcar(0, "vai");
+  const t = setInterval(() => { if (i < RX_PASSOS.length - 2) { marcar(i, "ok"); i++; marcar(i, "vai"); } }, 2400);
+  return async () => { clearInterval(t); for (; i < RX_PASSOS.length; i++) { marcar(i, "ok"); marcar(i + 1, "vai"); await rxEspera(RX_CALMO ? 0 : 160); } await rxEspera(RX_CALMO ? 0 : 350); };
+}
+
+function rxRadar(pilares) {
+  const av = pilares.filter((p) => p.nota != null);
+  if (av.length < 3) return "";
+  const c = 120, R = 78, n = av.length, ang = (k) => -Math.PI / 2 + (2 * Math.PI * k) / n;
+  const pt = (k, r) => [c + r * Math.cos(ang(k)), c + r * Math.sin(ang(k))].map((v) => v.toFixed(1)).join(",");
+  const anel = (f) => `<polygon class="rg" points="${av.map((_, k) => pt(k, R * f)).join(" ")}"/>`;
+  return `<svg viewBox="0 0 240 240" class="rx-radar" role="img" aria-label="Notas por parte do anúncio">
+    ${[0.25, 0.5, 0.75, 1].map(anel).join("")}${av.map((_, k) => `<line class="rg" x1="${c}" y1="${c}" x2="${pt(k, R).split(",")[0]}" y2="${pt(k, R).split(",")[1]}"/>`).join("")}
+    <g class="rx-radar-g"><polygon class="rv" points="${av.map((p, k) => pt(k, (R * p.nota) / 100)).join(" ")}"/>${av.map((p, k) => { const [x, y] = pt(k, (R * p.nota) / 100).split(","); return `<circle cx="${x}" cy="${y}" r="3.5" fill="${RX_COR(p.nota)}"/>`; }).join("")}</g>
+    ${av.map((p, k) => { const [x, y] = pt(k, R + 20).split(",").map(Number); return `<text x="${x}" y="${y}" text-anchor="${Math.abs(x - c) < 8 ? "middle" : x > c ? "start" : "end"}" dominant-baseline="middle">${esc(RX_CURTO[p.id] || p.nome)}</text>`; }).join("")}
+  </svg>`;
+}
+
+// b) resultado
+function rxMostrar(item, capa) {
+  const r = item.resultado || {}, a = item.anuncio || {}, nota = Math.round(r.nota || 0), cor = RX_COR(nota), C = 2 * Math.PI * 58;
+  const icon = { ok: "✓", atencao: "!", ruim: "✕" };
+  const marc = (r.marcadores || []).map((m, i) => `<div class="rx-mk ${m.tipo === "bom" ? "bom" : "mel"} ${m.x >= 0.45 ? "esq" : ""}" style="left:${(m.x * 100).toFixed(1)}%;top:${(m.y * 100).toFixed(1)}%;animation-delay:${1.2 + i * 0.35}s"><i></i><span>${esc(m.texto)}</span></div>`).join("");
+  const acoes = (r.acoes || []).slice(0, 3).map((x, i) => `<div class="rx-acao" style="animation-delay:${0.9 + i * 0.25}s"><span class="imp ${x.impacto}">${x.impacto === "alto" ? "Impacto alto" : x.impacto === "medio" ? "Impacto médio" : "Impacto baixo"}</span><b>${i + 1}. ${esc(x.titulo)}</b><p>${esc(x.porque)}</p></div>`).join("");
+  const pils = (r.pilares || []).map((p, i) => `<div class="rx-pil"><button type="button" class="rx-pil-h"><span class="nm">${esc(p.nome)}</span><span class="rx-bar"><i style="--w:${p.nota ?? 0}%;--c:${p.nota == null ? "#3a3631" : RX_COR(p.nota)};transition-delay:${1.4 + i * 0.15}s"></i></span><b class="num">${p.nota ?? "—"}</b><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button>
+    <div class="rx-pil-d hidden">${p.nota == null ? `<p class="vd">Não avaliado: faltou informação ou foto.</p>` : p.veredito ? `<p class="vd">${esc(p.veredito)}</p>` : ""}${(p.itens || []).length ? `<ul>${p.itens.map((x) => `<li class="${x.status}"><span>${icon[x.status] || "•"}</span>${esc(x.texto)}</li>`).join("")}</ul>` : ""}</div></div>`).join("");
+  $("rxRes").innerHTML = `<div class="rx-res">
+    <div class="rx-col-capa">
+      <div class="rx-capa-box">${rxCapaHtml(capa || item.capa)}${marc}</div>
+      <div class="rx-meta">${LOGO[a.marketplace] ? LOGO[a.marketplace](22) : ""}<span>${esc(NOMES[a.marketplace] || "")} · ${r.fotosAnalisadas || 0} foto${r.fotosAnalisadas === 1 ? "" : "s"} analisada${r.fotosAnalisadas === 1 ? "" : "s"}</span></div>
+      ${r.tituloSugerido ? `<div class="panel rx-tit"><div class="out-h"><b>Título sugerido</b><span>${r.tituloSugerido.length} caracteres</span></div><p>${esc(r.tituloSugerido)}</p><button class="btn sm" type="button" data-copiar="${esc(r.tituloSugerido)}">Copiar título</button></div>` : ""}
+    </div>
+    <div class="rx-col-dados">
+      <div class="panel rx-topo">
+        <div class="rx-ring"><svg viewBox="0 0 140 140"><circle class="bg" cx="70" cy="70" r="58"/><circle class="fg" cx="70" cy="70" r="58" style="stroke:${cor};stroke-dasharray:${C.toFixed(1)};stroke-dashoffset:${C.toFixed(1)}" data-alvo="${(C * (1 - nota / 100)).toFixed(1)}"/></svg><div class="rx-ring-n"><b class="num" id="rxNum" style="color:${cor}">0</b><small>de 100</small></div></div>
+        <div class="rx-topo-t"><span class="rx-selo" style="--c:${cor}">${esc(r.faixa?.nome || "")}</span>
+          ${r.primeiraImpressao ? `<p class="rx-imp"><small>Primeira impressão do comprador</small>“<span id="rxImp"></span>”</p>` : ""}
+          <span class="rx-sub">${r.problemas || 0} ponto${r.problemas === 1 ? "" : "s"} pra melhorar · ${esc(a.titulo || "").slice(0, 60)}${(a.titulo || "").length > 60 ? "…" : ""}</span></div>
+        ${rxRadar(r.pilares || [])}
+      </div>
+      ${acoes ? `<h3 class="rx-h">O que mais mexe nas vendas</h3><div class="rx-acoes">${acoes}</div>` : ""}
+      <h3 class="rx-h">Nota por parte do anúncio <small>toque pra ver os detalhes</small></h3>
+      <div class="rx-pilares">${pils}</div>
+      <div class="rx-botoes"><button class="btn" type="button" data-rx="refazer">Fazer outro Raio-X</button><button class="btn gold" type="button" data-rx="gerar">Gerar título e descrição com IA</button></div>
+    </div></div>`;
+  rxTela("res");
+  const box = $("rxRes").querySelector(".rx-res"), fg = box.querySelector(".rx-ring .fg");
+  if (RX_CALMO) { box.classList.add("on", "calmo"); fg.style.strokeDashoffset = fg.dataset.alvo; $("rxNum").textContent = nota; if ($("rxImp")) $("rxImp").textContent = r.primeiraImpressao; return; }
+  requestAnimationFrame(() => requestAnimationFrame(() => { box.classList.add("on"); fg.style.strokeDashoffset = fg.dataset.alvo; }));
+  const t0 = performance.now(), dur = 1500;
+  const conta = (t) => { const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3); $("rxNum").textContent = Math.round(nota * e); if (p < 1) requestAnimationFrame(conta); };
+  requestAnimationFrame(conta);
+  if (r.primeiraImpressao) { let k = 0; const txt = r.primeiraImpressao; setTimeout(() => { const iv = setInterval(() => { const el = $("rxImp"); if (!el) return clearInterval(iv); el.textContent = txt.slice(0, ++k); if (k >= txt.length) clearInterval(iv); }, 26); }, 700); }
+}
+$("rxRes").onclick = async (e) => {
+  const h = e.target.closest(".rx-pil-h"); if (h) { h.nextElementSibling.classList.toggle("hidden"); h.classList.toggle("aberto"); return; }
+  const cp = e.target.closest("[data-copiar]"); if (cp) { try { await navigator.clipboard.writeText(cp.dataset.copiar); toast("Título copiado!"); } catch { toast("Selecione o texto e copie."); } return; }
+  const b = e.target.closest("[data-rx]"); if (!b) return;
+  if (b.dataset.rx === "refazer") { rxTela("form"); rxPintarHist(); return; }
+  // leva pra aba IA já preenchida
+  const mp = ["shopee", "ml", "tiktok"].includes(rxMp) ? rxMp : "shopee";
+  irAba("ia"); $("iaMp").querySelector(`[data-mp="${mp}"]`)?.click();
+  $("iaProduto").value = [$("rxTitulo").value.trim(), $("rxDesc").value.trim()].filter(Boolean).join("\n\n");
+  if (rxImgs.length) { iaImagens = []; for (const s of rxImgs.slice(0, 5)) iaImagens.push(await rxReduzir(s, 1280, 0.85)); pintarThumbs(); }
+  toast("Dados do anúncio já preenchidos. Confira e gere.");
+};
+
+async function rxFazer() {
+  const titulo = $("rxTitulo").value.trim(); $("avisoRx").textContent = "";
+  if (titulo.length < 5) { $("avisoRx").textContent = "Cole o título do anúncio."; $("rxTitulo").focus(); return; }
+  if (!perfil.iaIlimitada && (perfil.creditos ?? 0) < 5) { toast(`O Raio-X usa 5 créditos e você tem ${perfil.creditos ?? 0}.`); irAba("creditos"); return; }
+  const v = (id) => $(id).value.trim();
+  const corpo = { tipo: "raio_x", marketplace: rxMp, titulo, descricao: v("rxDesc"), preco: v("rxPreco"), precoCheio: v("rxCheio"), video: v("rxVideo"), emDesconto: v("rxPromo"),
+    estoque: v("rxEstoque"), vendas: v("rxVendas"), nota: v("rxNota"), imagens: rxImgs };
+  for (const k of Object.keys(corpo)) if (corpo[k] === "") delete corpo[k];
+  try { if (rxImgs[0]) corpo.capaMini = await rxReduzir(rxImgs[0], 360, 0.72); } catch {}
+  const capa = rxImgs[0] || null, terminar = rxScanIniciar(capa);
+  $("btnRx").disabled = true;
+  try {
+    const { d } = await api("/api/ia", { method: "POST", body: JSON.stringify(corpo) });
+    if (!d.success) { rxTela("form"); $("avisoRx").textContent = d.error || "O Raio-X não respondeu. Seus créditos foram devolvidos."; return; }
+    if (d.saldo != null) { perfil.creditos = d.saldo; pintarSaldo(); }
+    if (rxHist) rxHist = [d.raiox, ...rxHist.filter((x) => x.id !== d.raiox.id)].slice(0, 10);
+    await terminar();
+    rxMostrar(d.raiox, capa);
+  } catch (e) { if (e.message !== "sessao") { rxTela("form"); $("avisoRx").textContent = "Sem conexão. Tente de novo."; } }
+  finally { $("btnRx").disabled = false; }
+}
+$("btnRx").onclick = rxFazer;
+
+async function rxPintarHist() {
+  if (!rxHist) { try { const { d } = await api("/api/minha-loja"); rxHist = d.success ? d.raiox || [] : []; } catch { rxHist = []; } }
+  $("rxHist").innerHTML = rxHist.length ? `<h3 class="rx-hist-h">Seus últimos Raio-X <small>rever é grátis</small></h3>${rxHist.map((x) => { const n = Math.round(x.resultado?.nota || 0);
+    return `<button type="button" class="rx-hist" data-rxid="${esc(x.id)}">${x.capa ? `<img src="${x.capa}" alt="">` : `<span class="ph">${LOGO[x.anuncio?.marketplace] ? LOGO[x.anuncio.marketplace](26) : ""}</span>`}<span class="tx"><b>${esc((x.anuncio?.titulo || "").slice(0, 48))}</b><small>${new Date(x.em).toLocaleDateString("pt-BR")} · ${esc(NOMES[x.anuncio?.marketplace] || "")}</small></span><span class="nt" style="--c:${RX_COR(n)}">${n}</span></button>`; }).join("")}` : "";
+}
+$("rxHist").onclick = (e) => { const b = e.target.closest("[data-rxid]"); if (!b) return; const it = rxHist.find((x) => x.id === b.dataset.rxid); if (it) rxMostrar(it, it.capa); };
 
 // ---------- Início ----------
 montarLanding();
