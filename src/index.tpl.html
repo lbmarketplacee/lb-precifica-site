@@ -7,7 +7,7 @@
 <meta name="description" content="Calcule o preço de venda na Shopee, Mercado Livre, TikTok Shop e Shein com as taxas oficiais de 2026 e crie título, descrição e fotos do anúncio com IA.">
 <meta name="theme-color" content="#0a0908">
 <link rel="icon" href="data:image/jpeg;base64,{{LOGO}}">
-<!-- Meta Pixel (18/10/2026): pixel da conta LB (2748919952152076). Eventos: PageView · InitiateCheckout (botão comprar) · Purchase (só depois do Asaas confirmar) -->
+<!-- Meta Pixel (18/10/2026): pixel da conta LB (2748919952152076). Eventos: PageView · InitiateCheckout (botão comprar) · Purchase (só depois do pagamento confirmar) -->
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','2748919952152076');fbq('track','PageView');
 window.lbPixel=function(ev,dados,id){try{fbq('track',ev,dados||{},id?{eventID:id}:undefined)}catch(e){}};</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -904,7 +904,6 @@ main.app{max-width:1180px;padding-top:4px}
       <div class="panel bal"><div><div class="lbl">Seu saldo</div><div class="big num" id="saldoGrande">—</div></div>
         <div class="eq"><div><b>10 créditos</b>1 foto profissional</div><div><b>2 créditos</b>título + descrição</div></div></div>
       <div class="packs" id="pacotes"></div>
-      <div class="doc-row"><label class="f"><span>CPF ou CNPJ <i>(pra emitir a cobrança)</i></span><div class="inp"><input id="cpfCreditos" inputmode="numeric" placeholder="000.000.000-00"></div></label></div>
       <p class="erro" id="avisoCreditos"></p>
     </section>
     <!-- RAIO-X -->
@@ -1147,12 +1146,10 @@ function montarTrava() {
     <h2 style="font-size:24px;margin-top:14px">Libere a calculadora completa</h2>
     <div class="valor">R$ 49,99</div><div style="color:var(--muted);font-size:13px">pagamento único · sem mensalidade</div>
     <ul><li>${CHECK}Shopee, Mercado Livre, TikTok Shop e Shein lado a lado</li><li>${CHECK}Taxas sempre atualizadas</li><li>${CHECK}100 créditos de IA de bônus</li></ul>
-    <label class="f" style="text-align:left;margin-bottom:12px"><span>CPF ou CNPJ <i>(pra emitir a cobrança)</i></span><div class="inp"><input id="cpfAcesso" inputmode="numeric" placeholder="000.000.000-00"></div></label>
     <button class="btn gold lg" style="width:100%" id="btnComprarAcesso">Liberar por R$ 49,99</button>
     <p class="erro" id="avisoAcesso"></p>
-    <div style="font-size:12px;color:var(--muted)">Pix, boleto ou cartão · pagamento seguro pelo Asaas</div></div></div>`);
-  $("cpfAcesso").addEventListener("input", mascaraDoc);
-  $("btnComprarAcesso").onclick = () => comprar("acesso", $("cpfAcesso").value, $("avisoAcesso"), $("btnComprarAcesso"));
+    <div style="font-size:12px;color:var(--muted)">Pix, boleto ou cartão · pagamento seguro</div></div></div>`);
+  $("btnComprarAcesso").onclick = () => comprar("acesso", "", $("avisoAcesso"), $("btnComprarAcesso"));
 }
 function montarPacotes() {
   const lista = [["c100", ""], ["c300", "Mais escolhido"], ["c700", "Melhor preço"]];
@@ -1167,12 +1164,11 @@ function montarPacotes() {
 function mascaraDoc(e) { const d = e.target.value.replace(/\D/g, "").slice(0, 14);
   e.target.value = d.length <= 11 ? d.replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d{1,2})$/, "$1-$2")
     : d.replace(/^(\d{2})(\d)/, "$1.$2").replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3").replace(/\.(\d{3})(\d)/, ".$1/$2").replace(/(\d{4})(\d)/, "$1-$2"); }
-$("cpfCreditos").addEventListener("input", mascaraDoc);
 
 // ---------- Compras ----------
 async function comprar(produto, cpf, aviso, botao) {
   aviso.textContent = "";
-  if (![11, 14].includes(String(cpf).replace(/\D/g, "").length)) { aviso.textContent = "Informe um CPF ou CNPJ válido."; return; }
+  /* 03/11/2026: CPF é pedido no checkout da Perfect Pay (não pergunta 2 vezes) */
   botao.disabled = true;
   try {
     const { d } = await api("/api/create-payment", { method: "POST", body: JSON.stringify({ produto, cpfCnpj: cpf }) });
@@ -1181,7 +1177,7 @@ async function comprar(produto, cpf, aviso, botao) {
   } catch (e) { if (e.message !== "sessao") aviso.textContent = "Sem conexão. Tente de novo."; }
   finally { botao.disabled = false; }
 }
-$("pacotes").onclick = (e) => { const b = e.target.closest("[data-pacote]"); if (b) comprar(b.dataset.pacote, $("cpfCreditos").value, $("avisoCreditos"), b); };
+$("pacotes").onclick = (e) => { const b = e.target.closest("[data-pacote]"); if (b) comprar(b.dataset.pacote, "", $("avisoCreditos"), b); };
 async function esperarPagamento(id) {
   toast("Confirmando seu pagamento…");
   for (let i = 0; i < 40; i++) {
