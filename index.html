@@ -1112,6 +1112,9 @@ async function carregarPerfil() {
   $("menuNome").textContent = perfil.nome || "Sua conta"; $("menuEmail").textContent = perfil.email || "";
   if (fotoUsuario) $("avatar").src = fotoUsuario; else $("avatar").src = `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="40" height="40" fill="#f7efdc"/><text x="20" y="26" text-anchor="middle" font-family="Arial" font-weight="700" font-size="16" fill="#7a5a17">${esc((perfil.nome || perfil.email || "?")[0].toUpperCase())}</text></svg>`)}`;
   montarTrava(); montarPacotes();
+  // acesso só da calculadora (11/11/2026, Aviamentos SP): sem IA, Raio-X e créditos
+  for (const a of ["ia", "raiox", "creditos"]) document.querySelector(`.tab[data-aba="${a}"]`)?.classList.toggle("hidden", !!perfil.semIA);
+  $("saldo")?.classList.toggle("hidden", !!perfil.semIA);
 }
 async function abrirApp() {
   mostrar("telaApp");
