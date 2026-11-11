@@ -8,3 +8,12 @@ function montarLanding() {
   const io = "IntersectionObserver" in window ? new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 }) : null;
   document.querySelectorAll(".reveal").forEach((el) => io ? io.observe(el) : el.classList.add("in"));
 }
+
+/* vídeo "Como funciona": só baixa/toca quando aparece na tela (11/11/2026) */
+(() => { const v = document.getElementById("cfVideo"); if (!v) return;
+  if (!("IntersectionObserver" in window)) { v.preload = "auto"; v.play().catch(() => {}); return; }
+  new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }), { threshold: .3 }).observe(v); })();
+(() => { const v = document.getElementById("cfVideo"), b = document.getElementById("cfSom"); if (!v || !b) return;
+  b.addEventListener("click", () => { v.muted = !v.muted; if (!v.muted) { v.currentTime = 0; v.play().catch(() => {}); }
+    b.querySelector("span").textContent = v.muted ? "Ligar som" : "Desligar som"; b.setAttribute("aria-label", v.muted ? "Ligar o som" : "Desligar o som");
+    document.getElementById("cfSomX").style.display = v.muted ? "" : "none"; }); })();
