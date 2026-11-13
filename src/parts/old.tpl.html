@@ -425,6 +425,7 @@ main.app{padding-top:28px;padding-bottom:64px}
       </div>
       <div class="f"><span>Onde você vende hoje?</span><div class="chips" id="cadMps"></div></div>
       <label class="f"><span>Faturamento mensal da loja</span><div class="inp"><select id="cadFat" required><option value="">Escolha uma faixa</option><option value="ainda_nao_vendo">Ainda não vendo</option><option value="ate_5mil">Até R$ 5 mil</option><option value="5a20mil">R$ 5 mil a R$ 20 mil</option><option value="20a50mil">R$ 20 mil a R$ 50 mil</option><option value="50a100mil">R$ 50 mil a R$ 100 mil</option><option value="acima_100mil">Acima de R$ 100 mil</option></select></div></label>
+      <label class="aceite"><input type="checkbox" id="cadAceita"><span>Aceito receber contato da LB Marketplace pelo WhatsApp e e-mail (dicas, novidades e ofertas). Você pode pedir pra parar quando quiser.</span></label>
       <p class="erro" id="avisoCadastro"></p>
       <button class="btn prim lg" type="submit" id="btnCadastro">Continuar</button>
     </form>
@@ -755,12 +756,14 @@ $("cadWhats").addEventListener("input", (e) => { const d = e.target.value.replac
 $("formCadastro").onsubmit = async (e) => {
   e.preventDefault();
   const corpo = { nome: $("cadNome").value, whatsapp: $("cadWhats").value, loja: $("cadLoja").value, segmento: $("cadSegmento").value,
-    faturamento: $("cadFat").value, marketplaces: [...document.querySelectorAll("#cadMps .chip.on")].map((c) => c.dataset.mp) };
+    faturamento: $("cadFat").value, marketplaces: [...document.querySelectorAll("#cadMps .chip.on")].map((c) => c.dataset.mp), aceitaContato: $("cadAceita").checked };
   $("btnCadastro").disabled = true; $("avisoCadastro").textContent = "";
   try {
     const { d } = await api("/api/cadastro", { method: "POST", body: JSON.stringify(corpo) });
     if (!d.success) { $("avisoCadastro").textContent = d.error || "Confira os dados."; return; }
+    window.lbPixel && lbPixel("CompleteRegistration", { content_name: "precifica_gratis", status: d.quente ? "quente" : "normal" });
     await abrirApp();
+    if (d.brinde) toast(`Pronto! A calculadora é sua grátis até 30/11 e você ganhou ${d.brinde} créditos de IA.`);
   } catch {} finally { $("btnCadastro").disabled = false; }
 };
 
@@ -811,16 +814,22 @@ function montarTrava() {
   w.classList.toggle("lock", travado);
   w.querySelector(".calc").classList.toggle("blur", travado);
   w.querySelector(".lock-card")?.remove();
+  $("faixaGratis")?.remove();
+  const fim = (iso) => iso ? new Date(iso).toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo" }) : "";
+  if (perfil.acesso === "gratis") w.insertAdjacentHTML("beforebegin", `<div class="faixa-gratis" id="faixaGratis"><b>Calculadora grátis até 30/11.</b> Depois, R$ 19,99/mês com 30 créditos de IA inclusos.</div>`);
+  if (perfil.acesso === "mensal") w.insertAdjacentHTML("beforebegin", `<div class="faixa-gratis" id="faixaGratis">Plano mensal ativo até <b>${fim(perfil.acessoAte)}</b>.</div>`);
   if (!travado) return;
+  const m = precos?.mensal || { valor: 19.99, creditos: 30 };
+  const vencido = perfil.acesso === "vencido";
   w.insertAdjacentHTML("beforeend", `<div class="lock-card"><div class="card lock-box">
-    <span class="pill" style="color:#7a5a17;background:var(--goldbg);border-color:#ecdcb4">Acesso vitalício</span>
-    <h2 style="font-size:24px;margin-top:14px">Libere a calculadora completa</h2>
-    <div class="valor">R$ 49,99</div><div style="color:var(--muted);font-size:13px">pagamento único · sem mensalidade</div>
-    <ul><li>${CHECK}Shopee, Mercado Livre, TikTok Shop e Shein lado a lado</li><li>${CHECK}Taxas sempre atualizadas</li><li>${CHECK}100 créditos de IA de bônus</li></ul>
-    <button class="btn gold lg" style="width:100%" id="btnComprarAcesso">Liberar por R$ 49,99</button>
+    <span class="pill" style="color:#7a5a17;background:var(--goldbg);border-color:#ecdcb4">Plano mensal</span>
+    <h2 style="font-size:24px;margin-top:14px">${vencido ? "Seu plano venceu" : "O período grátis acabou"}</h2>
+    <div class="valor">${brl(m.valor)}<small style="font-size:16px;color:var(--muted)">/mês</small></div><div style="color:var(--muted);font-size:13px">sem fidelidade · renova quando você pagar</div>
+    <ul><li>${CHECK}Shopee, Mercado Livre, TikTok Shop e Shein lado a lado</li><li>${CHECK}Taxas sempre atualizadas</li><li>${CHECK}${m.creditos} créditos de IA por mês</li></ul>
+    <button class="btn gold lg" style="width:100%" id="btnComprarAcesso">${vencido ? "Renovar" : "Assinar"} por ${brl(m.valor)}</button>
     <p class="erro" id="avisoAcesso"></p>
     <div style="font-size:12px;color:var(--muted)">Pix, boleto ou cartão · pagamento seguro</div></div></div>`);
-  $("btnComprarAcesso").onclick = () => comprar("acesso", "", $("avisoAcesso"), $("btnComprarAcesso"));
+  $("btnComprarAcesso").onclick = () => comprar("mensal", "", $("avisoAcesso"), $("btnComprarAcesso"));
 }
 function montarPacotes() {
   const lista = [["c100", ""], ["c300", "Mais escolhido"], ["c700", "Melhor preço"]];
@@ -844,7 +853,7 @@ async function comprar(produto, cpf, aviso, botao) {
   try {
     const { d } = await api("/api/create-payment", { method: "POST", body: JSON.stringify({ produto, cpfCnpj: cpf }) });
     if (!d.checkoutUrl) { aviso.textContent = d.error || "Não deu pra gerar a cobrança."; return; }
-    const VAL = { acesso: 49.99, c100: 19.9, c300: 49.9, c700: 99.9 }; try { localStorage.setItem("lbpCompra", JSON.stringify({ produto, valor: VAL[produto] || 0 })); } catch (e) {} window.lbPixel && lbPixel("InitiateCheckout", { value: VAL[produto] || 0, currency: "BRL", content_name: produto }); location.href = d.checkoutUrl;
+    const VAL = { mensal: 19.99, acesso: 49.99, c100: 19.9, c300: 49.9, c700: 99.9 }; try { localStorage.setItem("lbpCompra", JSON.stringify({ produto, valor: VAL[produto] || 0 })); } catch (e) {} window.lbPixel && lbPixel("InitiateCheckout", { value: VAL[produto] || 0, currency: "BRL", content_name: produto }); location.href = d.checkoutUrl;
   } catch (e) { if (e.message !== "sessao") aviso.textContent = "Sem conexão. Tente de novo."; }
   finally { botao.disabled = false; }
 }

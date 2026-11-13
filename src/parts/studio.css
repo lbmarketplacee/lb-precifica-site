@@ -236,3 +236,9 @@ main.app{max-width:1180px;padding-top:4px}
 .rx-link small{color:var(--muted);font-size:12px}
 .rx-link>.btn{justify-self:start}
 @media(max-width:560px){.rx-link-f{flex-direction:column}}
+
+/* grátis em novembro (13/11/2026) */
+.faixa-gratis{max-width:920px;margin:0 auto 14px;border:1px solid rgba(95,211,148,.4);background:rgba(95,211,148,.1);color:var(--ink2);border-radius:14px;padding:10px 14px;font-size:14px;text-align:center}
+.faixa-gratis b{color:#7fe0a8}
+.aceite{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);cursor:pointer;line-height:1.45}
+.aceite input{margin-top:3px;width:18px;height:18px;accent-color:var(--gold);flex:none}

@@ -4,7 +4,7 @@ L=open('parts/old.tpl.html').read().split('\n')
 app_css='\n'.join(L[122:317])
 rest='\n'.join(L[410:])
 rep=[
- ('<span class="pill" style="color:#7a5a17;background:var(--goldbg);border-color:#ecdcb4">Acesso vitalício</span>','<span class="badge-top" style="padding:5px 12px;font-size:12.5px">Acesso vitalício</span>'),
+ ('<span class="pill" style="color:#7a5a17;background:var(--goldbg);border-color:#ecdcb4">Plano mensal</span>','<span class="badge-top" style="padding:5px 12px;font-size:12.5px">Plano mensal</span>'),
  ("font:600 26px/1.1 Oswald,sans-serif","font:800 26px/1.1 var(--disp)"),
  ("Oswald,sans-serif","var(--disp)"),
  (".app-top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.88)",".app-top{position:sticky;top:0;z-index:20;background:rgba(10,9,8,.78)"),
